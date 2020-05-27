@@ -1,0 +1,14 @@
+MVC
+1.	Model is where to save data View is displaying data Controller is where to manipulate the data 
+before you display.
+2.	Model is fetching and processing the data View is displaying stuff to user Controller 
+communicates between the model and view.
+
+SPA
+Ya no usaremos las propiedades hide y show de CSS para mostrar/ocultar elementos, 
+sino que usaremos rutas: /holi/holi/holi.
+Las rutas cambian el contenido de la página cuando el usuario haga click sobre un vínculo para ver
+otro contenido. lo que cambia es el </ main> contenido de nuestra página, y la ruta que se observa 
+en el navegador.
+
+DUDAS
