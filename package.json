@@ -34,6 +34,7 @@
     "stylelint-config-recommended": "^2.2.0"
   },
   "dependencies": {
-    "gitmoji-cli": "^3.2.4"
+    "firebase": "^7.14.5",
+    "firebase-admin": "^8.12.1"
   }
 }
