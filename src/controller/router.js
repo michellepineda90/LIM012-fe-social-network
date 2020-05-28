@@ -10,8 +10,12 @@ export const changeTmp = (hash) => {
     case '#':
     case '#/':
     { return sectionMain.appendChild(components.home()); }
-    case '#/registro':
-    { return sectionMain.appendChild(components[id]()); }
+    case '#/login':
+    { return sectionMain.appendChild(components.login()); }
+    case '#/register':
+    { return sectionMain.appendChild(components.register()); }
+    case '#/profile':
+    { return sectionMain.appendChild(components.profile()); }
     default:
       return sectionMain.appendChild(components.different());
   }
