@@ -1,18 +1,25 @@
 export default () => {
   const registryView = `
-  <h1 class="text-center">Aqui puedes Resgistrarte con facebook o google</h1>
-  
-  <form action="#" name="register">
-    <input type="text" name="name" placeholder="Nombre Completo">
-    <input type="text" name="email" placeholder="Correo Electrónico">
-    <input type="password" name="password" placeholder="Contraseña">
-    <button id="btn-register">Registrar</button>
-    <span>¿Ya tienes una cuenta? <a href="#/login">Iniciar Sesión</a></span>
-  </form>
+  <div class="form-background">
+    <div class="rectangle">
+      <img src="../img/Imagen1.png" alt="recycling-symbol" class="logo"/>
+      <h1 class="welcome-text">¡BIENVENID@ A</br> < ECOLOGY >!</h1>
+      <div class="holder">
+        <form action="#" name="register">
+          <p class="holder-title">Registrarse</p>
+          <input type="text" name="name" class="form-field" placeholder="Nombre Completo">
+          <input type="text" name="email" class="form-field" placeholder="Correo Electrónico">
+          <input type="password" name="password" class="form-field" placeholder="Contraseña">
+          <button id="btn-register" class="login-btn">Registrar</button>
+          <p>¿Ya tienes una cuenta? <a href="#/login">Iniciar Sesión</a></p>
+        </form>
+      </div> 
+    </div>
+  </div>
   `;
 
   const divElemt = document.createElement('div');
-  divElemt.classList.add('position');
+  // divElemt.classList.add('position');
   divElemt.innerHTML = registryView;
   return divElemt;
 };
