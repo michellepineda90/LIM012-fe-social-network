@@ -1,9 +1,6 @@
 export default () => {
   const registryView = `
-  <p class="text-center">holiholiholi</p>
-  <figure>
-    <img src="https://i.stack.imgur.com/SCJZO.png" alt="registry-accounts">
-  </figure>`;
+  <h1 class="text-center">Mi perfil</h1>`;
 
   const divElemt = document.createElement('div');
   divElemt.classList.add('position');
