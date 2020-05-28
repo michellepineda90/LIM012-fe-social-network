@@ -14,19 +14,24 @@
   <main>
     <section>
       <a href="#">Inicio</a>
-    </section>
-    <section>
       <a href="#/login">Login</a>
+      <a href="#/register">Registrar</a>
+      <a href="#/profile">Mi Perfil</a>
     </section>
-    <section>
-      <a href="#/registro">Registro</a>
+    <section id="container">
+      <!-- <form action="#" name="login" method="POST"  > -->
+        <input type="text" name="email" id="email" placeholder="Correo Electrónico">
+        <input type="password" name="password" id="password" placeholder="Contraseña">
+        <button id="login-btn">Iniciar Sesion</button>
+        <span>¿No tienes una cuenta? <a href="#/register">Registrarse</a></span>
+      <!-- </form> -->
     </section>
-    <section id="container"></section>
   </main>
 
   <footer></footer>
 
   <script type="module" src="main.js"></script>
+  <!-- <script type="module" src="./firebaseInit.js"></script> -->
 
 </body>
 </html>
