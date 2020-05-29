@@ -1,5 +1,7 @@
 export default () => {
   const registryView = `
+  <img src="../img/welcome-logo.png" alt="welcome-phrase" class="welcome-logo"/>
+  <img src="../img/girl-logo.png" alt="welcome-phrase" class="girl-logo"/>
   <div class="form-background">
     <div class="rectangle">
       <img src="../img/Imagen1.png" alt="recycling-symbol" class="logo"/>
