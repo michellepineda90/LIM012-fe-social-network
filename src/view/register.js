@@ -7,9 +7,9 @@ export default () => {
       <div class="holder">
         <form action="#" name="register">
           <p class="holder-title">Registrarse</p>
-          <input type="text" name="name" class="form-field" placeholder="Nombre Completo">
-          <input type="text" name="email" class="form-field" placeholder="Correo Electrónico">
-          <input type="password" name="password" class="form-field" placeholder="Contraseña">
+          <input type="text" name="name" class="form-field user" placeholder="Nombre Completo">
+          <input type="text" name="email" class="form-field email" placeholder="Correo Electrónico">
+          <input type="password" name="password" class="form-field password" placeholder="Contraseña">
           <button id="btn-register" class="login-btn">Registrar</button>
           <p>¿Ya tienes una cuenta? <a href="#/login">Iniciar Sesión</a></p>
         </form>

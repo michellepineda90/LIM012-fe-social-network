@@ -7,11 +7,15 @@ export default () => {
       <div class="holder">
         <form action="#" name="login">
           <p class="holder-title">Iniciar Sesión</p>
-          <input type="text" name="email" class="form-field" placeholder="Correo Electrónico">
-          <input type="password" name="password" class="form-field" placeholder="Contraseña">
+          <input type="text" name="email" class="form-field user" placeholder="Correo Electrónico">
+          <input type="password" name="password" class="form-field password" placeholder="Contraseña">
           <button id="btn-login" class="login-btn">Iniciar Sesión</button>
-          <p>O bien ingresa con...</p>
-          <span>¿No tienes una cuenta? <a href="#/register">Registrarse</a></span>
+          <p class="aid-text"> O bien ingresa con...</p>
+          <div class="social-media">
+            <img src="../img/facebook.png" alt="recycling-symbol" class=""/>
+            <img src="../img/gmail.png" alt="recycling-symbol" class=""/>
+          </div>
+          <p class="aid-text">¿No tienes una cuenta? <a href="#/register"> Regístrate</a></p>
         </form>
       </div>
     </div>
