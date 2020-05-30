@@ -13,25 +13,37 @@
 
   <main>
     <section>
-      <a href="#">Inicio</a>
+      <!-- <a href="#/home">Inicio</a> -->
       <a href="#/login">Login</a>
       <a href="#/register">Registrar</a>
       <a href="#/profile">Mi Perfil</a>
     </section>
     <section id="container">
-      <!-- <form action="#" name="login" method="POST"  > -->
-        <input type="text" name="email" id="email" placeholder="Correo Electrónico">
-        <input type="password" name="password" id="password" placeholder="Contraseña">
-        <button id="login-btn">Iniciar Sesion</button>
-        <span>¿No tienes una cuenta? <a href="#/register">Registrarse</a></span>
-      <!-- </form> -->
-    </section>
+
+      <!-- <h1 class="text-center">-------------SING UP------------------</h1>
+      <form id="sing-up-form">
+        <input type="text" name="name" placeholder="Nombre Completo">
+        <input type="text" name="email" placeholder="Correo Electrónico">
+        <input type="password" name="password" placeholder="Contraseña">
+        <button id="sing-up-btn">Registrar</button>
+        <span>¿Ya tienes una cuenta? <a href="#/login">Iniciar Sesión</a></span>
+      </form>
+      <h1 class="text-center">-------------SING IN------------------</h1>
+      <form id="sing-in-form">  
+        <input type="text" name="email" placeholder="Correo Electrónico">
+        <input type="password" name="password" placeholder="Contraseña">
+        <button id="sing-in-btn">Iniciar Sesion</button>  
+      </form>
+    </section> -->
   </main>
 
   <footer></footer>
 
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-firestore.js"></script>
+  <script type="module" src="firebaseInit.js"></script>
   <script type="module" src="main.js"></script>
-  <!-- <script type="module" src="./firebaseInit.js"></script> -->
 
 </body>
 </html>
