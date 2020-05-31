@@ -9,7 +9,7 @@ export const changeTmp = (hash) => {
     case '':
     case '#':
     case '#/':
-    { return sectionMain.appendChild(components.home()); }
+    { return sectionMain.appendChild(components.login()); }
     case '#/login':
     { return sectionMain.appendChild(components.login()); }
     case '#/register':
