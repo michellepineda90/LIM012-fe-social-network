@@ -4,8 +4,9 @@ export default () => {
     <img src="../img/welcome-logo.png" alt="welcome-phrase" class="welcome-logo"/>
     <img src="../img/girl-logo.png" alt="girl-recycling" class="girl-logo"/>
     <div class="rectangle">
-      <img src="../img/Imagen1.png" alt="recycling-symbol" class="logo"/>
-      <h1 class="welcome-text">¡BIENVENID@ A</br> < ECOLOGY >!</h1>
+      <h1 class="welcome-text">Bienvenid@ a</h1>
+      <img src="../img/eco-trans-white.png" alt="recycling-symbol" class="logo"/>
+      <h1 class="app-name-text">eco-chat...</h1>
       <div class="holder">
         <p class="holder-title">Iniciar Sesión</p>
           <form id="sign-in-form" name="login">
@@ -19,16 +20,12 @@ export default () => {
               <input type="password" name="password" id="password" class="form-field password" placeholder="Contraseña">
               <small>Mensaje de error</small>
             </div>
-            <div class="form-control">
-
-              <button id="sign-in-btn" class="form-btn">Iniciar Sesión</button>
-              <small>Mensaje de error</small>
-            </div>
+            <button id="sign-in-btn" class="form-btn">Iniciar Sesión</button>
           </form>
           <p class="aid-text"> O bien ingresa con...</p>
           <div class="social-media">
-            <img src="../img/facebook.png" alt="recycling-symbol" class=""/>
-            <img src="../img/gmail.png" alt="recycling-symbol" class=""/>
+            <i class="fa fa-google" aria-hidden="true"></i>
+            <i class="fa fa-facebook" aria-hidden="true"></i>
           </div>
           <p class="aid-text">¿No tienes una cuenta? <a href="#/register"> Regístrate</a></p>
       </div>
