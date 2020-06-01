@@ -1,7 +1,9 @@
 export default () => {
   const registryView = `
-  <img src="../img/welcome-logo.png" alt="welcome-phrase" class="welcome-logo"/>
-  <img src="../img/girl-logo.png" alt="welcome-phrase" class="girl-logo"/>
+  <div>
+    <img src="../img/welcome-logo.png" alt="welcome-phrase" class="welcome-logo"/>
+    <img src="../img/girl-logo.png" alt="welcome-phrase" class="girl-logo"/>
+  </div>
   <div class="form-background">
     <div class="rectangle">
       <img src="../img/Imagen1.png" alt="recycling-symbol" class="logo"/>
@@ -24,7 +26,8 @@ export default () => {
   </div>`;
 
   const divElemt = document.createElement('div');
-  // divElemt.classList.add('login');
+  divElemt.classList.add('login');
   divElemt.innerHTML = registryView;
+
   return divElemt;
 };
