@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "firebase": "^7.14.5",
-    "firebase-admin": "^8.12.1"
+    "firebase-admin": "^8.12.1",
+    "gitmoji-cli": "^3.2.4"
   }
 }

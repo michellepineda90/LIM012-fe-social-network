@@ -1,16 +1,25 @@
-
+/* eslint-disable no-console */
 
 import { auth, db } from '../firebaseInit.js';
 
-export const registerUser = (user) => {
-  auth.createUserWithEmailAndPassword(user.email, user.psw)
-    .then(cred => db.collection('users').doc(cred.user.uid)
-      .set({ name: user.name }))
-    .catch(err => console.log(err));
-};
+const registerUserOnDB = (key, data) => new Promise((res, rej) => {
+  db.collection('users').doc(key).set(data)
+    .then(res(true))
+    .catch(rej(new Error('error to storage on database')));
+});
+// const registerUserOnDB = (key, data) => db.collection('users').doc(key).set(data);
 
 
-export const loginUser = (user) => {
-  auth.signInWithEmailAndPassword(user.email, user.psw)
-    .then(cred => console.log(cred));
-};
+export const createUser = user => new Promise((res, rej) => {
+  auth.createUserWithEmailAndPassword(user.email, user.password)
+    .then(cred => registerUserOnDB(cred.user.uid, { name: user.name }))
+    .then(result => res(result))
+    .catch(err => rej(err));
+});
+
+
+export const signInUser = user => new Promise((res, rej) => {
+  auth.signInWithEmailAndPassword(user.email, user.password)
+    .then(res('success!'))
+    .catch(rej(new Error('error')));
+});
