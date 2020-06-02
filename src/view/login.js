@@ -1,30 +1,34 @@
 export default () => {
   const registryView = `
-  <div class="form-background">
-    <img src="../img/welcome-logo.png" alt="welcome-phrase" class="welcome-logo"/>
-    <img src="../img/girl-logo.png" alt="girl-recycling" class="girl-logo"/>
-    <div class="rectangle">
-      <img src="../img/Imagen1.png" alt="recycling-symbol" class="logo"/>
-      <h1 class="welcome-text">¡BIENVENID@ A</br> < ECOLOGY >!</h1>
-      <div class="holder">
-        <form action="#" name="login">
-          <p class="holder-title">Iniciar Sesión</p>
-          <input type="text" name="email" class="form-field user" placeholder="Correo Electrónico">
-          <input type="password" name="password" class="form-field password" placeholder="Contraseña">
-          <button id="btn-login" class="login-btn">Iniciar Sesión</button>
-          <p class="aid-text"> O bien ingresa con...</p>
-          <div class="social-media">
-            <img src="../img/facebook.png" alt="recycling-symbol" class=""/>
-            <img src="../img/gmail.png" alt="recycling-symbol" class=""/>
-          </div>
-          <p class="aid-text">¿No tienes una cuenta? <a href="#/register"> Regístrate</a></p>
-        </form>
+  <div class="welcome">
+    <img src="../img/eco-trans-white.png" alt="chat" class="logo"/>
+    <p class="app-name-text">eco-chat...</p>
+  </div>
+  <div class="holder">
+    <h2 class="holder-title">Iniciar Sesión</h2>
+      <form id="sign-in-form" name="login">
+        <div class="form-control">
+          <i class="far fa-envelope"></i>
+          <input type="text" name="email" id="email" class="form-field user" placeholder="Correo Electrónico">
+          <small>Mensaje de error</small>
+        </div>
+        <div class="form-control">
+          <i class="fas fa-key"></i>
+          <input type="password" name="password" id="password" class="form-field password" placeholder="Contraseña">
+          <small>Mensaje de error</small>
+        </div>
+        <button id="sign-in-btn" class="form-btn">Iniciar Sesión</button>
+      </form>
+      <p class="aid-text"> O bien ingresa con...</p>
+      <div class="social-media">
+        <i class="fa fa-google" aria-hidden="true"></i>
+        <i class="fa fa-facebook" aria-hidden="true"></i>
       </div>
-    </div>
+      <p class="aid-text">¿No tienes una cuenta? <a href="#/register"> Regístrate</a></p>
   </div>`;
 
   const divElemt = document.createElement('div');
-  divElemt.classList.add('login');
+  divElemt.classList.add('screen-background');
   divElemt.innerHTML = registryView;
   return divElemt;
 };
