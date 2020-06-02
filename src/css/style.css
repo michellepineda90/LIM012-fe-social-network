@@ -4,71 +4,59 @@
     padding: 0;
 }
 
-/* global */
-
-.container {
-    width: 100%;
-    background: #DFE0E3;
-    overflow: hidden;
-}
-
 /* mobile first */
 
-.form-background {
+main {
+    background-image: url(../img/wall2.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+}
+
+.girl-logo {
+    display: none;
+}
+
+.screen-background {
     width: 100%;
-    height: 100%;
-    left: 0px;
-    top: 0px;
-    background: #DFE0E3;
     display: flex;
     flex-direction: column;
+    background: transparent;
+}
+
+.welcome {
+    padding-top: 10%;
+    padding-left: 5%;
+    margin-bottom: 5%;
 }
 
 .logo {
-    width: 40%;
-    margin-left: 30%;
+    width: 50%;
+    margin-left: 25%;
     max-width: 200px;
 }
 
-.form-background h1{
+.app-name-text { 
+    font-family: 'Aleo', serif;
+    font-size: 1.5em;
     font-style: normal;
     font-weight: normal;
     text-align: center;
     color: #FFFCFC;
 }
 
-
-.welcome-text { 
-    padding-top: 2em;
-    padding-bottom: .2em;
-    font-family: Abel;
-    font-size: 1em;
-}
-.app-name-text { 
-    font-size: 2em;
-}
-
-.rectangle {
-    position: absolute;
-    z-index: 0;
-    width: 100%;
-    height: 55%;
-    /* max-height: 350px; */
-    left: 1px;
-    top: 1px;
-    background: #172945;
-    border-radius: 0px 0px 70px 70px;
-}
-
 .holder {
-    position: absolute;
-    top: 60%;
+    position: relative;
     left: 5%;
     width: 90%;
     background: rgba(255, 255, 255, 0.96);
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    padding: 1em;
+    border-radius: 10px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;   
 }
 
 div.holder p{
@@ -95,9 +83,9 @@ form input:hover{
     max-width: 350px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
-    
+    justify-content: start; 
 }
+
 .form-control small{
     display: none;
     color: red;
@@ -121,7 +109,6 @@ form input:hover{
     color: #172945;
 }
 
-
 .form-btn {
     background: #0CA385;
     color: #FEFEFE;
@@ -139,29 +126,11 @@ input.form-field {
     border: 1.5px solid rgba(153, 153, 153, 0.3);
     box-sizing: border-box;
     border-radius: 30px;
-    padding-left: 35px;
+    padding: 0.5em 0 0.5em 35px;
     font-size: 1em;
     width: 100%;
-    height: 3em;
+    /* height: 2em; */
     max-width: 350px;
-}
-
-.user {
-    background-image:url('../img/user.png');
-    background-repeat:no-repeat;
-    background-position:left;
-}
-
-.email {
-    background-image:url('../img/email.png');
-    background-repeat:no-repeat;
-    background-position:left;
-}
-
-.password {
-    background-image:url('../img/password.png');
-    background-repeat:no-repeat;
-    background-position:left;
 }
 
 .social-media {
@@ -197,75 +166,29 @@ input.form-field {
     background:  #db4a39;
     color: white;
   }
-.girl-logo {
-    display: none;
-}
 
-.welcome-logo{
-    display: none;
+.aid-text {
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 0.7em;
+    color: #172945;
 }
 
 @media only screen and (min-width: 768px) {
 
-body { 
-    background-image: url(../img/background-image.png);
-    background-size: 60vw;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: right;
-}
-
-.form-background {
-    top: 0;
-    left: 0;
-    width: 35%;
-    /* display: none; */
-}
-
-.welcome-logo {
-    display: block;
+.screen-background {
+    background: rgba(30, 17, 17, 0.46);
+    border-radius: 10px;
     position: absolute;
-    max-width: 400px;
-    max-height: 400px;
-    left: 5%;
-    top: 2.5%;
+    width: 25%;
+    height: 90%;
+    top: 5%;
+    left: 60%;
 }
 
 .girl-logo {
     display: block;
-    position: absolute;
-    max-width: 650px;
-    max-height: 550px;
-    left:0;
-    top: 30%;
-}
-
-.welcome-text{ 
-    display: none;
-}
-
-.form-background {
-    background-color: transparent;
-}
-
-.rectangle {
-    background-color: transparent; 
-}
-
-.logo {
-    position: absolute;
-    max-width: 200px;
-    max-height: 165px;
-    left: 960px;
-    top: 20px;
-}
-
-.holder {
-    position: absolute;
-    width: 350px;
-    height: 390px;
-    left: 875px;
-    top: 200px;
+    max-width: 500px;
 }
 
 }

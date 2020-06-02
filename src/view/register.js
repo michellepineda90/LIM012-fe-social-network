@@ -1,12 +1,8 @@
 export default () => {
   const registryView = `
-  <div class="form-background">
-    <img src="../img/welcome-logo.png" alt="welcome-phrase" class="welcome-logo"/>
-    <img src="../img/girl-logo.png" alt="welcome-phrase" class="girl-logo"/>
-    <div class="rectangle">
-      <h1 class="welcome-text">Bienvenid@ a</h1>
+    <div class="welcome">
       <img src="../img/eco-trans-white.png" alt="recycling-symbol" class="logo"/>
-      <h1 class="app-name-text">eco-chat...</h1>
+      <p class="app-name-text">eco-chat...</p>
       <div class="holder">
         <p class="holder-title">Registrarse</p>
         <form id="sign-up-form" name="register">
@@ -28,14 +24,13 @@ export default () => {
           <button id="sign-un-btn" class="form-btn">Registrar</button>
           <small> error mesage</small>
         </form>
-        <p>¿Ya tienes una cuenta? <a href="#/login">Iniciar Sesión</a></p>
+        <p class="aid-text">¿Ya tienes una cuenta? <a href="#/login">Iniciar Sesión</a></p>
       </div> 
     </div>
-  </div>
   `;
 
   const divElemt = document.createElement('div');
-  // divElemt.classList.add('position');
+  divElemt.classList.add('screen-background');
   divElemt.innerHTML = registryView;
   return divElemt;
 };
