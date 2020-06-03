@@ -1,5 +1,9 @@
+import { eventSignUp } from '../controller/signUpController.js';
+
 export default () => {
-  const registryView = `
+  const divElemt = document.createElement('div');
+  divElemt.classList.add('screen-background');
+  divElemt.innerHTML = `
       <div class="welcome">
         <img src="../img/eco-trans-white.png" alt="chat" class="logo"/>
         <p class="app-name-text">eco-chat...</p>
@@ -10,19 +14,19 @@ export default () => {
           <div class="form-control">
             <i class="fa fa-user" aria-hidden="true"></i>
             <input type="text" name="name" id="name" class="form-field" placeholder="Nombre Completo">
-            <i class="fas fa-exclamation-triangle"></i>
+            <i class="fas fa-exclamation-triangle error-icon"></i>
             <small>Mensaje de error</small>
           </div>
           <div class="form-control">
             <i class="fa fa-envelope icon"></i> 
             <input type="text" name="email" id="email" class="form-field" placeholder="Correo Electrónico">
-            <i class="fas fa-exclamation-triangle"></i>
+            <i class="fas fa-exclamation-triangle error-icon"></i>
             <small>Mensaje de error</small>
           </div>
           <div class="form-control">
             <i class="fa fa-key" aria-hidden="true"></i>
             <input type="password" name="password" id="password" class="form-field" placeholder="Contraseña">
-            <i class="fas fa-exclamation-triangle"></i>
+            <i class="fas fa-exclamation-triangle error-icon"></i>
             <small>Mensaje de error</small>
           </div>    
           <button id="sign-un-btn" class="form-btn">Registrar</button>
@@ -31,8 +35,11 @@ export default () => {
       </div> 
   `;
 
-  const divElemt = document.createElement('div');
-  divElemt.classList.add('screen-background');
-  divElemt.innerHTML = registryView;
+  const signUpForm = divElemt.querySelector('#sign-up-form');
+  signUpForm.addEventListener('submit', (event) => {
+    eventSignUp(event);
+  });
+
+
   return divElemt;
 };
