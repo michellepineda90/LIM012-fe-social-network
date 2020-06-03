@@ -7,9 +7,12 @@
 /* mobile first */
 
 main {
-    background-image: url(../img/wall2.jpeg);
+    background-image: url(../img/wall1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    /* background: #000; */
+    /* opacity: .8; */
+
     width: 100vw;
     height: 100vh;
 }
@@ -23,9 +26,12 @@ main {
     display: flex;
     flex-direction: column;
     background: transparent;
+    /* background: crimson; */
 }
 
+
 .welcome {
+    z-index: 1;
     padding-top: 10%;
     padding-left: 5%;
     margin-bottom: 5%;
@@ -47,10 +53,13 @@ main {
 }
 
 .holder {
+    /* visibility: hidden; */
+    padding: 1.5em 0;
     position: relative;
-    left: 5%;
+    margin-left: 5%;
     width: 90%;
-    background: rgba(255, 255, 255, 0.96);
+    /* background: rgba(255, 255, 255, 0.96); */
+    background: rgba(247, 243, 243, 0.46);  
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
     border-radius: 10px; 
     display: flex;
@@ -59,31 +68,37 @@ main {
     justify-items: center;   
 }
 
-div.holder p{
-    display: inline-block;
-    width: 100%;
-    text-align: center;
+.holder p{
+    font-size: .8em;
 }
+
 form {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* background: rosybrown; */
 }
 form button, 
 form input{
     outline: none;
+    padding: 1.2rem 0;
+    max-width: 500px;
 }
 form input:hover{
     border: 1.5px solid rgb(53, 230, 194);
   }
+  
 .form-control{
+    position: relative;
     margin-bottom: 1em;
     width: 90%;
-    max-width: 350px;
     display: flex;
     flex-wrap: wrap;
     justify-content: start; 
+    max-width: 500px;
+
 }
 
 .form-control small{
@@ -95,15 +110,13 @@ form input:hover{
 }
 .form-control i{
     position: absolute;
-    padding: 15px;
+    padding: 1.2em;
     color: #333;
 }
 i.fa-eye,
 i.fa-eye-slash{
-    position: absolute;
-    right: 2em;
-    color: #0CA385;;
-    border-radius: 0 30px 30px 0;
+    right: .1em;
+    color: #0CA385;
 }
 i.fa-eye-slash{
     display: block;
@@ -139,33 +152,30 @@ i.fa-exclamation-triangle{
     background: #0CA385;
     color: #FEFEFE;
     border-radius: 30px;
-    height: 50px;
+    /* height: 50px; */
     border: 1px none;
     margin-bottom: 15px;
     font-size: 1em;
     width: 90%;
-    max-width: 350px;
+    
 }
 
-input.form-field {
+.form-field {
     background: #FFFFFF;
     border: 1.5px solid rgba(153, 153, 153, 0.3);
     box-sizing: border-box;
     border-radius: 30px;
-    padding: 0.5em 0 0.5em 35px;
     font-size: 1em;
     width: 100%;
-    /* height: 2em; */
-    max-width: 350px;
+    padding-left: 2.5em;
 }
 
 .social-media {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin: 1em 0;
     text-align: center;
 }
 .social-media i{
-    font-size: 1em;
+    font-size: 1.5em;
     color: white;
     padding: .5em;
     border-radius: 1em;
@@ -202,20 +212,58 @@ input.form-field {
 
 @media only screen and (min-width: 768px) {
 
-.screen-background {
-    background: rgba(30, 17, 17, 0.46);
-    border-radius: 10px;
-    position: absolute;
-    width: 25%;
-    height: 90%;
-    top: 5%;
-    left: 60%;
-}
 
-.girl-logo {
-    display: block;
-    max-width: 500px;
-}
+    .screen-background {
+        /* background: rgba(112, 107, 107, 0.46); */
+        background:transparent;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+    
+    }
+
+    .girl-logo {
+        display: block;
+        max-width: 500px;
+    }
+  
+    .welcome{    
+        width: 50%;
+        margin-bottom: 0;
+        padding: 15% 0;
+        text-align: center;
+    }
+    .logo{
+        width: 50%;
+        margin: 0;
+        max-width: 400px;
+
+    }
+    .app-name-text{
+        font-size: 3em;
+    }
+
+    .holder{
+        width: 50%;
+        margin: 0;
+        border-radius: 0;
+        background: rgba(247, 243, 243, 0.46);
+        /* background: black; */
+        /* opacity: 1; */
+        padding-top: 15%;
+    }
+    .holder p{
+        font-size: 1em;
+        color: rgb(54, 53, 52);
+    }
+   
+
+    .holder-title{        
+        font: outline;
+        font-size: 1.5em;
+        color: rgb(66, 63, 63);
+    }
 
 }
 
