@@ -4,6 +4,14 @@
     padding: 0;
 }
 
+/* global */
+
+.container {
+    width: 100%;
+    background: #DFE0E3;
+    overflow: hidden;
+}
+
 /* mobile first */
 
 main {
@@ -72,13 +80,17 @@ main {
     font-size: .8em;
 }
 
+div.holder p{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
 form {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    /* background: rosybrown; */
+    align-items: center;;
 }
 form button, 
 form input{
@@ -137,6 +149,42 @@ i.fa-exclamation-triangle{
 .error{
     border: 1.5px solid red;
 }
+form button, 
+form input{
+    outline: none;
+}
+form input:hover{
+    border: 1.5px solid rgb(53, 230, 194);
+  }
+.form-control{
+    margin-bottom: 1em;
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+
+    
+}
+.form-control small{
+    display: none;
+    color: red;
+    font-weight: 500;
+}
+.form-control i{
+    position: absolute;
+    padding: 1.3em;
+}
+
+i.error-icon{
+    position: relative;
+    padding: .2em .5em;
+    left: .7em;
+}
+
+.error{
+    border: 1.5px solid red;
+}
 
 .holder-title {
     margin: 1em 0;
@@ -157,10 +205,12 @@ i.fa-exclamation-triangle{
     margin-bottom: 15px;
     font-size: 1em;
     width: 90%;
+    max-width: 500px;
+
     
 }
 
-.form-field {
+input.form-field {
     background: #FFFFFF;
     border: 1.5px solid rgba(153, 153, 153, 0.3);
     box-sizing: border-box;
