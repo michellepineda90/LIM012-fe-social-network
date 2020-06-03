@@ -1,5 +1,10 @@
-// import { changeTmp } from '../router.js';
-import { signInUser } from '../model/user.model.js';
+import {
+  signInUser,
+  signInWithGoogle,
+  signInWithFacebook,
+  registerUser,
+} from '../model/user.model.js';
+
 import { setErrorFor, setSuccessFor } from './utils.js';
 
 
@@ -28,7 +33,7 @@ const signInFormValidation = (code) => {
   }
 };
 
-export const signIn = (event) => {
+export const eventSignIn = (event) => {
   event.preventDefault();
   const user = {
     email: event.target.email.value,
@@ -36,12 +41,60 @@ export const signIn = (event) => {
   };
   signInUser(user)
     .then((data) => {
-      window.location.replace('#/home');
+      // window.location.replace('#/home');
+      window.location.hash = '#/home';
       console.log(data);
       event.target.reset();
     })
     .catch((err) => {
       console.log(err.code, err.message);
       signInFormValidation(err.code);
+    });
+};
+
+export const eventGoogle = (event) => {
+  event.preventDefault();
+  signInWithGoogle()
+    .then((res) => {
+      const idUser = res.user.uid;
+      // console.log(idUser);
+      const userObj = {
+        name: res.user.displayName,
+        photoURL: res.user.photoURL,
+        email: res.user.email,
+      };
+      registerUser(idUser, userObj);
+      window.location.hash = '#/profile';
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const erroMessage = error.message;
+      // console.log(errorCode, erroMessage);
+      const email = error.email;
+      const credential = error.credential;
+      // console.log(email, credential);
+    });
+};
+export const eventFacebook = (event) => {
+  event.preventDefault();
+  signInWithFacebook()
+    .then((res) => {
+      const idUser = res.user.uid;
+      // console.log(idUser);
+      const userObj = {
+        name: res.user.displayName,
+        photoURL: res.user.photoURL,
+        email: res.user.email,
+      };
+      registerUser(idUser, userObj);
+      window.location.hash = '#/profile';
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const erroMessage = error.message;
+      // console.log(errorCode, erroMessage);
+      const email = error.email;
+      const credential = error.credential;
+      // console.log(email, credential);
     });
 };

@@ -1,6 +1,5 @@
 import { createUser } from '../model/user.model.js';
 import { setErrorFor, setSuccessFor } from './utils.js';
-// import { changeView } from './router.js';
 
 
 const signUpFormValidation = (code) => {
@@ -41,27 +40,21 @@ const signUpFormValidation = (code) => {
 };
 
 
-export default () => {
-  const singUpForm = document.querySelector('#sign-up-form');
-  singUpForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const user = {
-      name: singUpForm.name.value,
-      email: singUpForm.email.value,
-      password: singUpForm.password.value,
-    };
-    console.log(user);
-    // if (signUpFormValidation() === true) {
-    createUser(user)
-      .then((data) => {
-        window.location.replace('#/home');
-        console.log(data);
-        singUpForm.reset();
-      })
-      .catch((err) => {
-        console.log(err.message, err.code);
-        signUpFormValidation(err.code);
-      });
-    // }
-  });
+export const eventSignUp = (event) => {
+  event.preventDefault();
+  const user = {
+    name: event.target.name.value,
+    email: event.target.email.value,
+    password: event.target.password.value,
+  };
+  createUser(user)
+    .then((data) => {
+      window.location.hash = '#/home';
+      console.log(data);
+      event.target.reset();
+    })
+    .catch((err) => {
+      console.log(err.message, err.code);
+      signUpFormValidation(err.code);
+    });
 };
