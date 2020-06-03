@@ -1,6 +1,6 @@
-export default () => {
+export default (message) => {
   const registryView = `
-  <header>< ECOLOGY ></header>`;
+  <p>${message}</p>`;
 
   const divElemt = document.createElement('div');
   divElemt.classList.add('position');
