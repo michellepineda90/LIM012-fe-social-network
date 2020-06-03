@@ -1,21 +1,37 @@
 import { components } from '../view/index.js';
+import { control } from './main.controller.js';
 
-export const changeTmp = (hash) => {
+// import signInController from './signInController.js';
+// import signUpController from './signUpController.js';
+
+// const control = {
+//   signInUser: signInController,
+//   signUpUser: signUpController,
+// };
+
+
+export const changeView = (hash, message) => {
   // const id = hash.split('/')[1];
+  // console.log('hash es:', hash);
   const sectionMain = document.getElementById('container');
   sectionMain.innerHTML = '';
 
   switch (hash) {
-    case '':
-    case '#':
-    case '#/':
-    { return sectionMain.appendChild(components.login()); }
+    case '#/login':
+      sectionMain.appendChild(components.login());
+      control.signInUser();
+      break;
     case '#/register':
-    { return sectionMain.appendChild(components.register()); }
+      sectionMain.appendChild(components.register());
+      control.signUpUser();
+      break;
     case '#/profile':
-    // Arreglar
-    { return sectionMain.appendChild(components.profile()); }
+      sectionMain.appendChild(components.profile());
+      break;
+    case '#/home':
+      sectionMain.appendChild(components.home(message));
+      break;
     default:
-      return sectionMain.appendChild(components.different());
+      sectionMain.appendChild(components.login());
   }
 };
