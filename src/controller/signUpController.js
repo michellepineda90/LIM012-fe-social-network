@@ -1,5 +1,5 @@
 import { createUser } from '../model/user.model.js';
-import { setErrorFor, setSuccessFor } from './utils.js';
+import { setErrorFor, setSuccessFor, sendMessage } from './utils.js';
 
 
 const signUpFormValidation = (code) => {
@@ -13,27 +13,28 @@ const signUpFormValidation = (code) => {
   // console.log(email, password);
   // NAME
   if (name === '') {
-    setErrorFor(inputName, 'Ingrese un Nombre!');
+    setErrorFor(inputName, 'Por favor, ingrese nombre');
   } else if (name.length < 6) {
-    setErrorFor(inputName, 'Nombre debe tener mínimo 6 caracteres!');
+    setErrorFor(inputName, 'Nombre debe contener mínimo 6 caracteres!');
   } else {
     setSuccessFor(inputName);
   }
   // EMAIL
   if (email === '') {
-    setErrorFor(inputEmail, 'Ingrese un email');
+    setErrorFor(inputEmail, 'Por favor, ingrese correo');
   } else if (code === 'auth/invalid-email') {
-    setErrorFor(inputEmail, 'El email ingresado es inválido');
+    setErrorFor(inputEmail, 'El correo ingresado es inválido');
   } else if (code === 'auth/email-already-in-use') {
-    setErrorFor(inputEmail, 'El email esta vinculado a otra cuenta');
+    sendMessage('El correo ya esta vinculado a otra cuenta');
+    // setErrorFor(inputEmail, 'El correo ya esta vinculado a otra cuenta');
   } else {
     setSuccessFor(inputEmail);
   }
   // PASSWORD
   if (password === '') {
-    setErrorFor(inputPassword, 'Ingrese una contraseña!');
+    setErrorFor(inputPassword, 'Por favor, ingrese contraseña');
   } else if (code === 'auth/weak-password') {
-    setErrorFor(inputPassword, 'La contraseña debe tener mínimo 6 caracteres!');
+    setErrorFor(inputPassword, 'La contraseña debe contener mínimo 6 caracteres');
   } else {
     setSuccessFor(inputPassword);
   }
@@ -48,13 +49,11 @@ export const eventSignUp = (event) => {
     password: event.target.password.value,
   };
   createUser(user)
-    .then((data) => {
-      window.location.hash = '#/home';
-      console.log(data);
+    .then(() => {
+      window.location.hash = '#/email';
       event.target.reset();
     })
     .catch((err) => {
-      console.log(err.message, err.code);
       signUpFormValidation(err.code);
     });
 };
