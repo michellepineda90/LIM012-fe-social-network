@@ -54,6 +54,8 @@ main {
     background: rgba(247, 243, 243, 0.46);  
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
     border-radius: 10px; 
+    justify-content: center;
+    align-items: center;
 }
 
 .holder p{
@@ -62,6 +64,14 @@ main {
     margin-bottom: .5em;
     text-align: center;
     font-family: Roboto;
+}
+
+.form-container {
+    padding: 5%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
 }
 
 form {
@@ -184,8 +194,11 @@ form input:hover{
     font-size: 1em;
     width: 90%;
     max-width: 500px;
-    cursor: pointer;
-    
+    cursor: pointer;    
+}
+.btn-send-email{
+    width: 250px;
+    margin-left: calc((100% - 250px)/2);
 }
 .form-btn:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -220,19 +233,19 @@ input.form-field {
     color:  #3b5998;
   }
 .social-media i.fa-facebook:hover{
-transition: all 0.2s ease;
-background:  #3b5998;
-color: white;
+    transition: all 0.2s ease;
+    background:  #3b5998;
+    color: white;
 }
 .social-media i.fa-google{
-border: 1.2px solid #db4a39;
-background: white;
-color: #db4a39;
+    border: 1.2px solid #db4a39;
+    background: white;
+    color: #db4a39;
 }
 .social-media i.fa-google:hover{
-transition: all 0.2s ease;
-background:  #db4a39;
-color: white;
+    transition: all 0.2s ease;
+    background:  #db4a39;
+    color: white;
 }
 
 .msg-err{
@@ -296,10 +309,9 @@ color: white;
         color: rgb(66, 63, 63);
         width: 100%;
     }
-    .form-container {
+    /* .form-container {
         width: 100%;
-        /* background: red; */
-    }
+    } */
 
 }
 

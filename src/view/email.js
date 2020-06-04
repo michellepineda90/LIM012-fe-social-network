@@ -10,11 +10,13 @@ export default () => {
   <p class="app-name-text">eco-chat...</p>
   </div>
   <div class="holder">
+  <div class="form-container">
   <h2 class="holder-title">¡Gracias por registrarte!</h2>    
   <p class=""> Hemos enviado un correo de confirmación a <strong>${auth.currentUser.email}</strong></p>
   <p>Por favor revisa tu correo y haz click en el enlace para verificar la dirección del correo.</p>
-  <button class="form-btn">Reenviar correo de verificación</button>
+  <button class="form-btn btn-send-email">Reenviar correo de verificación</button>
   <p><a href="#/login"> Inicia Sesión</a></p>
+  </div>
   </div>
   `;
 
