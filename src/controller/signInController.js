@@ -5,7 +5,8 @@ import {
   registerUser,
 } from '../model/user.model.js';
 
-import { setErrorFor, setSuccessFor } from './utils.js';
+import { setErrorFor, setSuccessFor, sendMessage } from './utils.js';
+import { auth } from '../firebaseInit.js';
 
 
 const signInFormValidation = (code) => {
@@ -17,21 +18,23 @@ const signInFormValidation = (code) => {
 
   // EMAIL
   if (email === '') {
-    setErrorFor(inputEmail, 'Ingrese un correo Electrónico');
+    setErrorFor(inputEmail, 'Por favor, ingrese un correo');
   } else if (code === 'auth/user-not-found') {
-    setErrorFor(inputEmail, 'No hay cuenta vinculada a este email');
+    sendMessage('No existe una cuenta vinculada a este correo');
+    // setErrorFor(inputEmail, 'No existe una cuenta vinculada a este correo');
   } else {
     setSuccessFor(inputEmail);
   }
   // PASSWORD
   if (password === '') {
-    setErrorFor(inputPassword, 'Ingrese una contraseña');
+    setErrorFor(inputPassword, 'Por favor, ingrese contraseña');
   } else if (code === 'auth/wrong-password') {
-    setErrorFor(inputPassword, 'La contraseña es incorrecta');
+    setErrorFor(inputPassword, 'La contraseña   es incorrecta');
   } else {
     setSuccessFor(inputPassword);
   }
 };
+
 
 export const eventSignIn = (event) => {
   event.preventDefault();
@@ -40,17 +43,23 @@ export const eventSignIn = (event) => {
     password: event.target.password.value,
   };
   signInUser(user)
-    .then((data) => {
-      // window.location.replace('#/home');
-      window.location.hash = '#/home';
-      console.log(data);
-      event.target.reset();
+    .then(() => {
+      // console.log(data);
+      if (auth.currentUser.emailVerified === true) {
+        window.location.hash = '#/home';
+        // console.log(data);
+        event.target.reset();
+      } else {
+        sendMessage('Necesitas confirmar tu cuenta');
+        // console.log('You need tu confirm your account');
+      }
     })
     .catch((err) => {
       console.log(err.code, err.message);
       signInFormValidation(err.code);
     });
 };
+
 
 export const eventGoogle = (event) => {
   event.preventDefault();

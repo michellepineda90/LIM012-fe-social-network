@@ -23,7 +23,7 @@ export default () => {
 
   const btn = divElement.querySelector('button');
   btn.addEventListener('click', () => {
-    console.log('volviendo a enviar email');
+    console.log('volciendo a enviar email');
     sendEmail();
   });
 

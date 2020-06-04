@@ -13,9 +13,9 @@ export const changeView = (hash, message) => {
       // control.signInUser();
       break;
     case '#/register':
-      sectionMain.appendChild(components.register());
-      // control.signUpUser();
-      break;
+    { return sectionMain.appendChild(components.register()); }
+    case '#/email':
+    { return sectionMain.appendChild(components.sendemail()); }
     case '#/profile':
     { return sectionMain.appendChild(components.profile()); }
     case '#/home':
