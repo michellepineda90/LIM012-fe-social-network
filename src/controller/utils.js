@@ -29,3 +29,20 @@ export const showOrHidePassword = (s, h) => {
     temp.type = 'password';
   }
 };
+
+export const hidePwd = () => {
+  const password = document.querySelector('#password');
+  const eyeSlash = document.querySelector('#hide-password');
+  const eye = document.querySelector('#show-password');
+  password.setAttribute('type', 'text');
+  eyeSlash.classList.add('hide');
+  eye.classList.remove('hide');
+};
+export const showPwd = () => {
+  const password = document.querySelector('#password');
+  const eyeSlash = document.querySelector('#hide-password');
+  const eye = document.querySelector('#show-password');
+  password.setAttribute('type', 'password');
+  eyeSlash.classList.remove('hide');
+  eye.classList.add('hide');
+};
