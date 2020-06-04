@@ -2,9 +2,8 @@ import {
   eventSignIn,
   eventGoogle,
   eventFacebook,
-  hidePwd,
-  showPwd,
 } from '../controller/signInController.js';
+import { hidePwd, showPwd } from '../controller/utils.js';
 
 export default () => {
   const divElemt = document.createElement('div');
