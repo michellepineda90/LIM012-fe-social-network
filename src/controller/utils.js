@@ -17,18 +17,24 @@ export const setSuccessFor = (input) => {
   input.classList.remove('error');
 };
 
-export const showOrHidePassword = (s, h) => {
-  const temp = document.querySelector('input#password');
-  if (temp.type === 'password') {
-    s.style.display = 'block';
-    h.style.display = 'none';
-    temp.type = 'text';
-  } else {
-    s.style.display = 'none';
-    h.style.display = 'block';
-    temp.type = 'password';
-  }
+export const sendMessage = (text) => {
+  const msgError = document.querySelector('span.msg-err');
+  msgError.style.display = 'block';
+  msgError.textContent = text;
 };
+
+// export const showOrHidePassword = (s, h) => {
+//   const temp = document.querySelector('input#password');
+//   if (temp.type === 'password') {
+//     s.style.display = 'block';
+//     h.style.display = 'none';
+//     temp.type = 'text';
+//   } else {
+//     s.style.display = 'none';
+//     h.style.display = 'block';
+//     temp.type = 'password';
+//   }
+// };
 
 export const hidePwd = () => {
   const password = document.querySelector('#password');
