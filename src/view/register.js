@@ -1,4 +1,5 @@
 import { eventSignUp } from '../controller/signUpController.js';
+import { hidePwd, showPwd } from '../controller/utils.js';
 
 export default () => {
   const divElemt = document.createElement('div');
@@ -26,8 +27,8 @@ export default () => {
           <div class="form-control">
             <i class="fa fa-key" aria-hidden="true"></i>
             <input type="password" name="password" id="password" class="form-field" placeholder="Contraseña">
-            <i class="fas fa-eye-slash"></i>
-            <i class="far fa-eye"></i>
+            <span id="show-password" class="hide"><i class="fas fa-eye "></i></span>
+            <span id="hide-password"><i class="fas fa-eye-slash "></i></span>
             <i class="fas fa-exclamation-triangle error-icon"></i>
             <small>Mensaje de error</small>
           </div>    
@@ -42,6 +43,10 @@ export default () => {
     eventSignUp(event);
   });
 
+  const hidePassword = divElemt.querySelector('#hide-password');
+  hidePassword.addEventListener('click', hidePwd);
 
+  const showPassword = divElemt.querySelector('#show-password');
+  showPassword.addEventListener('click', showPwd);
   return divElemt;
 };
