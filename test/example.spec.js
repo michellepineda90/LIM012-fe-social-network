@@ -1,7 +1,28 @@
-import { example } from '../src/example.js';
+import {
+  registerUserOnDB,
+  createUser,
+  signInUser,
+} from '../src/model/user.model';
 
-describe('example', () => {
-  it('debería ser una función', () => {
-    expect(typeof example).toBe('function');
+const firebasemock = require('firebase-mock');
+
+const mockauth = new firebasemock.MockAuthentication();
+
+mockauth.autoFlush();
+
+global.firebase = firebasemock.MockFirebaseSdk(
+  () => null,
+  () => mockauth,
+);
+
+// npm install firebase-mock --save-dev
+
+describe('User login with email', () => {
+  it('Should successfully log in a registered email user to app', (done) => {
+    signInUser().then((user) => {
+      expect(user.email).toBe('');
+      expect(user.password).toBe('');
+      done();
+    });
   });
 });
