@@ -35,6 +35,7 @@ const signInFormValidation = (code) => {
   }
 };
 
+const { log } = console;
 
 export const eventSignIn = (event) => {
   event.preventDefault();
@@ -55,7 +56,7 @@ export const eventSignIn = (event) => {
       }
     })
     .catch((err) => {
-      console.log(err.code, err.message);
+      log(err.code, err.message);
       signInFormValidation(err.code);
     });
 };
