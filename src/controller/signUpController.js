@@ -1,9 +1,8 @@
 import { createUser } from '../model/user.model.js';
-import { setErrorFor, setSuccessFor } from './utils.js';
-import { changeView } from './router.js';
+import { setErrorFor, setSuccessFor, sendMessage } from './utils.js';
 
-const signUpFormValidation = () => {
-  let valid = true;
+
+const signUpFormValidation = (code) => {
   const inputName = document.querySelector('#name');
   const inputEmail = document.querySelector('#email');
   const inputPassword = document.querySelector('#password');
@@ -14,48 +13,47 @@ const signUpFormValidation = () => {
   // console.log(email, password);
   // NAME
   if (name === '') {
-    setErrorFor(inputName, 'Ingrese un Nombre!');
-    valid = false;
+    setErrorFor(inputName, 'Por favor, ingrese nombre');
   } else if (name.length < 6) {
     setErrorFor(inputName, 'Nombre debe contener mínimo 6 caracteres!');
-    valid = false;
   } else {
     setSuccessFor(inputName);
   }
   // EMAIL
   if (email === '') {
-    setErrorFor(inputEmail, 'Ingrese un correo Electrónico!');
-    valid = false;
+    setErrorFor(inputEmail, 'Por favor, ingrese correo');
+  } else if (code === 'auth/invalid-email') {
+    setErrorFor(inputEmail, 'El correo ingresado es inválido');
+  } else if (code === 'auth/email-already-in-use') {
+    sendMessage('El correo ya esta vinculado a otra cuenta');
+    // setErrorFor(inputEmail, 'El correo ya esta vinculado a otra cuenta');
   } else {
     setSuccessFor(inputEmail);
   }
   // PASSWORD
   if (password === '') {
-    setErrorFor(inputPassword, 'Ingrese una contraseña!');
-    valid = false;
+    setErrorFor(inputPassword, 'Por favor, ingrese contraseña');
+  } else if (code === 'auth/weak-password') {
+    setErrorFor(inputPassword, 'La contraseña debe contener mínimo 6 caracteres');
   } else {
     setSuccessFor(inputPassword);
   }
-  return valid;
 };
 
 
-export default () => {
-  const singUpForm = document.querySelector('#sign-up-form');
-  singUpForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const user = {
-      name: singUpForm.name.value,
-      email: singUpForm.email.value,
-      password: singUpForm.password.value,
-    };
-    if (signUpFormValidation() === true) {
-      console.log(user);
-      createUser(user)
-        .then(() => {
-          console.log('te haz registrado');
-        });
-      singUpForm.reset();
-    }
-  });
+export const eventSignUp = (event) => {
+  event.preventDefault();
+  const user = {
+    name: event.target.name.value,
+    email: event.target.email.value,
+    password: event.target.password.value,
+  };
+  createUser(user)
+    .then(() => {
+      window.location.hash = '#/email';
+      event.target.reset();
+    })
+    .catch((err) => {
+      signUpFormValidation(err.code);
+    });
 };

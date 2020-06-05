@@ -1,38 +1,26 @@
 
 import { components } from '../view/index.js';
-import { control } from './main.controller.js';
-
-// import signInController from './signInController.js';
-// import signUpController from './signUpController.js';
-
-// const control = {
-//   signInUser: signInController,
-//   signUpUser: signUpController,
-// };
+// import { control } from './main.controller.js';
 
 
 export const changeView = (hash, message) => {
-  // const id = hash.split('/')[1];
-  console.log('hash es:', hash);
   const sectionMain = document.getElementById('container');
   sectionMain.innerHTML = '';
 
   switch (hash) {
     case '#/login':
       sectionMain.appendChild(components.login());
-      control.signInUser();
+      // control.signInUser();
       break;
     case '#/register':
-      sectionMain.appendChild(components.register());
-      control.signUpUser();
-      break;
+    { return sectionMain.appendChild(components.register()); }
+    case '#/email':
+    { return sectionMain.appendChild(components.sendemail()); }
     case '#/profile':
-      sectionMain.appendChild(components.profile());
-      break;
+    { return sectionMain.appendChild(components.profile()); }
     case '#/home':
-      sectionMain.appendChild(components.home(message));
-      break;
+    { return sectionMain.appendChild(components.home(message)); }
     default:
-      sectionMain.appendChild(components.login());
+    { return sectionMain.appendChild(components.login()); }
   }
 };
