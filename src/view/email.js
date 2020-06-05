@@ -20,10 +20,10 @@ export default () => {
   </div>
   `;
 
-
+  const { log } = console;
   const btn = divElement.querySelector('button');
   btn.addEventListener('click', () => {
-    console.log('volciendo a enviar email');
+    log('volciendo a enviar email');
     sendEmail();
   });
 
