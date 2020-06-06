@@ -24,7 +24,6 @@ export const signInWithGoogle = () => {
 };
 
 export const signInWithFacebook = () => {
-  const provider = new auth.FacebookAuthProvider();
-  // const provider = new firebase.auth.FacebookAuthProvider();
+  const provider = new firebase.auth.FacebookAuthProvider();
   return firebase.auth().signInWithPopup(provider);
 };
