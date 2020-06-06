@@ -9,11 +9,10 @@ describe('Login', () => {
     }));
 });
 
-describe('signInWithGoogle', () => {
-  it('Debería loguearse con google', () => {
-    signInWithGoogle()
-      .then(() => {
-        expect('luna@gmail.com').toBe('luna@gmail.com');
-      });
+describe('googleSignIn', () => {
+  it('deberia loguearse con google', () => {
+    signInWithGoogle().then(() => {
+      expect('lucy@gmail.com').toBe('lucy@gmail.com');
+    });
   });
 });
