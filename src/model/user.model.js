@@ -19,8 +19,7 @@ export const createUser = user => auth.createUserWithEmailAndPassword(user.email
   });
 
 export const signInWithGoogle = () => {
-  // const provider = new firebase.auth.GoogleAuthProvider();
-  const provider = new auth.GoogleAuthProvider();
+  const provider = new firebase.auth.GoogleAuthProvider();
   return firebase.auth().signInWithPopup(provider);
 };
 
