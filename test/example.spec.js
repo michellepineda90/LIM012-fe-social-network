@@ -17,12 +17,9 @@ global.firebase = firebasemock.MockFirebaseSdk(
 
 // npm install firebase-mock --save-dev
 
-describe('User login with email', () => {
-  it('Should successfully log in a registered email user to app', (done) => {
-    signInUser().then((user) => {
-      expect(user.email).toBe('');
-      expect(user.password).toBe('');
-      done();
-    });
-  });
+describe('Login', () => {
+  it('Should be able to sign in', () => signInUser('front@end.la', '123456')
+    .then((user) => {
+      expect(user.email).toBe('front@end.la');
+    }));
 });
