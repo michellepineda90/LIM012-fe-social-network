@@ -1,4 +1,4 @@
-import { createUser } from '../model/user.model.js';
+import { createUser, registerUser, sendEmail } from '../model/user.model.js';
 import { setErrorFor, setSuccessFor, sendMessage } from './utils.js';
 
 
@@ -10,7 +10,6 @@ const signUpFormValidation = (code) => {
   const email = inputEmail.value.trim();
   const password = inputPassword.value.trim();
 
-  // console.log(email, password);
   // NAME
   if (name === '') {
     setErrorFor(inputName, 'Por favor, ingrese nombre');
@@ -26,7 +25,6 @@ const signUpFormValidation = (code) => {
     setErrorFor(inputEmail, 'El correo ingresado es inválido');
   } else if (code === 'auth/email-already-in-use') {
     sendMessage('El correo ya esta vinculado a otra cuenta');
-    // setErrorFor(inputEmail, 'El correo ya esta vinculado a otra cuenta');
   } else {
     setSuccessFor(inputEmail);
   }
@@ -49,6 +47,11 @@ export const eventSignUp = (event) => {
     password: event.target.password.value,
   };
   createUser(user)
+    .then((res) => {
+      sendEmail();
+      const userObj = { name: user.name, email: user.email };
+      return registerUser(res.user.uid, userObj);
+    })
     .then(() => {
       window.location.hash = '#/email';
       event.target.reset();

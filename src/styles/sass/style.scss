@@ -1,0 +1,26 @@
+@import 'variables';
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: $main-font;
+}
+main{  
+  display: flex;    
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+input, button, textarea{
+  outline: none;
+}
+
+.cursor{
+  cursor: pointer;
+}
+
+
+@import 'pages/login';
+
+@import 'pages/home';

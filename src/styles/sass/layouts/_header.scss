@@ -1,0 +1,103 @@
+@import '../variables';
+@import '../mixins';
+
+
+// <i class="fa fa-plus" aria-hidden="true"></i>
+// <i class="fa fa-picture-o" aria-hidden="true"></i>
+// <i class="fa fa-camera" aria-hidden="true"></i>
+// <i class="fa fa-comment-o" aria-hidden="true"></i>
+// <i class="fa fa-heart" aria-hidden="true"></i>
+// <i class="fa fa-pencil" aria-hidden="true"></i>
+// <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+// <i class="fa fa-globe" aria-hidden="true"></i>
+// <i class="fa fa-lock" aria-hidden="true"></i>
+// <i class="fa fa-home" aria-hidden="true"></i>
+// <i class="fa fa-sign-out" aria-hidden="true"></i>
+// <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+// <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+// <i class="fa fa-floppy-o" aria-hidden="true"></i>
+
+
+%no-pad-mar{
+  padding: 0;
+  margin: 0;
+}
+
+
+header{
+  position: fixed;
+  width: 100%;
+  background: $primary-color;  
+
+  nav{
+    min-width: 120px;
+    .nav-bar{
+      text-align: center;       
+      border-bottom:1px solid rgba(255,255,255,.3); 
+      @include set-icon('.menu-icon',white,2em, left,absolute, .3em);
+      .menu-icon{width: 1.2em;} 
+      img.logo{
+        width:3em;
+        padding: .3em;
+      }
+    }
+    ul{
+      list-style: none;  
+      display: none;    
+      .option{   
+        a{          
+          display: block;
+          background: $primary-color;
+          padding: 1em;
+          text-decoration: none;
+          color: white;
+          font-family: $main-font;
+          justify-content: baseline;
+          .user-photo{
+            @include square-size(1.5em);          
+            border-radius: 30px;
+          }    
+          i{
+            margin-right: 10px;
+            font-size: 1.6em;        
+          }
+          
+        }
+        a:hover{ background: $color-hover;}
+      }
+      li{
+        border-bottom:1px solid rgba(255,255,255,.3);
+      }
+    }
+  }
+}
+
+
+
+@media (min-width: $breakpoint-tablet) {
+  header{
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    nav{
+      background: $primary-color;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      .nav-bar{
+        .menu-icon{display: none;}
+        width: 5%;
+        display: inline-block;
+        border-bottom: none;
+        img.logo{padding:.5em;}
+      }
+      ul{
+        display: block;
+        overflow: hidden;
+        li{
+          float: left;
+          a{background: none;}
+          border-bottom:none;
+        }
+      }
+    }
+  }
+}
