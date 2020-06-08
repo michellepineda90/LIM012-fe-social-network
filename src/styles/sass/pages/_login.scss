@@ -1,0 +1,119 @@
+@import "../variables";
+@import "../mixins";
+
+
+// styles of login, register and email infaces(responsive)
+
+
+.screen-background{
+  background-image: $wallpaper;
+  background-size: cover;
+  background-repeat: no-repeat;
+  @include flex-center();
+  width: 100%;
+  height: 100%;
+  
+  .logo-container{
+    $logo-size: 30%;
+    margin-bottom: 2em;
+    text-align: center;
+    height: 20%;
+    width: 50%;
+    .logo{
+      width: 60%;
+      height: 80%;
+    }
+    .app-name{
+      @include text(1.5em, #fff,$logo-font);
+      font-weight: 600;
+    }
+  }
+  .form-container{
+    @include flex-center;
+    width: 80%;
+    padding: 1em;
+    background: rgba(247, 243, 243, 0.46);  
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 1em;
+    .form-title { @include text(1em);  }
+    form{
+      @include flex-center();
+      width: 90%;
+      .form-control{        
+        width: 100%;
+        max-width: 500px;
+        position: relative;
+        margin-bottom: .8em;
+        @include set-icon(".icon-input",#333,1em,left,absolute,1.2em);
+        @include set-icon(".icon-psw",$primary-color,1em,right, absolute,1.2em);
+        input{
+          @extend %field-form;
+          border: 1.5px solid rgba(153, 153, 153, 0.3);
+          box-sizing: border-box;
+          // padding-left: 2.5em;    
+        }
+        input:hover{ border: 1.5px solid rgb(168, 231, 247);}
+        small {
+          @include text(.8em,red,$main-font,start,none);
+          padding-left: 1em;
+        }
+      }
+    }
+    
+    .msg-err{
+      @include text(.9em,red,$main-font,center, none);
+      font-weight: 500;
+    }
+    button{
+      @extend %field-form;
+      color: #FEFEFE;
+      border: 1px none;
+      cursor: pointer; 
+      background: $primary-color;
+      margin-bottom: .8em;
+    }
+    .text-deco{ @include text();}
+    
+    .message-container{
+      @include flex-center();
+      padding: 1.5em;
+      .message-title{ @include text();}
+      .btn-send-email{
+        width: auto;
+        padding: 1em;
+      }
+      a{ font-family: $main-font;}
+    }
+    .social-media-container{
+      margin: 1em 0;
+      @include social-media-icon('.fa-facebook',$facebook-color);
+      @include social-media-icon('.fa-google',$google-color);
+    }   
+  }
+}
+
+
+
+
+@media (min-width: $breakpoint-tablet) {
+  .screen-background{
+    @include flex-center(row);
+    .logo-container{
+      height: auto;
+      .app-name{
+        @include text(2.5em, #fff,$logo-font);
+        font-weight: 600;
+      }
+    }
+    .form-container{
+      .form-title{
+        @include text(1.5em);
+        font-weight: 600;
+      }
+      border-radius:0;
+      height: 100%;
+      width: 50%;
+    }
+  } 
+  .message-title{ @include text(1.5em);}
+}
