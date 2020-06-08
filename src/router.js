@@ -1,7 +1,6 @@
 
 import { components } from './view/index.js';
 
-
 export const changeView = (hash, message) => {
   const sectionMain = document.getElementById('container');
   sectionMain.innerHTML = '';
@@ -20,5 +19,4 @@ export const changeView = (hash, message) => {
     default:
     { return sectionMain.appendChild(components.login()); }
   }
-  return sectionMain;
 };

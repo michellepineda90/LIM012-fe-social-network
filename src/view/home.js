@@ -1,9 +1,8 @@
 /* eslint-disable no-console */
-import { auth } from '../firebaseInit.js';
+// import { auth } from '../firebaseInit.js';
 import { createPost } from '../controller/postController.js';
 
 export default () => {
-
   const mySelf = `
   <div class="my-self">
     <img src="./img/login.png" class="user-photo">
