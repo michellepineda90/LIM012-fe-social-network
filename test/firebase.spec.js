@@ -1,19 +1,42 @@
 import './firebase';
-import { signInUser, signInWithGoogle } from '../src/model/user.model.js';
+import {
+  signInUser,
+  createUser,
+  signInWithGoogle,
+  signInWithFacebook,
+  sendEmail,
+  // registerUser,
+} from '../src/model/user.model.js';
 
-// funcion de iniciar sesion con google
-describe('Login', () => {
-  it('Deberia iniciar sesión', () => signInUser('lala@gmail.com', '123456')
+
+describe('Function signInUser()', () => {
+  it('Deberia iniciar sesión', () => signInUser('lala06@gmail.com', '123456')
     .then((user) => {
-      console.log(user);
-      expect(user.email).toBe('lala@gmail.com');
+      expect(user.isAnonymous).toBe(false);
     }));
 });
-
-describe('googleSignIn', () => {
-  it('deberia loguearse con google', () => {
-    signInWithGoogle().then(() => {
-      expect('lucy@gmail.com').toBe('lucy@gmail.com');
-    });
+// curren user is:  {
+//   isAnonymous: false,
+//   providerData: [ GoogleAuthProvider { providerId: 'google.com' } ]
+// }
+describe('Function createUser()', () => {
+  it('Debería enviar una mensaje de verificación al usuario que se ha registrado', () => {
+    createUser('lucy@gmail.com', '123456')
+      .then(() => {
+        expect(sendEmail).toBe('REGISTRADO EXITOSAMENTE');
+      });
   });
+});
+
+describe('Function signInWithGoogle', () => {
+  it('Debería iniciar sesión con google', () => signInWithGoogle()
+    .then((user) => {
+      expect(user.isAnonymous).toBe(false);
+    }));
+});
+describe('Function signInWithFacebook', () => {
+  it('Debería iniciar sesión con facebook', () => signInWithFacebook()
+    .then((user) => {
+      expect(user.isAnonymous).toBe(false);
+    }));
 });

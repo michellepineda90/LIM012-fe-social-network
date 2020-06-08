@@ -1,4 +1,3 @@
-
 const firebasemock = require('firebase-mock');
 
 const mockauth = new firebasemock.MockFirebase();

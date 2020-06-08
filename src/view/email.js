@@ -21,7 +21,6 @@ export default () => {
   </div>
   `;
 
-
   const btn = divElement.querySelector('button');
   btn.addEventListener('click', () => {
     console.log('volviendo a enviar email');

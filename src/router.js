@@ -20,4 +20,5 @@ export const changeView = (hash, message) => {
     default:
     { return sectionMain.appendChild(components.login()); }
   }
+  return sectionMain;
 };

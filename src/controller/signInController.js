@@ -34,6 +34,7 @@ const signInFormValidation = (code) => {
   }
 };
 
+const { log } = console;
 
 export const eventSignIn = (event) => {
   event.preventDefault();
@@ -51,7 +52,7 @@ export const eventSignIn = (event) => {
       }
     })
     .catch((err) => {
-      console.log(err.code, err.message);
+      log(err.code, err.message);
       signInFormValidation(err.code);
     });
 };
@@ -68,7 +69,7 @@ export const eventGoogle = (event) => {
         email: res.user.email,
       };
       registerUser(idUser, userObj);
-      window.location.hash = '#/profile';
+      window.location.hash = '#/home';
     })
     .catch();
 };
@@ -83,7 +84,7 @@ export const eventFacebook = (event) => {
         email: res.user.email,
       };
       registerUser(idUser, userObj);
-      window.location.hash = '#/profile';
+      window.location.hash = '#/home';
     })
     .catch();
 };
