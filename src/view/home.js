@@ -1,12 +1,14 @@
 /* eslint-disable no-console */
 // import { auth } from '../firebaseInit.js';
 import { createPost } from '../controller/postController.js';
+import { currentUser } from '../model/user.model.js';
 
 export default () => {
+  const user = currentUser();
   const mySelf = `
   <div class="my-self">
-    <img src="./img/login.png" class="user-photo">
-    <span class="name-user">user name</span>
+    <img src=${user.photo} class="user-photo">
+    <span class="name-user">${user.name}</span>
   </div>`;
 
   const sectionCreatePost = `
@@ -49,8 +51,8 @@ export default () => {
       <li class="option"><a href="#/home"><i class="fas fa-home"></i>Inicio</a></li>
       <li class="option">
         <a href="#/Profile">
-          <img src="./img/login.png" class="user-photo">
-          <span>nombre</span> 
+          <img src=${user.photo} class="user-photo">
+          <span>${user.name}</span> 
         </a>
       </li>
       <li class="option"><a href="#/login"><i class="fas fa-sign-out-alt"></i>Salir</a></li>
