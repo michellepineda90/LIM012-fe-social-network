@@ -4,44 +4,45 @@ import {
   eventFacebook,
 } from '../controller/signInController.js';
 import { hidePwd, showPwd } from '../controller/utils.js';
+// import { auth } from '../firebaseInit.js';
 
 export default () => {
   const divElemt = document.createElement('div');
   divElemt.classList.add('screen-background');
   divElemt.innerHTML = `
-  <div class="welcome">
-    <img src="../img/eco-trans-white.png" alt="chat" class="logo"/>
-    <p class="app-name-text">eco-chat...</p>
+  <div class="logo-container">
+    <img src="../img/eco-trans-white.png" alt="" class="logo">
+    <span class="app-name">eco-chat...</span>
   </div>
-  <div class="holder">
-    <div class="form-container">
-    <h2 class="holder-title">Iniciar Sesión</h2>
-    <form id="sign-in-form" name="login">
+
+  <div class="form-container">
+    <h1 class="form-title">Iniciar seción</h1>
+    <form id="sign-in-form">
       <div class="form-control">
-        <i class="far fa-envelope"></i>
+        <i class="far fa-envelope icon-input"></i>
         <input type="text" name="email" id="email" class="form-field user" placeholder="Correo Electrónico">
-        <i class="fas fa-exclamation-triangle error-icon"></i>
-        <small>Mensaje de error</small>
+        <small></small>
       </div>
       <div class="form-control">
-        <i class="fas fa-key"></i>
-        <span id="show-password" class="hide"><i class="fas fa-eye "></i></span>
-        <span id="hide-password"><i class="fas fa-eye-slash "></i></span>
-        <input type="password" name="password" id="password" class="form-field password" placeholder="Contraseña">
-        <i class="fas fa-exclamation-triangle error-icon"></i>
-        <small>Mensaje de error</small>
-      </div>    
-      <button id="sign-in-btn" class="form-btn">Iniciar Sesión</button>         
+        <i class="fa fa-key icon-input" aria-hidden="true"></i>
+        <i id="show-password" class="fas fa-eye icon-psw hide cursor"></i>
+        <i id="hide-password" class="fas fa-eye-slash icon-psw cursor"></i>
+        <input type="password" name="password" id="password" class="password" placeholder="Contraseña">
+        <small></small>
+      </div>
+      <button id="sign-un-btn">Iniciar Sesión</button>
     </form>
-    <span class="msg-err"></span>
-    <p class="aid-text"> O bien ingresa con...</p>
-    <div class="social-media">
+    <span class="msg-err">error aqui</span>
+    <span class="text-deco"> O bien ingresa con...</span>
+    <div class="social-media-container">
       <i id="btn-google"class="fa fa-google" aria-hidden="true"></i>
-      <i id="btn-facebook"class="fa fa-facebook" aria-hidden="true"></i>
+      <i id="btn-facebook"class="fa fa-facebook" aria-hidden="true"></i>          
     </div>
-    <p class="aid-text">¿No tienes una cuenta? <a href="#/register"> Regístrate</a></p>
+    <span class="text-deco">¿No tienes una cuenta aún? <a href="#/register">Registrarse</a></span>
+
     </div>
-  </div>`;
+  </div>
+`;
 
   const singInForm = divElemt.querySelector('#sign-in-form');
   singInForm.addEventListener('submit', (event) => {
@@ -59,5 +60,6 @@ export default () => {
 
   const showPassword = divElemt.querySelector('#show-password');
   showPassword.addEventListener('click', showPwd);
+
   return divElemt;
 };

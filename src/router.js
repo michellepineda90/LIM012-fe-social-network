@@ -1,7 +1,5 @@
 
-import { components } from '../view/index.js';
-// import { control } from './main.controller.js';
-
+import { components } from './view/index.js';
 
 export const changeView = (hash, message) => {
   const sectionMain = document.getElementById('container');
@@ -9,9 +7,7 @@ export const changeView = (hash, message) => {
 
   switch (hash) {
     case '#/login':
-      sectionMain.appendChild(components.login());
-      // control.signInUser();
-      break;
+    { return sectionMain.appendChild(components.login()); }
     case '#/register':
     { return sectionMain.appendChild(components.register()); }
     case '#/email':
@@ -23,5 +19,4 @@ export const changeView = (hash, message) => {
     default:
     { return sectionMain.appendChild(components.login()); }
   }
-  return sectionMain;
 };

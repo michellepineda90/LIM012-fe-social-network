@@ -1,0 +1,591 @@
+.screen-background .form-container button, .screen-background .form-container form .form-control input {
+  padding: 1em 1em 1em 2.5em;
+  width: 100%;
+  font-size: 1em;
+  max-width: 500px;
+  border-radius: 2em;
+  outline: none;
+}
+
+.hide {
+  display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+main {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+input, button, textarea {
+  outline: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.screen-background .form-container button, .screen-background .form-container form .form-control input {
+  padding: 1em 1em 1em 2.5em;
+  width: 100%;
+  font-size: 1em;
+  max-width: 500px;
+  border-radius: 2em;
+  outline: none;
+}
+
+.hide {
+  display: none;
+}
+
+.screen-background {
+  background-image: url("../../img/wall1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.screen-background .logo-container {
+  margin-bottom: 2em;
+  text-align: center;
+  height: 20%;
+  width: 50%;
+}
+.screen-background .logo-container .logo {
+  width: 60%;
+  height: 80%;
+}
+.screen-background .logo-container .app-name {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+  font-family: "Courgette", cursive;
+  color: #fff;
+  margin: 0.5em;
+  font-weight: 600;
+}
+.screen-background .form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  padding: 1em;
+  background: rgba(247, 243, 243, 0.46);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 1em;
+}
+.screen-background .form-container .form-title {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 1em;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  margin: 0.5em;
+}
+.screen-background .form-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+}
+.screen-background .form-container form .form-control {
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  margin-bottom: 0.8em;
+}
+.screen-background .form-container form .form-control .icon-input {
+  position: absolute;
+  padding: 1.2em;
+  font-size: 1em;
+  color: #333;
+  left: 0;
+}
+.screen-background .form-container form .form-control .icon-psw {
+  position: absolute;
+  padding: 1.2em;
+  font-size: 1em;
+  color: #0CA385;
+  right: 0;
+}
+.screen-background .form-container form .form-control input {
+  border: 1.5px solid rgba(153, 153, 153, 0.3);
+  box-sizing: border-box;
+}
+.screen-background .form-container form .form-control input:hover {
+  border: 1.5px solid #a8e7f7;
+}
+.screen-background .form-container form .form-control small {
+  width: 100%;
+  display: none;
+  text-align: start;
+  font-size: 0.8em;
+  font-family: "Roboto", sans-serif;
+  color: red;
+  margin: 0.5em;
+  padding-left: 1em;
+}
+.screen-background .form-container .msg-err {
+  width: 100%;
+  display: none;
+  text-align: center;
+  font-size: 0.9em;
+  font-family: "Roboto", sans-serif;
+  color: red;
+  margin: 0.5em;
+  font-weight: 500;
+}
+.screen-background .form-container button {
+  color: #FEFEFE;
+  border: 1px none;
+  cursor: pointer;
+  background: #0CA385;
+  margin-bottom: 0.8em;
+}
+.screen-background .form-container .text-deco {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 1em;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  margin: 0.5em;
+}
+.screen-background .form-container .message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5em;
+}
+.screen-background .form-container .message-container .message-title {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 1em;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  margin: 0.5em;
+}
+.screen-background .form-container .message-container .btn-send-email {
+  width: auto;
+  padding: 1em;
+}
+.screen-background .form-container .message-container a {
+  font-family: "Roboto", sans-serif;
+}
+.screen-background .form-container .social-media-container {
+  margin: 1em 0;
+}
+.screen-background .form-container .social-media-container .fa-facebook {
+  font-size: 1.5em;
+  color: #3b5998;
+  background: white;
+  padding: 0.5em 0.1em;
+  border-radius: 1.5em;
+  width: 2em;
+  text-align: center;
+  cursor: pointer;
+  border: 1.2px solid #3b5998;
+}
+.screen-background .form-container .social-media-container .fa-facebook:hover {
+  background: #3b5998;
+  color: white;
+}
+.screen-background .form-container .social-media-container .fa-google {
+  font-size: 1.5em;
+  color: #db4a39;
+  background: white;
+  padding: 0.5em 0.1em;
+  border-radius: 1.5em;
+  width: 2em;
+  text-align: center;
+  cursor: pointer;
+  border: 1.2px solid #db4a39;
+}
+.screen-background .form-container .social-media-container .fa-google:hover {
+  background: #db4a39;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .screen-background {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .screen-background .logo-container {
+    height: auto;
+  }
+  .screen-background .logo-container .app-name {
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 2.5em;
+    font-family: "Courgette", cursive;
+    color: #fff;
+    margin: 0.5em;
+    font-weight: 600;
+  }
+  .screen-background .form-container {
+    border-radius: 0;
+    height: 100%;
+    width: 50%;
+  }
+  .screen-background .form-container .form-title {
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "Roboto", sans-serif;
+    color: #333;
+    margin: 0.5em;
+    font-weight: 600;
+  }
+
+  .message-title {
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "Roboto", sans-serif;
+    color: #333;
+    margin: 0.5em;
+  }
+}
+.screen {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.screen-background .form-container form .form-control input, .screen-background .form-container button {
+  padding: 1em 1em 1em 2.5em;
+  width: 100%;
+  font-size: 1em;
+  max-width: 500px;
+  border-radius: 2em;
+  outline: none;
+}
+
+.hide {
+  display: none;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  background: #0CA385;
+}
+header nav {
+  min-width: 120px;
+}
+header nav .nav-bar {
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+header nav .nav-bar .menu-icon {
+  position: absolute;
+  padding: 0.3em;
+  font-size: 2em;
+  color: white;
+  left: 0;
+}
+header nav .nav-bar .menu-icon {
+  width: 1.2em;
+}
+header nav .nav-bar img.logo {
+  width: 3em;
+  padding: 0.3em;
+}
+header nav ul {
+  list-style: none;
+  display: none;
+}
+header nav ul .option a {
+  display: block;
+  background: #0CA385;
+  padding: 1em;
+  text-decoration: none;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  justify-content: baseline;
+}
+header nav ul .option a .user-photo {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 30px;
+}
+header nav ul .option a i {
+  margin-right: 10px;
+  font-size: 1.6em;
+}
+header nav ul .option a:hover {
+  background: #0ab895;
+}
+header nav ul li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@media (min-width: 768px) {
+  header {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  header nav {
+    background: #0CA385;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  header nav .nav-bar {
+    width: 5%;
+    display: inline-block;
+    border-bottom: none;
+  }
+  header nav .nav-bar .menu-icon {
+    display: none;
+  }
+  header nav .nav-bar img.logo {
+    padding: 0.5em;
+  }
+  header nav ul {
+    display: block;
+    overflow: hidden;
+  }
+  header nav ul li {
+    float: left;
+    border-bottom: none;
+  }
+  header nav ul li a {
+    background: none;
+  }
+}
+.screen-background .form-container form .form-control input, .screen-background .form-container button {
+  padding: 1em 1em 1em 2.5em;
+  width: 100%;
+  font-size: 1em;
+  max-width: 500px;
+  border-radius: 2em;
+  outline: none;
+}
+
+.hide {
+  display: none;
+}
+
+.post-user-photo {
+  width: 2em;
+  height: 2em;
+  margin-right: 0.5em;
+  border-radius: 50px;
+  display: block;
+}
+
+section.content .post .post-comments .comment-created, section.content .post .post-comments .create-comment-container {
+  display: flex;
+}
+
+.name-user {
+  display: block;
+  font-weight: 700;
+}
+
+section.content {
+  background: #e6f0ed;
+  padding: 51px 0.5em;
+  width: 98%;
+  overflow-y: scroll;
+}
+section.content section {
+  margin: 0.5em 0;
+}
+section.content .my-self {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
+}
+section.content .my-self img.user-photo {
+  width: 3em;
+  height: 3em;
+  border-radius: 50px;
+  margin-right: 0.5em;
+}
+section.content .create-post-container {
+  font-family: "Roboto", sans-serif;
+  color: #504e4e;
+  background: white;
+  font-weight: 500;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 1em 0 0;
+  border-radius: 5px;
+  border: 1px solid rgba(153, 153, 153, 0.3);
+  width: 100%;
+}
+section.content .create-post-container .post-content {
+  border-top: 1px solid rgba(153, 153, 153, 0.3);
+  padding: 0.5em;
+  background: white;
+}
+section.content .create-post-container .post-content .text-post {
+  padding: 1em 0;
+  border: none;
+  width: 100%;
+}
+section.content .create-post-container .post-content .photo-container {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+section.content .create-post-container .btn-container {
+  border-top: 1px solid rgba(153, 153, 153, 0.3);
+  display: flex;
+  border-radius: 0 0 10px 10px;
+  padding: 0.5em;
+}
+section.content .create-post-container .btn-container .btn {
+  background: #ecf3f1;
+  padding: 0.5em 0.8em;
+  border-radius: 30px;
+  margin: 0 0.2em;
+}
+section.content .create-post-container .btn-container .btn:hover {
+  background: #e1f1ed;
+}
+section.content .create-post-container .btn-container .post-btn {
+  background: #0CA385;
+  color: white;
+}
+section.content .create-post-container .btn-container .post-btn:hover {
+  background: #0ab895;
+}
+section.content .post {
+  margin: 0.5em 0;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  background: white;
+  border-radius: 5px;
+}
+section.content .post .border {
+  border-bottom: 1px solid rgba(153, 153, 153, 0.3);
+}
+section.content .post .post-header {
+  padding: 0.5em;
+  display: flex;
+  flex-direction: row;
+  background: #F2F2F2;
+  border-radius: 5px 5px 0;
+}
+section.content .post .post-header .name-user-post {
+  width: 98%;
+}
+section.content .post .post-header .name-user-post .name-user {
+  width: 100%;
+}
+section.content .post .post-header .name-user-post .row {
+  display: flex;
+}
+section.content .post .post-header .settings-post {
+  background: red;
+  width: 2em;
+}
+section.content .post .post-body .text-post-value {
+  padding: 1em;
+}
+section.content .post .post-body .img-post-value {
+  width: 100%;
+}
+section.content .post .post-body .img-post-value img {
+  width: 100%;
+}
+section.content .post .post-likes {
+  padding: 0.5em 1em;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2em;
+}
+section.content .post .post-likes .fa-heart {
+  color: #ee6969;
+}
+section.content .post .post-likes .fa-comment-o {
+  color: #a6aaaa;
+}
+section.content .post .post-comments .create-comment-container {
+  padding: 0.5em;
+}
+section.content .post .post-comments .create-comment-container .input-comment {
+  width: 100%;
+  overflow: hidden;
+  resize: none;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: 1px solid rgba(153, 153, 153, 0.3);
+}
+section.content .post .post-comments .comment-created {
+  padding: 0.5em;
+}
+section.content .post .post-comments .comment-created span {
+  background: #e1f1ed;
+  padding: 1em;
+  border-radius: 30px;
+}
+section.content .post .post-comments .comment-created span .name-user {
+  padding: 0;
+}
+
+.img-post {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  float: none;
+  border-radius: 5px;
+  border: 1px solid #d1cdcd;
+}
+
+.select-box .select-button {
+  display: flex;
+}
+.select-box .select-button div {
+  padding: 0 0.3em;
+}
+.select-box .options {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 0.2em;
+  z-index: 1;
+  position: fixed;
+  display: none;
+  background: white;
+  border-radius: 5px;
+}
+.select-box .options .option {
+  padding: 0.5em;
+}
+.select-box .options .option:hover {
+  background: #0CA385;
+  color: white;
+  border-radius: 3px;
+}
+
+@media (min-width: 768px) {
+  section.content {
+    width: 80%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

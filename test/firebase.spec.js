@@ -6,7 +6,7 @@ import {
   signInWithFacebook,
   sendEmail,
   // registerUser,
-} from '../src/model/user.model';
+} from '../src/model/user.model.js';
 
 
 describe('Function signInUser()', () => {

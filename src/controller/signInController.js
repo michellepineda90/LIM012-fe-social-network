@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import {
   signInUser,
   signInWithGoogle,
@@ -14,14 +15,12 @@ const signInFormValidation = (code) => {
   const inputEmail = document.querySelector('#email');
   const email = inputEmail.value.trim();
   const password = inputPassword.value.trim();
-  // const singInBtn = document.querySelector('#sign-in-btn');
 
   // EMAIL
   if (email === '') {
     setErrorFor(inputEmail, 'Por favor, ingrese un correo');
   } else if (code === 'auth/user-not-found') {
     sendMessage('No existe una cuenta vinculada a este correo');
-    // setErrorFor(inputEmail, 'No existe una cuenta vinculada a este correo');
   } else {
     setSuccessFor(inputEmail);
   }
@@ -45,14 +44,11 @@ export const eventSignIn = (event) => {
   };
   signInUser(user)
     .then(() => {
-      // console.log(data);
       if (auth.currentUser.emailVerified === true) {
         window.location.hash = '#/home';
-        // console.log(data);
         event.target.reset();
       } else {
         sendMessage('Necesitas confirmar tu cuenta');
-        // console.log('You need tu confirm your account');
       }
     })
     .catch((err) => {
@@ -67,7 +63,6 @@ export const eventGoogle = (event) => {
   signInWithGoogle()
     .then((res) => {
       const idUser = res.user.uid;
-      // console.log(idUser);
       const userObj = {
         name: res.user.displayName,
         photoURL: res.user.photoURL,
@@ -83,7 +78,6 @@ export const eventFacebook = (event) => {
   signInWithFacebook()
     .then((res) => {
       const idUser = res.user.uid;
-      // console.log(idUser);
       const userObj = {
         name: res.user.displayName,
         photoURL: res.user.photoURL,
