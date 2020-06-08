@@ -74,7 +74,7 @@ export const eventGoogle = (event) => {
         email: res.user.email,
       };
       registerUser(idUser, userObj);
-      window.location.hash = '#/profile';
+      window.location.hash = '#/home';
     })
     .catch();
 };
@@ -90,7 +90,7 @@ export const eventFacebook = (event) => {
         email: res.user.email,
       };
       registerUser(idUser, userObj);
-      window.location.hash = '#/profile';
+      window.location.hash = '#/home';
     })
     .catch();
 };
