@@ -3,7 +3,8 @@ import { auth, db } from '../firebaseInit.js';
 
 export const registerUser = (key, data) => db.collection('users').doc(key).set(data);
 
-export const signInUser = user => auth.signInWithEmailAndPassword(user.email, user.password);
+export const signInUser = user => (
+  auth.signInWithEmailAndPassword(user.email, user.password));
 
 // export const createUser = user => auth.createUserWithEmailAndPassword(user.email, user.password)
 //   .then(cred => registerUser(cred.user.uid, { name: user.name }));
