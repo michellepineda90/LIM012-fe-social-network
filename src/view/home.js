@@ -2,7 +2,6 @@
 // import { auth } from '../firebaseInit.js';
 // import { createPost } from '../controller/postController.js';
 import { currentUser, signOut } from '../model/user.model.js';
-import { createPost } from '../controller/postcontrollerData.js';
 
 export default () => {
   const user = currentUser();
@@ -111,8 +110,6 @@ export default () => {
   //   textPost.value = '';
   //   postsContainer.append(post);
   // });
-  const btnCreatePost = divElemt.querySelector('#btn-create-post');
-  btnCreatePost.addEventListener('click', createPost);
 
   const btnSalir = divElemt.querySelector('#btn-salir');
   btnSalir.addEventListener('click', signOut);

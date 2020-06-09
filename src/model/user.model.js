@@ -33,7 +33,7 @@ export const currentUser = () => {
 export const signOut = () => {
   firebase.auth().signOut()
     .then(() => {
-      document.location.href = '#/login';
+      window.location.hash = '#/login';
     })
     .catch((err) => {
       alert(err);
