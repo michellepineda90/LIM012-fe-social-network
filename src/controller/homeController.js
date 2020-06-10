@@ -1,6 +1,6 @@
 import { views } from '../view/index.js';
 import { createPost, renderAllPosts } from './postController.js';
-import { currentUser } from '../model/user.model.js';
+import { currentUser, signOut } from '../model/user.model.js';
 
 export default () => {
   const user = currentUser();
@@ -50,6 +50,9 @@ export default () => {
       photoContainer.innerHTML = '';
     }
   });
+
+  const btnSalir = currentView.querySelector('#btn-salir');
+  btnSalir.addEventListener('click', signOut);
 
   return currentView;
 };

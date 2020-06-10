@@ -9,7 +9,7 @@ export default (user) => {
   const sectionCreatePost = `
   <section class="create-post-container">
     <div class="post-content">
-      <textarea class="text-post" name="textarea"  placeholder="¿Qué estas pensando?"></textarea>
+      <textarea id="content-text" class="text-post" name="textarea"  placeholder="¿Qué estas pensando?"></textarea>
       <div class="photo-container">
       </div>
     </div>
@@ -19,17 +19,12 @@ export default (user) => {
         <i class="fa fa-picture-o" aria-hidden="true"></i>Foto
       </div>
       <div class="select-box">
-        <div class="select-button cursor btn">
-          <div class="selected-value">
-            <i class="fa fa-globe" aria-hidden="true"></i>
-          </div>
-          <div class="chevrons">
-            <i class="fas fa-chevron-down"></i>
-          </div>
+      <div class="select-button cursor btn">
+        <div class="selected-value">
+          <i class="fa fa-globe" aria-hidden="true"></i>
         </div>
-        <div class="options">
-          <div class="option"><i class="fa fa-globe" aria-hidden="true"></i> Público</div>
-          <div class="option"><i class="fa fa-lock" aria-hidden="true"></i> Privado</div>
+        <div class="chevrons">
+          <i class="fas fa-chevron-down"></i>
         </div>
       </div>
       <div class="btn post-btn cursor">Publicar</div>
@@ -50,7 +45,7 @@ export default (user) => {
           <span>${user.name}</span> 
         </a>
       </li>
-      <li class="option"><a href="#/login"><i class="fas fa-sign-out-alt"></i>Salir</a></li>
+      <li class="option"><a><i class="fas fa-sign-out-alt" id="btn-salir"></i>Salir</a></li>
     </ul>
   </nav>`;
 

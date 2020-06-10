@@ -29,3 +29,13 @@ export const currentUser = () => {
   };
   return userData;
 };
+
+export const signOut = () => {
+  firebase.auth().signOut()
+    .then(() => {
+      window.location.hash = '#/login';
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
