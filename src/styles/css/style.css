@@ -290,6 +290,7 @@ input, button, textarea {
 }
 
 header {
+  z-index: 3;
   position: fixed;
   width: 100%;
   background: #0CA385;
@@ -398,7 +399,7 @@ header nav ul li {
   display: block;
 }
 
-section.content .post .post-comments .comment-created, section.content .post .post-comments .create-comment-container {
+section.content .posts-container .post .post-comments .comment-created, section.content .posts-container .post .post-comments .create-comment-container {
   display: flex;
 }
 
@@ -409,7 +410,7 @@ section.content .post .post-comments .comment-created, section.content .post .po
 
 section.content {
   background: #e6f0ed;
-  padding: 51px 0.5em;
+  padding: 60px 0.5em;
   width: 98%;
   overflow-y: scroll;
 }
@@ -473,63 +474,73 @@ section.content .create-post-container .btn-container .post-btn {
   background: #0CA385;
   color: white;
 }
-section.content .create-post-container .btn-container .post-btn:hover {
-  background: #0ab895;
+section.content .posts-container {
+  display: flex;
+  flex-direction: column-reverse;
 }
-section.content .post {
+section.content .posts-container .post {
   margin: 0.5em 0;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
   background: white;
   border-radius: 5px;
 }
-section.content .post .border {
+section.content .posts-container .post .border {
   border-bottom: 1px solid rgba(153, 153, 153, 0.3);
 }
-section.content .post .post-header {
+section.content .posts-container .post .post-header {
   padding: 0.5em;
   display: flex;
   flex-direction: row;
   background: #F2F2F2;
   border-radius: 5px 5px 0;
 }
-section.content .post .post-header .name-user-post {
+section.content .posts-container .post .post-header .name-user-post {
   width: 98%;
 }
-section.content .post .post-header .name-user-post .name-user {
+section.content .posts-container .post .post-header .name-user-post .name-user {
   width: 100%;
 }
-section.content .post .post-header .name-user-post .row {
+section.content .posts-container .post .post-header .name-user-post .row {
   display: flex;
 }
-section.content .post .post-header .settings-post {
+section.content .posts-container .post .post-header .name-user-post .row .select-button {
+  background: yellow;
+}
+section.content .posts-container .post .post-header .settings-post {
   background: red;
   width: 2em;
 }
-section.content .post .post-body .text-post-value {
-  padding: 1em;
+section.content .posts-container .post .post-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-section.content .post .post-body .img-post-value {
+section.content .posts-container .post .post-body .text-post-value {
   width: 100%;
+  padding: 0.5em;
 }
-section.content .post .post-body .img-post-value img {
-  width: 100%;
+section.content .posts-container .post .post-body img {
+  border: none;
+  border-radius: 0;
+  width: 90%;
+  height: 90%;
 }
-section.content .post .post-likes {
+section.content .posts-container .post .post-likes {
   padding: 0.5em 1em;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
   font-size: 1.2em;
 }
-section.content .post .post-likes .fa-heart {
+section.content .posts-container .post .post-likes .fa-heart {
   color: #ee6969;
 }
-section.content .post .post-likes .fa-comment-o {
+section.content .posts-container .post .post-likes .fa-comment-o {
   color: #a6aaaa;
 }
-section.content .post .post-comments .create-comment-container {
+section.content .posts-container .post .post-comments .create-comment-container {
   padding: 0.5em;
 }
-section.content .post .post-comments .create-comment-container .input-comment {
+section.content .posts-container .post .post-comments .create-comment-container .input-comment {
   width: 100%;
   overflow: hidden;
   resize: none;
@@ -537,15 +548,15 @@ section.content .post .post-comments .create-comment-container .input-comment {
   border-radius: 5px;
   border: 1px solid rgba(153, 153, 153, 0.3);
 }
-section.content .post .post-comments .comment-created {
+section.content .posts-container .post .post-comments .comment-created {
   padding: 0.5em;
 }
-section.content .post .post-comments .comment-created span {
+section.content .posts-container .post .post-comments .comment-created span {
   background: #e1f1ed;
   padding: 1em;
   border-radius: 30px;
 }
-section.content .post .post-comments .comment-created span .name-user {
+section.content .posts-container .post .post-comments .comment-created span .name-user {
   padding: 0;
 }
 
@@ -558,6 +569,9 @@ section.content .post .post-comments .comment-created span .name-user {
   border: 1px solid #d1cdcd;
 }
 
+.select-box {
+  position: relative;
+}
 .select-box .select-button {
   display: flex;
 }
@@ -568,7 +582,7 @@ section.content .post .post-comments .comment-created span .name-user {
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
   margin-top: 0.2em;
   z-index: 1;
-  position: fixed;
+  position: absolute;
   display: none;
   background: white;
   border-radius: 5px;

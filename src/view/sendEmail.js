@@ -1,6 +1,5 @@
-/* eslint-disable no-console */
+
 import { auth } from '../firebaseInit.js';
-import { sendEmail } from '../model/user.model.js';
 
 export default () => {
   const divElement = document.createElement('div');
@@ -20,12 +19,6 @@ export default () => {
     </div>
   </div>
   `;
-
-  const btn = divElement.querySelector('button');
-  btn.addEventListener('click', () => {
-    console.log('volviendo a enviar email');
-    sendEmail();
-  });
 
   return divElement;
 };

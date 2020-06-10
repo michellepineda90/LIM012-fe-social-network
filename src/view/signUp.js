@@ -1,5 +1,3 @@
-import { eventSignUp } from '../controller/signUpController.js';
-import { hidePwd, showPwd } from '../controller/utils.js';
 
 export default () => {
   const divElemt = document.createElement('div');
@@ -37,19 +35,7 @@ export default () => {
     <i id="btn-google"class="fa fa-google" aria-hidden="true"></i>
     <i id="btn-facebook"class="fa fa-facebook" aria-hidden="true"></i>          
   </div>
-  <span>¿No tienes una cuenta aún? <a href="#/login">Iniciar Sesión</a></span>
+  <span>¿No tienes una cuenta aún? <a href="#/login">Iniciar Sesión</a></span>`;
 
-  `;
-
-  const signUpForm = divElemt.querySelector('#sign-up-form');
-  signUpForm.addEventListener('submit', (event) => {
-    eventSignUp(event);
-  });
-
-  const hidePassword = divElemt.querySelector('#hide-password');
-  hidePassword.addEventListener('click', hidePwd);
-
-  const showPassword = divElemt.querySelector('#show-password');
-  showPassword.addEventListener('click', showPwd);
   return divElemt;
 };

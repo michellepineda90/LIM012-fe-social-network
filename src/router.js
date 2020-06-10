@@ -1,22 +1,26 @@
+import { controllers } from './controller/mainController.js';
+import { views } from './view/index.js';
 
-import { components } from './view/index.js';
 
-export const changeView = (hash, message) => {
+export const changeView = (hash) => {
   const sectionMain = document.getElementById('container');
   sectionMain.innerHTML = '';
-
+  let view = '';
   switch (hash) {
     case '#/login':
-    { return sectionMain.appendChild(components.login()); }
+      view = controllers.signInCtrl();
+      break;
     case '#/register':
-    { return sectionMain.appendChild(components.register()); }
+      view = controllers.signUpCtrl();
+      break;
     case '#/email':
-    { return sectionMain.appendChild(components.sendemail()); }
-    case '#/profile':
-    { return sectionMain.appendChild(components.profile()); }
+      view = views.sendemail();
+      break;
     case '#/home':
-    { return sectionMain.appendChild(components.home(message)); }
+      view = controllers.homeCtrl();
+      break;
     default:
-    { return sectionMain.appendChild(components.login()); }
+      view = controllers.signInCtrl('hola');
   }
+  return sectionMain.append(view);
 };

@@ -4,7 +4,8 @@ import {
   createUser,
   signInWithGoogle,
   signInWithFacebook,
-  sendEmail,
+  sendConfirmationEmail,
+  // registerUser,
 } from '../src/model/user.model.js';
 
 
@@ -22,7 +23,7 @@ describe('Function createUser()', () => {
   it('Debería enviar una mensaje de verificación al usuario que se ha registrado', () => {
     createUser('lucy@gmail.com', '123456')
       .then(() => {
-        expect(sendEmail).toBe('REGISTRADO EXITOSAMENTE');
+        expect(sendConfirmationEmail).toBe('REGISTRADO EXITOSAMENTE');
       });
   });
 });

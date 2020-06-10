@@ -21,7 +21,7 @@
 
 section.content{
   background: $color-background1;
-  padding: 51px .5em;
+  padding: 60px .5em;
   width: 98%;
   overflow-y: scroll;
   section { margin: .5em 0;}
@@ -73,89 +73,97 @@ section.content{
         .post-btn{
           @include set-color-btn($primary-color);
           color: white;
-          // position: relative;
-          // right: 0;          
-        }
-        .post-btn:hover{
-          background: $color-hover;
-        }
-
+        }     
      }
-
    }
 
-   .post{
-     margin: .5em 0;
-     box-shadow: $color-box-shadow;
-     background: white;
-     border-radius: 5px;
-    .border{    
-      border-bottom: 1px solid $color-border;
-    }
-     .post-header{
-        padding: .5em;
-        display: flex;
-        flex-direction: row;
-        background: #F2F2F2;
-        border-radius: 5px 5px 0;
-       .name-user-post{
-          width: 98%;
-         .name-user{
-           width: 100%;
-          }         
-          .row{           
-           display: flex;
-          }              
+   .posts-container {
+      display: flex;
+      flex-direction: column-reverse;
+      .post{
+        margin: .5em 0;
+        box-shadow: $color-box-shadow;
+        background: white;
+        border-radius: 5px;
+        .border{    
+          border-bottom: 1px solid $color-border;
         }
-       .settings-post{
-          background: red;          
-          width: 2em;                 
-       }
-     }
-     .post-body{
-       .text-post-value{ padding: 1em; }
-       .img-post-value{ 
-         width: 100%;
-         img{width: 100%;}
+        .post-header{
+            padding: .5em;
+            display: flex;
+            flex-direction: row;
+            background: #F2F2F2;
+            border-radius: 5px 5px 0;
+          .name-user-post{
+              width: 98%;
+            .name-user{
+              width: 100%;
+              }         
+              .row{           
+              display: flex;
+                .select-button{
+                  background: yellow;
+                  
+                }
+              }              
+            }
+          .settings-post{
+              background: red;          
+              width: 2em;                 
+          }
         }
-     }
-     .post-likes{
-        padding: .5em 1em;
-        font-weight: 500;
-        font-family: $main-font;
-        font-size: 1.2em;
-        .fa-heart{
-          color: rgb(238, 105, 105);
+        .post-body{   
+          display: flex; 
+          flex-wrap: wrap;     
+          justify-content: center;              
+          .text-post-value{ 
+            width: 100%;
+            padding:.5em;
+           }
+          img{
+            border: none;
+            border-radius: 0;
+            @include square-size(90%);
+          }          
         }
-        .fa-comment-o{
-          color: rgb(166, 170, 170);
-        }      
-     }
-     .post-comments{
-       .create-comment-container{
-         padding: .5em;
-        @extend %flex;
-         .input-comment{
-           width: 100%;
-           overflow: hidden;           
-           resize: none;
-           padding: .5em;
-           border-radius: 5px;
-           border: 1px solid $color-border;
-         }        
-       }
-       .comment-created{
-        padding: .5em;
-         @extend %flex;
-         span{
-           background: $color-hover1;
-           padding: 1em;
-           border-radius: 30px;
-           .name-user{ padding: 0; }
-         }
-
-       }  
-     }
+        .post-likes{
+            padding: .5em 1em;
+            font-weight: 500;
+            font-family: $main-font;
+            font-size: 1.2em;
+            .fa-heart{
+              color: rgb(238, 105, 105);
+            }
+            .fa-comment-o{
+              color: rgb(166, 170, 170);
+            }      
+        }
+        .post-comments{
+          .create-comment-container{
+            padding: .5em;
+            @extend %flex;
+            .input-comment{
+              width: 100%;
+              overflow: hidden;           
+              resize: none;
+              padding: .5em;
+              border-radius: 5px;
+              border: 1px solid $color-border;
+            }        
+          }
+          .comment-created{
+            padding: .5em;
+            @extend %flex;
+            span{
+              background: $color-hover1;
+              padding: 1em;
+              border-radius: 30px;
+              .name-user{ padding: 0; }
+            }
+    
+          }  
+        }
+      }
    }
 
 }
@@ -166,11 +174,10 @@ section.content{
   float: none;
   border-radius: 5px;
   border: 1px solid rgb(209, 205, 205);
-  // box-shadow: $color-box-shadow;
 }
 
-.select-box{
-  // width: 120px;
+.select-box{  
+  position: relative;
   .select-button{
     display: flex;
     div {
@@ -180,20 +187,22 @@ section.content{
   .options{
     box-shadow: $color-box-shadow;
     margin-top: .2em;
-    z-index: 1;
-    position: fixed;
+    z-index: 1;    
+    position: absolute;
     display: none;
     background: white;
     border-radius: 5px;
     .option{
-      padding: .5em;      
+      padding: .5em;  
+      &:hover{
+        background: $primary-color;
+        color: white;
+        border-radius: 3px;
+      }    
     }
-    .option:hover{
-      background: $primary-color;
-      color: white;
-      border-radius: 3px;
+    // .option:hover{
 
-    }
+    // }
   }
 
 }
