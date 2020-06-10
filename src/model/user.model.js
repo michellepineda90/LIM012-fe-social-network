@@ -7,6 +7,15 @@ export const createUser = user => auth.createUserWithEmailAndPassword(user.email
 
 export const registerUser = (idUser, data) => db.collection('users').doc(idUser).set(data);
 
+export const getUsers = callback => db.collection('users')
+  .onSnapshot((querySnapshot) => {
+    const data = [];
+    querySnapshot.forEach((doc) => {
+      data.push({ idUser: doc.idUser, ...doc.data() });
+    });
+    callback(data);
+  });
+
 export const sendEmail = () => auth.currentUser.sendEmailVerification();
 
 export const signInWithGoogle = () => {
