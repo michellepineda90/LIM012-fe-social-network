@@ -49,14 +49,8 @@ const getAllComments = (comments) => {
   return allComments;
 };
 
-// const getCurrentDate = (data) => {
-//   const date = `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`;
-//   const time = `${data.getHours()}:${data.getMinutes()}`;
-//   return `${date} a las ${time} `;
-// };
 
-const post = (postObj) => {
-  console.log('postData: ', postObj);
+export const post = (postObj) => {
   const divPost = `
     <div class="post-header border">
       <img src="${postObj.photoUser}" class="post-user-photo">
@@ -74,7 +68,7 @@ const post = (postObj) => {
 
     <div class="post-body border"> 
       <p class="text-post-value"> ${postObj.textContent}</p>
-      ${postObj.imagesContent[0] ? `<img src="${postObj.imagesContent[0]}></img>` : ''}      
+      ${(postObj.imagesContent[0] ? `<img src="${postObj.imagesContent[0]}"></img>` : '')}      
     </div>
     <div class="post-likes border">
     <span id="num-likes" class="quantity-icon">${postObj.likes}
@@ -94,21 +88,3 @@ const post = (postObj) => {
 
   return divPost;
 };
-
-
-export const renderPost = (doc, container) => {
-  // console.log('postData', doc);
-  const divPost = document.createElement('div');
-  divPost.classList.add('post');
-  divPost.setAttribute('post-id', doc.id);
-  divPost.innerHTML = post(doc.data());
-  container.append(divPost);
-  // return divPost;
-};
-
-
-// export const showAllPost = (posts, container) => {
-//   posts.forEach((p) => {
-//     container.append(createPostView(p));
-//   });
-// };
