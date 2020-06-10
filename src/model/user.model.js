@@ -5,9 +5,9 @@ export const signInUser = user => auth.signInWithEmailAndPassword(user.email, us
 
 export const createUser = user => auth.createUserWithEmailAndPassword(user.email, user.password);
 
-export const registerUser = (idUser, data) => db.collection('users').doc(idUser).set(data);
+export const registerUserBD = (idUser, data) => db.collection('users').doc(idUser).set(data);
 
-export const sendEmail = () => auth.currentUser.sendEmailVerification();
+export const sendConfirmationEmail = () => auth.currentUser.sendEmailVerification();
 
 export const signInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
