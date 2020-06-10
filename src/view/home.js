@@ -1,10 +1,5 @@
-/* eslint-disable no-console */
-// import { auth } from '../firebaseInit.js';
-import { createPost } from '../controller/postController.js';
-import { currentUser } from '../model/user.model.js';
 
-export default () => {
-  const user = currentUser();
+export default (user) => {
   const mySelf = `
   <div class="my-self">
     <img src=${user.photo} class="user-photo">
@@ -37,8 +32,8 @@ export default () => {
           <div class="option"><i class="fa fa-lock" aria-hidden="true"></i> Privado</div>
         </div>
       </div>
-      <div class="btn post-btn">Publicar</div>
-    </div>
+      <div class="btn post-btn cursor">Publicar</div>
+    </div> 
   </section>`;
 
   const nav = `
@@ -65,7 +60,6 @@ export default () => {
   <header>
    ${nav}
   </header>
-
     <section class="content">
       ${mySelf}
       ${sectionCreatePost}
@@ -73,63 +67,6 @@ export default () => {
       </section>
     </section>
   `;
-
-  // ---show and hide menu option---
-  const hideOrShowMenu = () => {
-    const menu = divElemt.getElementById('menu');
-    const state = menu.style.display;
-    menu.style.display = (state === 'block') ? 'none' : 'block';
-  };
-  const menuBtn = divElemt.querySelector('.menu-icon');
-  menuBtn.addEventListener('click', hideOrShowMenu);
-
-  // -- action to change the privacy of a post when it is created--------------
-  // const privacyBtns = divElemt.querySelectorAll('.select-button');
-  // const optionsContainer = divElemt.querySelectorAll('.options');
-  // for (let i = 0; i < privacyBtns.length; i += 1) {
-  //   privacyBtns[i].addEventListener('click', () =>{
-  //     const options = optionsContainer[i].querySelectorAll('.option');
-  //     console.log(options);
-  //     const state = optionsContainer[i].style.display;
-  //     optionsContainer[i].style.display = (state === 'block') ? 'none' : 'block';
-  //     options.forEach((option) => {
-  //       option.addEventListener('click', (e) => {
-  //         console.log('accion');
-  //         const childBtn = privacyBtns[i].firstElementChild;
-  //         childBtn.innerHTML = e.target.firstElementChild.outerHTML;
-  //         optionsContainer[i].style.display = 'none';
-  //       });
-  //     });
-  //   });
-  // }
-
-  // ---load image---
-
-  const upImgBtn = divElemt.querySelector('#upload-img-btn');
-  const upImg = divElemt.querySelector('#upload-img');
-  const container = divElemt.querySelector('.photo-container');
-  upImgBtn.addEventListener('click', () => {
-    upImg.click();
-  });
-  upImg.addEventListener('change', (event) => {
-    const img = document.createElement('img');
-    img.classList.add('img-post');
-    container.append(img);
-    const path = URL.createObjectURL(event.target.files[0]);
-    img.setAttribute('src', path);
-  });
-
-  // ---create post---
-  const postsContainer = divElemt.querySelector('.posts-container');
-  const createPostBtn = divElemt.querySelector('.post-btn');
-  const textPost = divElemt.querySelector('.text-post');
-  const images = divElemt.querySelectorAll('img.img-post');
-  console.log(images);
-  createPostBtn.addEventListener('click', () => {
-    const post = createPost(textPost.value, images);
-    textPost.value = '';
-    postsContainer.append(post);
-  });
 
   return divElemt;
 };
