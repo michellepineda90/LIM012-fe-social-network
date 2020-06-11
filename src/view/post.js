@@ -1,38 +1,18 @@
+import { auth } from '../firebaseInit.js';
 
-const flexBoxPrivacy = `
-  <div class="select-box">
-    <div class="select-button btn cursor">
-      <div class="selected-value">
-        <i class="fa fa-globe" aria-hidden="true"></i>
-      </div>
-      <div class="chevrons">
-        <i class="fas fa-chevron-down"></i>
-      </div>
-    </div>
-    <div class="options">
-      <div class="option"><i class="fa fa-globe" aria-hidden="true"></i> Público</div>
-      <div class="option"><i class="fa fa-lock" aria-hidden="true"></i> Privado</div>
-    </div>                                  
-  </div>`;
 
-const flexBoxSettingPost = `
-  <div class="settings-post">    
-    <div class="select-box">
-      <div class="select-button cursor btn">
-        <div class="selected-value">
-          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>            
-        </div>                
-      </div>
-      <div class="options">
-        <div class="option">
-          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar
-        </div>
-        <div class="option">
-          <i class="far fa-trash-alt"></i>Delete
-        </div>
-      </div>
-    </div>
-  </div>`;
+const dropdownDots = (idPost, idUser) => {
+  // console.log(auth.currentUser.uid, idUser);
+  const drop = `
+  <div class="dropdown ">
+    <i class="bx bx-dots-horizontal-rounded setting-post ${auth.currentUser.uid === idUser ? '' : 'hidden'}" post-id='${idPost}'></i>
+    <ul class="dropdown-menu right hidden" id="dots-1">
+      <li id="edit"> <i class='bx bxs-edit' ></i>Editar</li>
+      <li id="delete"><i class='bx bxs-trash'></i>Eliminar</li>
+    </ul>
+  </div> `;
+  return drop;
+};
 
 const getAllComments = (comments) => {
   let allComments = '';
@@ -50,20 +30,18 @@ const getAllComments = (comments) => {
 };
 
 
-export const post = (postObj) => {
+export const post = (postObj, postId) => {
   const divPost = `
     <div class="post-header border">
-      <img src="${postObj.photoUser}" class="post-user-photo">
-      <div class="name-user-post">
-        <spam class="name-user">${postObj.nameUser}</spam>
-        <div class="row">          
-          <small class="date-post">
-          ${(postObj.date ? postObj.date.toDate() : new Date()).toLocaleString()}
-          </small>          
-          ${flexBoxPrivacy}
+      <img src="${postObj.photoUser}" class="icon-photo-user">       
+      <div class="name-date-post">
+        <div>
+          <span class="name-user">${postObj.nameUser}</span>
+          ${dropdownDots(postId, postObj.idUser)}
         </div>
-        ${flexBoxSettingPost}
-      </div>    
+        <small>${(postObj.date ? postObj.date.toDate() : new Date()).toLocaleString()}</small>
+        <i class='bx bx-world'></i>
+      </div>   
     </div>
 
     <div class="post-body border"> 
