@@ -12,7 +12,7 @@ export default () => {
   <form id="sign-up-form" name="register">
     <div class="form-control">
       <i class="fa fa-user icon-input" aria-hidden="true"></i>
-      <input type="text" name="name" id="name" class="form-field" placeholder="Nombre Completo">
+      <input type="text" id="name" class="form-field" placeholder="Nombre Completo">
       <small>Mensaje de error</small>
     </div>
     <div class="form-control">

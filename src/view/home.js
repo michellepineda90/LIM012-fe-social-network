@@ -1,9 +1,10 @@
-
 export default (user) => {
+  // console.log(user);
+  // const user = currentUser();
   const mySelf = `
   <div class="my-self">
-    <img src=${user.photo} class="user-photo">
-    <span class="name-user">${user.name}</span>
+    <img src="${user.photoURL}" class="user-photo">
+    <span class="name-user">${user.displayName}</span>
   </div>`;
 
   const sectionCreatePost = `

@@ -1,9 +1,10 @@
 import { views } from '../view/index.js';
 import { createPost, renderAllPosts } from './postController.js';
-import { currentUser, signOut } from '../model/user.model.js';
+import { signOut } from '../model/user.model.js';
 
 export default () => {
-  const user = currentUser();
+  const user = firebase.auth().currentUser;
+  console.log(user);
   const currentView = views.homeView(user);
 
   const menuBtn = currentView.querySelector('.menu-icon');
@@ -28,13 +29,13 @@ export default () => {
   // boton para cargar imagenes para publicar
   uploadImgBtn.addEventListener('click', () => {
     uploadImg.click();
-    uploadImg.addEventListener('change', (event) => {
-      const img = document.createElement('img');
-      img.classList.add('img-post');
-      container.append(img);
-      const path = URL.createObjectURL(event.target.files[0]);
-      img.setAttribute('src', path);
-    });
+  });
+  uploadImg.addEventListener('change', (event) => {
+    const img = document.createElement('img');
+    img.classList.add('img-post');
+    container.append(img);
+    const path = URL.createObjectURL(event.target.files[0]);
+    img.setAttribute('src', path);
   });
 
   // boton para hacer una publicacion enviando los datos insertados(imagen o texto)
