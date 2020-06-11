@@ -5,7 +5,6 @@ import {
   signInWithGoogle,
   signInWithFacebook,
   sendConfirmationEmail,
-  // registerUser,
 } from '../src/model/user.model.js';
 
 

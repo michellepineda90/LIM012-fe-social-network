@@ -14,7 +14,7 @@ export const changeView = (hash) => {
       view = controllers.signUpCtrl();
       break;
     case '#/email':
-      view = views.sendemail();
+      view = views.sendEmailView();
       break;
     case '#/home':
       view = controllers.homeCtrl();

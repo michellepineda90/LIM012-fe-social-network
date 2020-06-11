@@ -1,9 +1,7 @@
-import './firebase'; // debería importar esto?
-
+import './firebase';
 import MockFirebase from 'mock-cloud-firestore';
 
 import { registerUserBD, getUsers } from '../src/model/user.model.js';
-
 
 const fixtureData = {
   __collection__: {
@@ -22,11 +20,11 @@ const fixtureData = {
 global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled: true });
 
 describe('registerUserBD', () => {
-  it('Should add a user to database collection', done => registerUserBD('user_b', { name: 'Git456', photoURL: 'photoURL', email: 'git456@gmail.com' })
+  it('Debería porder agregar una nota', done => registerUserBD({ name: 'Git456' })
     .then(() => getUsers(
       (data) => {
-        const result = data.find(user => user.name === 'Git345');
-        expect(result.name).toBe('Git345');
+        const result = data.find(user => user.name === 'Git456');
+        expect(result.name).toBe('Git456');
         done();
       },
     )));

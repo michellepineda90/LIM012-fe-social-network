@@ -1,4 +1,6 @@
-import { createUser, registerUserBD, sendConfirmationEmail } from '../model/user.model.js';
+import {
+  createUser, registerUserBD, sendConfirmationEmail,
+} from '../model/user.model.js';
 
 import { signUpFormValidation, hidePwd, showPwd } from './utils.js';
 

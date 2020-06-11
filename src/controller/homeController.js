@@ -1,6 +1,6 @@
 import { views } from '../view/index.js';
 import { createPost, renderAllPosts } from './postController.js';
-import { currentUser, signOut } from '../model/user.model.js';
+import { currentUser, signOut, getUsers } from '../model/user.model.js';
 
 export default () => {
   const user = currentUser();
@@ -22,6 +22,7 @@ export default () => {
   menuBtn.addEventListener('click', () => {
     const menu = currentView.querySelector('#menu');
     const state = menu.style.display;
+    getUsers();
     menu.style.display = (state === 'block') ? 'none' : 'block';
   });
 
