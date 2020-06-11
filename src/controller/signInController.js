@@ -6,7 +6,7 @@ import {
   signInUser,
   signInWithGoogle,
   signInWithFacebook,
-  registerUser,
+  registerUserBD,
 } from '../model/user.model.js';
 
 import {
@@ -48,7 +48,7 @@ const eventGoogle = (event) => {
         photoURL: res.user.photoURL,
         email: res.user.email,
       };
-      registerUser(idUser, userObj);
+      registerUserBD(idUser, userObj);
       window.location.hash = '#/home';
     })
     .catch();
@@ -64,7 +64,7 @@ const eventFacebook = (event) => {
         photoURL: res.user.photoURL,
         email: res.user.email,
       };
-      registerUser(idUser, userObj);
+      registerUserBD(idUser, userObj);
       window.location.hash = '#/home';
     })
     .catch();

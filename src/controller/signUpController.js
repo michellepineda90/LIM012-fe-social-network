@@ -1,4 +1,4 @@
-import { createUser, registerUserBD, sendConfirmationEmail } from '../model/user.model.js';
+import { createUser, registerUserBD, sendConfirmationEmail, updateProfileUser } from '../model/user.model.js';
 
 import { signUpFormValidation, hidePwd, showPwd } from './utils.js';
 
@@ -14,7 +14,10 @@ const eventSignUp = (event) => {
   createUser(user)
     .then((res) => {
       sendConfirmationEmail();
-      const userObj = { name: user.name, email: user.email };
+      const userObj = { displayName: user.name, photoURL: './img/avatar.png' };
+      updateProfileUser(userObj)
+        .then(() => console.log('se actulizo con exito'))
+        .catch(() => console.log('No se pudo actualizar'));
       return registerUserBD(res.user.uid, userObj);
     })
     .then(() => {
