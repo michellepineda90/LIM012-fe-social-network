@@ -1,9 +1,11 @@
 import { views } from '../view/index.js';
 import { createPost, renderAllPosts } from './postController.js';
-import { currentUser, signOut } from '../model/user.model.js';
+import { signOut, getCurrentUserData } from '../model/user.model.js';
+
 
 export default () => {
-  const user = currentUser();
+  const user = getCurrentUserData();
+
   const currentView = views.homeView(user);
 
   const menuBtn = currentView.querySelector('.menu-icon');
@@ -15,8 +17,6 @@ export default () => {
   const divPostsContainer = currentView.querySelector('.posts-container');
   const createPostBtn = currentView.querySelector('.post-btn');
 
-  // llama a la BD para mostrar todos los post registrados
-  renderAllPosts(divPostsContainer);
 
   // btn para desplegar menu
   menuBtn.addEventListener('click', () => {
@@ -45,14 +45,17 @@ export default () => {
     if (textPost.value || images.length > 0) {
       const srcImages = [];
       images.forEach(img => srcImages.push(img.src));
-      createPost(user, textPost.value, srcImages, divPostsContainer);
+      createPost(user, textPost.value, srcImages);
       textPost.value = '';
       photoContainer.innerHTML = '';
     }
   });
-
   const btnSalir = currentView.querySelector('#btn-salir');
   btnSalir.addEventListener('click', signOut);
+
+  // llama a la BD para mostrar todos los post registrados
+
+  renderAllPosts(divPostsContainer);
 
   return currentView;
 };
