@@ -1,6 +1,10 @@
 /* eslint-disable no-console */
 import { auth } from '../firebaseInit.js';
 
+export const getCurrentUser = () => auth.currentUser;
+
+export const updateProfileUser = data => auth.currentUser.updateProfile(data);
+
 export const signInUser = user => auth.signInWithEmailAndPassword(user.email, user.password);
 
 export const createUser = user => auth.createUserWithEmailAndPassword(user.email, user.password)

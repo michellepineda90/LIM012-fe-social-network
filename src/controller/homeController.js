@@ -1,9 +1,9 @@
 import { views } from '../view/index.js';
 import { createPost, renderAllPosts } from './postController.js';
-import { signOut } from '../model/user.model.js';
+import { signOut, getCurrentUser } from '../model/user.model.js';
 
 export default () => {
-  const user = firebase.auth().currentUser;
+  const user = getCurrentUser();
   const currentView = views.homeView(user);
 
   const menuBtn = currentView.querySelector('.menu-icon');
@@ -15,8 +15,6 @@ export default () => {
   const divPostsContainer = currentView.querySelector('.posts-container');
   const createPostBtn = currentView.querySelector('.post-btn');
 
-  // llama a la BD para mostrar todos los post registrados
-  renderAllPosts(divPostsContainer);
 
   // btn para desplegar menu
   menuBtn.addEventListener('click', () => {
@@ -39,20 +37,25 @@ export default () => {
 
   // boton para hacer una publicacion enviando los datos insertados(imagen o texto)
   createPostBtn.addEventListener('click', () => {
-    const photoContainer = currentView.querySelector('.photo-container');
-    const images = photoContainer.querySelectorAll('.img-post');
+    // const photoContainer = currentView.querySelector('.photo-container');
+    // const images = photoContainer.querySelectorAll('.img-post');
+    const images = uploadImg.files;
+    console.log(images);
     const textPost = currentView.querySelector('.text-post');
     if (textPost.value || images.length > 0) {
-      const srcImages = [];
-      images.forEach(img => srcImages.push(img.src));
-      createPost(user, textPost.value, srcImages, divPostsContainer);
+      // const srcImages = [];
+      // images.forEach(img => srcImages.push(img.src));
+      createPost(user, textPost.value, images);
       textPost.value = '';
-      photoContainer.innerHTML = '';
+      // photoContainer.innerHTML = '';
     }
   });
-
   const btnSalir = currentView.querySelector('#btn-salir');
   btnSalir.addEventListener('click', signOut);
+
+  // llama a la BD para mostrar todos los post registrados
+
+  renderAllPosts(divPostsContainer);
 
   return currentView;
 };

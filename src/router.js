@@ -1,5 +1,5 @@
 import { controllers } from './controller/mainController.js';
-import sendEmail from './view/sendEmail.js';
+import sendEmailView from './view/sendEmail.js';
 
 
 export const changeView = (hash) => {
@@ -14,7 +14,7 @@ export const changeView = (hash) => {
       view = controllers.signUpCtrl();
       break;
     case '#/email':
-      view = sendEmail();
+      view = sendEmailView();
       break;
     case '#/home':
       view = controllers.homeCtrl();

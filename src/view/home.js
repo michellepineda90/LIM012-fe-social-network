@@ -7,6 +7,7 @@ export default (user) => {
 
   const sectionCreatePost = `
   <section class="create-post-container">
+    Crear Publicación
     <div class="post-content">
       <textarea id="content-text" class="text-post" name="textarea"  placeholder="¿Qué estas pensando?"></textarea>
       <div class="photo-container">
@@ -18,13 +19,10 @@ export default (user) => {
         <i class="fa fa-picture-o" aria-hidden="true"></i>Foto
       </div>
       <div class="select-box">
-      <div class="select-button cursor btn">
-        <div class="selected-value">
-          <i class="fa fa-globe" aria-hidden="true"></i>
-        </div>
-        <div class="chevrons">
-          <i class="fas fa-chevron-down"></i>
-        </div>
+          <div class="select-button cursor btn">
+            <div class="selected-value"><i class="fa fa-globe" aria-hidden="true"></i></div>
+            <div class="chevrons"><i class="fas fa-chevron-down"></i></div>
+          </div>
       </div>
       <div class="btn post-btn cursor">Publicar</div>
     </div> 
@@ -44,7 +42,7 @@ export default (user) => {
           <span>${user.displayName}</span> 
         </a>
       </li>
-      <li class="option"><a><i class="fas fa-sign-out-alt" id="btn-salir"></i>Salir</a></li>
+      <li class="option"><a class="cursor"><i class="fas fa-sign-out-alt" id="btn-salir"></i>Salir</a></li>
     </ul>
   </nav>`;
 
