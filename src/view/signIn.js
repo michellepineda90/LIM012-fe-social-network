@@ -11,14 +11,14 @@ export default () => {
     <form id="sign-in-form">
     <div class="form-control">
     <i class="far fa-envelope icon-input"></i>
-    <input type="text" name="email" id="email" class="form-field user" placeholder="Correo Electrónico">
+    <input type="text" name="email" id="email" class="form-field user" placeholder="Correo Electrónico" autocomplete="on">
     <small></small>
     </div>
     <div class="form-control">
     <i class="fa fa-key icon-input" aria-hidden="true"></i>
     <i id="show-password" class="fas fa-eye icon-psw hide cursor"></i>
     <i id="hide-password" class="fas fa-eye-slash icon-psw cursor"></i>
-    <input type="password" name="password" id="password" class="password" placeholder="Contraseña">
+    <input type="password" name="password" id="password" class="password" placeholder="Contraseña"autocomplete="on">
     <small></small>
     </div>
     <button id="sign-un-btn">Iniciar Sesión</button>

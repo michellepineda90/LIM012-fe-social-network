@@ -31,6 +31,7 @@ const getAllComments = (comments) => {
 
 
 export const post = (postObj, postId) => {
+  // console.log(postObj);
   const divPost = `
     <div class="post-header border">
       <img src="${postObj.photoUser}" class="icon-photo-user">       
@@ -40,7 +41,7 @@ export const post = (postObj, postId) => {
           ${dropdownDots(postId, postObj.idUser)}
         </div>
         <small>${(postObj.date ? postObj.date.toDate() : new Date()).toLocaleString()}</small>
-        <i class='bx bx-world'></i>
+        <i class='bx ${postObj.privacity === 'public' ? 'bx-world' : 'bxs-lock-alt'} privacy-icon'></i>
       </div>   
     </div>
 
