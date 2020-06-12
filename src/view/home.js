@@ -40,8 +40,8 @@ export default (user) => {
       <li class="option"><a href="#/home"><i class="fas fa-home"></i>Inicio</a></li>
       <li class="option">
         <a href="#/Profile">
-          <img src=${user.photo} class="user-photo">
-          <span>${user.name}</span> 
+          <img src=${user.photoURL} class="user-photo">
+          <span>${user.displayName}</span> 
         </a>
       </li>
       <li class="option"><a><i class="fas fa-sign-out-alt" id="btn-salir"></i>Salir</a></li>
