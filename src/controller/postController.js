@@ -15,10 +15,11 @@ export const createPost = (user, text, images) => {
     ],
     privacity: 0,
     date: firebase.firestore.FieldValue.serverTimestamp(),
-    nameUser: user.name,
-    idUser: user.id,
-    photoUser: user.photo,
+    nameUser: user.displayName,
+    idUser: user.uid,
+    photoUser: user.photoURL,
   };
+  console.log(postObj);
   createPostBD(postObj)
     .then(() => console.log('Post creado con exito!'))
     .catch(err => console.log(err));

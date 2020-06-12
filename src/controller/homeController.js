@@ -4,7 +4,6 @@ import { signOut } from '../model/user.model.js';
 
 export default () => {
   const user = firebase.auth().currentUser;
-  console.log(user);
   const currentView = views.homeView(user);
 
   const menuBtn = currentView.querySelector('.menu-icon');
