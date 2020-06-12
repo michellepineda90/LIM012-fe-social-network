@@ -139,7 +139,10 @@ section.content{
   background: $color-background1;
   padding: 60px .5em;
   width: 98%;
-  overflow-y: scroll;
+  overflow-y: auto;
+  &:-webkit-scrollbar{
+    display: none;
+  }
   section { margin: .5em 0;}
   .my-self{
     @include flex-center(row);
@@ -151,44 +154,77 @@ section.content{
     }  
   }
    .create-post-container{
-     font-family: $main-font;
-     color: rgb(80, 78, 78);
-     background: white;
-     font-weight: 500;
-     box-shadow: $color-box-shadow;
-     padding: 1em 0 0;
-     border-radius: 5px;
-     border: 1px solid $color-border;
-     width: 100%;
-      .post-content{
+    //  font-family: $main-font;
+      font-family:$jaldi-font;
+      color: rgb(80, 78, 78);
+      background: white;
+      font-weight: 500;
+      box-shadow: $color-box-shadow;
+      padding: 1em 0 0;
+      border-radius: 5px;
+      border: 1px solid $color-border;
+      width: 100%;
+        span{
+          font-weight: bolder;
+          font-size: medium;
+          margin: .5em;
+        }
+      .post-content{      
         border-top: 1px solid $color-border;
         padding: .5em;
         background: white;
-        .text-post{
-          padding: 1em 0;
-          border: none;
-          width: 100%;
-         }
+        div {
+          display: flex;
+          img {font-size: 1.5em;}
+          .text-post{
+            overflow-y: hidden;
+            
+            font-size: smaller;
+            padding: 1em 0;
+            border: none;
+            width: 100%;
+            }
+        }
         .photo-container{
+          display: flex;
           overflow-x: auto; 
           white-space: nowrap; 
          }
       }
      .btn-container{
+        justify-content: space-between;
         border-top: 1px solid $color-border;
         display: flex;
-        border-radius: 0 0 10px 10px;
         padding: .5em;      
+        .family-btn{
+          display: flex;
+        }      
         .btn{
+          display: flex;
+          align-items: center;
           @include set-color-btn(rgb(236, 243, 241));        
           padding: .5em .8em;  
-          border-radius: 30px;
+          border-radius: 10px;
           margin: 0 .2em;
+          i{font-size: 1.2em;}
         }
-        .btn:hover{ background: $color-hover1;}
+        .opts:hover{
+          font-weight: 200;
+          color: #333;
+          cursor: pointer;
+          background-color: $color-hover1;
+        }
+        // .btn:hover{ background: $color-hover1;}
         .post-btn{
-          @include set-color-btn($primary-color);
+          position: relative;
+          right: 0;
+          @include set-color-btn(rgba(12, 163, 133, 0.514));
           color: white;
+          &:hover{
+            cursor: pointer;
+            background-color: #0CA385;
+          }
+        
         }     
      }
    }
@@ -196,13 +232,33 @@ section.content{
   
 
 }
-
-.img-post{
-  @include square-size(100px);
-  display: inline-block;
-  float: none;
-  border-radius: 5px;
-  border: 1px solid rgb(209, 205, 205);
+.div-img{
+  cursor: pointer;
+  @include square-size(max-content);
+  // background: yellow;
+  position: relative;
+  margin-right: .3em;
+  &:hover{
+    background-color: rgba(27, 26, 26, 0.349);
+    // background-color: black;
+    // opacity: .3;
+  }
+  &:hover i{
+    color: rgb(236, 243, 241);
+    font-weight: bolder;
+  }
+  i{
+    cursor: pointer;
+    padding: .2em;
+    position: absolute;
+    top: auto;
+    right: 0;
+    color: transparent;
+  }
+  .img-post{
+    @include square-size(100px);
+    
+  }
 }
 
 .select-box{  
@@ -237,5 +293,19 @@ section.content{
 @media (min-width: $breakpoint-tablet) {
   section.content{
     width: 80%;
+    display: flex;
+    justify-content: center;
+    section.profile-section{
+      background-color: white;
+      position: sticky;
+      width: 30%;
+      height: 100%;
+      box-shadow: $color-box-shadow;
+    }
+    section.posts-section{
+      padding: 1em;
+      width: 60%;
+      border-radius: 10px;
+    }
   }
 }

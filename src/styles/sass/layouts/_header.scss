@@ -29,16 +29,15 @@ header{
   position: fixed;
   width: 100%;
   background: $primary-color;  
-
   nav{
     min-width: 120px;
     .nav-bar{
       text-align: center;       
       border-bottom:1px solid rgba(255,255,255,.3); 
-      @include set-icon('.menu-icon',white,2em, left,absolute, .3em);
-      .menu-icon{width: 1.2em;} 
+      @include set-icon('.menu-icon',white,2em, left,absolute, .2em);
+      .menu-icon:hover{cursor: pointer;} 
       img.logo{
-        width:3em;
+        width:2em;
         padding: .3em;
       }
     }
@@ -46,25 +45,30 @@ header{
       list-style: none;  
       display: none;    
       .option{   
-        a{          
-          display: block;
-          background: $primary-color;
-          padding: 1em;
+        padding:.5em;
+        a{  
+          padding: .5em;
+          display: flex;
+          align-items: center;            
           text-decoration: none;
           color: white;
-          font-family: $main-font;
+          font-weight: bolder;
+          font-family: $yantra-font;
           justify-content: baseline;
+          &:hover{
+            border-radius: 5px;
+            cursor: pointer; 
+            background-color: rgba(10, 156, 127, 0.829);}
           .user-photo{
             @include square-size(1.5em);          
             border-radius: 30px;
+            margin-right: .3em;
           }    
           i{
             margin-right: 10px;
-            font-size: 1.6em;        
           }
           
         }
-        a:hover{ background: $color-hover;}
       }
       li{
         border-bottom:1px solid rgba(255,255,255,.3);

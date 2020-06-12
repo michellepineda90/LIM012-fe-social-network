@@ -57,14 +57,22 @@
       outline: none;
     }
   }
-  .modal-footer{
-    .dropdown{
-      position: relative;
-      .dropdown-menu{
-        z-index: 3;
-        position: absolute;
-      }
-    }
+  // .modal-footer{
+  //   .dropdown{
+  //     position: relative;
+  //     .dropdown-menu{
+  //       z-index: 3;
+  //       position: absolute;
+  //     }
+  //   }
+  // }
+}
+
+.dropdown{
+  position: relative;
+  .dropdown-menu{
+    z-index: 3;
+    position: absolute;
   }
 }
 
