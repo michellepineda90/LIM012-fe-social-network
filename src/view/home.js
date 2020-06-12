@@ -1,6 +1,4 @@
 export default (user) => {
-  // console.log(user);
-  // const user = currentUser();
   const mySelf = `
   <div class="my-self">
     <img src="${user.photoURL}" class="user-photo">
