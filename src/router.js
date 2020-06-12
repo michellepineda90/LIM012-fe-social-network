@@ -8,19 +8,19 @@ export const changeView = (hash) => {
   let view = '';
   switch (hash) {
     case '#/login':
-      view = controllers.signInCtrl();
+      view = controllers.signInCtrl;
       break;
     case '#/register':
-      view = controllers.signUpCtrl();
+      view = controllers.signUpCtrl;
       break;
     case '#/email':
-      view = views.sendEmailView();
+      view = views.sendEmailView;
       break;
     case '#/home':
-      view = controllers.homeCtrl();
+      view = controllers.homeCtrl;
       break;
     default:
-      view = controllers.signInCtrl('hola');
+      view = controllers.signInCtrl;
   }
-  return sectionMain.append(view);
+  return sectionMain.append(view());
 };

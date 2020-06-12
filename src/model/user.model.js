@@ -20,38 +20,8 @@ export const signInWithFacebook = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
   return firebase.auth().signInWithPopup(provider);
 };
+export const getCurrentUser = () => auth.currentUser;
 
-export const getUserActive = id => new Promise((res) => {
-  db.collection('users').doc(id).get()
-    .then((doc) => {
-      const obj = {
-        name: doc.data().name,
-        email: doc.data().email,
-        photo: doc.data().photoURL,
-      };
-      res(obj);
-    });
-});
-
-//   const user = firebase.auth().currentUser;
-//   const userData = {
-//     id: user.uid,
-//     name: (user.displayName === null) ? 'Anonimo' : user.displayName,
-//     email: user.email,
-//     photo: (user.photoURL === null) ? './img/avatar.png' : user.photoURL,
-//   };
-//   return userData;
-// };
-
-export const getCurrentUserData = () => {
-  const user = auth.currentUser;
-  return {
-    id: user.uid,
-    name: (user.displayName === null) ? 'Anonimo' : user.displayName,
-    email: user.email,
-    photo: (user.photoURL === null) ? './img/avatar.png' : user.photoURL,
-  };
-};
 
 export const signOut = () => {
   firebase.auth().signOut()
