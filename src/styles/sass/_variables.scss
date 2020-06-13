@@ -50,6 +50,20 @@ $color-btn-disabled:rgb(110, 240, 214);
   right: 0;
 } 
 
+%ordinary-btn{
+  font-weight: bold;
+  margin: .2em;
+  border-radius: 5px;
+  padding: .5em;
+}
+
+%grow{
+  &:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+}
+
 .main-btn{
   cursor: pointer;
   background: $primary-color;

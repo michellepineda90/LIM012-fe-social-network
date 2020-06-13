@@ -29,6 +29,18 @@
   right: 0;
 }
 
+.modal .modal-footer button, .my-self .info-user button {
+  font-weight: bold;
+  margin: 0.2em;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.modal .modal-header i:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
 .main-btn {
   cursor: pointer;
   background: #0CA385;
@@ -111,6 +123,18 @@ input, button, textarea {
   right: 0;
 }
 
+.modal .modal-footer button, .my-self .info-user button {
+  font-weight: bold;
+  margin: 0.2em;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.modal .modal-header i:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
 .main-btn {
   cursor: pointer;
   background: #0CA385;
@@ -164,6 +188,18 @@ input, button, textarea {
   right: 0;
 }
 
+.modal .modal-footer button, .my-self .info-user button {
+  font-weight: bold;
+  margin: 0.2em;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.modal .modal-header i:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
 .main-btn {
   cursor: pointer;
   background: #0CA385;
@@ -179,7 +215,7 @@ input, button, textarea {
 }
 
 header {
-  z-index: 3;
+  z-index: 10;
   position: fixed;
   width: 100%;
   background: #0CA385;
@@ -304,6 +340,18 @@ header nav ul li {
   right: 0;
 }
 
+.modal .modal-footer button, .my-self .info-user button {
+  font-weight: bold;
+  margin: 0.2em;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.modal .modal-header i:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
 .main-btn {
   cursor: pointer;
   background: #0CA385;
@@ -324,6 +372,12 @@ header nav ul li {
   margin-right: 0.5em;
   border-radius: 50px;
   display: block;
+}
+
+.posts-container .post .post-header div.name-date-post span {
+  text-transform: capitalize;
+  color: #137a81;
+  font-weight: bolder;
 }
 
 .dropdown {
@@ -383,10 +437,6 @@ header nav ul li {
   width: 100%;
   flex-direction: column;
 }
-.posts-container .post .post-header div.name-date-post span {
-  font-weight: bolder;
-  color: #137a81;
-}
 .posts-container .post .post-header div.name-date-post div {
   display: flex;
   justify-content: space-between;
@@ -398,6 +448,10 @@ header nav ul li {
 }
 .posts-container .post .post-header div.name-date-post div .dropdown .dropdown-menu {
   position: absolute;
+}
+.posts-container .post .post-header div.name-date-post div .dropdown i:hover {
+  cursor: pointer;
+  transform: scale(1.5);
 }
 .posts-container .post .post-body {
   display: flex;
@@ -455,7 +509,7 @@ section.content {
   width: 98%;
   overflow-y: auto;
 }
-section.content:-webkit-scrollbar {
+section.content::-webkit-scrollbar {
   display: none;
 }
 section.content section {
@@ -604,23 +658,82 @@ section.content .create-post-container .btn-container .post-btn:hover {
   border-radius: 3px;
 }
 
-@media (min-width: 768px) {
+.my-self {
+  background-color: white;
+  border-radius: 5px;
+  padding: 0.5em;
+  display: flex;
+  flex-wrap: wrap;
+  height: max-content;
+  position: relative;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+.my-self .user-photo-cover {
+  width: 100%;
+  height: 200px;
+}
+.my-self .photo-user {
+  width: 100px;
+  height: 100px;
+  border-radius: 80px;
+  position: absolute;
+  top: 52px;
+  border: 3px solid white;
+}
+.my-self .info-user {
+  padding: 1em;
+  width: 100%;
+  height: 100px;
+  position: relative;
+  text-align: center;
+}
+.my-self .info-user .name-user {
+  font-size: 1.5em;
+  text-transform: capitalize;
+  color: teal;
+}
+.my-self .info-user i {
+  color: #0CA385;
+  margin: 0.5em;
+}
+.my-self .info-user button {
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid #0CA385;
+  color: #0CA385;
+}
+.my-self .info-user button:hover {
+  transform: scale(1.01);
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
   section.content {
     width: 80%;
+  }
+}
+@media (min-width: 768px) {
+  section.content {
     display: flex;
     justify-content: center;
   }
   section.content section.profile-section {
-    background-color: white;
     position: sticky;
-    width: 30%;
+    position: -webkit-sticky;
+    top: 0.6em;
+    width: 50%;
     height: 100%;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 0.5em;
   }
   section.content section.posts-section {
-    padding: 1em;
-    width: 60%;
+    padding: 0 0.5em;
+    width: 50%;
+    height: max-content;
     border-radius: 10px;
+  }
+}
+@media (min-width: 1024px) {
+  section.content {
+    width: 60%;
   }
 }
 .screen-background .form-container button, .screen-background .form-container form .form-control input {
@@ -652,6 +765,18 @@ section.content .create-post-container .btn-container .post-btn:hover {
 .right {
   position: relative;
   right: 0;
+}
+
+.modal .modal-footer button, .my-self .info-user button {
+  font-weight: bold;
+  margin: 0.2em;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.modal .modal-header i:hover {
+  cursor: pointer;
+  transform: scale(1.2);
 }
 
 .main-btn {
@@ -923,6 +1048,18 @@ section.content .create-post-container .btn-container .post-btn:hover {
   right: 0;
 }
 
+.modal .modal-footer button, .my-self .info-user button {
+  font-weight: bold;
+  margin: 0.2em;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.modal .modal-header i:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
 .main-btn {
   cursor: pointer;
   background: #0CA385;
@@ -958,13 +1095,6 @@ section.content .create-post-container .btn-container .post-btn:hover {
   display: flex;
   justify-content: flex-end;
 }
-.modal .modal-footer button {
-  font-weight: bold;
-  margin: 0.2em;
-  border-radius: 5px;
-  padding: 0.5em;
-}
-
 .modal-delete {
   max-width: 400px;
 }

@@ -24,10 +24,7 @@
     display: flex;
     justify-content: flex-end;
     button{
-      font-weight: bold;
-      margin: .2em;
-      border-radius: 5px;
-      padding: .5em;        
+      @extend %ordinary-btn;
     }      
   }
 }
@@ -43,6 +40,9 @@
   .modal-header{
     display: flex;
     justify-content: space-between;
+    i{
+      @extend %grow;
+    }
   }
   .modal-body{
     display: flex;      
@@ -57,15 +57,7 @@
       outline: none;
     }
   }
-  // .modal-footer{
-  //   .dropdown{
-  //     position: relative;
-  //     .dropdown-menu{
-  //       z-index: 3;
-  //       position: absolute;
-  //     }
-  //   }
-  // }
+ 
 }
 
 .dropdown{
