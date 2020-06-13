@@ -33,6 +33,7 @@ export default () => {
   });
 
   uploadImg.addEventListener('change', (event) => {
+    console.log(event.target);
     const img = document.createElement('div');
     img.classList.add('div-img');
     const path = URL.createObjectURL(event.target.files[0]);
@@ -45,17 +46,20 @@ export default () => {
   createPostBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     const photoContainer = currentView.querySelector('.photo-container');
-    const images = photoContainer.querySelectorAll('.img-post');
+    // const images = photoContainer.querySelectorAll('.img-post');
+    const images = uploadImg.files;
+    // console.log(images);
     const textPost = currentView.querySelector('.text-post');
     const privacity = currentView.querySelector('div.privacy');
     if (textPost.value || images.length > 0) {
-      const srcImages = [];
-      images.forEach(img => srcImages.push(img.src));
-      createPost(user, textPost.value, srcImages, privacity.id);
+      // const srcImages = [];
+      // images.forEach(img => srcImages.push(img.src));
+      createPost(user, textPost.value, images, privacity.id);
       textPost.value = '';
-      photoContainer.innerHTML = '';
       privacity.innerHTML = setStatePrivacity('public');
       privacity.id = 'public';
+      photoContainer.innerHTML = '';
+      uploadImg.value = '';
     }
   });
 

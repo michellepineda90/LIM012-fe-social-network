@@ -2,6 +2,7 @@
 import {
   createPostBD, deletePostBD, getPostBD, updatePostBD,
 } from '../model/post.model.js';
+import { uploadImage } from '../model/storage-post.js';
 
 
 // crea un nuevo post
@@ -12,8 +13,6 @@ export const createPost = (user, text, images, statePrivacity) => {
     likes: 0,
     comments: [
       { userName: 'Manuela', userPhoto: './img/login.png', text: 'Primera en comentar' },
-      { userName: 'Juan', userPhoto: './img/login.png', text: 'Probando' },
-      { userName: 'Pepito', userPhoto: './img/login.png', text: ':)' },
     ],
     privacity: statePrivacity,
     date: firebase.firestore.FieldValue.serverTimestamp(),
@@ -21,9 +20,21 @@ export const createPost = (user, text, images, statePrivacity) => {
     idUser: user.uid,
     photoUser: user.photoURL,
   };
-  createPostBD(postObj)
-    .then(() => console.log('Post creado con exito!'))
-    .catch(err => console.log(err));
+  console.log(postObj);
+  if (images.length > 0) {
+    Object.keys(images).forEach(file => uploadImage(images[file])
+      .then((res) => {
+        postObj.imagesContent = res;
+        return createPostBD(postObj);
+      })
+      .then(() => console.log('Post creado con exito!'))
+      .catch(err => console.log('ERROR', err)));
+  } else {
+    console.log('solo texto');
+    createPostBD(postObj)
+      .then(() => console.log('Post creado con exito!'))
+      .catch(err => console.log('ERROR', err));
+  }
 };
 
 

@@ -1,4 +1,3 @@
-
 export default (user) => {
   const mySelf = `
   <div class="my-self">

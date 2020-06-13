@@ -6,7 +6,6 @@ import {
   signInUser,
   signInWithGoogle,
   signInWithFacebook,
-  registerUserBD,
 } from '../model/user.model.js';
 
 import {
@@ -41,14 +40,14 @@ const eventSignIn = (event) => {
 const eventGoogle = (event) => {
   event.preventDefault();
   signInWithGoogle()
-    .then((res) => {
-      const idUser = res.user.uid;
-      const userObj = {
-        name: res.user.displayName,
-        photoURL: res.user.photoURL,
-        email: res.user.email,
-      };
-      registerUserBD(idUser, userObj);
+    .then(() => {
+      // const idUser = res.user.uid;
+      // const userObj = {
+      //   name: res.user.displayName,
+      //   photoURL: res.user.photoURL,
+      //   email: res.user.email,
+      // };
+      // registerUserBD(idUser, userObj);
       window.location.hash = '#/home';
     })
     .catch();
@@ -57,14 +56,14 @@ const eventGoogle = (event) => {
 const eventFacebook = (event) => {
   event.preventDefault();
   signInWithFacebook()
-    .then((res) => {
-      const idUser = res.user.uid;
-      const userObj = {
-        name: res.user.displayName,
-        photoURL: res.user.photoURL,
-        email: res.user.email,
-      };
-      registerUserBD(idUser, userObj);
+    .then(() => {
+      // const idUser = res.user.uid;
+      // const userObj = {
+      //   name: res.user.displayName,
+      //   photoURL: res.user.photoURL,
+      //   email: res.user.email,
+      // };
+      // registerUserBD(idUser, userObj);
       window.location.hash = '#/home';
     })
     .catch();

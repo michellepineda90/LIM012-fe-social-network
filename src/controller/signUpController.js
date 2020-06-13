@@ -1,4 +1,4 @@
-import { createUser, registerUserBD, sendConfirmationEmail, updateProfileUser } from '../model/user.model.js';
+import { createUser, sendConfirmationEmail } from '../model/user.model.js';
 
 import { signUpFormValidation, hidePwd, showPwd } from './utils.js';
 
@@ -12,15 +12,10 @@ const eventSignUp = (event) => {
     password: event.target.password.value,
   };
   createUser(user)
-    .then((res) => {
-      sendConfirmationEmail();
-      const userObj = { displayName: user.name, photoURL: './img/avatar.png' };
-      updateProfileUser(userObj)
-        .then(() => console.log('se actulizo con exito'))
-        .catch(() => console.log('No se pudo actualizar'));
-      return registerUserBD(res.user.uid, userObj);
-    })
     .then(() => {
+      sendConfirmationEmail();
+      // const userObj = { name: user.name, email: user.email, photoURL: '' };
+      // return registerUserBD(res.user.uid, userObj);
       window.location.hash = '#/email';
       event.target.reset();
     })

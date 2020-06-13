@@ -7,7 +7,7 @@ export default () => {
     <span class="app-name">eco-chat...</span>
     </div>
     <div class="form-container">
-    <h1 class="form-title">Iniciar seción</h1>
+    <h1 class="form-title">Iniciar sesión</h1>
     <form id="sign-in-form">
     <div class="form-control">
     <i class="far fa-envelope icon-input"></i>
