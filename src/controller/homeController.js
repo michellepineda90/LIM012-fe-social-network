@@ -40,9 +40,8 @@ export default () => {
     // const photoContainer = currentView.querySelector('.photo-container');
     // const images = photoContainer.querySelectorAll('.img-post');
     const images = uploadImg.files;
-    console.log(images);
     const textPost = currentView.querySelector('.text-post');
-    if (textPost.value || images.length > 0) {
+    if (textPost.value || images) {
       // const srcImages = [];
       // images.forEach(img => srcImages.push(img.src));
       createPost(user, textPost.value, images);

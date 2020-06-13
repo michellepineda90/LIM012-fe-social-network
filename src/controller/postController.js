@@ -32,8 +32,6 @@ export const createPost = (user, text, images) => {
     }).then(obj => createPostBD(obj))
     .then(() => console.log('Post creado con exito!'))
     .catch(err => console.log('ERROR', err)));
-  // .then(() => console.log('Post creado con exito!'))
-  // .catch(err => console.log(err));
 };
 
 //  muestre el post creado en la interface
