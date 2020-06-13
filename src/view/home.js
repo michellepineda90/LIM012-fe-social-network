@@ -20,8 +20,7 @@ export default (user) => {
         <div class="post-content">
           <div>
             <img src="${user.photoURL}" class="post-user-photo">
-            <textarea class="text-post" contenteditable="true" name="textarea"  placeholder="¿Qué estas pensando?"></textarea>
-            <!-- <div contenteditable class="edit-area"></div> -->
+            <textarea class="text-post" contenteditable="true" name="textarea"  placeholder="¿Qué estas pensando?"></textarea>          
           </div>
           <div class="photo-container">                      
           </div>
@@ -29,7 +28,7 @@ export default (user) => {
         <div class="btn-container">
           <div class="family-btn">
             <div class="btn opts" id="upload-img-btn">
-              <input type="file" accept="image/*" id="upload-img" hidden="hidden" multiple>
+              <input type="file" accept="image/*" id="upload-img" hidden="hidden">
               <i class='bx bxs-image'></i>
               Foto
             </div>

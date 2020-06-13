@@ -31,7 +31,7 @@ const getAllComments = (comments) => {
 
 
 export const post = (postObj, postId) => {
-  console.log(postObj.textContent, postObj.imagesContent, typeof postObj.imagesContent);
+  // console.log('este postObj se creara: ', postObj);
   const divPost = `
     <div class="post-header border">
       <img src="${postObj.photoUser}" class="icon-photo-user">       
@@ -47,7 +47,7 @@ export const post = (postObj, postId) => {
 
     <div class="post-body border"> 
       <p class="text-post-value"> ${postObj.textContent}</p>
-      ${(postObj.imagesContent !== undefined ? `<img src="${postObj.imagesContent}"></img>` : '')}      
+      ${(postObj.imageContent ? `<img src="${postObj.imageContent}"></img>` : '')}      
     </div>
     <div class="post-likes border">
     <span id="num-likes" class="quantity-icon">${postObj.likes}

@@ -33,27 +33,21 @@ export default () => {
   });
 
   uploadImg.addEventListener('change', (event) => {
-    console.log(event.target);
     const img = document.createElement('div');
     img.classList.add('div-img');
     const path = URL.createObjectURL(event.target.files[0]);
     img.innerHTML = `<i class='bx bx-x'></i><img class="img-post" src="${path}">`;
     container.append(img);
-    // img.setAttribute('src', path);
   });
 
   // boton para hacer una publicacion enviando los datos insertados(imagen o texto)
   createPostBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     const photoContainer = currentView.querySelector('.photo-container');
-    // const images = photoContainer.querySelectorAll('.img-post');
     const images = uploadImg.files;
-    // console.log(images);
     const textPost = currentView.querySelector('.text-post');
     const privacity = currentView.querySelector('div.privacy');
     if (textPost.value || images.length > 0) {
-      // const srcImages = [];
-      // images.forEach(img => srcImages.push(img.src));
       createPost(user, textPost.value, images, privacity.id);
       textPost.value = '';
       privacity.innerHTML = setStatePrivacity('public');
@@ -67,9 +61,9 @@ export default () => {
   btnSalir.addEventListener('click', signOut);
 
 
-  const updatePostView = (doc) => {
-    console.log(doc.id);
-    const divPost = document.querySelector(`div#${doc.id}`);
+  const updatePost = (doc) => {
+    console.log('post que se edita', doc.id);
+    const divPost = divPostsContainer.querySelector(`#${doc.id}`);
     divPost.querySelector('p').textContent = doc.data().textContent;
     const priBtn = divPost.querySelector('i.privacy-icon');
     priBtn.outerHTML = `<i class='bx ${doc.data().privacity === 'public' ? 'bx-world' : 'bxs-lock-alt'} privacy-icon'></i>`;
@@ -85,29 +79,40 @@ export default () => {
   };
 
   // muestra todos los post registrados en la BD
-  const renderAllPosts = () => getAllPostsBD()
-    .onSnapshot((snapshot) => {
-      const changes = snapshot.docChanges();
-      console.log(changes);
-      changes.forEach((change) => {
-        console.log(change.type);
+  // const renderAllPosts = () => getAllPostsBD()
+  //   .onSnapshot((snapshot) => {
+  //     const changes = snapshot.docChanges();
+  //     changes.forEach((change) => {
+  //       if (change.type === 'added') {
+  //         renderPost(change.doc);
+  //       } if (change.type === 'removed') {
+  //         const divPost = divPostsContainer.querySelector(`#${change.doc.id}`);
+  //         divPostsContainer.removeChild(divPost);
+  //       } if (change.type === 'modified') {
+  //         updatePostView(change.doc);
+  //       }
+  //     });
+  //   });
+  const renderAllPosts = () => {
+    const allPosts = getAllPostsBD();
+    allPosts.onSnapshot((querySnapshot) => {
+      querySnapshot.docChanges().forEach((change) => {
         if (change.type === 'added') {
-          console.log('renderizando posts');
           renderPost(change.doc);
-        } if (change.type === 'removed') {
-          console.log('eliminando algo');
+          console.log('New Post', change.doc.data());
+        }
+        if (change.type === 'modified') {
+          updatePost(change.doc);
+          console.log('Modified Post', change.doc.data());
+        }
+        if (change.type === 'removed') {
           const divPost = divPostsContainer.querySelector(`#${change.doc.id}`);
           divPostsContainer.removeChild(divPost);
-        } if (change.type === 'modified') {
-          console.log('renderizando post editado');
-          updatePostView(change.doc);
-          // const divPost = divPostsContainer.querySelector(`div#${doc.id}`);
-          // divPost.querySelector('p').textContent = doc.data().textContent;
-          // const priBtn = divPost.querySelector('i.privacy-icon');
-          // priBtn.outerHTML = `<i class='bx ${doc.data().privacity === 'public' ? 'bx-world' : 'bxs-lock-alt'} privacy-icon'></i>`;
+          console.log('Removed Post', change.doc.data());
         }
       });
     });
+  };
 
   renderAllPosts();
 

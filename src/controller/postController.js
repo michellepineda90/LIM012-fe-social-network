@@ -9,31 +9,23 @@ import { uploadImage } from '../model/storage-post.js';
 export const createPost = (user, text, images, statePrivacity) => {
   const postObj = {
     textContent: text,
-    imagesContent: images,
+    imageContent: '',
     likes: 0,
-    comments: [
-      { userName: 'Manuela', userPhoto: './img/login.png', text: 'Primera en comentar' },
-    ],
+    comments: [],
     privacity: statePrivacity,
     date: firebase.firestore.FieldValue.serverTimestamp(),
     nameUser: user.displayName,
     idUser: user.uid,
     photoUser: user.photoURL,
   };
-  console.log(postObj);
-  if (images.length > 0) {
-    Object.keys(images).forEach(file => uploadImage(images[file])
-      .then((res) => {
-        postObj.imagesContent = res;
-        return createPostBD(postObj);
-      })
-      .then(() => console.log('Post creado con exito!'))
-      .catch(err => console.log('ERROR', err)));
+  if (images[0]) {
+    uploadImage(images[0])
+      .then((url) => {
+        postObj.imageContent = url;
+        createPostBD(postObj);
+      });
   } else {
-    console.log('solo texto');
-    createPostBD(postObj)
-      .then(() => console.log('Post creado con exito!'))
-      .catch(err => console.log('ERROR', err));
+    createPostBD(postObj);
   }
 };
 
@@ -44,6 +36,7 @@ let dropdownMenu = '';
 const bgModal = document.querySelector('.bg-modal');
 
 const deletePost = (id) => {
+  // evento de la ventana modal de conformacion
   bgModal.style.display = 'flex';
   const modalDetele = bgModal.querySelector('.modal-delete');
 
@@ -79,6 +72,7 @@ const deletePost = (id) => {
 export const setStatePrivacity = type => `<i class='bx ${type === 'public' ? 'bx-world' : 'bxs-lock-alt'} privacy-icon'>
       </i> ${type === 'public' ? 'Público' : 'Privado'}<i class='bx bxs-down-arrow' ></i>`;
 
+
 const editPost = (id) => {
   const modalEdit = bgModal.querySelector('.modal-edit');
   const saveChangesBtn = modalEdit.querySelector('button#save');
@@ -100,7 +94,8 @@ const editPost = (id) => {
     bgModal.style.display = 'none';
   });
 
-  saveChangesBtn.addEventListener('click', () => {
+  saveChangesBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     const data = { textContent: editArea.textContent, privacity: privacyBtn.id };
     updatePostBD(id, data)
       .then(() => {
