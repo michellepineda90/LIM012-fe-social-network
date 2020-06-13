@@ -1,8 +1,17 @@
 export default (user) => {
   const mySelf = `
   <div class="my-self">
-    <img src=${user.photoURL} class="user-photo">
-    <span class="name-user">${user.displayName}</span>
+    <img src="../img/wall1.jpg" class="user-photo-cover">
+    <img src=${user.photoURL} class="photo-user">
+    <div class="info-user">
+      <span class="name-user">${user.displayName}</span>
+      <i class="fas fa-envelope"></i><span>karengvcs@gmail.com</span>
+      <p class="info-user-p"></p>
+      <button>
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        Editar Perfil
+      </button>
+    </div>
   </div>`;
 
   const sectionCreatePost = `
@@ -10,7 +19,7 @@ export default (user) => {
         <span> Crear publicación</span>
         <div class="post-content">
           <div>
-            <img src="./img/avatar.png" class="post-user-photo">
+            <img src="${user.photoURL}" class="post-user-photo">
             <textarea class="text-post" contenteditable="true" name="textarea"  placeholder="¿Qué estas pensando?"></textarea>
             <!-- <div contenteditable class="edit-area"></div> -->
           </div>
@@ -48,8 +57,8 @@ export default (user) => {
     <ul id="menu">          
       <li class="option">
         <a href="#/Profile">
-          <img src="./img/login.png" class="user-photo">
-          <span>Elena Gordillo</span> 
+          <img src="${user.photoURL}" class="user-photo">
+          <span>${user.displayName}</span> 
         </a>
       </li>
       <li class="option"><a href="#/home"><i class='bx bxs-home' ></i>Inicio</a></li>
