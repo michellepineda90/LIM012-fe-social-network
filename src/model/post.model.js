@@ -8,4 +8,4 @@ export const deletePostBD = id => db.collection('posts').doc(id).delete();
 
 export const getPostBD = id => db.collection('posts').doc(id).get();
 
-export const updatePostBD = (id, data) => db.collection('posts').doc(id).set(data);
+export const updatePostBD = (id, data) => db.collection('posts').doc(id).update(data);

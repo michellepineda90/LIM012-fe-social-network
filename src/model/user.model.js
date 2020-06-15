@@ -27,17 +27,6 @@ export const signInWithFacebook = () => {
   return firebase.auth().signInWithPopup(provider);
 };
 
-// export const currentUser = () => {
-//   const user = firebase.auth().currentUser;
-//   console.log(user);
-//   const userData = {
-//     id: user.uid,
-//     name: (user.displayName === null) ? 'Anonymous' : user.displayName,
-//     email: user.email,
-//     photo: (user.photoURL === null) ? './img/avatar.png' : user.photoURL,
-//   };
-//   return userData;
-// };
 
 export const signOut = () => {
   firebase.auth().signOut()

@@ -80,7 +80,53 @@ input, button, textarea {
   cursor: pointer;
 }
 
+.screen-background .form-container button, .screen-background .form-container form .form-control input {
+  padding: 1em 1em 1em 2.5em;
+  width: 100%;
+  font-size: 1em;
+  max-width: 500px;
+  border-radius: 2em;
+  outline: none;
+}
+
+.hide {
+  display: none;
+}
+
+.posts-container .post .post-comments .comment-created, .posts-container .post .post-comments .create-comment-container {
+  display: flex;
+}
+
+.name-user {
+  display: block;
+  font-weight: 700;
+}
+
+.hidden {
+  display: none;
+}
+
+.right {
+  position: relative;
+  right: 0;
+}
+
+.main-btn {
+  cursor: pointer;
+  background: #0CA385;
+  color: whitesmoke;
+  border: none;
+}
+
+.ordinary-btn {
+  cursor: pointer;
+  background: white;
+  color: #0CA385;
+  border: 1px solid #0CA385;
+}
+
 .screen {
+  background-color: #e6f0ed;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -147,42 +193,48 @@ header nav .nav-bar {
 }
 header nav .nav-bar .menu-icon {
   position: absolute;
-  padding: 0.3em;
+  padding: 0.2em;
   font-size: 2em;
   color: white;
   left: 0;
 }
-header nav .nav-bar .menu-icon {
-  width: 1.2em;
+header nav .nav-bar .menu-icon:hover {
+  cursor: pointer;
 }
 header nav .nav-bar img.logo {
-  width: 3em;
+  width: 2em;
   padding: 0.3em;
 }
 header nav ul {
   list-style: none;
   display: none;
 }
+header nav ul .option {
+  padding: 0.5em;
+}
 header nav ul .option a {
-  display: block;
-  background: #0CA385;
-  padding: 1em;
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
   text-decoration: none;
   color: white;
-  font-family: "Roboto", sans-serif;
+  font-weight: bolder;
+  font-family: "Yantramanav", sans-serif;
   justify-content: baseline;
+}
+header nav ul .option a:hover {
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(10, 156, 127, 0.829);
 }
 header nav ul .option a .user-photo {
   width: 1.5em;
   height: 1.5em;
   border-radius: 30px;
+  margin-right: 0.3em;
 }
 header nav ul .option a i {
   margin-right: 10px;
-  font-size: 1.6em;
-}
-header nav ul .option a:hover {
-  background: #0ab895;
 }
 header nav ul li {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -401,7 +453,10 @@ section.content {
   background: #e6f0ed;
   padding: 60px 0.5em;
   width: 98%;
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+section.content:-webkit-scrollbar {
+  display: none;
 }
 section.content section {
   margin: 0.5em 0;
@@ -420,7 +475,7 @@ section.content .my-self img.user-photo {
   margin-right: 0.5em;
 }
 section.content .create-post-container {
-  font-family: "Roboto", sans-serif;
+  font-family: "Jaldi", sans-serif;
   color: #504e4e;
   background: white;
   font-weight: 500;
@@ -430,47 +485,96 @@ section.content .create-post-container {
   border: 1px solid rgba(153, 153, 153, 0.3);
   width: 100%;
 }
+section.content .create-post-container span {
+  font-weight: bolder;
+  font-size: medium;
+  margin: 0.5em;
+}
 section.content .create-post-container .post-content {
   border-top: 1px solid rgba(153, 153, 153, 0.3);
   padding: 0.5em;
   background: white;
 }
-section.content .create-post-container .post-content .text-post {
+section.content .create-post-container .post-content div {
+  display: flex;
+}
+section.content .create-post-container .post-content div img {
+  font-size: 1.5em;
+}
+section.content .create-post-container .post-content div .text-post {
+  overflow-y: hidden;
+  font-size: smaller;
   padding: 1em 0;
   border: none;
   width: 100%;
 }
 section.content .create-post-container .post-content .photo-container {
+  display: flex;
   overflow-x: auto;
   white-space: nowrap;
 }
 section.content .create-post-container .btn-container {
+  justify-content: space-between;
   border-top: 1px solid rgba(153, 153, 153, 0.3);
   display: flex;
-  border-radius: 0 0 10px 10px;
   padding: 0.5em;
 }
+section.content .create-post-container .btn-container .family-btn {
+  display: flex;
+}
 section.content .create-post-container .btn-container .btn {
+  display: flex;
+  align-items: center;
   background: #ecf3f1;
   padding: 0.5em 0.8em;
-  border-radius: 30px;
+  border-radius: 10px;
   margin: 0 0.2em;
 }
-section.content .create-post-container .btn-container .btn:hover {
-  background: #e1f1ed;
+section.content .create-post-container .btn-container .btn i {
+  font-size: 1.2em;
+}
+section.content .create-post-container .btn-container .opts:hover {
+  font-weight: 200;
+  color: #333;
+  cursor: pointer;
+  background-color: #e1f1ed;
 }
 section.content .create-post-container .btn-container .post-btn {
-  background: #0CA385;
+  position: relative;
+  right: 0;
+  background: rgba(12, 163, 133, 0.514);
   color: white;
 }
+section.content .create-post-container .btn-container .post-btn:hover {
+  cursor: pointer;
+  background-color: #0CA385;
+}
 
-.img-post {
+.div-img {
+  cursor: pointer;
+  width: max-content;
+  height: max-content;
+  position: relative;
+  margin-right: 0.3em;
+}
+.div-img:hover {
+  background-color: rgba(27, 26, 26, 0.349);
+}
+.div-img:hover i {
+  color: #ecf3f1;
+  font-weight: bolder;
+}
+.div-img i {
+  cursor: pointer;
+  padding: 0.2em;
+  position: absolute;
+  top: auto;
+  right: 0;
+  color: transparent;
+}
+.div-img .img-post {
   width: 100px;
   height: 100px;
-  display: inline-block;
-  float: none;
-  border-radius: 5px;
-  border: 1px solid #d1cdcd;
 }
 
 .select-box {
@@ -503,6 +607,20 @@ section.content .create-post-container .btn-container .post-btn {
 @media (min-width: 768px) {
   section.content {
     width: 80%;
+    display: flex;
+    justify-content: center;
+  }
+  section.content section.profile-section {
+    background-color: white;
+    position: sticky;
+    width: 30%;
+    height: 100%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  section.content section.posts-section {
+    padding: 1em;
+    width: 60%;
+    border-radius: 10px;
   }
 }
 .screen-background .form-container button, .screen-background .form-container form .form-control input {
@@ -668,7 +786,7 @@ section.content .create-post-container .btn-container .post-btn {
   text-align: center;
   font-size: 1em;
   font-family: "Roboto", sans-serif;
-  color: #333;
+  color: rgb(17, 11, 11);
   margin: 0.5em;
 }
 .screen-background .form-container .message-container {
@@ -684,7 +802,7 @@ section.content .create-post-container .btn-container .post-btn {
   text-align: center;
   font-size: 1em;
   font-family: "Roboto", sans-serif;
-  color: #333;
+  color: rgb(17, 9, 9);
   margin: 0.5em;
 }
 .screen-background .form-container .message-container .btn-send-email {
@@ -873,10 +991,11 @@ section.content .create-post-container .btn-container .post-btn {
   width: 100%;
   outline: none;
 }
-.modal .modal-footer .dropdown {
+
+.dropdown {
   position: relative;
 }
-.modal .modal-footer .dropdown .dropdown-menu {
+.dropdown .dropdown-menu {
   z-index: 3;
   position: absolute;
 }
