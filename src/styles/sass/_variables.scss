@@ -12,6 +12,7 @@ $color-hover1:rgb(225, 241, 237);
 $color-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
 $color-border: rgba(153, 153, 153, 0.300);
 $post-color: #F2F2F2;
+
 $jaldi-font: 'Jaldi', sans-serif;
 $yantra-font:'Yantramanav', sans-serif;
 
@@ -42,7 +43,10 @@ $color-btn-disabled:rgb(110, 240, 214);
 }
 
 .hidden{
-  display: none;
+  display: none !important;
+}
+.show{
+  display: block !important;
 }
 
 .right{
@@ -62,6 +66,9 @@ $color-btn-disabled:rgb(110, 240, 214);
     cursor: pointer;
     transform: scale(1.2);
   }
+}
+.liked{
+  color: rgb(238, 124, 124) !important;
 }
 
 .main-btn{

@@ -1,4 +1,4 @@
-export default (user) => {
+export default (user, page) => {
   const mySelf = `
   <div class="my-self">
     <img src="../img/wall1.jpg" class="user-photo-cover">
@@ -7,10 +7,9 @@ export default (user) => {
       <span class="name-user">${user.displayName}</span>
       <i class="fas fa-envelope"></i><span>karengvcs@gmail.com</span>
       <p class="info-user-p"></p>
-      <button>
-        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-        Editar Perfil
-      </button>
+      ${page === 'profile' ? `<button>
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar Perfil
+      </button>` : ''}
     </div>
   </div>`;
 
@@ -37,7 +36,7 @@ export default (user) => {
               <i class='bx bx-world' ></i>Público 
               <i class='bx bxs-down-arrow' ></i>
             </div>        
-            <ul class="dropdown-menu right hidden" id="dots-1">
+            <ul class="privacy-options left" id="dots-1">
               <li id="public"><i class='bx bx-world' ></i> Público</li>
               <li id="private"><i class='bx bxs-lock-alt' ></i>Privado</li>
             </ul>
@@ -55,7 +54,7 @@ export default (user) => {
     </div>
     <ul id="menu">          
       <li class="option">
-        <a href="#/Profile">
+        <a href="#/profile">
           <img src="${user.photoURL}" class="user-photo">
           <span>${user.displayName}</span> 
         </a>
@@ -77,8 +76,7 @@ export default (user) => {
       </section>
       <section class="posts-section">
       ${sectionCreatePost}
-      <div class="posts-container">
-      </div>
+      <div class="posts-container-home"></div>      
     </section>
   `;
 
