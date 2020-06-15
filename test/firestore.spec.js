@@ -9,7 +9,6 @@ const fixtureData = {
       __doc__: {
         user_a: {
           name: 'Luna123',
-          photoURL: 'photoURL',
           email: 'lunachan@gmail.com',
         },
       },
@@ -20,12 +19,16 @@ const fixtureData = {
 global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled: true });
 
 describe('registerUserBD', () => {
-  it('Debería porder agregar una nota', done => registerUserBD({ name: 'Git456' })
-    .then(() => getUsers(
-      (data) => {
+  it('Should register a new user in Firestore DB', done => registerUserBD('1234-Git', {
+    name: 'Git456',
+    email: 'git456@gmail.com',
+  })
+    .then(() => {
+      const callback = (data) => {
         const result = data.find(user => user.name === 'Git456');
         expect(result.name).toBe('Git456');
         done();
-      },
-    )));
+      };
+      getUsers(callback);
+    }));
 });

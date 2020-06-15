@@ -22,7 +22,8 @@ export default () => {
   menuBtn.addEventListener('click', () => {
     const menu = currentView.querySelector('#menu');
     const state = menu.style.display;
-    getUsers();
+    getUsers()
+      .then(data => console.log(data));
     menu.style.display = (state === 'block') ? 'none' : 'block';
   });
 
