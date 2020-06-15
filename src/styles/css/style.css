@@ -11,6 +11,58 @@
   display: none;
 }
 
+.posts-container-home .post .post-comments .comment-created, .posts-container-home .post .post-comments .create-comment-container {
+  display: flex;
+}
+
+.name-user {
+  display: block;
+  font-weight: 700;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+.right {
+  position: relative;
+  right: 0;
+}
+
+.modal .modal-footer button, .my-self .info-user button {
+  font-weight: bold;
+  margin: 0.2em;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.modal .modal-header i:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.liked {
+  color: #ee7c7c !important;
+}
+
+.main-btn {
+  cursor: pointer;
+  background: #0CA385;
+  color: whitesmoke;
+  border: none;
+}
+
+.ordinary-btn {
+  cursor: pointer;
+  background: white;
+  color: #0CA385;
+  border: 1px solid #0CA385;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,10 +70,26 @@
 }
 
 main {
-  display: flex;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
+}
+
+section#container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.bg-modal {
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 input, button, textarea {
@@ -43,6 +111,742 @@ input, button, textarea {
 
 .hide {
   display: none;
+}
+
+.posts-container-home .post .post-comments .comment-created, .posts-container-home .post .post-comments .create-comment-container {
+  display: flex;
+}
+
+.name-user {
+  display: block;
+  font-weight: 700;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+.right {
+  position: relative;
+  right: 0;
+}
+
+.modal .modal-footer button, .my-self .info-user button {
+  font-weight: bold;
+  margin: 0.2em;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.modal .modal-header i:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.liked {
+  color: #ee7c7c !important;
+}
+
+.main-btn {
+  cursor: pointer;
+  background: #0CA385;
+  color: whitesmoke;
+  border: none;
+}
+
+.ordinary-btn {
+  cursor: pointer;
+  background: white;
+  color: #0CA385;
+  border: 1px solid #0CA385;
+}
+
+.screen {
+  background-color: #e6f0ed;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: max-content;
+}
+
+.screen-background .form-container button, .screen-background .form-container form .form-control input {
+  padding: 1em 1em 1em 2.5em;
+  width: 100%;
+  font-size: 1em;
+  max-width: 500px;
+  border-radius: 2em;
+  outline: none;
+}
+
+.hide {
+  display: none;
+}
+
+.posts-container-home .post .post-comments .comment-created, .posts-container-home .post .post-comments .create-comment-container {
+  display: flex;
+}
+
+.name-user {
+  display: block;
+  font-weight: 700;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+.right {
+  position: relative;
+  right: 0;
+}
+
+.modal .modal-footer button, .my-self .info-user button {
+  font-weight: bold;
+  margin: 0.2em;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.modal .modal-header i:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.liked {
+  color: #ee7c7c !important;
+}
+
+.main-btn {
+  cursor: pointer;
+  background: #0CA385;
+  color: whitesmoke;
+  border: none;
+}
+
+.ordinary-btn {
+  cursor: pointer;
+  background: white;
+  color: #0CA385;
+  border: 1px solid #0CA385;
+}
+
+header {
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  background: #0CA385;
+}
+header nav {
+  min-width: 120px;
+}
+header nav .nav-bar {
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+header nav .nav-bar .menu-icon {
+  position: absolute;
+  padding: 0.2em;
+  font-size: 2em;
+  color: white;
+  left: 0;
+}
+header nav .nav-bar .menu-icon:hover {
+  cursor: pointer;
+}
+header nav .nav-bar img.logo {
+  width: 2em;
+  padding: 0.3em;
+}
+header nav ul {
+  list-style: none;
+  display: none;
+}
+header nav ul .option {
+  padding: 0.5em;
+}
+header nav ul .option a {
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+  font-family: "Yantramanav", sans-serif;
+  justify-content: baseline;
+}
+header nav ul .option a:hover {
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(10, 156, 127, 0.829);
+}
+header nav ul .option a .user-photo {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 30px;
+  margin-right: 0.3em;
+}
+header nav ul .option a i {
+  margin-right: 10px;
+}
+header nav ul li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@media (min-width: 768px) {
+  header {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  header nav {
+    background: #0CA385;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  header nav .nav-bar {
+    width: 5%;
+    display: inline-block;
+    border-bottom: none;
+  }
+  header nav .nav-bar .menu-icon {
+    display: none;
+  }
+  header nav .nav-bar img.logo {
+    padding: 0.5em;
+  }
+  header nav ul {
+    display: block;
+    overflow: hidden;
+  }
+  header nav ul li {
+    float: left;
+    border-bottom: none;
+  }
+  header nav ul li a {
+    background: none;
+  }
+}
+.screen-background .form-container button, .screen-background .form-container form .form-control input {
+  padding: 1em 1em 1em 2.5em;
+  width: 100%;
+  font-size: 1em;
+  max-width: 500px;
+  border-radius: 2em;
+  outline: none;
+}
+
+.hide {
+  display: none;
+}
+
+.posts-container-home .post .post-comments .comment-created, .posts-container-home .post .post-comments .create-comment-container {
+  display: flex;
+}
+
+.name-user {
+  display: block;
+  font-weight: 700;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+.right {
+  position: relative;
+  right: 0;
+}
+
+.modal .modal-footer button, .my-self .info-user button {
+  font-weight: bold;
+  margin: 0.2em;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.modal .modal-header i:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.liked {
+  color: #ee7c7c !important;
+}
+
+.main-btn {
+  cursor: pointer;
+  background: #0CA385;
+  color: whitesmoke;
+  border: none;
+}
+
+.ordinary-btn {
+  cursor: pointer;
+  background: white;
+  color: #0CA385;
+  border: 1px solid #0CA385;
+}
+
+.post-user-photo {
+  width: 2em;
+  height: 2em;
+  margin-right: 0.5em;
+  border-radius: 50px;
+  display: block;
+}
+
+.posts-container-home .post .post-header div.name-date-post span {
+  text-transform: capitalize;
+  color: #137a81;
+  font-weight: bolder;
+}
+
+.dropdown {
+  position: relative;
+  font-size: 1em;
+}
+.dropdown .select, .dropdown ul > li {
+  width: max-content;
+  cursor: pointer;
+}
+.dropdown .dropdown-menu, .dropdown .privacy-options {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  background: whitesmoke;
+  list-style: none;
+  border-radius: 10px;
+  width: max-content;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.479);
+  border: 1px solid rgba(0, 0, 0, 0.267);
+}
+.dropdown .dropdown-menu li, .dropdown .privacy-options li {
+  margin: 0;
+  padding: 0.5em 1em;
+}
+.dropdown .dropdown-menu li:hover, .dropdown .privacy-options li:hover {
+  color: #137a81;
+}
+
+.posts-container-home {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.posts-container-home .post {
+  width: 100%;
+  margin: 0.5em 0;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  background: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.posts-container-home .post .border {
+  border-bottom: 1px solid rgba(153, 153, 153, 0.3);
+}
+.posts-container-home .post .post-header {
+  border-radius: 5px 5px 0;
+  background: #F2F2F2;
+  display: flex;
+  align-items: center;
+}
+.posts-container-home .post .post-header > * {
+  margin: 0.5em;
+}
+.posts-container-home .post .post-header img.icon-photo-user {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 30px;
+}
+.posts-container-home .post .post-header div.name-date-post {
+  width: 100%;
+  flex-direction: column;
+}
+.posts-container-home .post .post-header div.name-date-post div {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+}
+.posts-container-home .post .post-header div.name-date-post div .dropdown {
+  position: relative;
+  display: inline-block;
+}
+.posts-container-home .post .post-header div.name-date-post div .dropdown .dropdown-menu {
+  position: absolute;
+}
+.posts-container-home .post .post-header div.name-date-post div .dropdown i:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+}
+.posts-container-home .post .post-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.posts-container-home .post .post-body .text-post-value {
+  width: 100%;
+  padding: 0.5em;
+}
+.posts-container-home .post .post-body img {
+  border: none;
+  border-radius: 0;
+  width: 90%;
+  height: 90%;
+}
+.posts-container-home .post .post-likes {
+  display: flex;
+  height: max-content;
+  position: relative;
+}
+.posts-container-home .post .post-likes div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.2em;
+  width: 50%;
+  font-family: "Jaldi", sans-serif !important;
+  padding: 0.5em;
+  font-weight: 600;
+  font-size: 0.8em;
+  color: #8d9292;
+}
+.posts-container-home .post .post-likes div i {
+  font-size: 1.5em !important;
+  margin-right: 0.1em;
+}
+.posts-container-home .post .post-likes div:hover {
+  cursor: pointer;
+  background-color: #f1f5f6;
+}
+.posts-container-home .post .post-comments {
+  display: none;
+}
+.posts-container-home .post .post-comments .create-comment-container {
+  padding: 0.5em;
+}
+.posts-container-home .post .post-comments .create-comment-container .input-comment {
+  width: 100%;
+  overflow: hidden;
+  resize: none;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: 1px solid rgba(153, 153, 153, 0.3);
+}
+.posts-container-home .post .post-comments .comment-created {
+  padding: 0.5em;
+}
+.posts-container-home .post .post-comments .comment-created span {
+  background: #e1f1ed;
+  padding: 1em;
+  border-radius: 30px;
+}
+.posts-container-home .post .post-comments .comment-created span .name-user {
+  padding: 0;
+}
+
+section.content {
+  background: #e6f0ed;
+  padding: 60px 0.5em;
+  width: 98%;
+}
+section.content section {
+  margin: 0.5em 0;
+}
+section.content .my-self {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
+}
+section.content .my-self img.user-photo {
+  width: 3em;
+  height: 3em;
+  border-radius: 50px;
+  margin-right: 0.5em;
+}
+section.content .create-post-container {
+  font-family: "Jaldi", sans-serif;
+  color: #504e4e;
+  background: white;
+  font-weight: 500;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 1em 0 0;
+  border-radius: 5px;
+  border: 1px solid rgba(153, 153, 153, 0.3);
+  width: 100%;
+}
+section.content .create-post-container span {
+  font-weight: bolder;
+  font-size: medium;
+  margin: 0.5em;
+}
+section.content .create-post-container .post-content {
+  border-top: 1px solid rgba(153, 153, 153, 0.3);
+  padding: 0.5em;
+  background: white;
+}
+section.content .create-post-container .post-content div {
+  display: flex;
+}
+section.content .create-post-container .post-content div img {
+  font-size: 1.5em;
+}
+section.content .create-post-container .post-content div .text-post {
+  overflow-y: hidden;
+  font-size: smaller;
+  padding: 1em 0;
+  border: none;
+  width: 100%;
+}
+section.content .create-post-container .post-content .photo-container {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+section.content .create-post-container .btn-container {
+  justify-content: space-between;
+  border-top: 1px solid rgba(153, 153, 153, 0.3);
+  display: flex;
+  padding: 0.5em;
+}
+section.content .create-post-container .btn-container .family-btn {
+  display: flex;
+}
+section.content .create-post-container .btn-container .btn {
+  display: flex;
+  align-items: center;
+  background: #ecf3f1;
+  padding: 0.5em 0.8em;
+  border-radius: 10px;
+  margin: 0 0.2em;
+}
+section.content .create-post-container .btn-container .btn i {
+  font-size: 1.2em;
+}
+section.content .create-post-container .btn-container .opts:hover {
+  font-weight: 200;
+  color: #333;
+  cursor: pointer;
+  background-color: #e1f1ed;
+}
+section.content .create-post-container .btn-container .post-btn {
+  position: relative;
+  right: 0;
+  background: rgba(12, 163, 133, 0.514);
+  color: white;
+}
+section.content .create-post-container .btn-container .post-btn:hover {
+  cursor: pointer;
+  background-color: #0CA385;
+}
+
+.div-img {
+  cursor: pointer;
+  width: max-content;
+  height: max-content;
+  position: relative;
+  margin-right: 0.3em;
+}
+.div-img:hover {
+  background-color: rgba(27, 26, 26, 0.349);
+}
+.div-img:hover i {
+  color: #ecf3f1;
+  font-weight: bolder;
+}
+.div-img i {
+  cursor: pointer;
+  padding: 0.2em;
+  position: absolute;
+  top: auto;
+  right: 0;
+  color: transparent;
+}
+.div-img .img-post {
+  width: 100px;
+  height: 100px;
+}
+
+.select-box {
+  position: relative;
+}
+.select-box .select-button {
+  display: flex;
+}
+.select-box .select-button div {
+  padding: 0 0.3em;
+}
+.select-box .options {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 0.2em;
+  z-index: 1;
+  position: absolute;
+  display: none;
+  background: white;
+  border-radius: 5px;
+}
+.select-box .options .option {
+  padding: 0.5em;
+}
+.select-box .options .option:hover {
+  background: #0CA385;
+  color: white;
+  border-radius: 3px;
+}
+
+.my-self {
+  background-color: white;
+  border-radius: 5px;
+  padding: 0.5em;
+  display: flex;
+  flex-wrap: wrap;
+  height: max-content;
+  position: relative;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+.my-self .user-photo-cover {
+  width: 100%;
+  height: 200px;
+}
+.my-self .photo-user {
+  width: 100px;
+  height: 100px;
+  border-radius: 80px;
+  position: absolute;
+  top: 52px;
+  border: 3px solid white;
+}
+.my-self .info-user {
+  padding: 1em;
+  width: 100%;
+  height: 100px;
+  position: relative;
+  text-align: center;
+}
+.my-self .info-user .name-user {
+  font-size: 1.5em;
+  text-transform: capitalize;
+  color: teal;
+}
+.my-self .info-user i {
+  color: #0CA385;
+  margin: 0.5em;
+}
+.my-self .info-user button {
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid #0CA385;
+  color: #0CA385;
+}
+.my-self .info-user button:hover {
+  transform: scale(1.01);
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  section.content {
+    width: 80%;
+  }
+}
+@media (min-width: 768px) {
+  section.content {
+    display: flex;
+    justify-content: center;
+  }
+  section.content section.profile-section {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0.6em;
+    width: 50%;
+    height: 100%;
+    padding: 0.5em;
+  }
+  section.content section.posts-section {
+    padding: 0 0.5em;
+    width: 50%;
+    height: max-content;
+    border-radius: 10px;
+  }
+}
+@media (min-width: 1024px) {
+  section.content {
+    width: 60%;
+  }
+}
+.screen-background .form-container button, .screen-background .form-container form .form-control input {
+  padding: 1em 1em 1em 2.5em;
+  width: 100%;
+  font-size: 1em;
+  max-width: 500px;
+  border-radius: 2em;
+  outline: none;
+}
+
+.hide {
+  display: none;
+}
+
+.posts-container-home .post .post-comments .create-comment-container, .posts-container-home .post .post-comments .comment-created {
+  display: flex;
+}
+
+.name-user {
+  display: block;
+  font-weight: 700;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+.right {
+  position: relative;
+  right: 0;
+}
+
+.modal .modal-footer button, .my-self .info-user button {
+  font-weight: bold;
+  margin: 0.2em;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.modal .modal-header i:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.liked {
+  color: #ee7c7c !important;
+}
+
+.main-btn {
+  cursor: pointer;
+  background: #0CA385;
+  color: whitesmoke;
+  border: none;
+}
+
+.ordinary-btn {
+  cursor: pointer;
+  background: white;
+  color: #0CA385;
+  border: 1px solid #0CA385;
 }
 
 .screen-background {
@@ -269,13 +1073,6 @@ input, button, textarea {
     margin: 0.5em;
   }
 }
-.screen {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
 .screen-background .form-container form .form-control input, .screen-background .form-container button {
   padding: 1em 1em 1em 2.5em;
   width: 100%;
@@ -289,117 +1086,7 @@ input, button, textarea {
   display: none;
 }
 
-header {
-  z-index: 3;
-  position: fixed;
-  width: 100%;
-  background: #0CA385;
-}
-header nav {
-  min-width: 120px;
-}
-header nav .nav-bar {
-  text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-header nav .nav-bar .menu-icon {
-  position: absolute;
-  padding: 0.3em;
-  font-size: 2em;
-  color: white;
-  left: 0;
-}
-header nav .nav-bar .menu-icon {
-  width: 1.2em;
-}
-header nav .nav-bar img.logo {
-  width: 3em;
-  padding: 0.3em;
-}
-header nav ul {
-  list-style: none;
-  display: none;
-}
-header nav ul .option a {
-  display: block;
-  background: #0CA385;
-  padding: 1em;
-  text-decoration: none;
-  color: white;
-  font-family: "Roboto", sans-serif;
-  justify-content: baseline;
-}
-header nav ul .option a .user-photo {
-  width: 1.5em;
-  height: 1.5em;
-  border-radius: 30px;
-}
-header nav ul .option a i {
-  margin-right: 10px;
-  font-size: 1.6em;
-}
-header nav ul .option a:hover {
-  background: #0ab895;
-}
-header nav ul li {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-@media (min-width: 768px) {
-  header {
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-  }
-  header nav {
-    background: #0CA385;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  header nav .nav-bar {
-    width: 5%;
-    display: inline-block;
-    border-bottom: none;
-  }
-  header nav .nav-bar .menu-icon {
-    display: none;
-  }
-  header nav .nav-bar img.logo {
-    padding: 0.5em;
-  }
-  header nav ul {
-    display: block;
-    overflow: hidden;
-  }
-  header nav ul li {
-    float: left;
-    border-bottom: none;
-  }
-  header nav ul li a {
-    background: none;
-  }
-}
-.screen-background .form-container form .form-control input, .screen-background .form-container button {
-  padding: 1em 1em 1em 2.5em;
-  width: 100%;
-  font-size: 1em;
-  max-width: 500px;
-  border-radius: 2em;
-  outline: none;
-}
-
-.hide {
-  display: none;
-}
-
-.post-user-photo {
-  width: 2em;
-  height: 2em;
-  margin-right: 0.5em;
-  border-radius: 50px;
-  display: block;
-}
-
-section.content .posts-container .post .post-comments .comment-created, section.content .posts-container .post .post-comments .create-comment-container {
+.posts-container-home .post .post-comments .create-comment-container, .posts-container-home .post .post-comments .comment-created {
   display: flex;
 }
 
@@ -408,198 +1095,103 @@ section.content .posts-container .post .post-comments .comment-created, section.
   font-weight: 700;
 }
 
-section.content {
-  background: #e6f0ed;
-  padding: 60px 0.5em;
-  width: 98%;
-  overflow-y: scroll;
+.hidden {
+  display: none !important;
 }
-section.content section {
-  margin: 0.5em 0;
+
+.show {
+  display: block !important;
 }
-section.content .my-self {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5em;
+
+.right {
+  position: relative;
+  right: 0;
 }
-section.content .my-self img.user-photo {
-  width: 3em;
-  height: 3em;
-  border-radius: 50px;
-  margin-right: 0.5em;
-}
-section.content .create-post-container {
-  font-family: "Roboto", sans-serif;
-  color: #504e4e;
-  background: white;
-  font-weight: 500;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-  padding: 1em 0 0;
+
+.modal .modal-footer button, .my-self .info-user button {
+  font-weight: bold;
+  margin: 0.2em;
   border-radius: 5px;
-  border: 1px solid rgba(153, 153, 153, 0.3);
-  width: 100%;
-}
-section.content .create-post-container .post-content {
-  border-top: 1px solid rgba(153, 153, 153, 0.3);
-  padding: 0.5em;
-  background: white;
-}
-section.content .create-post-container .post-content .text-post {
-  padding: 1em 0;
-  border: none;
-  width: 100%;
-}
-section.content .create-post-container .post-content .photo-container {
-  overflow-x: auto;
-  white-space: nowrap;
-}
-section.content .create-post-container .btn-container {
-  border-top: 1px solid rgba(153, 153, 153, 0.3);
-  display: flex;
-  border-radius: 0 0 10px 10px;
   padding: 0.5em;
 }
-section.content .create-post-container .btn-container .btn {
-  background: #ecf3f1;
-  padding: 0.5em 0.8em;
-  border-radius: 30px;
-  margin: 0 0.2em;
+
+.modal .modal-header i:hover {
+  cursor: pointer;
+  transform: scale(1.2);
 }
-section.content .create-post-container .btn-container .btn:hover {
-  background: #e1f1ed;
+
+.liked {
+  color: #ee7c7c !important;
 }
-section.content .create-post-container .btn-container .post-btn {
+
+.main-btn {
+  cursor: pointer;
   background: #0CA385;
-  color: white;
-}
-section.content .posts-container {
-  display: flex;
-  flex-direction: column-reverse;
-}
-section.content .posts-container .post {
-  margin: 0.5em 0;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-  background: white;
-  border-radius: 5px;
-}
-section.content .posts-container .post .border {
-  border-bottom: 1px solid rgba(153, 153, 153, 0.3);
-}
-section.content .posts-container .post .post-header {
-  padding: 0.5em;
-  display: flex;
-  flex-direction: row;
-  background: #F2F2F2;
-  border-radius: 5px 5px 0;
-}
-section.content .posts-container .post .post-header .name-user-post {
-  width: 98%;
-}
-section.content .posts-container .post .post-header .name-user-post .name-user {
-  width: 100%;
-}
-section.content .posts-container .post .post-header .name-user-post .row {
-  display: flex;
-}
-section.content .posts-container .post .post-header .name-user-post .row .select-button {
-  background: yellow;
-}
-section.content .posts-container .post .post-header .settings-post {
-  background: red;
-  width: 2em;
-}
-section.content .posts-container .post .post-body {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-section.content .posts-container .post .post-body .text-post-value {
-  width: 100%;
-  padding: 0.5em;
-}
-section.content .posts-container .post .post-body img {
+  color: whitesmoke;
   border: none;
-  border-radius: 0;
-  width: 90%;
-  height: 90%;
 }
-section.content .posts-container .post .post-likes {
-  padding: 0.5em 1em;
-  font-weight: 500;
-  font-family: "Roboto", sans-serif;
-  font-size: 1.2em;
+
+.ordinary-btn {
+  cursor: pointer;
+  background: white;
+  color: #0CA385;
+  border: 1px solid #0CA385;
 }
-section.content .posts-container .post .post-likes .fa-heart {
-  color: #ee6969;
-}
-section.content .posts-container .post .post-likes .fa-comment-o {
-  color: #a6aaaa;
-}
-section.content .posts-container .post .post-comments .create-comment-container {
-  padding: 0.5em;
-}
-section.content .posts-container .post .post-comments .create-comment-container .input-comment {
-  width: 100%;
-  overflow: hidden;
-  resize: none;
-  padding: 0.5em;
+
+.modal {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
+  background-color: white;
   border: 1px solid rgba(153, 153, 153, 0.3);
+  width: 90%;
 }
-section.content .posts-container .post .post-comments .comment-created {
+.modal .modal-header, .modal .modal-footer {
   padding: 0.5em;
+  background: #F2F2F2;
+  font-weight: bold;
+  color: #080827;
 }
-section.content .posts-container .post .post-comments .comment-created span {
-  background: #e1f1ed;
+.modal .modal-body {
   padding: 1em;
-  border-radius: 30px;
+  text-align: center;
 }
-section.content .posts-container .post .post-comments .comment-created span .name-user {
-  padding: 0;
+.modal .modal-footer {
+  display: flex;
+  justify-content: flex-end;
 }
-
-.img-post {
-  width: 100px;
-  height: 100px;
-  display: inline-block;
-  float: none;
-  border-radius: 5px;
-  border: 1px solid #d1cdcd;
+.modal-delete {
+  max-width: 400px;
 }
 
-.select-box {
+.modal-edit {
+  max-width: 600px;
+}
+
+.modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+}
+.modal .modal-body {
+  display: flex;
+}
+.modal .modal-body img {
+  width: 2em;
+  height: 2em;
+}
+.modal .modal-body div[contenteditable] {
+  max-height: 200px;
+  text-align: left;
+  overflow: hidden;
+  width: 100%;
+  outline: none;
+}
+
+.dropdown {
   position: relative;
 }
-.select-box .select-button {
-  display: flex;
-}
-.select-box .select-button div {
-  padding: 0 0.3em;
-}
-.select-box .options {
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-  margin-top: 0.2em;
-  z-index: 1;
+.dropdown .dropdown-menu {
+  z-index: 3;
   position: absolute;
-  display: none;
-  background: white;
-  border-radius: 5px;
-}
-.select-box .options .option {
-  padding: 0.5em;
-}
-.select-box .options .option:hover {
-  background: #0CA385;
-  color: white;
-  border-radius: 3px;
-}
-
-@media (min-width: 768px) {
-  section.content {
-    width: 80%;
-  }
 }
 
 /*# sourceMappingURL=style.css.map */

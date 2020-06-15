@@ -11,7 +11,11 @@ $color-hover:rgb(10, 184, 149);
 $color-hover1:rgb(225, 241, 237);
 $color-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
 $color-border: rgba(153, 153, 153, 0.300);
-$post-color: rgba(126, 123, 123, 0.5);
+$post-color: #F2F2F2;
+
+$jaldi-font: 'Jaldi', sans-serif;
+$yantra-font:'Yantramanav', sans-serif;
+
 
 $breakpoint-tablet:768px;
 $color-btn-disabled:rgb(110, 240, 214);
@@ -26,6 +30,59 @@ $color-btn-disabled:rgb(110, 240, 214);
 }
 .hide{
   display: none;
+}
+
+
+%flex {
+  display: flex;
+}
+
+.name-user{
+  display: block;  
+  font-weight: 700;
+}
+
+.hidden{
+  display: none !important;
+}
+.show{
+  display: block !important;
+}
+
+.right{
+  position: relative;
+  right: 0;
+} 
+
+%ordinary-btn{
+  font-weight: bold;
+  margin: .2em;
+  border-radius: 5px;
+  padding: .5em;
+}
+
+%grow{
+  &:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+}
+.liked{
+  color: rgb(238, 124, 124) !important;
+}
+
+.main-btn{
+  cursor: pointer;
+  background: $primary-color;
+  color: whitesmoke;
+  border: none;
+}
+
+.ordinary-btn{
+  cursor: pointer;
+  background: white;
+  color:$primary-color;
+  border: 1px solid $primary-color;
 }
 
 

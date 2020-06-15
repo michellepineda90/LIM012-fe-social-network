@@ -1,13 +1,15 @@
+@import '../variables';
 
-
-.screen{    
+.screen{   
+  background-color:$color-background1;  
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: max-content;
 }
 
 
 
+
 @import '../layouts/header';
-@import '../layouts/content'
+@import '../layouts/content';
