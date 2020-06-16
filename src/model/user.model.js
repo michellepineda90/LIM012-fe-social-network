@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
-import { auth } from '../firebaseInit.js';
+import { auth, db } from '../firebaseInit.js';
+import { objToArray } from '../utils/array.js';
 
 export const getCurrentUser = () => auth.currentUser;
 
@@ -13,16 +14,9 @@ export const createUser = user => auth.createUserWithEmailAndPassword(user.email
     photoURL: 'https://firebasestorage.googleapis.com/v0/b/red-social-32aa8.appspot.com/o/iconfinder_11_avatar_2754576.png?alt=media&token=454a743a-437f-4c21-8dfb-d26e33a0a806',
   }));
 
-// export const registerUserBD = (idUser, data) => db.collection('users').doc(idUser).set(data);
+export const registerUserBD = (idUser, data) => db.collection('users').doc(idUser).set(data);
 
-// export const getUsers = callback => db.collection('users').onSnapshot((snapshot) => {
-//   const changes = snapshot.docChanges();
-//   changes.forEach((change) => {
-//     callback(change.doc.data());
-//   });
-// });
-
-export const getUsers = () => new Promise(resolve => db.collection('users').onSnapshot(snapshot => resolve(snapshot.docChanges())));
+export const getUsers = () => db.collection('users').get().then(snapshot => objToArray(snapshot.data));
 
 export const sendConfirmationEmail = () => auth.currentUser.sendEmailVerification();
 
