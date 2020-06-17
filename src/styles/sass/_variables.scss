@@ -45,6 +45,10 @@ $color-btn-disabled:rgb(110, 240, 214);
   display: none;
 }
 
+.show{
+  display: block !important;
+}
+
 .right{
   position: relative;
   right: 0;

@@ -24,9 +24,9 @@
   ul{
     z-index: 1;
     margin: 0;
-    background: whitesmoke;
-    // display: none;
     padding: 0;
+    background: whitesmoke;
+    display: none;
     list-style: none; 
     border-radius: 10px;
     width: max-content;
@@ -95,7 +95,7 @@
       .text-post-value{ 
         width: 100%;
         padding:.5em;
-       }
+        }
       img{
         border: none;
         border-radius: 0;
@@ -103,18 +103,33 @@
       }          
     }
     .post-likes{
-        padding: .5em 1em;
-        font-weight: 500;
-        font-family: $main-font;
-        font-size: 1.2em;
-        .fa-heart{
-          color: rgb(238, 105, 105);
-        }
-        .fa-comment-o{
-          color: rgb(166, 170, 170);
-        }      
+      display: flex;
+      height: max-content;
+      position: relative;
+      div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: .2em;
+        width: 50%;
+        font-family: $jaldi-font !important;
+        padding: .5em;
+        font-weight: 600;
+        font-size: .8em;
+        color: rgb(141, 146, 146);
+        i{          
+          font-size: 1.5em !important;
+          margin-right: .1em;
+        }     
+        &:hover{
+          cursor: pointer;
+          background-color: rgb(241, 245, 246);
+        }     
+
+      }   
     }
     .post-comments{
+      display: none;
       .create-comment-container{
         padding: .5em;
         @extend %flex;
@@ -125,7 +140,12 @@
           padding: .5em;
           border-radius: 5px;
           border: 1px solid $color-border;
-        }        
+        }
+        i{
+          color: $primary-color;
+          font-size: 1.5em;
+          padding: .5em;
+        }     
       }
       .comment-created{
         padding: .5em;
@@ -136,12 +156,12 @@
           border-radius: 30px;
           .name-user{ padding: 0; }
         }
-
+  
       }  
     }
   }
+  
 }
-
 
 
 section.content{
