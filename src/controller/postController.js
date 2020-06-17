@@ -1,11 +1,13 @@
 /* eslint-disable no-console */
 import { auth } from '../firebaseInit.js';
 import {
-  createPostBD, deletePostBD, getPostBD, updatePostBD, likedPost,
+  createPostBD, deletePostBD, getPostBD, updatePostBD, likedPost, addComment,
 } from '../model/post.model.js';
 import { uploadImage } from '../model/storage-post.js';
 // import { views } from '../view/index.js';
 
+const commentText = document.getElementById('comment-input');
+const commentBtn = document.getElementById('comment-btn');
 
 // crea un nuevo post
 export const createPost = (user, text, images, statePrivacity) => {
@@ -13,7 +15,11 @@ export const createPost = (user, text, images, statePrivacity) => {
     textContent: text,
     imageContent: '',
     likes: [1, 2, 3, 4, 5],
-    comments: {},
+    comments: [{
+      userName: auth.currentUser.displayName,
+      userPhoto: auth.currentUser.photoURL,
+      text: commentText.value,
+    }],
     privacity: statePrivacity,
     date: firebase.firestore.FieldValue.serverTimestamp(),
     nameUser: user.displayName,
@@ -86,6 +92,14 @@ const dropdownDots = (idPost, idUser) => {
   return drop;
 };
 
+// COMMENTS
+
+// commentText.addEventListener('submit', () => {
+//   if (e.keyCode === 13) {
+//     addComment(postId, postObj); // the parameters for addComment
+//   }
+// });
+
 const getAllComments = (comments) => {
   let allComments = '';
   comments.forEach((com) => {
@@ -98,6 +112,7 @@ const getAllComments = (comments) => {
         </span>
       </div>`;
   });
+
   return allComments;
 };
 
@@ -133,8 +148,9 @@ export const post = (postObj, postId) => {
     </div>
     <div class="post-comments ">    
       <div class="create-comment-container border">
-        <img src="${postObj.photoUser}" class="post-user-photo">
-        <textarea type="text" class="input-comment" placeholder="Escribre un comentario"></textarea>
+        <img src="${auth.currentUser.userPhoto}" class="post-user-photo">
+          <textarea type="text" class="comment-input" placeholder="Escribe un comentario"></textarea>
+          <button type="button" class="comment-btn">Publicar</button>
       </div>
       </div>`;
 

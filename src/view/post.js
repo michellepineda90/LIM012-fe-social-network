@@ -61,7 +61,8 @@
 //     <div class="post-comments ">    
 //       <div class="create-comment-container border">
 //         <img src="${postObj.photoUser}" class="post-user-photo">
-//         <textarea type="text" class="input-comment" placeholder="Escribre un comentario"></textarea>
+//         <textarea type="text" id="comment-input" class="input-comment" placeholder="Escribe un comentario"></textarea>
+//         <button type="button" class="comment-btn">Publicar</button>
 //       </div>
 //       ${getAllComments(postObj.comments)}
 //       </div>`;
