@@ -1,15 +1,42 @@
 import { views } from '../view/index.js';
-import { post } from '../view/post.js';
-import { createPost, setStatePrivacity } from './postController.js';
+import { uploadImage } from '../model/storage-post.js';
 import { signOut, getCurrentUser } from '../model/user.model.js';
-import { getAllPostsBD } from '../model/post.model.js';
+import {
+  post, modalEdit, modalDelete, setStatePrivacity,
+} from '../view/post.js';
+import {
+  createPostBD, deletePostBD, updatePostBD, getAllPostsBD,
+} from '../model/post.model.js';
+
+const createPost = (user, text, images, statePrivacity) => {
+  const postObj = {
+    textContent: text,
+    imageContent: '',
+    likes: 0,
+    comments: [],
+    privacity: statePrivacity,
+    date: firebase.firestore.FieldValue.serverTimestamp(),
+    nameUser: user.displayName,
+    idUser: user.uid,
+    photoUser: user.photoURL,
+  };
+  if (images[0]) {
+    uploadImage(images[0])
+      .then((url) => {
+        postObj.imageContent = url;
+        createPostBD(postObj);
+      });
+  } else {
+    createPostBD(postObj);
+  }
+};
 
 
-export default () => {
+export default (page) => {
   // llama a la BD para mostrar todos los post registrados
   const user = getCurrentUser();
 
-  const currentView = views.homeView(user);
+  const currentView = views.homeView(user, page);
   const menuBtn = currentView.querySelector('.menu-icon');
 
   const uploadImgBtn = currentView.querySelector('#upload-img-btn');
@@ -40,14 +67,16 @@ export default () => {
     container.append(img);
   });
 
+  const btnSalir = currentView.querySelector('#btn-salir');
+  btnSalir.addEventListener('click', signOut);
   // boton para hacer una publicacion enviando los datos insertados(imagen o texto)
-  createPostBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
+  createPostBtn.addEventListener('click', () => {
     const photoContainer = currentView.querySelector('.photo-container');
     const images = uploadImg.files;
     const textPost = currentView.querySelector('.text-post');
     const privacity = currentView.querySelector('div.privacy');
     if (textPost.value || images.length > 0) {
+      console.log('**creando nueva publicacion ***');
       createPost(user, textPost.value, images, privacity.id);
       textPost.value = '';
       privacity.innerHTML = setStatePrivacity('public');
@@ -57,64 +86,137 @@ export default () => {
     }
   });
 
-  const btnSalir = currentView.querySelector('#btn-salir');
-  btnSalir.addEventListener('click', signOut);
+  const bgModal = document.querySelector('.bg-modal');
 
+  const editPostModal = (postId) => {
+    const divRef = divPostsContainer.querySelector(`#${postId}`);
+    const postMessage = divRef.querySelector('p');
+    const privacy = divRef.querySelector('.privacy-icon');
 
-  const updatePost = (doc) => {
-    console.log('post que se edita', doc.id);
-    const divPost = divPostsContainer.querySelector(`#${doc.id}`);
-    divPost.querySelector('p').textContent = doc.data().textContent;
-    const priBtn = divPost.querySelector('i.privacy-icon');
-    priBtn.outerHTML = `<i class='bx ${doc.data().privacity === 'public' ? 'bx-world' : 'bxs-lock-alt'} privacy-icon'></i>`;
+    // Elementos definidos de la ventana modal
+    const modal = modalEdit(postMessage.textContent, privacy.id);
+    const saveBtn = modal.querySelector('button#save');
+    const crossBtn = modal.querySelector('i#close');
+    bgModal.appendChild(modal);
+
+    console.log('***Editando Post***');
+    saveBtn.addEventListener('click', () => {
+      const divEditable = modal.querySelector('.edit-area');
+      const privacyBtn = modal.querySelector('button.privacy');
+
+      const data = {
+        textContent: divEditable.textContent,
+        privacity: privacyBtn.id,
+      };
+      updatePostBD(postId, data)
+        .then(() => {
+          postMessage.textContent = data.textContent;
+          bgModal.style.display = 'none';
+        });
+    });
+
+    crossBtn.addEventListener('click', () => {
+      bgModal.removeChild(modal);
+      bgModal.style.display = 'none';
+    });
   };
+  // const editPostModal = (postId) => {
+  //   const divRef = divPostsContainer.querySelector(`#${postId}`);
+  //   const postMessage = divRef.querySelector('p');
 
-  //  muestre el post creado en la interface
-  const renderPost = (doc) => {
-    const divPost = document.createElement('div');
-    divPost.classList.add('post');
-    divPost.id = doc.id;
-    divPost.innerHTML = post(doc.data(), doc.id);
-    divPostsContainer.appendChild(divPost);
-  };
+  //   const modalEdit = bgModal.querySelector('.modal-edit');
+  //   modalEdit.classList.remove('hidden');
+  //   const editArea = modalEdit.querySelector('.edit-area');
+  //   const saveBtn = modalEdit.querySelector('button#save');
+  //   const closeBtn = modalEdit.querySelector('#close');
 
-  // muestra todos los post registrados en la BD
-  // const renderAllPosts = () => getAllPostsBD()
-  //   .onSnapshot((snapshot) => {
-  //     const changes = snapshot.docChanges();
-  //     changes.forEach((change) => {
-  //       if (change.type === 'added') {
-  //         renderPost(change.doc);
-  //       } if (change.type === 'removed') {
-  //         const divPost = divPostsContainer.querySelector(`#${change.doc.id}`);
-  //         divPostsContainer.removeChild(divPost);
-  //       } if (change.type === 'modified') {
-  //         updatePostView(change.doc);
-  //       }
-  //     });
+  //   editArea.textContent = postMessage.textContent;
+
+  //   closeBtn.addEventListener('click', () => {
+  //     modalEdit.classList.add('hidden');
+  //     bgModal.style.display = 'none';
   //   });
-  const renderAllPosts = () => {
-    const allPosts = getAllPostsBD();
-    allPosts.onSnapshot((querySnapshot) => {
-      querySnapshot.docChanges().forEach((change) => {
-        if (change.type === 'added') {
-          renderPost(change.doc);
-          console.log('New Post', change.doc.data());
-        }
-        if (change.type === 'modified') {
-          updatePost(change.doc);
-          console.log('Modified Post', change.doc.data());
-        }
-        if (change.type === 'removed') {
-          const divPost = divPostsContainer.querySelector(`#${change.doc.id}`);
-          divPostsContainer.removeChild(divPost);
-          console.log('Removed Post', change.doc.data());
-        }
-      });
+  //   console.log('***Editando Post***');
+  //   saveBtn.addEventListener('click', (e) => {
+  //     e.stopPropagation();
+  //     const data = { textContent: editArea.textContent };
+  //     console.log(` ${postId} => ${postMessage.textContent}`);
+  //     updatePostBD(postId, data)
+  //       .then(() => {
+  //         modalEdit.classList.add('hidden');
+  //         bgModal.style.display = 'none';
+  //       });
+  //   });
+  // };
+
+  const deletePost = (id) => {
+    const modal = modalDelete();
+    bgModal.appendChild(modal);
+    const deletePostBtn = modal.querySelector('button#delete');
+    const cancelBtn = modal.querySelector('button#cancel');
+
+    cancelBtn.addEventListener('click', () => {
+      bgModal.removeChild(modal);
+      bgModal.style.display = 'none';
+    });
+
+    deletePostBtn.addEventListener('click', () => {
+      deletePostBD(id)
+        .then(() => {
+          // bgModal.removeChild(modal);
+          bgModal.style.display = 'none';
+        })
+        .catch(err => console.log(err));
     });
   };
 
-  renderAllPosts();
+
+  getAllPostsBD(page).onSnapshot((querySnapshot) => {
+    divPostsContainer.innerHTML = '';
+    querySnapshot.forEach((doc) => {
+      // console.log(`${doc.id} => ${doc.data().textContent}`);
+      divPostsContainer.appendChild(post(doc.data(), doc.id));
+    });
+  });
+
+
+  document.addEventListener('click', (e) => {
+    const element = e.target;
+    if (element.classList.contains('setting-post')) {
+      const dropdown = element.parentNode;
+      const menu = dropdown.querySelector('ul');
+      menu.classList.toggle('show');
+      console.log('clicked');
+      const options = menu.querySelectorAll('li');
+      options.forEach((option) => {
+        option.addEventListener('click', () => {
+          bgModal.style.display = 'flex';
+          bgModal.innerHTML = '';
+          if (option.id === 'delete') {
+            deletePost(option.parentNode.id);
+            // bgModal.style.display = 'none';
+          } else if (option.id === 'edit') {
+            editPostModal(option.parentNode.id);
+          }
+          menu.classList.remove('show');
+        });
+      });
+    } else if (element.classList.contains('privacy')) {
+      const dropdown = element.parentNode;
+      const menu = dropdown.querySelector('ul');
+      menu.classList.toggle('show');
+      // console.log('clicked');
+      const options = menu.querySelectorAll('li');
+      options.forEach((option) => {
+        option.addEventListener('click', () => {
+          element.innerHTML = setStatePrivacity(option.id);
+          element.id = option.id;
+          menu.classList.remove('show');
+        });
+      });
+    }
+
+  });
 
   return currentView;
 };
