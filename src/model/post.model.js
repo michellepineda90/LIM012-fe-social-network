@@ -5,6 +5,7 @@ export const createPostBD = postObj => db.collection('posts')
   .then(() => console.log('se creo post con exito'))
   .catch(err => console.log('hubo error al crear post', err));
 
+// export const getAllPostsBD = (route) => db.collection('posts').orderBy('date');
 export const getAllPostsBD = (route) => {
   console.log('estamos en la pagina ', route);
   const collectionRef = db.collection('posts');
@@ -16,23 +17,12 @@ export const getAllPostsBD = (route) => {
   return collectionRef.where('privacity', '==', 'public').orderBy('date', 'asc');
 };
 
-export const deletePostBD = id => db.collection('posts').doc(id).delete();
+export const deletePostBD = id => db.collection('posts').doc(id).delete()
+  .then(() => console.log('Post eliminado!!'))
+  .catch(() => console.log('Error al eliminar post!!'));
 
 export const getPostBD = id => db.collection('posts').doc(id).get();
 
-export const updatePostBD = (id, data) => db.collection('posts').doc(id).update(data);
-
-export const likedPost = (id) => {
-  const doc = db.collection('posts').doc(id).get();
-  doc.then((result) => {
-    const likes = result.data().likes;
-    if (likes.find(value => value === auth.currentUser)) {
-      likes.filter(item => item !== auth.currentUser);
-      console.log('si esta');
-    } else {
-      result.data().likes.push(auth.currentUser);
-      console.log('no esta');
-    }
-    db.collection('posts').doc(id).update({ likes });
-  });
-};
+export const updatePostBD = (id, data) => db.collection('posts').doc(id).update(data)
+  .then(() => console.log('Los cambios se guardaron exitosamente'))
+  .catch(err => console.log('No se pudo guardar los cambios', err));

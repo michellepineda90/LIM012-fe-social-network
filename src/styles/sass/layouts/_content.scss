@@ -22,11 +22,20 @@
     width: max-content;      
     cursor: pointer;
   }
+<<<<<<< HEAD
   .dropdown-menu, .privacy-options{
     display: none;
     position: absolute;
     z-index: 3;
     background: whitesmoke;
+=======
+  ul{
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    background: whitesmoke;
+    display: none;
+>>>>>>> 4df198b44d5909ee13dc7491ccf903caddc137a1
     list-style: none; 
     border-radius: 10px;
     width: max-content;
@@ -98,7 +107,7 @@
       .text-post-value{ 
         width: 100%;
         padding:.5em;
-       }
+        }
       img{
         border: none;
         border-radius: 0;
@@ -129,7 +138,11 @@
           background-color: rgb(241, 245, 246);
         }     
 
+<<<<<<< HEAD
       }
+=======
+      }   
+>>>>>>> 4df198b44d5909ee13dc7491ccf903caddc137a1
     }
     .post-comments{
       display: none;
@@ -143,7 +156,12 @@
           padding: .5em;
           border-radius: 5px;
           border: 1px solid $color-border;
-        }        
+        }
+        i{
+          color: $primary-color;
+          font-size: 1.5em;
+          padding: .5em;
+        }     
       }
       .comment-created{
         padding: .5em;
@@ -154,12 +172,12 @@
           border-radius: 30px;
           .name-user{ padding: 0; }
         }
-
+  
       }  
     }
   }
+  
 }
-
 
 
 section.content{
