@@ -120,34 +120,6 @@ export default (page) => {
       bgModal.style.display = 'none';
     });
   };
-  // const editPostModal = (postId) => {
-  //   const divRef = divPostsContainer.querySelector(`#${postId}`);
-  //   const postMessage = divRef.querySelector('p');
-
-  //   const modalEdit = bgModal.querySelector('.modal-edit');
-  //   modalEdit.classList.remove('hidden');
-  //   const editArea = modalEdit.querySelector('.edit-area');
-  //   const saveBtn = modalEdit.querySelector('button#save');
-  //   const closeBtn = modalEdit.querySelector('#close');
-
-  //   editArea.textContent = postMessage.textContent;
-
-  //   closeBtn.addEventListener('click', () => {
-  //     modalEdit.classList.add('hidden');
-  //     bgModal.style.display = 'none';
-  //   });
-  //   console.log('***Editando Post***');
-  //   saveBtn.addEventListener('click', (e) => {
-  //     e.stopPropagation();
-  //     const data = { textContent: editArea.textContent };
-  //     console.log(` ${postId} => ${postMessage.textContent}`);
-  //     updatePostBD(postId, data)
-  //       .then(() => {
-  //         modalEdit.classList.add('hidden');
-  //         bgModal.style.display = 'none';
-  //       });
-  //   });
-  // };
 
   const deletePost = (id) => {
     const modal = modalDelete();
@@ -169,22 +141,6 @@ export default (page) => {
         .catch(err => console.log(err));
     });
   };
-
-  // window.onclick = (event) => {
-  //   if (!event.target.matches('.dropdown-btn')) {
-  //     const dropdowns = currentView.querySelectorAll('.dropdown-menu');
-  //     for (let i = 0; i < dropdowns.length; i += 1) {
-  //       const openDropdown = dropdowns[i];
-  //       if (openDropdown.classList.contains('show')) {
-  //         openDropdown.classList.remove('show');
-  //       }
-  //     }
-  //   } if (!event.target.matches('.privacy.btn')) {
-  //     console.log('other button');
-  //     privacyMenu.classList.remove('show');
-  //   }
-  // };
-
 
   getAllPostsBD(page).onSnapshot((querySnapshot) => {
     divPostsContainer.innerHTML = '';
