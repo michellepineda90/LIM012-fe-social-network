@@ -27,23 +27,13 @@ export const updatePostBD = (id, data) => db.collection('posts').doc(id).update(
   .then(() => console.log('Los cambios se guardaron exitosamente'))
   .catch(err => console.log('No se pudo guardar los cambios', err));
 
-// addComment: recibe el id del postObj al que está siendo vinculado (genera también un id con el método add)
-// recibe el commentObj (com.text, com.userName, com.userPhoto) del auth.currentUser
-// añade el commentObj al postObj
 
-export const addComment = (id, commentObj) => db.collection('comments').add(commentObj);
+// COMMENTS
 
-//
+export const addCommentBD = commentObj => db.collection('comments').add(commentObj);
 
-export const editComment = () => {};
+export const getCommentBD = id => db.collection('comments').doc(id).get();
 
-// deleteComment: recibe el id del postObj que contiene el comentario a borrar
-// el índice del comentario en el commentsArray
-// hace slice del indice y retorna el array modificado
+export const editCommentBD = (id, data) => db.collection('comments').doc(id).update(data);
 
-export const deleteComment = (id) => {
-  getPostBD(id)
-    .then((result) => {
-      const commentsArray = result.data().comments;
-    });
-};
+export const deleteCommentBD = id => db.collection('comments').doc(id).delete();

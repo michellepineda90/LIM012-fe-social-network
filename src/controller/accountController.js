@@ -36,7 +36,7 @@ export default (page) => {
   // llama a la BD para mostrar todos los post registrados
   const user = getCurrentUser();
 
-  const currentView = views.homeView(user, page);
+  const currentView = views.accountView(user, page);
   const menuBtn = currentView.querySelector('.menu-icon');
 
   const uploadImgBtn = currentView.querySelector('#upload-img-btn');
@@ -51,8 +51,6 @@ export default (page) => {
   menuBtn.addEventListener('click', () => {
     const menu = currentView.querySelector('#menu');
     const state = menu.style.display;
-    getUsers()
-      .then(data => console.log(data));
     menu.style.display = (state === 'block') ? 'none' : 'block';
   });
 
@@ -76,13 +74,13 @@ export default (page) => {
     const photoContainer = currentView.querySelector('.photo-container');
     const images = uploadImg.files;
     const textPost = currentView.querySelector('.text-post');
-    const privapost = currentView.querySelector('div.privacy');
+    const privacity = currentView.querySelector('div.privacy');
     if (textPost.value || images.length > 0) {
       console.log('**creando nueva publicacion ***');
       createPost(user, textPost.value, images, privacity.id);
       textPost.value = '';
-      privapost.innerHTML = setStatePrivacity('public');
-      privapost.id = 'public';
+      privacity.innerHTML = setStatePrivacity('public');
+      privacity.id = 'public';
       photoContainer.innerHTML = '';
       uploadImg.value = '';
     }
@@ -170,22 +168,22 @@ export default (page) => {
         })
         .catch(err => console.log(err));
     });
-  });
-
-  window.onclick = (event) => {
-    if (!event.target.matches('.dropdown-btn')) {
-      const dropdowns = currentView.querySelectorAll('.dropdown-menu');
-      for (let i = 0; i < dropdowns.length; i += 1) {
-        const openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
-      }
-    } if (!event.target.matches('.privacy.btn')) {
-      console.log('other button');
-      privacyMenu.classList.remove('show');
-    }
   };
+
+  // window.onclick = (event) => {
+  //   if (!event.target.matches('.dropdown-btn')) {
+  //     const dropdowns = currentView.querySelectorAll('.dropdown-menu');
+  //     for (let i = 0; i < dropdowns.length; i += 1) {
+  //       const openDropdown = dropdowns[i];
+  //       if (openDropdown.classList.contains('show')) {
+  //         openDropdown.classList.remove('show');
+  //       }
+  //     }
+  //   } if (!event.target.matches('.privacy.btn')) {
+  //     console.log('other button');
+  //     privacyMenu.classList.remove('show');
+  //   }
+  // };
 
 
   getAllPostsBD(page).onSnapshot((querySnapshot) => {

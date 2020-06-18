@@ -19,11 +19,11 @@ export const changeView = (hash) => {
       break;
     case '#/home':
       page = 'home';
-      view = controllers.homeCtrl;
+      view = controllers.accountCtrl;
       break;
     case '#/profile':
       page = 'profile';
-      view = controllers.homeCtrl;
+      view = controllers.accountCtrl;
       break;
     default:
       view = controllers.signInCtrl;
