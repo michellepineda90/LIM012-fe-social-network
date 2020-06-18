@@ -37,13 +37,13 @@ export default (user, page) => {
               <i class='bx bx-world' ></i>Público 
               <i class='bx bxs-down-arrow' ></i>
             </div>        
-            <ul class="dropdown-menu right hidden" id="dots-1">
+            <ul class="dropdown-menu right hidden">
               <li id="public"><i class='bx bx-world' ></i> Público</li>
               <li id="private"><i class='bx bxs-lock-alt' ></i>Privado</li>
             </ul>
           </div> 
           </div>
-            <div class="btn post-btn">Publicar</div>
+            <input type="button" value="Publicar" class="btn post-btn" disabled>
           </div>
       </section>`;
 
@@ -76,11 +76,10 @@ export default (user, page) => {
       ${mySelf}
       </section>
       <section class="posts-section">
-      ${sectionCreatePost}
-      <div class="posts-container">
-      </div>
-    </section>
-  `;
+        ${sectionCreatePost}
+        <div class="posts-container"></div>
+      </section>
+    </section>`;
 
   return divElemt;
 };

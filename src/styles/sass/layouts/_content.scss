@@ -8,6 +8,10 @@
   display: block;
 }
 
+.enabled{ 
+  background-color: #0CA385 !important;
+}
+
 %main-font-style{
   text-transform: capitalize;
   color: rgb(19, 122, 129);
@@ -43,7 +47,7 @@
 }
 
   // *** estilos de la plantilla de un post***
-.posts-container {
+.posts-container{
   display: flex;
   flex-direction: column-reverse;
   .post{
@@ -129,6 +133,7 @@
       }   
     }
     .post-comments{
+      transition: all .9s;
       display: none;
       .create-comment-container{
         padding: .5em;
@@ -168,10 +173,7 @@ section.content{
   background: $color-background1;
   padding: 60px .5em;
   width: 98%;
-  overflow-y: auto;  
-  &::-webkit-scrollbar { 
-    display: none;
-  }
+  height: max-content;
   section { margin: .5em 0;}
   .my-self{
     @include flex-center(row);
@@ -242,15 +244,15 @@ section.content{
           cursor: pointer;
           background-color: $color-hover1;
         }
-        // .btn:hover{ background: $color-hover1;}
         .post-btn{
           position: relative;
           right: 0;
+          border: none;
+          font-weight: bold;
           @include set-color-btn(rgba(12, 163, 133, 0.514));
           color: white;
-          &:hover{
+          &:enabled{
             cursor: pointer;
-            background-color: #0CA385;
           }
         
         }     
@@ -264,10 +266,10 @@ section.content{
   position: relative;
   margin-right: .3em;
   &:hover{
-    background-color: rgba(27, 26, 26, 0.349);    
+    background-color: rgba(27, 26, 26, 0.137);    
   }
   &:hover i{
-    color: rgb(236, 243, 241);
+    color: rgb(112, 116, 114);
     font-weight: bolder;
   }
   i{
