@@ -8,8 +8,9 @@ export default (user, page) => {
       <i class="fas fa-envelope"></i><span>karengvcs@gmail.com</span>
       <p class="info-user-p"></p>
       ${page === 'profile' ? `<button>
-        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar Perfil
-      </button>` : ''}
+      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      Editar Perfil
+    </button>` : ''}
     </div>
   </div>`;
 

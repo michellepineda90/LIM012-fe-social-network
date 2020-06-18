@@ -28,6 +28,10 @@
   display: block !important;
 }
 
+.show {
+  display: block !important;
+}
+
 .right {
   position: relative;
   right: 0;
@@ -130,6 +134,10 @@ input, button, textarea {
   display: block !important;
 }
 
+.show {
+  display: block !important;
+}
+
 .right {
   position: relative;
   right: 0;
@@ -197,6 +205,10 @@ input, button, textarea {
 
 .hidden {
   display: none !important;
+}
+
+.show {
+  display: block !important;
 }
 
 .show {
@@ -363,6 +375,10 @@ header nav ul li {
   display: block !important;
 }
 
+.show {
+  display: block !important;
+}
+
 .right {
   position: relative;
   right: 0;
@@ -420,11 +436,20 @@ header nav ul li {
   width: max-content;
   cursor: pointer;
 }
+<<<<<<< HEAD
 .dropdown .dropdown-menu, .dropdown .privacy-options {
   display: none;
   position: absolute;
   z-index: 3;
   background: whitesmoke;
+=======
+.dropdown ul {
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  background: whitesmoke;
+  display: none;
+>>>>>>> 4df198b44d5909ee13dc7491ccf903caddc137a1
   list-style: none;
   border-radius: 10px;
   width: max-content;
@@ -504,12 +529,20 @@ header nav ul li {
   width: 90%;
   height: 90%;
 }
+<<<<<<< HEAD
 .posts-container-home .post .post-likes {
+=======
+.posts-container .post .post-likes {
+>>>>>>> 4df198b44d5909ee13dc7491ccf903caddc137a1
   display: flex;
   height: max-content;
   position: relative;
 }
+<<<<<<< HEAD
 .posts-container-home .post .post-likes div {
+=======
+.posts-container .post .post-likes div {
+>>>>>>> 4df198b44d5909ee13dc7491ccf903caddc137a1
   display: flex;
   align-items: center;
   justify-content: center;
@@ -520,10 +553,24 @@ header nav ul li {
   font-weight: 600;
   font-size: 0.8em;
   color: #8d9292;
+<<<<<<< HEAD
 }
 .posts-container-home .post .post-likes div i {
   font-size: 1.5em !important;
   margin-right: 0.1em;
+=======
+}
+.posts-container .post .post-likes div i {
+  font-size: 1.5em !important;
+  margin-right: 0.1em;
+}
+.posts-container .post .post-likes div:hover {
+  cursor: pointer;
+  background-color: #f1f5f6;
+}
+.posts-container .post .post-comments {
+  display: none;
+>>>>>>> 4df198b44d5909ee13dc7491ccf903caddc137a1
 }
 .posts-container-home .post .post-likes div:hover {
   cursor: pointer;
@@ -543,7 +590,16 @@ header nav ul li {
   border-radius: 5px;
   border: 1px solid rgba(153, 153, 153, 0.3);
 }
+<<<<<<< HEAD
 .posts-container-home .post .post-comments .comment-created {
+=======
+.posts-container .post .post-comments .create-comment-container i {
+  color: #0CA385;
+  font-size: 1.5em;
+  padding: 0.5em;
+}
+.posts-container .post .post-comments .comment-created {
+>>>>>>> 4df198b44d5909ee13dc7491ccf903caddc137a1
   padding: 0.5em;
 }
 .posts-container-home .post .post-comments .comment-created span {
@@ -808,6 +864,10 @@ section.content .create-post-container .btn-container .post-btn:hover {
 
 .hidden {
   display: none !important;
+}
+
+.show {
+  display: block !important;
 }
 
 .show {
@@ -1103,6 +1163,10 @@ section.content .create-post-container .btn-container .post-btn:hover {
   display: block !important;
 }
 
+.show {
+  display: block !important;
+}
+
 .right {
   position: relative;
   right: 0;
@@ -1150,6 +1214,7 @@ section.content .create-post-container .btn-container .post-btn:hover {
   background: #F2F2F2;
   font-weight: bold;
   color: #080827;
+  width: 100%;
 }
 .modal .modal-body {
   padding: 1em;

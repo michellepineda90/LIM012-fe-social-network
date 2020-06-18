@@ -1,11 +1,13 @@
 import signInCtrl from './signInController.js';
 import signUpCtrl from './signUpController.js';
-import indexCtrl from './homeController.js';
+import homeCtrl from './homeController.js';
+// import postCtrl from './postController.js';
 
 const controllers = {
   signInCtrl,
   signUpCtrl,
-  indexCtrl,
+  homeCtrl,
+  // postCtrl,
 };
 
 export { controllers };

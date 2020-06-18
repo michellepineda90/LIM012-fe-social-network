@@ -1,16 +1,42 @@
 import { views } from '../view/index.js';
-// import { post } from '../view/post.js';
-import { createPost, post, setStatePrivacity } from './postController.js';
+import { uploadImage } from '../model/storage-post.js';
 import { signOut, getCurrentUser } from '../model/user.model.js';
-import { getAllPostsBD } from '../model/post.model.js';
-// import { render } from 'node-sass';
+import {
+  post, modalEdit, modalDelete, setStatePrivacity,
+} from '../view/post.js';
+import {
+  createPostBD, deletePostBD, updatePostBD, getAllPostsBD,
+} from '../model/post.model.js';
+
+const createPost = (user, text, images, statePrivacity) => {
+  const postObj = {
+    textContent: text,
+    imageContent: '',
+    likes: 0,
+    comments: [],
+    privacity: statePrivacity,
+    date: firebase.firestore.FieldValue.serverTimestamp(),
+    nameUser: user.displayName,
+    idUser: user.uid,
+    photoUser: user.photoURL,
+  };
+  if (images[0]) {
+    uploadImage(images[0])
+      .then((url) => {
+        postObj.imageContent = url;
+        createPostBD(postObj);
+      });
+  } else {
+    createPostBD(postObj);
+  }
+};
 
 
 export default (page) => {
   // llama a la BD para mostrar todos los post registrados
   const user = getCurrentUser();
 
-  const currentView = views.accountView(user, page);
+  const currentView = views.homeView(user, page);
   const menuBtn = currentView.querySelector('.menu-icon');
 
   const uploadImgBtn = currentView.querySelector('#upload-img-btn');
@@ -43,33 +69,17 @@ export default (page) => {
     container.append(img);
   });
 
-  // funcionalidad para dropdown de privacidad
-  const privacyBtn = currentView.querySelector('.privacy.btn');
-  const privacyMenu = currentView.querySelector('.privacy-options');
-  privacyBtn.addEventListener('click', () => {
-    privacyMenu.classList.toggle('show');
-    if (privacyMenu.classList.contains('show')) {
-      const options = privacyMenu.querySelectorAll('li');
-      options.forEach((option) => {
-        option.addEventListener('click', (e) => {
-          e.stopPropagation();
-          privacyBtn.id = option.id;
-          privacyBtn.innerHTML = `${option.innerHTML}<i class='bx bxs-down-arrow' ></i>`;
-          privacyMenu.classList.remove('show');
-        });
-      });
-    }
-  });
-
+  const btnSalir = currentView.querySelector('#btn-salir');
+  btnSalir.addEventListener('click', signOut);
   // boton para hacer una publicacion enviando los datos insertados(imagen o texto)
-  createPostBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
+  createPostBtn.addEventListener('click', () => {
     const photoContainer = currentView.querySelector('.photo-container');
     const images = uploadImg.files;
     const textPost = currentView.querySelector('.text-post');
     const privapost = currentView.querySelector('div.privacy');
     if (textPost.value || images.length > 0) {
-      createPost(user, textPost.value, images, privapost.id);
+      console.log('**creando nueva publicacion ***');
+      createPost(user, textPost.value, images, privacity.id);
       textPost.value = '';
       privapost.innerHTML = setStatePrivacity('public');
       privapost.id = 'public';
@@ -78,33 +88,87 @@ export default (page) => {
     }
   });
 
-  const btnSalir = currentView.querySelector('#btn-salir');
-  btnSalir.addEventListener('click', signOut);
+  const bgModal = document.querySelector('.bg-modal');
 
+  const editPostModal = (postId) => {
+    const divRef = divPostsContainer.querySelector(`#${postId}`);
+    const postMessage = divRef.querySelector('p');
+    const privacy = divRef.querySelector('.privacy-icon');
 
-  //  muestre el post creado en la interface
-  const renderPost = (doc) => {
-    console.log('post que se crea', doc.id);
-    const divPost = post(doc.data(), doc.id);
-    divPost.id = doc.id;
-    // divPostsContainer.insertBefore(divPost, divPostsContainer.firstChild);
-    divPostsContainer.append(divPost);
+    // Elementos definidos de la ventana modal
+    const modal = modalEdit(postMessage.textContent, privacy.id);
+    const saveBtn = modal.querySelector('button#save');
+    const crossBtn = modal.querySelector('i#close');
+    bgModal.appendChild(modal);
+
+    console.log('***Editando Post***');
+    saveBtn.addEventListener('click', () => {
+      const divEditable = modal.querySelector('.edit-area');
+      const privacyBtn = modal.querySelector('button.privacy');
+
+      const data = {
+        textContent: divEditable.textContent,
+        privacity: privacyBtn.id,
+      };
+      updatePostBD(postId, data)
+        .then(() => {
+          postMessage.textContent = data.textContent;
+          bgModal.style.display = 'none';
+        });
+    });
+
+    crossBtn.addEventListener('click', () => {
+      bgModal.removeChild(modal);
+      bgModal.style.display = 'none';
+    });
   };
+  // const editPostModal = (postId) => {
+  //   const divRef = divPostsContainer.querySelector(`#${postId}`);
+  //   const postMessage = divRef.querySelector('p');
 
+  //   const modalEdit = bgModal.querySelector('.modal-edit');
+  //   modalEdit.classList.remove('hidden');
+  //   const editArea = modalEdit.querySelector('.edit-area');
+  //   const saveBtn = modalEdit.querySelector('button#save');
+  //   const closeBtn = modalEdit.querySelector('#close');
 
-  getAllPostsBD(page).onSnapshot((snapshot) => {
-    const changes = snapshot.docChanges();
-    console.log(changes);
-    changes.forEach((change) => {
-      if (change.type === 'added') {
-        renderPost(change.doc);
-        console.log('New post: ', change.doc.data().textContent);
-      } else if (change.type === 'removed') {
-        console.log('Removed post: ', change.doc.data().textContent);
-        console.log('div id: ', change.doc.id);
-        const divPost = divPostsContainer.querySelector(`#${change.doc.id}`);
-        divPostsContainer.removeChild(divPost);
-      }
+  //   editArea.textContent = postMessage.textContent;
+
+  //   closeBtn.addEventListener('click', () => {
+  //     modalEdit.classList.add('hidden');
+  //     bgModal.style.display = 'none';
+  //   });
+  //   console.log('***Editando Post***');
+  //   saveBtn.addEventListener('click', (e) => {
+  //     e.stopPropagation();
+  //     const data = { textContent: editArea.textContent };
+  //     console.log(` ${postId} => ${postMessage.textContent}`);
+  //     updatePostBD(postId, data)
+  //       .then(() => {
+  //         modalEdit.classList.add('hidden');
+  //         bgModal.style.display = 'none';
+  //       });
+  //   });
+  // };
+
+  const deletePost = (id) => {
+    const modal = modalDelete();
+    bgModal.appendChild(modal);
+    const deletePostBtn = modal.querySelector('button#delete');
+    const cancelBtn = modal.querySelector('button#cancel');
+
+    cancelBtn.addEventListener('click', () => {
+      bgModal.removeChild(modal);
+      bgModal.style.display = 'none';
+    });
+
+    deletePostBtn.addEventListener('click', () => {
+      deletePostBD(id)
+        .then(() => {
+          // bgModal.removeChild(modal);
+          bgModal.style.display = 'none';
+        })
+        .catch(err => console.log(err));
     });
   });
 
@@ -123,6 +187,53 @@ export default (page) => {
     }
   };
 
+
+  getAllPostsBD(page).onSnapshot((querySnapshot) => {
+    divPostsContainer.innerHTML = '';
+    querySnapshot.forEach((doc) => {
+      // console.log(`${doc.id} => ${doc.data().textContent}`);
+      divPostsContainer.appendChild(post(doc.data(), doc.id));
+    });
+  });
+
+
+  document.addEventListener('click', (e) => {
+    const element = e.target;
+    if (element.classList.contains('setting-post')) {
+      const dropdown = element.parentNode;
+      const menu = dropdown.querySelector('ul');
+      menu.classList.toggle('show');
+      console.log('clicked');
+      const options = menu.querySelectorAll('li');
+      options.forEach((option) => {
+        option.addEventListener('click', () => {
+          bgModal.style.display = 'flex';
+          bgModal.innerHTML = '';
+          if (option.id === 'delete') {
+            deletePost(option.parentNode.id);
+            // bgModal.style.display = 'none';
+          } else if (option.id === 'edit') {
+            editPostModal(option.parentNode.id);
+          }
+          menu.classList.remove('show');
+        });
+      });
+    } else if (element.classList.contains('privacy')) {
+      const dropdown = element.parentNode;
+      const menu = dropdown.querySelector('ul');
+      menu.classList.toggle('show');
+      // console.log('clicked');
+      const options = menu.querySelectorAll('li');
+      options.forEach((option) => {
+        option.addEventListener('click', () => {
+          element.innerHTML = setStatePrivacity(option.id);
+          element.id = option.id;
+          menu.classList.remove('show');
+        });
+      });
+    }
+
+  });
 
   return currentView;
 };
