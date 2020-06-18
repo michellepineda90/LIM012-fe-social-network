@@ -2,7 +2,7 @@ import { views } from '../view/index.js';
 import { uploadImage } from '../model/storage-post.js';
 import { signOut, getCurrentUser } from '../model/user.model.js';
 import {
-  post, modalEdit, modalDelete, setStatePrivacity,
+  post, setStatePrivacity,
 } from '../view/post.js';
 import {
   createPostBD, deletePostBD, updatePostBD, getAllPostsBD,

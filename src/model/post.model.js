@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { auth, db } from '../firebaseInit.js';
 
 export const createPostBD = postObj => db.collection('posts')
@@ -7,14 +8,14 @@ export const createPostBD = postObj => db.collection('posts')
 
 // export const getAllPostsBD = (route) => db.collection('posts').orderBy('date');
 export const getAllPostsBD = (route) => {
-  console.log('estamos en la pagina ', route);
   const collectionRef = db.collection('posts');
+  let result;
   if (route === 'profile') {
-    return collectionRef
-      .where('idUser', '==', auth.currentUser.uid)
-      .orderBy('date', 'asc');
+    result = collectionRef.where('idUser', '==', auth.currentUser.uid).orderBy('date', 'asc');
+  } else if (route === 'home') {
+    result = collectionRef.where('privacity', '==', 'public').orderBy('date', 'asc');
   }
-  return collectionRef.where('privacity', '==', 'public').orderBy('date', 'asc');
+  return result;
 };
 
 export const deletePostBD = id => db.collection('posts').doc(id).delete()
@@ -37,3 +38,22 @@ export const getCommentBD = id => db.collection('comments').doc(id).get();
 export const editCommentBD = (id, data) => db.collection('comments').doc(id).update(data);
 
 export const deleteCommentBD = id => db.collection('comments').doc(id).delete();
+// export const createlikeBD = likeObj => db.collection('likes')
+//   .add(likeObj)
+//   .then(() => console.log('Funcionando LIKE!!!'))
+//   .catch(err => console.log('ERROR LIKE', err));
+
+export const createlikeBD = (postId, likes) => db.collection('posts').doc(postId)
+  .update({ likes })
+  .then(() => console.log('Funcionando LIKE!!!'))
+  .catch(err => console.log('ERROR LIKE', err));
+
+export const removeLike = id => db.collection('likes').doc(id).delete();
+
+// export const checkLike = (userId, postId) => db.collection('likes').where('postId', '==', postId).where('userId', '==', userId)
+//   .get()
+//   .then((querySnapshot) => {
+//     querySnapshot.forEach((doc) => {
+//       result = doc.data();
+//     });
+//   });

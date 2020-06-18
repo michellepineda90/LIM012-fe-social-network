@@ -57,6 +57,9 @@ $color-btn-disabled:rgb(110, 240, 214);
   position: relative;
   right: 0;
 } 
+.liked{
+  color: rgb(241, 100, 100) !important;
+}
 
 %ordinary-btn{
   font-weight: bold;

@@ -37,6 +37,10 @@
   right: 0;
 }
 
+.liked {
+  color: #f16464 !important;
+}
+
 .modal .modal-footer button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
@@ -83,6 +87,10 @@ section#container {
   display: flex;
   width: 100%;
   height: 100%;
+  overflow-y: auto;
+}
+section#container::-webkit-scrollbar {
+  display: none;
 }
 
 .bg-modal {
@@ -143,6 +151,10 @@ input, button, textarea {
   right: 0;
 }
 
+.liked {
+  color: #f16464 !important;
+}
+
 .modal .modal-footer button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
@@ -179,6 +191,10 @@ input, button, textarea {
   justify-content: center;
   width: 100%;
   height: max-content;
+<<<<<<< HEAD
+=======
+  min-height: 100%;
+>>>>>>> 4379eee45b5478f3a0ab86ed7671a9821fe9af28
 }
 
 .screen-background .form-container button, .screen-background .form-container form .form-control input {
@@ -218,6 +234,10 @@ input, button, textarea {
 .right {
   position: relative;
   right: 0;
+}
+
+.liked {
+  color: #f16464 !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -384,6 +404,10 @@ header nav ul li {
   right: 0;
 }
 
+.liked {
+  color: #f16464 !important;
+}
+
 .modal .modal-footer button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
@@ -422,7 +446,15 @@ header nav ul li {
   display: block;
 }
 
+<<<<<<< HEAD
 .posts-container-home .post .post-header div.name-date-post span {
+=======
+.enabled {
+  background-color: #0CA385 !important;
+}
+
+.posts-container .post .post-header div.name-date-post span {
+>>>>>>> 4379eee45b5478f3a0ab86ed7671a9821fe9af28
   text-transform: capitalize;
   color: #137a81;
   font-weight: bolder;
@@ -547,6 +579,7 @@ header nav ul li {
   background-color: #f1f5f6;
 }
 .posts-container .post .post-comments {
+  transition: all 0.9s;
   display: none;
 }
 .posts-container-home .post .post-likes div:hover {
@@ -588,6 +621,10 @@ section.content {
   background: #e6f0ed;
   padding: 60px 0.5em;
   width: 98%;
+<<<<<<< HEAD
+=======
+  height: max-content;
+>>>>>>> 4379eee45b5478f3a0ab86ed7671a9821fe9af28
 }
 section.content section {
   margin: 0.5em 0;
@@ -673,12 +710,13 @@ section.content .create-post-container .btn-container .opts:hover {
 section.content .create-post-container .btn-container .post-btn {
   position: relative;
   right: 0;
+  border: none;
+  font-weight: bold;
   background: rgba(12, 163, 133, 0.514);
   color: white;
 }
-section.content .create-post-container .btn-container .post-btn:hover {
+section.content .create-post-container .btn-container .post-btn:enabled {
   cursor: pointer;
-  background-color: #0CA385;
 }
 
 .div-img {
@@ -689,10 +727,10 @@ section.content .create-post-container .btn-container .post-btn:hover {
   margin-right: 0.3em;
 }
 .div-img:hover {
-  background-color: rgba(27, 26, 26, 0.349);
+  background-color: rgba(27, 26, 26, 0.137);
 }
 .div-img:hover i {
-  color: #ecf3f1;
+  color: #707472;
   font-weight: bolder;
 }
 .div-img i {
@@ -850,6 +888,10 @@ section.content .create-post-container .btn-container .post-btn:hover {
 .right {
   position: relative;
   right: 0;
+}
+
+.liked {
+  color: #f16464 !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -1145,6 +1187,10 @@ section.content .create-post-container .btn-container .post-btn:hover {
   right: 0;
 }
 
+.liked {
+  color: #f16464 !important;
+}
+
 .modal .modal-footer button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
@@ -1180,14 +1226,17 @@ section.content .create-post-container .btn-container .post-btn:hover {
   border-radius: 5px;
   background-color: white;
   border: 1px solid rgba(153, 153, 153, 0.3);
-  width: 90%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
 }
 .modal .modal-header, .modal .modal-footer {
   padding: 0.5em;
   background: #F2F2F2;
+  width: auto;
   font-weight: bold;
   color: #080827;
-  width: 100%;
 }
 .modal .modal-body {
   padding: 1em;
@@ -1198,7 +1247,7 @@ section.content .create-post-container .btn-container .post-btn:hover {
   justify-content: flex-end;
 }
 .modal-delete {
-  max-width: 400px;
+  max-width: 500px;
 }
 
 .modal-edit {
