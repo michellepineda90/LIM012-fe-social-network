@@ -5,7 +5,7 @@ export default (user, page) => {
     <img src=${user.photoURL} class="photo-user">
     <div class="info-user">
       <span class="name-user">${user.displayName}</span>
-      <i class="fas fa-envelope"></i><span>karengvcs@gmail.com</span>
+      <i class="fas fa-envelope"></i><span>${user.email}</span>
       <p class="info-user-p"></p>
       ${page === 'profile' ? `<button>
         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar Perfil
