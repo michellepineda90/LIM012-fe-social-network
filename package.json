@@ -13,7 +13,6 @@
     "htmlhint": "htmlhint dist/*.html ",
     "eslint": "eslint --ext .js src/ test/",
     "stylelint": "stylelint --aei src/**/*.css",
-    "pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
     "test": "jest --coverage",
     "start": "serve src/"
   },
@@ -29,6 +28,7 @@
     "firebase-mock": "^2.3.2",
     "htmlhint": "^0.11.0",
     "jest": "^24.8.0",
+    "mock-cloud-firestore": "^0.12.0",
     "regenerator-runtime": "^0.13.1",
     "serve": "^11.3.2",
     "stylelint": "^10.1.0",
@@ -37,7 +37,7 @@
   "dependencies": {
     "firebase": "^7.14.5",
     "firebase-admin": "^8.12.1",
-    "gitmoji-cli": "^3.2.4",
+    "gitmoji-cli": "^3.2.6",
     "node-sass": "^4.14.1"
   }
 }

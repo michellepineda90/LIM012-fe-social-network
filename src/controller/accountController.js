@@ -1,27 +1,24 @@
-/* eslint-disable no-console */
 import { views } from '../view/index.js';
 import { signOut, getCurrentUser } from '../model/user.model.js';
-import { setStatePrivacity, post } from '../view/post.js';
+import { post, setStatePrivacity } from '../view/post.js';
 import { getAllPostsBD } from '../model/post.model.js';
 import { createPost } from './postController.js';
 
-
 export default (page) => {
-
+  // llama a la BD para mostrar todos los post registrados
   const user = getCurrentUser();
-  console.log('esta pagina es', page);
+
   const currentView = views.accountView(user, page);
   const menuBtn = currentView.querySelector('.menu-icon');
 
   const uploadImgBtn = currentView.querySelector('#upload-img-btn');
   const uploadImg = currentView.querySelector('#upload-img');
   const container = currentView.querySelector('.photo-container');
-
   const divPostsContainer = currentView.querySelector('.posts-container');
+
   const createPostBtn = currentView.querySelector('.post-btn');
 
-  const btnSalir = currentView.querySelector('#btn-salir');
-  btnSalir.addEventListener('click', signOut);
+
   // btn para desplegar menu
   menuBtn.addEventListener('click', () => {
     const menu = currentView.querySelector('#menu');
@@ -34,25 +31,16 @@ export default (page) => {
     uploadImg.click();
   });
 
-  // Si hay imagenes que fueron cargadas en el input aqui se
-  //  crean el div para que las imagenes se puedan visualizar en miniatura
   uploadImg.addEventListener('change', (event) => {
     const img = document.createElement('div');
     img.classList.add('div-img');
     const path = URL.createObjectURL(event.target.files[0]);
     img.innerHTML = `<i class='bx bx-x'></i><img class="img-post" src="${path}">`;
     container.append(img);
-    const cross = img.querySelector('.bx-x');
-    createPostBtn.disabled = false;
-    createPostBtn.classList.add('enabled');
-
-    // Evento del boton X para eliminar la imagen cargada
-    cross.addEventListener('click', () => {
-      container.removeChild(img);
-      createPostBtn.disabled = true;
-      createPostBtn.classList.remove('enabled');
-    });
   });
+
+  const btnSalir = currentView.querySelector('#btn-salir');
+  btnSalir.addEventListener('click', signOut);
 
   // evento que escucha al input para ver si hay algo que
   // publicar de ser asi, activa el boton de publicar
@@ -66,7 +54,6 @@ export default (page) => {
       createPostBtn.classList.remove('enabled');
     }
   });
-
 
   // evento para el dropdown de privacidad al crear un nuevo post
   const createContainer = currentView.querySelector('.create-post-container');
@@ -101,18 +88,13 @@ export default (page) => {
     createPostBtn.classList.remove('enabled');
   });
 
-  // Llama a todos los posts existentes en la BD y renderiza(crea
-  //  para mostrar visualmente) cada uno de ellos llamando a la funcion post
-  // que es el template de un post, pasandole la data de cada post y el id que luego es asignado al div post que se crea
   getAllPostsBD(page).onSnapshot((querySnapshot) => {
-    console.log(`------------${page}--------------------`);
     divPostsContainer.innerHTML = '';
     querySnapshot.forEach((doc) => {
       console.log(`${doc.id} => ${doc.data().textContent}`);
       divPostsContainer.appendChild(post(doc.data(), doc.id));
     });
   });
-
 
   return currentView;
 };

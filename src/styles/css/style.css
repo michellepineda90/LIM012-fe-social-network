@@ -21,7 +21,11 @@
 }
 
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.show {
+  display: block !important;
 }
 
 .show {
@@ -47,6 +51,10 @@
 .modal .modal-header i:hover {
   cursor: pointer;
   transform: scale(1.2);
+}
+
+.liked {
+  color: #ee7c7c !important;
 }
 
 .main-btn {
@@ -127,7 +135,11 @@ input, button, textarea {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.show {
+  display: block !important;
 }
 
 .show {
@@ -153,6 +165,10 @@ input, button, textarea {
 .modal .modal-header i:hover {
   cursor: pointer;
   transform: scale(1.2);
+}
+
+.liked {
+  color: #ee7c7c !important;
 }
 
 .main-btn {
@@ -201,7 +217,11 @@ input, button, textarea {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.show {
+  display: block !important;
 }
 
 .show {
@@ -227,6 +247,10 @@ input, button, textarea {
 .modal .modal-header i:hover {
   cursor: pointer;
   transform: scale(1.2);
+}
+
+.liked {
+  color: #ee7c7c !important;
 }
 
 .main-btn {
@@ -362,7 +386,11 @@ header nav ul li {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.show {
+  display: block !important;
 }
 
 .show {
@@ -388,6 +416,10 @@ header nav ul li {
 .modal .modal-header i:hover {
   cursor: pointer;
   transform: scale(1.2);
+}
+
+.liked {
+  color: #ee7c7c !important;
 }
 
 .main-btn {
@@ -418,11 +450,12 @@ header nav ul li {
 
 .posts-container .post .post-header div.name-date-post span {
   text-transform: capitalize;
-  color: #137a81;
+  color: #0CA385;
   font-weight: bolder;
 }
 
 .dropdown {
+  position: relative;
   font-size: 1em;
 }
 .dropdown .select, .dropdown ul > li {
@@ -492,9 +525,13 @@ header nav ul li {
 .posts-container .post .post-header div.name-date-post div .dropdown .dropdown-menu {
   position: absolute;
 }
+.posts-container .post .post-header div.name-date-post div .dropdown i {
+  color: #666464;
+}
 .posts-container .post .post-header div.name-date-post div .dropdown i:hover {
-  cursor: pointer;
+  color: #333;
   transform: scale(1.5);
+  cursor: pointer;
 }
 .posts-container .post .post-body {
   display: flex;
@@ -560,12 +597,24 @@ header nav ul li {
   padding: 0.5em;
 }
 .posts-container .post .post-comments .comment-created span {
-  background: #e1f1ed;
+  outline: none;
+  background: #f1f5f6;
   padding: 1em;
   border-radius: 30px;
 }
+.posts-container .post .post-comments .comment-created span strong {
+  color: #0CA385;
+}
 .posts-container .post .post-comments .comment-created span .name-user {
   padding: 0;
+}
+.posts-container .post .post-comments .comment-created i {
+  color: #666464;
+}
+.posts-container .post .post-comments .comment-created i:hover {
+  color: #333;
+  transform: scale(1.5);
+  cursor: pointer;
 }
 
 section.content {
@@ -822,7 +871,11 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.show {
+  display: block !important;
 }
 
 .show {
@@ -848,6 +901,10 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 .modal .modal-header i:hover {
   cursor: pointer;
   transform: scale(1.2);
+}
+
+.liked {
+  color: #ee7c7c !important;
 }
 
 .main-btn {
@@ -1142,7 +1199,11 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.show {
+  display: block !important;
 }
 
 .show {
@@ -1168,6 +1229,10 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 .modal .modal-header i:hover {
   cursor: pointer;
   transform: scale(1.2);
+}
+
+.liked {
+  color: #ee7c7c !important;
 }
 
 .main-btn {

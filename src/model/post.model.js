@@ -29,6 +29,18 @@ export const updatePostBD = (id, data) => db.collection('posts').doc(id).update(
   .catch(err => console.log('No se pudo guardar los cambios', err));
 
 
+// COMMENTS
+
+export const addCommentBD = commentObj => db.collection('comments').add(commentObj);
+  // .then(() => console.log('comment añadido'))
+  // .catch(err => console.log('No se pudo añadir comment', err));
+
+export const getAllCommentsBD = postId => db.collection('comments').where('postId', '==', postId).orderBy('date', 'desc');
+
+export const editCommentBD = (id, data) => db.collection('comments').doc(id).update(data);
+
+export const deleteCommentBD = id => db.collection('comments').doc(id).delete();
+
 // export const createlikeBD = likeObj => db.collection('likes')
 //   .add(likeObj)
 //   .then(() => console.log('Funcionando LIKE!!!'))
