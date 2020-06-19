@@ -13,26 +13,16 @@ import {
 } from '../model/post.model.js';
 import { uploadImage } from '../model/storage-post.js';
 
-const currentUser = getCurrentUser();
-
-export default (page) => {
-  const currentView = views.accountView(currentUser, page);
-  const divPostsContainer = currentView.querySelector('.posts-container-home');
-
-  const createCommentObj = (text, user, post) => {
-    const commentObj = {
-      textContent: text,
-      nameUser: user.displayName,
-      userId: user.uid,
-      photoUser: user.photoURL,
-      postId: post.id,
-    };
-    addCommentBD(commentObj);
+export const createCommentObj = (text, user, postId) => {
+  const commentObj = {
+    textContent: text,
+    nameUser: user.displayName,
+    userId: user.uid,
+    photoUser: user.photoURL,
+    date: firebase.firestore.FieldValue.serverTimestamp(),
+    postId,
   };
-
-  // bring publish botton from comment div and addEventListener
-
-  return currentView;
+  addCommentBD(commentObj);
 };
 
 export const createPost = (user, text, images, statePrivacity) => {
@@ -40,7 +30,6 @@ export const createPost = (user, text, images, statePrivacity) => {
     textContent: text,
     imageContent: '',
     likes: [],
-    comments: [],
     privacity: statePrivacity,
     date: firebase.firestore.FieldValue.serverTimestamp(),
     nameUser: user.displayName,

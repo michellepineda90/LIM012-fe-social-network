@@ -32,12 +32,15 @@ export const updatePostBD = (id, data) => db.collection('posts').doc(id).update(
 // COMMENTS
 
 export const addCommentBD = commentObj => db.collection('comments').add(commentObj);
+  // .then(() => console.log('comment añadido'))
+  // .catch(err => console.log('No se pudo añadir comment', err));
 
-export const getCommentBD = id => db.collection('comments').doc(id).get();
+export const getAllCommentsBD = postId => db.collection('comments').where('postId', '==', postId).orderBy('date', 'desc');
 
 export const editCommentBD = (id, data) => db.collection('comments').doc(id).update(data);
 
 export const deleteCommentBD = id => db.collection('comments').doc(id).delete();
+
 // export const createlikeBD = likeObj => db.collection('likes')
 //   .add(likeObj)
 //   .then(() => console.log('Funcionando LIKE!!!'))

@@ -52,13 +52,10 @@
   display: flex;
   flex-direction: column-reverse;
   .post{
-    width: 100%;
     margin: .5em 0;
     box-shadow: $color-box-shadow;
     background: white;
     border-radius: 5px;
-    display: flex;
-    flex-direction: column;
     .border{    
       border-bottom: 1px solid $color-border;
     }

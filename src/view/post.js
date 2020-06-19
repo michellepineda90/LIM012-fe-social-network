@@ -1,5 +1,8 @@
 import { auth } from '../firebaseInit.js';
-import { createlikeBD, deletePostBD, updatePostBD } from '../model/post.model.js';
+import {
+  createlikeBD, deletePostBD, updatePostBD, getAllCommentsBD,
+} from '../model/post.model.js';
+import { createCommentObj } from '../controller/postController.js';
 
 
 // funcion que permite visualizar la opcion q elegimos en el dropdown de privacidad,
@@ -87,21 +90,6 @@ const dropdownDots = (idPost, idUser) => {
   return drop;
 };
 
-// const getAllComments = (comments) => {
-//   let allComments = '';
-//   comments.forEach((com) => {
-//     allComments += `
-//       <div class="comment-created">
-//         <img src="${com.userPhoto}" class="post-user-photo">
-//         <span class="comment-text">
-//           <span class="name-user"> ${com.userName}</span>
-//           ${com.text}
-//         </span>
-//       </div>`;
-//   });
-//   return allComments;
-// };
-
 // bgModal es el div oscuro que aparece detras de las ventanas modales cuando se visualizan
 const bgModal = document.querySelector('.bg-modal');
 
@@ -158,7 +146,6 @@ const deletePost = (id) => {
   });
 };
 
-
 // Template de cada post que se crea, es llamado por el snapshot,
 // aqui mismo tiene definido eventos que podra realizar ciertos elementos como botones,
 // dropdown, etc
@@ -197,10 +184,55 @@ export const post = (postObj, postId) => {
     <div class="post-comments ">    
       <div class="create-comment-container border">
         <img src="${auth.currentUser.photoURL}" class="post-user-photo">
-        <textarea type="text" class="input-comment" placeholder="Escribre un comentario"></textarea>
+        <textarea type="text" class="input-comment" placeholder="Escribe un comentario"></textarea>
         <i class="fas fa-paper-plane"></i>
       </div>
+      <div class="comments-container"></div>
       </div>`;
+
+  const sendCommentBtn = divPost.querySelector('.fa-paper-plane');
+  const commentsContainer = divPost.querySelector('.comments-container');
+
+  const renderComments = (commentObj, commentId) => {
+    const divComment = document.createElement('div');
+    divComment.classList.add('comment-created');
+    // añadirle el id del comment generado por firebase
+    divComment.id = commentId;
+    divComment.innerHTML = `
+    <img src="${commentObj.photoUser}" class="post-user-photo">
+      <span class="comment-text">
+        <span class="name-user"> ${commentObj.nameUser}</span>
+        ${commentObj.textContent}
+      </span>
+    `;
+    return divComment;
+  };
+
+  sendCommentBtn.addEventListener('click', () => {
+    const commentInput = divPost.querySelector('.input-comment');
+    if (commentInput && commentInput.value) {
+      createCommentObj(commentInput.value, auth.currentUser, postId);
+      commentInput.innerText = '';
+    } else {
+      commentInput.setCustomValidity('Debes ingresar un comentario');
+      commentInput.reportValidity();
+    }
+  });
+
+  // getAllCommentsBD(postId)
+  //   .then((querySnapshot) => {
+  //     querySnapshot.forEach((comment) => {
+  //       commentsContainer.appendChild(renderComments(comment.data()));
+  //     });
+  //   });
+
+  getAllCommentsBD(postId).onSnapshot((querySnapshot) => {
+    commentsContainer.innerHTML = '';
+    querySnapshot.forEach((comment) => {
+      console.log(comment.data());
+      commentsContainer.appendChild(renderComments(comment.data(), comment.id));
+    });
+  });
 
   // evento que muetra/oculta los comentarios
   const commentsBtn = divPost.querySelector('#num-comments');
