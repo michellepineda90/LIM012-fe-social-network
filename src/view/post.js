@@ -153,8 +153,7 @@ const deletePost = (id) => {
     deletePostBD(id)
       .then(() => {
         bgModal.style.display = 'none';
-      })
-      // .catch(err => console.log(err));
+      });
   });
 };
 
@@ -183,7 +182,6 @@ export const post = (postObj, postId) => {
 
     <div class="post-body border"> 
       <p class="text-post-value"> ${postObj.textContent}</p>
-      <button class="hidden">save</button>
       ${(postObj.imageContent ? `<img src="${postObj.imageContent}"></img>` : '')}      
     </div>
     <div class="post-likes border">

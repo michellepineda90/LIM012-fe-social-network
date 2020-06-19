@@ -7,7 +7,7 @@ import { createPost } from './postController.js';
 
 
 export default (page) => {
-  
+
   const user = getCurrentUser();
   console.log('esta pagina es', page);
   const currentView = views.accountView(user, page);

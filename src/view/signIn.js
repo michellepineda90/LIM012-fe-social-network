@@ -8,6 +8,7 @@ export default () => {
     </div>
     <div class="form-container">
     <h1 class="form-title">Iniciar sesión</h1>
+    <p class="wellcome-msg">¡Bienvenid@! Por favor ingrese su correo y contraseña para iniciar sesión en su cuenta</p>
     <form id="sign-in-form">
     <div class="form-control">
     <i class="far fa-envelope icon-input"></i>
@@ -26,8 +27,12 @@ export default () => {
     <span class="msg-err">error aqui</span>
     <span class="text-deco"> O bien ingresa con...</span>
     <div class="social-media-container">
+    <button class ="icon-google">
     <i id="btn-google"class="fa fa-google" aria-hidden="true"></i>
+    </button>
+    <button class ="icon-facebook">
     <i id="btn-facebook"class="fa fa-facebook" aria-hidden="true"></i>          
+    </button>
     </div>
     <span class="text-deco">¿No tienes una cuenta aún? <a href="#/register">Registrarse</a></span>
     </div>
