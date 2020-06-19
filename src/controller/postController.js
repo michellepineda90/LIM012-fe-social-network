@@ -224,7 +224,12 @@ export const post = (postObj, postId) => {
   likeBtn.addEventListener('click', (e) => {
     e.preventDefault();
     const likes = checkLike(auth.currentUser.uid, postId);
-    likes.then(res => console.log(res))
+    console.log(likes);
+    likes.get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        console.log(doc.data());
+      });
+    })
       .catch(err => console.log(err));
     // createlikeBD(likeObj);
   });

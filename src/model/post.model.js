@@ -45,9 +45,13 @@ export const createlikeBD = likeObj => db.collection('likes')
 export const removeLike = id => db.collection('likes').doc(id).delete();
 
 export const checkLike = (userId, postId) => {
+  console.log(postId);
   const collectionLik = db.collection('likes').where('postId', '==', postId).where('userId', '==', userId);
-  return collectionLik.get().then((querySnapshot) => {
-    querySnapshot.forEach(doc => doc.data());
-  // return collectionLik;
-  });
+  return collectionLik;
 };
+// export const likedPost = (userId, postId) => {
+//   const doc = db.collection('likes').doc(userId).set();
+
+// };
+
+// export const seeLike = idPost => firebase.firestore().collection('posts').doc(idPost).get();
