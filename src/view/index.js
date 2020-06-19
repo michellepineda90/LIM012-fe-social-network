@@ -1,15 +1,15 @@
-import Register from './register.js';
-import Home from './home.js';
-import Login from './login.js';
-import Profile from './profile.js';
-import Email from './email.js';
+import signInView from './signIn.js';
+import signUpView from './signUp.js';
+import accountView from './account.js';
+// import postView from './post.js';
+import sendEmailView from './sendEmail.js';
 
-const components = {
-  register: Register,
-  login: Login,
-  home: Home,
-  profile: Profile,
-  sendemail: Email,
+const views = {
+  signUpView,
+  sendEmailView,
+  signInView,
+  accountView,
+  // postView,
 };
 
-export { components };
+export { views };

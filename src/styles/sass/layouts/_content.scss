@@ -1,0 +1,401 @@
+@import '../variables';
+@import '../mixins';
+
+.post-user-photo{
+  @include square-size(2em);
+  margin-right: .5em;
+  border-radius: 50px;  
+  display: block;
+}
+
+.enabled{ 
+  background-color: #0CA385 !important;
+}
+
+%main-font-style{
+  text-transform: capitalize;
+  color: rgb(19, 122, 129);
+  font-weight: bolder;
+}
+
+// *** estilos del dropdown***
+.dropdown{
+  position: relative;
+  font-size: 1em;
+  .select, ul > li{
+    width: max-content;      
+    cursor: pointer;
+  }
+  ul{
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    background: whitesmoke;
+    display: none;
+    list-style: none; 
+    border-radius: 10px;
+    width: max-content;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.479);
+    border: 1px solid rgba(0, 0, 0, 0.267);
+    li{
+      margin: 0;
+      padding: .5em 1em;
+      &:hover{
+        color: rgb(19, 122, 129);
+      }
+    }   
+  }
+}
+
+  // *** estilos de la plantilla de un post***
+.posts-container{
+  display: flex;
+  flex-direction: column-reverse;
+  .post{
+    margin: .5em 0;
+    box-shadow: $color-box-shadow;
+    background: white;
+    border-radius: 5px;
+    .border{    
+      border-bottom: 1px solid $color-border;
+    }
+    .post-header{
+        border-radius: 5px 5px 0;
+        background: $post-color;
+        display: flex;
+        align-items: center;
+        & > *{ margin: .5em; }
+        img.icon-photo-user{
+          @include square-size(2.5em);          
+          border-radius: 30px;
+        }
+        div.name-date-post{
+          width: 100%;
+          flex-direction: column;
+          span {         
+            @extend %main-font-style;
+          }
+          div {
+            display: flex;
+            justify-content: space-between ;
+            justify-items: center;        
+            .dropdown{
+              position: relative;
+              display: inline-block;
+              .dropdown-menu{
+                position: absolute;
+              }
+              i:hover{
+                cursor: pointer;
+                transform: scale(1.5);
+              }
+            }
+          }
+        } 
+    }
+    .post-body{  
+      display: flex; 
+      flex-wrap: wrap;     
+      justify-content: center;              
+      .text-post-value{ 
+        width: 100%;
+        padding:.5em;
+        }
+      img{
+        border: none;
+        border-radius: 0;
+        @include square-size(90%);
+      }          
+    }
+    .post-likes{
+      display: flex;
+      height: max-content;
+      position: relative;
+      div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: .2em;
+        width: 50%;
+        font-family: $jaldi-font !important;
+        padding: .5em;
+        font-weight: 600;
+        font-size: .8em;
+        color: rgb(141, 146, 146);
+        i{          
+          font-size: 1.5em !important;
+          margin-right: .1em;
+        }     
+        &:hover{
+          cursor: pointer;
+          background-color: rgb(241, 245, 246);
+        }     
+
+      }   
+    }
+    .post-comments{
+      transition: all .9s;
+      display: none;
+      .create-comment-container{
+        padding: .5em;
+        @extend %flex;
+        .input-comment{
+          width: 100%;
+          overflow: hidden;           
+          resize: none;
+          padding: .5em;
+          border-radius: 5px;
+          border: 1px solid $color-border;
+        }
+        i{
+          color: $primary-color;
+          font-size: 1.5em;
+          padding: .5em;
+        }     
+      }
+      .comment-created{
+        padding: .5em;
+        @extend %flex;
+        span{
+          background: $color-hover1;
+          padding: 1em;
+          border-radius: 30px;
+          .name-user{ padding: 0; }
+        }
+  
+      }  
+    }
+  }
+  
+}
+
+
+section.content{
+  background: $color-background1;
+  padding: 60px .5em;
+  width: 98%;
+  height: max-content;
+  section { margin: .5em 0;}
+  .my-self{
+    @include flex-center(row);
+    padding: .5em;
+    img.user-photo{
+      @include square-size(3em);
+      border-radius: 50px;
+      margin-right: .5em;
+    }  
+  }
+   .create-post-container{
+      font-family:$jaldi-font;
+      color: rgb(80, 78, 78);
+      background: white;
+      font-weight: 500;
+      box-shadow: $color-box-shadow;
+      padding: 1em 0 0;
+      border-radius: 5px;
+      border: 1px solid $color-border;
+      width: 100%;
+        span{
+          font-weight: bolder;
+          font-size: medium;
+          margin: .5em;
+        }
+      .post-content{      
+        border-top: 1px solid $color-border;
+        padding: .5em;
+        background: white;
+        div {
+          display: flex;
+          img {font-size: 1.5em;}
+          .text-post{
+            overflow-y: hidden;
+            
+            font-size: smaller;
+            padding: 1em 0;
+            border: none;
+            width: 100%;
+            }
+        }
+        .photo-container{
+          display: flex;
+          overflow-x: auto; 
+          white-space: nowrap; 
+         }
+      }
+     .btn-container{
+        justify-content: space-between;
+        border-top: 1px solid $color-border;
+        display: flex;
+        padding: .5em;      
+        .family-btn{
+          display: flex;
+        }      
+        .btn{
+          display: flex;
+          align-items: center;
+          @include set-color-btn(rgb(236, 243, 241));        
+          padding: .5em .8em;  
+          border-radius: 10px;
+          margin: 0 .2em;
+          i{font-size: 1.2em;}
+        }
+        .opts:hover{
+          font-weight: 200;
+          color: #333;
+          cursor: pointer;
+          background-color: $color-hover1;
+        }
+        .post-btn{
+          position: relative;
+          right: 0;
+          border: none;
+          font-weight: bold;
+          @include set-color-btn(rgba(12, 163, 133, 0.514));
+          color: white;
+          &:enabled{
+            cursor: pointer;
+          }
+        
+        }     
+     }
+   }
+}
+
+.div-img{
+  cursor: pointer;
+  @include square-size(max-content);
+  position: relative;
+  margin-right: .3em;
+  &:hover{
+    background-color: rgba(27, 26, 26, 0.137);    
+  }
+  &:hover i{
+    color: rgb(112, 116, 114);
+    font-weight: bolder;
+  }
+  i{
+    cursor: pointer;
+    padding: .2em;
+    position: absolute;
+    top: auto;
+    right: 0;
+    color: transparent;
+  }
+  .img-post{
+    @include square-size(100px);
+    
+  }
+}
+
+.select-box{  
+  position: relative;
+  .select-button{
+    display: flex;
+    div {
+      padding:0 .3em;
+    }    
+  }
+  .options{
+    box-shadow: $color-box-shadow;
+    margin-top: .2em;
+    z-index: 1;    
+    position: absolute;
+    display: none;
+    background: white;
+    border-radius: 5px;
+    .option{
+      padding: .5em;  
+      &:hover{
+        background: $primary-color;
+        color: white;
+        border-radius: 3px;
+      }    
+    }
+  }
+}
+
+.my-self{
+  background-color: white;
+  border-radius: 5px;
+  padding: .5em;
+  display: flex;
+  flex-wrap: wrap;
+  height: max-content;
+  position: relative;
+  box-shadow: $color-box-shadow;
+  .user-photo-cover{
+    width: 100%;
+    height: 200px;
+  }
+  .photo-user{
+    @include square-size(100px);
+    border-radius: 80px;
+    position: absolute;
+    top: 52px;
+    border: 3px solid white;
+  }        
+  .info-user{
+    padding: 1em;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    text-align: center;          
+    .name-user{
+      font-size: 1.5em;
+      text-transform: capitalize;
+      color: teal;
+    }
+    i{
+      color: #0CA385;
+      margin: .5em;
+    }
+    button{
+      @extend %ordinary-btn;
+      cursor: pointer;
+      background-color: white;
+      border: 1px solid #0CA385;
+      color: #0CA385;
+      &:hover{
+        transform: scale(1.01);
+      }
+    }
+  }
+}
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@media (min-width: $tablet-width) and (max-width:$desktop-width) {
+  section.content{
+    width: 80%;
+  }
+}
+
+@media (min-width: $tablet-width ) {
+  section.content{
+    // width: 70%;
+    display: flex;
+    justify-content: center;    
+    section.profile-section{
+      position: sticky;
+      position: -webkit-sticky;
+      top: .6em;
+      width: 50%;
+      height: 100%;
+      padding: .5em;      
+    }
+    section.posts-section{
+      padding: 0 .5em;
+      width: 50%;
+      height: max-content;
+      border-radius: 10px;
+    }
+  }
+}
+
+@media (min-width: $desktop-width ) {
+  section.content{
+    width: 60%;
+  }
+}
+

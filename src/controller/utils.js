@@ -1,20 +1,14 @@
 export const setErrorFor = (input, message) => {
   const formControl = input.parentElement;
-  const icon = formControl.querySelector('i.fa-exclamation-triangle');
   const small = formControl.querySelector('small');
   small.style.display = 'inline';
-  icon.style.display = 'inline-block';
-  input.classList.add('error');
   small.innerText = message;
 };
 
 export const setSuccessFor = (input) => {
   const formControl = input.parentElement;
-  const icon = formControl.querySelector('i.fa-exclamation-triangle');
   const small = formControl.querySelector('small');
   small.style.display = 'none';
-  icon.style.display = 'none';
-  input.classList.remove('error');
 };
 
 export const sendMessage = (text) => {
@@ -22,19 +16,6 @@ export const sendMessage = (text) => {
   msgError.style.display = 'block';
   msgError.textContent = text;
 };
-
-// export const showOrHidePassword = (s, h) => {
-//   const temp = document.querySelector('input#password');
-//   if (temp.type === 'password') {
-//     s.style.display = 'block';
-//     h.style.display = 'none';
-//     temp.type = 'text';
-//   } else {
-//     s.style.display = 'none';
-//     h.style.display = 'block';
-//     temp.type = 'password';
-//   }
-// };
 
 export const hidePwd = () => {
   const password = document.querySelector('#password');
@@ -51,4 +32,65 @@ export const showPwd = () => {
   password.setAttribute('type', 'password');
   eyeSlash.classList.remove('hide');
   eye.classList.add('hide');
+};
+
+export const signInFormValidation = (code) => {
+  const inputPassword = document.querySelector('#password');
+  const inputEmail = document.querySelector('#email');
+  const email = inputEmail.value.trim();
+  const password = inputPassword.value.trim();
+
+  // EMAIL
+  if (email === '') {
+    setErrorFor(inputEmail, 'Por favor, ingrese un correo');
+  } else if (code === 'auth/user-not-found') {
+    sendMessage('No existe una cuenta vinculada a este correo');
+  } else {
+    setSuccessFor(inputEmail);
+  }
+  // PASSWORD
+  if (password === '') {
+    setErrorFor(inputPassword, 'Por favor, ingrese contraseña');
+  } else if (code === 'auth/wrong-password') {
+    setErrorFor(inputPassword, 'La contraseña   es incorrecta');
+  } else {
+    setSuccessFor(inputPassword);
+  }
+};
+
+
+export const signUpFormValidation = (code) => {
+  const inputName = document.querySelector('#name');
+  const inputEmail = document.querySelector('#email');
+  const inputPassword = document.querySelector('#password');
+  const name = inputName.value.trim();
+  const email = inputEmail.value.trim();
+  const password = inputPassword.value.trim();
+
+  // NAME
+  if (name === '') {
+    setErrorFor(inputName, 'Por favor, ingrese nombre');
+  } else if (name.length < 6) {
+    setErrorFor(inputName, 'Nombre debe contener mínimo 6 caracteres!');
+  } else {
+    setSuccessFor(inputName);
+  }
+  // EMAIL
+  if (email === '') {
+    setErrorFor(inputEmail, 'Por favor, ingrese correo');
+  } else if (code === 'auth/invalid-email') {
+    setErrorFor(inputEmail, 'El correo ingresado es inválido');
+  } else if (code === 'auth/email-already-in-use') {
+    sendMessage('El correo ya esta vinculado a otra cuenta');
+  } else {
+    setSuccessFor(inputEmail);
+  }
+  // PASSWORD
+  if (password === '') {
+    setErrorFor(inputPassword, 'Por favor, ingrese contraseña');
+  } else if (code === 'auth/weak-password') {
+    setErrorFor(inputPassword, 'La contraseña debe contener mínimo 6 caracteres');
+  } else {
+    setSuccessFor(inputPassword);
+  }
 };

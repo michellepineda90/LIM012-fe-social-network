@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 maximun-scale=1.0, minimun-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://kit.fontawesome.com/4d354def31.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+  <link href="https://fonts.googleapis.com/css2?family=Jaldi:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yantramanav:wght@500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./styles/css/style.css" type="text/css"/>
+  <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+  <title>Eco-Chat...</title>
+</head>
+
+<body>
+
+  <main id="container">
+    <header>
+      <nav>
+        <div class="nav-bar">
+          <i class='bx bx-menu menu-icon' ></i>
+          <img class="logo" src="./img/eco-trans-white.png" >      
+        </div>
+        <ul id="menu">          
+          <li class="option">
+            <a href="#/Profile">
+              <img src="./img/login.png" class="user-photo">
+              <span>Elena Gordillo</span> 
+            </a>
+          </li>
+          <li class="option"><a href="#/home"><i class='bx bxs-home' ></i>Inicio</a></li>
+          <li class="option"><a href="#/login"><i class='bx bx-log-out'></i>Salir</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="content">
+      <div class="my-self">
+        <img src="./img/avatar.png" class="user-photo">
+        <span class="name-user">Elena Gordillo</span>
+      </div>
+
+      <section class="create-post-container">
+        <span> Crear publicación</span>
+        <div class="post-content">
+          <div>
+            <img src="./img/avatar.png" class="post-user-photo">
+            <textarea class="text-post" contenteditable="true" name="textarea"  placeholder="¿Qué estas pensando?"></textarea>
+            <!-- <div contenteditable class="edit-area"></div> -->
+          </div>
+          <div class="photo-container">
+            <div class="div-img">
+              <i class='bx bx-x'></i>
+              <img class="img-post" src="./img/avatar.png">
+            </div>
+            <div class="div-img">
+              <i class='bx bx-x'></i>
+              <img class="img-post" src="./img/Imagen1.png">
+            </div>
+            
+          </div>
+        </div>
+        <div class="btn-container">
+          <div class="family-btn">
+            <div class="btn opts" id="upload-img-btn">
+              <input type="file" accept="image/*" id="upload-img" hidden="hidden" multiple>
+              <i class='bx bxs-image'></i>
+              Foto
+            </div>
+            <div class="select-box">
+              <div class="select-button btn opts">
+                <div class="selected-value">
+                  <i class="bx bx-world"></i>
+                  Público
+                </div>
+                <div class="chevrons">
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+              </div>
+              <div class="options">
+                <div class="option"><i class="fa fa-globe" aria-hidden="true"></i> Público</div>
+                <div class="option"><i class="fa fa-lock" aria-hidden="true"></i> Privado</div>
+              </div>
+            </div>
+          </div>
+            <div class="btn post-btn">Publicar</div>
+          </div>
+      </section>
+
+
+    
+
+    </section>
+
+
+  </main>
+  <script>
+    const hideOrShowMenu = () => {
+      const menu = document.getElementById('menu');
+      const state = menu.style.display;
+      menu.style.display = (state === 'block') ? 'none' : 'block';
+    };
+    const menuBtn = document.querySelector('.menu-icon');
+    menuBtn.addEventListener('click', hideOrShowMenu);
+  // ----------------------------------------------------------
+    const privacyBtns = document.querySelectorAll('.select-button');
+    const optionsContainer = document.querySelectorAll('.options');
+    
+    for (let i = 0; i < privacyBtns.length; i+=1 ){
+      privacyBtns[i].addEventListener('click', () =>{
+        // optionsContainer[i] = document.querySelector('.options');
+        const options = optionsContainer[i].querySelectorAll('.option');
+        console.log(options);
+        const state = optionsContainer[i].style.display;
+        optionsContainer[i].style.display = (state === 'block') ? 'none' : 'block';
+        options.forEach(option => {
+          option.addEventListener('click', (e) => {
+            console.log('accion');
+            const childBtn = privacyBtns[i].firstElementChild;    
+            childBtn.innerHTML = e.target.firstElementChild.outerHTML;
+            optionsContainer[i].style.display = 'none';
+          });
+        });
+      });      
+    };
+
+
+    // ----------------------load image--------------------
+
+    const upImgBtn = document.getElementById('upload-img-btn');
+    const upImg = document.getElementById('upload-img');
+    const container = document.querySelector('.photo-container');
+    upImgBtn.addEventListener('click', () =>{
+      upImg.click();
+    });
+    upImg.addEventListener('change', (event) => {
+      const img = document.createElement('img');
+      img.classList.add('img-post');
+      container.append(img);
+      const path = URL.createObjectURL(event.target.files[0]);
+      // console.log(path);
+      img.setAttribute('src', path);
+
+    });
+
+  </script>
+
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-firestore.js"></script>
+  <script type="module" src="firebaseInit.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

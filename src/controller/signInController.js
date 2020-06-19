@@ -1,57 +1,33 @@
+/* eslint-disable no-console */
+// import { signInView } from '../view/signIn.js';
+import { views } from '../view/index.js';
+
 import {
   signInUser,
   signInWithGoogle,
   signInWithFacebook,
-  registerUser,
 } from '../model/user.model.js';
 
-import { setErrorFor, setSuccessFor, sendMessage } from './utils.js';
+import {
+  signInFormValidation,
+  sendMessage, hidePwd, showPwd,
+} from './utils.js';
+
 import { auth } from '../firebaseInit.js';
 
-
-const signInFormValidation = (code) => {
-  const inputPassword = document.querySelector('#password');
-  const inputEmail = document.querySelector('#email');
-  const email = inputEmail.value.trim();
-  const password = inputPassword.value.trim();
-  // const singInBtn = document.querySelector('#sign-in-btn');
-
-  // EMAIL
-  if (email === '') {
-    setErrorFor(inputEmail, 'Por favor, ingrese un correo');
-  } else if (code === 'auth/user-not-found') {
-    sendMessage('No existe una cuenta vinculada a este correo');
-    // setErrorFor(inputEmail, 'No existe una cuenta vinculada a este correo');
-  } else {
-    setSuccessFor(inputEmail);
-  }
-  // PASSWORD
-  if (password === '') {
-    setErrorFor(inputPassword, 'Por favor, ingrese contraseña');
-  } else if (code === 'auth/wrong-password') {
-    setErrorFor(inputPassword, 'La contraseña   es incorrecta');
-  } else {
-    setSuccessFor(inputPassword);
-  }
-};
-
-
-export const eventSignIn = (event) => {
+const eventSignIn = (event) => {
   event.preventDefault();
-  const user = {
+  const userObj = {
     email: event.target.email.value,
     password: event.target.password.value,
   };
-  signInUser(user)
+  signInUser(userObj)
     .then(() => {
-      // console.log(data);
       if (auth.currentUser.emailVerified === true) {
         window.location.hash = '#/home';
-        // console.log(data);
         event.target.reset();
       } else {
         sendMessage('Necesitas confirmar tu cuenta');
-        // console.log('You need tu confirm your account');
       }
     })
     .catch((err) => {
@@ -61,35 +37,57 @@ export const eventSignIn = (event) => {
 };
 
 
-export const eventGoogle = (event) => {
+const eventGoogle = (event) => {
   event.preventDefault();
   signInWithGoogle()
-    .then((res) => {
-      const idUser = res.user.uid;
-      // console.log(idUser);
-      const userObj = {
-        name: res.user.displayName,
-        photoURL: res.user.photoURL,
-        email: res.user.email,
-      };
-      registerUser(idUser, userObj);
-      window.location.hash = '#/profile';
+    .then(() => {
+      // const idUser = res.user.uid;
+      // const userObj = {
+      //   name: res.user.displayName,
+      //   photoURL: res.user.photoURL,
+      //   email: res.user.email,
+      // };
+      // registerUserBD(idUser, userObj);
+      window.location.hash = '#/home';
     })
     .catch();
 };
-export const eventFacebook = (event) => {
+
+const eventFacebook = (event) => {
   event.preventDefault();
   signInWithFacebook()
-    .then((res) => {
-      const idUser = res.user.uid;
-      // console.log(idUser);
-      const userObj = {
-        name: res.user.displayName,
-        photoURL: res.user.photoURL,
-        email: res.user.email,
-      };
-      registerUser(idUser, userObj);
-      window.location.hash = '#/profile';
+    .then(() => {
+      // const idUser = res.user.uid;
+      // const userObj = {
+      //   name: res.user.displayName,
+      //   photoURL: res.user.photoURL,
+      //   email: res.user.email,
+      // };
+      // registerUserBD(idUser, userObj);
+      window.location.hash = '#/home';
     })
     .catch();
+};
+
+export default () => {
+  const currentView = views.signInView();
+
+  const singInForm = currentView.querySelector('#sign-in-form');
+  singInForm.addEventListener('submit', (event) => {
+    eventSignIn(event);
+  });
+
+  const authGoogle = currentView.querySelector('#btn-google');
+  authGoogle.addEventListener('click', eventGoogle);
+
+  const authFacebook = currentView.querySelector('#btn-facebook');
+  authFacebook.addEventListener('click', eventFacebook);
+
+  const hidePassword = currentView.querySelector('#hide-password');
+  hidePassword.addEventListener('click', hidePwd);
+
+  const showPassword = currentView.querySelector('#show-password');
+  showPassword.addEventListener('click', showPwd);
+
+  return currentView;
 };

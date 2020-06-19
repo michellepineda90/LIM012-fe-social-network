@@ -1,0 +1,69 @@
+@mixin flex-center($type: column) {
+  display: flex;
+  flex-direction: $type;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin text($size:1em, $color:#333, $font-family:$main-font, $text-position:center,$mode:block) {
+  width: 100%;
+  display: $mode;
+  text-align: $text-position;
+  font-size: $size;
+  font-family: $font-family;
+  color: $color;
+  margin: .5em;
+}
+
+@mixin simple-text($size:1em, $color:white, $font-family:$main-font, $text-position:center) {
+  text-align: $text-position;
+  font-size: $size;
+  font-family: $font-family;
+  color: $color;
+}
+
+@mixin set-icon($name,$color,$size:1em,$position:left, $icon-position:absolute,$padd:0) {
+  #{$name} {
+    position: $icon-position;
+    padding: $padd;
+    font-size:$size ;
+    color: $color;
+    #{$position}:0;
+  }
+
+}
+
+@mixin social-media-icon($icon,$color) {
+  #{$icon} {
+    font-size: 1.5em;
+    color:$color;
+    background: white;
+    padding: .5em .1em;
+    border-radius: 1.5em;
+    width: 2em;
+    text-align: center;
+    cursor: pointer;
+    border: 1.2px solid $color;
+  }
+  #{$icon}:hover {
+    background: $color;
+    color: white;
+  }
+}
+
+@mixin  square-size ($size){
+  width: $size;
+  height: $size;
+  
+}
+
+@mixin set-color-btn ($color){
+  background: $color;
+}
+
+
+
+
+
+
+
