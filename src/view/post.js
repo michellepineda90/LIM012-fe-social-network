@@ -212,7 +212,7 @@ export const post = (postObj, postId) => {
     const commentInput = divPost.querySelector('.input-comment');
     if (commentInput && commentInput.value) {
       createCommentObj(commentInput.value, auth.currentUser, postId);
-      commentInput.innerText = '';
+      commentInput.textContent = '';
     } else {
       commentInput.setCustomValidity('Debes ingresar un comentario');
       commentInput.reportValidity();
