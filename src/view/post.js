@@ -1,6 +1,6 @@
 import { auth } from '../firebaseInit.js';
 import {
-  createlikeBD, deletePostBD, updatePostBD, getAllCommentsBD,
+  deletePostBD, updatePostBD, getAllCommentsBD,
 } from '../model/post.model.js';
 import { createCommentObj } from '../controller/postController.js';
 
@@ -232,7 +232,7 @@ const renderComments = (commentObj, commentId) => {
 // aqui mismo tiene definido eventos que podra realizar ciertos elementos como botones,
 // dropdown, etc
 export const post = (postObj, postId) => {
-  const liked = postObj.likes.includes(auth.currentUser.uid);
+  // const liked = postObj.likes.includes(auth.currentUser.uid);
 
   const divPost = document.createElement('div');
   divPost.classList.add('post');
@@ -254,8 +254,8 @@ export const post = (postObj, postId) => {
       ${(postObj.imageContent ? `<img src="${postObj.imageContent}"></img>` : '')}      
     </div>
     <div class="post-likes border">
-    <div id="num-likes" class="quantity-icon ${liked ? 'liked' : ''}"> <i class="bx bxs-heart"></i>
-      ${postObj.likes.length > 0 ? postObj.likes.length : ''} Me encanta
+    <div id="num-likes" class="quantity-icon"> <i class="bx bxs-heart"></i>
+      Me encanta
     </div>
     <div id="num-comments" class="quantity-icon">
     <i class='bx bx-comment-detail'></i> comentarios
@@ -307,22 +307,22 @@ export const post = (postObj, postId) => {
   });
 
   // evento para dar like a un post
-  const likeBtn = divPost.querySelector('#num-likes');
-  likeBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const index = postObj.likes.indexOf(auth.currentUser.uid);
-    if (index > -1) {
-      // console.log('liked---');
-      postObj.likes.splice(index, 1);
-      createlikeBD(postId, postObj.likes);
-      e.target.classList.add('liked');
-    } else {
-      // console.log('disliked---');
-      postObj.likes.push(String(auth.currentUser.uid));
-      e.target.classList.remove('liked');
-      createlikeBD(postId, postObj.likes);
-    }
-  });
+  // const likeBtn = divPost.querySelector('#num-likes');
+  // likeBtn.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   const index = postObj.likes.indexOf(auth.currentUser.uid);
+  //   if (index > -1) {
+  // console.log('liked---');
+  //     postObj.likes.splice(index, 1);
+  //     createlikeBD(postId, postObj.likes);
+  //     e.target.classList.add('liked');
+  //   } else {
+  //     // console.log('disliked---');
+  //     postObj.likes.push(String(auth.currentUser.uid));
+  //     e.target.classList.remove('liked');
+  //     createlikeBD(postId, postObj.likes);
+  //   }
+  // });
 
   // evento para desplegar el dropdrown de editar/eliminar post
   const dropdown = divPost.querySelector('.setting-post');
@@ -340,7 +340,7 @@ export const post = (postObj, postId) => {
         bgModal.style.display = 'flex';
         bgModal.innerHTML = '';
         if (option.id === 'delete') {
-          deletePost(option.parentNode.id);
+          deletePost(postId);
         } else if (option.id === 'edit') {
           editPostModal(postId, textMessage.textContent, privacity.id);
         }

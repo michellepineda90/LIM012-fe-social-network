@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
-import { auth } from '../firebaseInit.js';
-import { views } from '../view/index.js';
-import {
-  getCurrentUser,
-} from '../model/user.model.js';
+// import { auth } from '../firebaseInit.js';
+// import { views } from '../view/index.js';
+// import {
+//   getCurrentUser,
+// } from '../model/user.model.js';
 // import {
 //   post,
 // } from '../view/post.js';
