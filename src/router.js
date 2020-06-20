@@ -15,15 +15,15 @@ export const changeView = (hash) => {
       view = controllers.signUpCtrl;
       break;
     case '#/email':
-      view = sendEmailView();
+      view = sendEmailView;
       break;
     case '#/home':
       page = 'home';
-      view = controllers.indexCtrl;
+      view = controllers.accountCtrl;
       break;
     case '#/profile':
       page = 'profile';
-      view = controllers.indexCtrl;
+      view = controllers.accountCtrl;
       break;
     default:
       view = controllers.signInCtrl;

@@ -10,4 +10,5 @@ global.firebase = firebasemock.MockFirebaseSdk(
   // use null if your code does not use RTDB
   () => null,
   () => mockauth,
+  () => mockfirestore,
 );

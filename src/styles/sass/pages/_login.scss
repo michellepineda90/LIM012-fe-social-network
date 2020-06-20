@@ -6,7 +6,7 @@
 
 
 .screen-background{
-  background-image: $wallpaper;
+  background-image: url('../../../img/back1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   @include flex-center();
@@ -24,7 +24,7 @@
       height: 80%;
     }
     .app-name{
-      @include text(1.5em, #fff,$logo-font);
+      @include text(1.5em, #fff);
       font-weight: 600;
     }
   }
@@ -32,88 +32,123 @@
     @include flex-center;
     width: 80%;
     padding: 1em;
-    background: rgba(247, 243, 243, 0.46);  
+    height: max-content;
+    background: rgb(250, 248, 248);;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
     border-radius: 1em;
-    .form-title { @include text(1em);  }
+    .form-title { 
+      width: 80%;
+      max-width: 400px;
+      @include text(1.5em, #30495c);
+      font-weight: 600;  
+    }
+    .wellcome-msg{
+      @include text(1em, #30495c);
+      width: 70%;
+    }
     form{
       @include flex-center();
-      width: 90%;
+      width: 80%;
       .form-control{        
         width: 100%;
-        max-width: 500px;
+        max-width: 400px;
         position: relative;
         margin-bottom: .8em;
         @include set-icon(".icon-input",#333,1em,left,absolute,1.2em);
         @include set-icon(".icon-psw",$primary-color,1em,right, absolute,1.2em);
         input{
+          background: #e8f0ef;
           @extend %field-form;
-          border: 1.5px solid rgba(153, 153, 153, 0.3);
           box-sizing: border-box;
-          // padding-left: 2.5em;    
+          border: none;
+          &:hover { 
+            border: 1.5px solid rgb(85, 219, 168);
+          } 
         }
-        input:hover{ border: 1.5px solid rgb(168, 231, 247);}
         small {
-          @include text(.8em,red,$main-font,start,none);
+          @include text(.8em,red,start,none);
           padding-left: 1em;
         }
       }
     }
     
     .msg-err{
-      @include text(.9em,red,$main-font,center, none);
+      @include text(.9em,red,center, none);
       font-weight: 500;
     }
     button{
       @extend %field-form;
+      font-weight:bolder ;
       color: #FEFEFE;
       border: 1px none;
       cursor: pointer; 
       background: $primary-color;
       margin-bottom: .8em;
+      &:hover{
+        transform: scale(1.01);
+      }
     }
-    .text-deco{ @include text();}
+    .text-deco{ @include text(1em,#30495c);}
     
     .message-container{
       @include flex-center();
       padding: 1.5em;
-      .message-title{ @include text();}
+      .message-title{  @include text(1.5em, #30495c);}
       .btn-send-email{
         width: auto;
         padding: 1em;
       }
-      a{ font-family: $main-font;}
     }
     .social-media-container{
       margin: 1em 0;
-      @include social-media-icon('.fa-facebook',$facebook-color);
-      @include social-media-icon('.fa-google',$google-color);
+      @include social-media-icon('.icon-facebook',$facebook-color);
+      @include social-media-icon('.icon-google',$google-color);
     }   
   }
 }
 
-
-
-
-@media (min-width: $breakpoint-tablet) {
+@media (min-width: $tablet-width) and (max-width:$desktop-width) {
   .screen-background{
     @include flex-center(row);
     .logo-container{
+      width: 50%;
       height: auto;
       .app-name{
-        @include text(2.5em, #fff,$logo-font);
+        @include text(2.5em, #fff);
         font-weight: 600;
       }
     }
     .form-container{
-      .form-title{
-        @include text(1.5em);
-        font-weight: 600;
-      }
       border-radius:0;
       height: 100%;
       width: 50%;
     }
   } 
-  .message-title{ @include text(1.5em);}
+  .message-title{ @include text(2em, #30495c);}
 }
+
+
+@media (min-width: $desktop-width) {
+  .screen-background{
+    @include flex-center(row);
+    .logo-container{
+      width: 65%;
+      height: auto;
+      .app-name{
+        @include text(2.5em, #fff);
+        font-weight: 600;
+      }
+    }
+    .form-container{
+      .form-title{
+        font-weight: 600;
+      }
+      border-radius:0;
+      height: 100%;
+      width: 35%;
+    }
+  } 
+  .message-title{ @include text(2em, #30495c);}
+}
+
+

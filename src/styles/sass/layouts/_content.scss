@@ -8,9 +8,13 @@
   display: block;
 }
 
+.enabled{ 
+  background-color: #0CA385 !important;
+}
+
 %main-font-style{
   text-transform: capitalize;
-  color: rgb(19, 122, 129);
+  color: #0CA385;
   font-weight: bolder;
 }
 
@@ -22,11 +26,12 @@
     width: max-content;      
     cursor: pointer;
   }
-  .dropdown-menu, .privacy-options{
-    display: none;
-    position: absolute;
-    z-index: 3;
+  ul{
+    z-index: 1;
+    margin: 0;
+    padding: 0;
     background: whitesmoke;
+    display: none;
     list-style: none; 
     border-radius: 10px;
     width: max-content;
@@ -43,17 +48,14 @@
 }
 
   // *** estilos de la plantilla de un post***
-.posts-container-home{
+.posts-container{
   display: flex;
   flex-direction: column-reverse;
   .post{
-    width: 100%;
     margin: .5em 0;
     box-shadow: $color-box-shadow;
     background: white;
     border-radius: 5px;
-    display: flex;
-    flex-direction: column;
     .border{    
       border-bottom: 1px solid $color-border;
     }
@@ -83,9 +85,13 @@
               .dropdown-menu{
                 position: absolute;
               }
-              i:hover{
-                cursor: pointer;
-                transform: scale(1.5);
+              i{
+                color: rgb(102, 100, 100);
+                &:hover{
+                  color: #333;
+                  transform: scale(1.5);
+                  cursor: pointer;
+                }
               }
             }
           }
@@ -98,7 +104,7 @@
       .text-post-value{ 
         width: 100%;
         padding:.5em;
-       }
+        }
       img{
         border: none;
         border-radius: 0;
@@ -129,9 +135,10 @@
           background-color: rgb(241, 245, 246);
         }     
 
-      }
+      }   
     }
     .post-comments{
+      transition: all .9s;
       display: none;
       .create-comment-container{
         padding: .5em;
@@ -143,29 +150,46 @@
           padding: .5em;
           border-radius: 5px;
           border: 1px solid $color-border;
-        }        
+        }
+        i{
+          color: $primary-color;
+          font-size: 1.5em;
+          padding: .5em;
+        }     
       }
       .comment-created{
+        // background: rgb(141, 146, 146);
         padding: .5em;
         @extend %flex;
         span{
-          background: $color-hover1;
+          outline: none;
+          strong{color: #0CA385}
+          background: rgb(241, 245, 246);
           padding: 1em;
           border-radius: 30px;
           .name-user{ padding: 0; }
         }
-
+        i{
+          color: rgb(102, 100, 100);
+          &:hover{
+            color: #333;
+            transform: scale(1.5);
+            cursor: pointer;
+          }
+        }
+  
       }  
     }
   }
+  
 }
-
 
 
 section.content{
   background: $color-background1;
   padding: 60px .5em;
   width: 98%;
+  height: max-content;
   section { margin: .5em 0;}
   .my-self{
     @include flex-center(row);
@@ -236,15 +260,15 @@ section.content{
           cursor: pointer;
           background-color: $color-hover1;
         }
-        // .btn:hover{ background: $color-hover1;}
         .post-btn{
           position: relative;
           right: 0;
+          border: none;
+          font-weight: bold;
           @include set-color-btn(rgba(12, 163, 133, 0.514));
           color: white;
-          &:hover{
+          &:enabled{
             cursor: pointer;
-            background-color: #0CA385;
           }
         
         }     
@@ -258,10 +282,10 @@ section.content{
   position: relative;
   margin-right: .3em;
   &:hover{
-    background-color: rgba(27, 26, 26, 0.349);    
+    background-color: rgba(27, 26, 26, 0.137);    
   }
   &:hover i{
-    color: rgb(236, 243, 241);
+    color: rgb(112, 116, 114);
     font-weight: bolder;
   }
   i{

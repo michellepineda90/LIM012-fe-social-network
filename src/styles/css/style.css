@@ -2,7 +2,7 @@
   padding: 1em 1em 1em 2.5em;
   width: 100%;
   font-size: 1em;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 2em;
   outline: none;
 }
@@ -11,7 +11,7 @@
   display: none;
 }
 
-.posts-container-home .post .post-comments .comment-created, .posts-container-home .post .post-comments .create-comment-container {
+.posts-container .post .post-comments .comment-created, .posts-container .post .post-comments .create-comment-container {
   display: flex;
 }
 
@@ -28,9 +28,17 @@
   display: block !important;
 }
 
+.show {
+  display: block !important;
+}
+
 .right {
   position: relative;
   right: 0;
+}
+
+.liked {
+  color: #f16464 !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -66,7 +74,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 main {
@@ -79,6 +87,10 @@ section#container {
   display: flex;
   width: 100%;
   height: 100%;
+  overflow-y: auto;
+}
+section#container::-webkit-scrollbar {
+  display: none;
 }
 
 .bg-modal {
@@ -104,7 +116,7 @@ input, button, textarea {
   padding: 1em 1em 1em 2.5em;
   width: 100%;
   font-size: 1em;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 2em;
   outline: none;
 }
@@ -113,7 +125,7 @@ input, button, textarea {
   display: none;
 }
 
-.posts-container-home .post .post-comments .comment-created, .posts-container-home .post .post-comments .create-comment-container {
+.posts-container .post .post-comments .comment-created, .posts-container .post .post-comments .create-comment-container {
   display: flex;
 }
 
@@ -130,9 +142,17 @@ input, button, textarea {
   display: block !important;
 }
 
+.show {
+  display: block !important;
+}
+
 .right {
   position: relative;
   right: 0;
+}
+
+.liked {
+  color: #f16464 !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -171,13 +191,14 @@ input, button, textarea {
   justify-content: center;
   width: 100%;
   height: max-content;
+  min-height: 100%;
 }
 
 .screen-background .form-container button, .screen-background .form-container form .form-control input {
   padding: 1em 1em 1em 2.5em;
   width: 100%;
   font-size: 1em;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 2em;
   outline: none;
 }
@@ -186,7 +207,7 @@ input, button, textarea {
   display: none;
 }
 
-.posts-container-home .post .post-comments .comment-created, .posts-container-home .post .post-comments .create-comment-container {
+.posts-container .post .post-comments .comment-created, .posts-container .post .post-comments .create-comment-container {
   display: flex;
 }
 
@@ -203,9 +224,17 @@ input, button, textarea {
   display: block !important;
 }
 
+.show {
+  display: block !important;
+}
+
 .right {
   position: relative;
   right: 0;
+}
+
+.liked {
+  color: #f16464 !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -252,6 +281,7 @@ header nav .nav-bar {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 header nav .nav-bar .menu-icon {
+  border: none;
   position: absolute;
   padding: 0.2em;
   font-size: 2em;
@@ -337,7 +367,7 @@ header nav ul li {
   padding: 1em 1em 1em 2.5em;
   width: 100%;
   font-size: 1em;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 2em;
   outline: none;
 }
@@ -346,7 +376,7 @@ header nav ul li {
   display: none;
 }
 
-.posts-container-home .post .post-comments .comment-created, .posts-container-home .post .post-comments .create-comment-container {
+.posts-container .post .post-comments .comment-created, .posts-container .post .post-comments .create-comment-container {
   display: flex;
 }
 
@@ -363,9 +393,17 @@ header nav ul li {
   display: block !important;
 }
 
+.show {
+  display: block !important;
+}
+
 .right {
   position: relative;
   right: 0;
+}
+
+.liked {
+  color: #f16464 !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -406,9 +444,13 @@ header nav ul li {
   display: block;
 }
 
-.posts-container-home .post .post-header div.name-date-post span {
+.enabled {
+  background-color: #0CA385 !important;
+}
+
+.posts-container .post .post-header div.name-date-post span {
   text-transform: capitalize;
-  color: #137a81;
+  color: #0CA385;
   font-weight: bolder;
 }
 
@@ -420,96 +462,98 @@ header nav ul li {
   width: max-content;
   cursor: pointer;
 }
-.dropdown .dropdown-menu, .dropdown .privacy-options {
-  display: none;
-  position: absolute;
-  z-index: 3;
+.dropdown ul {
+  z-index: 1;
+  margin: 0;
+  padding: 0;
   background: whitesmoke;
+  display: none;
   list-style: none;
   border-radius: 10px;
   width: max-content;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.479);
   border: 1px solid rgba(0, 0, 0, 0.267);
 }
-.dropdown .dropdown-menu li, .dropdown .privacy-options li {
+.dropdown ul li {
   margin: 0;
   padding: 0.5em 1em;
 }
-.dropdown .dropdown-menu li:hover, .dropdown .privacy-options li:hover {
+.dropdown ul li:hover {
   color: #137a81;
 }
 
-.posts-container-home {
+.posts-container {
   display: flex;
   flex-direction: column-reverse;
 }
-.posts-container-home .post {
-  width: 100%;
+.posts-container .post {
   margin: 0.5em 0;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
   background: white;
   border-radius: 5px;
-  display: flex;
-  flex-direction: column;
 }
-.posts-container-home .post .border {
+.posts-container .post .border {
   border-bottom: 1px solid rgba(153, 153, 153, 0.3);
 }
-.posts-container-home .post .post-header {
+.posts-container .post .post-header {
   border-radius: 5px 5px 0;
   background: #F2F2F2;
   display: flex;
   align-items: center;
 }
-.posts-container-home .post .post-header > * {
+.posts-container .post .post-header > * {
   margin: 0.5em;
 }
-.posts-container-home .post .post-header img.icon-photo-user {
+.posts-container .post .post-header img.icon-photo-user {
   width: 2.5em;
   height: 2.5em;
   border-radius: 30px;
 }
-.posts-container-home .post .post-header div.name-date-post {
+.posts-container .post .post-header div.name-date-post {
   width: 100%;
   flex-direction: column;
 }
-.posts-container-home .post .post-header div.name-date-post div {
+.posts-container .post .post-header div.name-date-post div {
   display: flex;
   justify-content: space-between;
   justify-items: center;
 }
-.posts-container-home .post .post-header div.name-date-post div .dropdown {
+.posts-container .post .post-header div.name-date-post div .dropdown {
   position: relative;
   display: inline-block;
 }
-.posts-container-home .post .post-header div.name-date-post div .dropdown .dropdown-menu {
+.posts-container .post .post-header div.name-date-post div .dropdown .dropdown-menu {
   position: absolute;
 }
-.posts-container-home .post .post-header div.name-date-post div .dropdown i:hover {
-  cursor: pointer;
-  transform: scale(1.5);
+.posts-container .post .post-header div.name-date-post div .dropdown i {
+  color: #666464;
 }
-.posts-container-home .post .post-body {
+.posts-container .post .post-header div.name-date-post div .dropdown i:hover {
+  color: #333;
+  transform: scale(1.5);
+  cursor: pointer;
+}
+.posts-container .post .post-body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.posts-container-home .post .post-body .text-post-value {
+.posts-container .post .post-body .text-post-value {
   width: 100%;
   padding: 0.5em;
 }
-.posts-container-home .post .post-body img {
+.posts-container .post .post-body img {
   border: none;
   border-radius: 0;
   width: 90%;
   height: 90%;
 }
-.posts-container-home .post .post-likes {
+.posts-container .post .post-likes {
   display: flex;
   height: max-content;
   position: relative;
 }
-.posts-container-home .post .post-likes div {
+.posts-container .post .post-likes div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -521,21 +565,22 @@ header nav ul li {
   font-size: 0.8em;
   color: #8d9292;
 }
-.posts-container-home .post .post-likes div i {
+.posts-container .post .post-likes div i {
   font-size: 1.5em !important;
   margin-right: 0.1em;
 }
-.posts-container-home .post .post-likes div:hover {
+.posts-container .post .post-likes div:hover {
   cursor: pointer;
   background-color: #f1f5f6;
 }
-.posts-container-home .post .post-comments {
+.posts-container .post .post-comments {
+  transition: all 0.9s;
   display: none;
 }
-.posts-container-home .post .post-comments .create-comment-container {
+.posts-container .post .post-comments .create-comment-container {
   padding: 0.5em;
 }
-.posts-container-home .post .post-comments .create-comment-container .input-comment {
+.posts-container .post .post-comments .create-comment-container .input-comment {
   width: 100%;
   overflow: hidden;
   resize: none;
@@ -543,22 +588,40 @@ header nav ul li {
   border-radius: 5px;
   border: 1px solid rgba(153, 153, 153, 0.3);
 }
-.posts-container-home .post .post-comments .comment-created {
+.posts-container .post .post-comments .create-comment-container i {
+  color: #0CA385;
+  font-size: 1.5em;
   padding: 0.5em;
 }
-.posts-container-home .post .post-comments .comment-created span {
-  background: #e1f1ed;
+.posts-container .post .post-comments .comment-created {
+  padding: 0.5em;
+}
+.posts-container .post .post-comments .comment-created span {
+  outline: none;
+  background: #f1f5f6;
   padding: 1em;
   border-radius: 30px;
 }
-.posts-container-home .post .post-comments .comment-created span .name-user {
+.posts-container .post .post-comments .comment-created span strong {
+  color: #0CA385;
+}
+.posts-container .post .post-comments .comment-created span .name-user {
   padding: 0;
+}
+.posts-container .post .post-comments .comment-created i {
+  color: #666464;
+}
+.posts-container .post .post-comments .comment-created i:hover {
+  color: #333;
+  transform: scale(1.5);
+  cursor: pointer;
 }
 
 section.content {
   background: #e6f0ed;
   padding: 60px 0.5em;
   width: 98%;
+  height: max-content;
 }
 section.content section {
   margin: 0.5em 0;
@@ -644,12 +707,13 @@ section.content .create-post-container .btn-container .opts:hover {
 section.content .create-post-container .btn-container .post-btn {
   position: relative;
   right: 0;
+  border: none;
+  font-weight: bold;
   background: rgba(12, 163, 133, 0.514);
   color: white;
 }
-section.content .create-post-container .btn-container .post-btn:hover {
+section.content .create-post-container .btn-container .post-btn:enabled {
   cursor: pointer;
-  background-color: #0CA385;
 }
 
 .div-img {
@@ -660,10 +724,10 @@ section.content .create-post-container .btn-container .post-btn:hover {
   margin-right: 0.3em;
 }
 .div-img:hover {
-  background-color: rgba(27, 26, 26, 0.349);
+  background-color: rgba(27, 26, 26, 0.137);
 }
 .div-img:hover i {
-  color: #ecf3f1;
+  color: #707472;
   font-weight: bolder;
 }
 .div-img i {
@@ -788,7 +852,7 @@ section.content .create-post-container .btn-container .post-btn:hover {
   padding: 1em 1em 1em 2.5em;
   width: 100%;
   font-size: 1em;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 2em;
   outline: none;
 }
@@ -797,7 +861,7 @@ section.content .create-post-container .btn-container .post-btn:hover {
   display: none;
 }
 
-.posts-container-home .post .post-comments .create-comment-container, .posts-container-home .post .post-comments .comment-created {
+.posts-container .post .post-comments .create-comment-container, .posts-container .post .post-comments .comment-created {
   display: flex;
 }
 
@@ -814,9 +878,17 @@ section.content .create-post-container .btn-container .post-btn:hover {
   display: block !important;
 }
 
+.show {
+  display: block !important;
+}
+
 .right {
   position: relative;
   right: 0;
+}
+
+.liked {
+  color: #f16464 !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -850,7 +922,7 @@ section.content .create-post-container .btn-container .post-btn:hover {
 }
 
 .screen-background {
-  background-image: url("../../img/wall1.jpg");
+  background-image: url("../../../img/back1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -871,11 +943,9 @@ section.content .create-post-container .btn-container .post-btn:hover {
   height: 80%;
 }
 .screen-background .logo-container .app-name {
-  width: 100%;
   display: block;
   text-align: center;
   font-size: 1.5em;
-  font-family: "Courgette", cursive;
   color: #fff;
   margin: 0.5em;
   font-weight: 600;
@@ -887,33 +957,44 @@ section.content .create-post-container .btn-container .post-btn:hover {
   justify-content: center;
   width: 80%;
   padding: 1em;
-  background: rgba(247, 243, 243, 0.46);
+  height: max-content;
+  background: #faf8f8;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
   border-radius: 1em;
 }
 .screen-background .form-container .form-title {
-  width: 100%;
+  width: 80%;
+  max-width: 400px;
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+  color: #30495c;
+  margin: 0.5em;
+  font-weight: 600;
+}
+.screen-background .form-container .wellcome-msg {
   display: block;
   text-align: center;
   font-size: 1em;
-  font-family: "Roboto", sans-serif;
-  color: #333;
+  color: #30495c;
   margin: 0.5em;
+  width: 70%;
 }
 .screen-background .form-container form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 90%;
+  width: 80%;
 }
 .screen-background .form-container form .form-control {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   position: relative;
   margin-bottom: 0.8em;
 }
 .screen-background .form-container form .form-control .icon-input {
+  border: none;
   position: absolute;
   padding: 1.2em;
   font-size: 1em;
@@ -921,6 +1002,7 @@ section.content .create-post-container .btn-container .post-btn:hover {
   left: 0;
 }
 .screen-background .form-container form .form-control .icon-psw {
+  border: none;
   position: absolute;
   padding: 1.2em;
   font-size: 1em;
@@ -928,46 +1010,45 @@ section.content .create-post-container .btn-container .post-btn:hover {
   right: 0;
 }
 .screen-background .form-container form .form-control input {
-  border: 1.5px solid rgba(153, 153, 153, 0.3);
+  background: #e8f0ef;
   box-sizing: border-box;
+  border: none;
 }
 .screen-background .form-container form .form-control input:hover {
-  border: 1.5px solid #a8e7f7;
+  border: 1.5px solid #55dba8;
 }
 .screen-background .form-container form .form-control small {
-  width: 100%;
   display: none;
   text-align: start;
   font-size: 0.8em;
-  font-family: "Roboto", sans-serif;
   color: red;
   margin: 0.5em;
   padding-left: 1em;
 }
 .screen-background .form-container .msg-err {
-  width: 100%;
   display: none;
   text-align: center;
   font-size: 0.9em;
-  font-family: "Roboto", sans-serif;
   color: red;
   margin: 0.5em;
   font-weight: 500;
 }
 .screen-background .form-container button {
+  font-weight: bolder;
   color: #FEFEFE;
   border: 1px none;
   cursor: pointer;
   background: #0CA385;
   margin-bottom: 0.8em;
 }
+.screen-background .form-container button:hover {
+  transform: scale(1.01);
+}
 .screen-background .form-container .text-deco {
-  width: 100%;
   display: block;
   text-align: center;
   font-size: 1em;
-  font-family: "Roboto", sans-serif;
-  color: rgb(17, 11, 11);
+  color: #30495c;
   margin: 0.5em;
 }
 .screen-background .form-container .message-container {
@@ -978,56 +1059,55 @@ section.content .create-post-container .btn-container .post-btn:hover {
   padding: 1.5em;
 }
 .screen-background .form-container .message-container .message-title {
-  width: 100%;
   display: block;
   text-align: center;
-  font-size: 1em;
-  font-family: "Roboto", sans-serif;
-  color: rgb(17, 9, 9);
+  font-size: 1.5em;
+  color: #30495c;
   margin: 0.5em;
 }
 .screen-background .form-container .message-container .btn-send-email {
   width: auto;
   padding: 1em;
 }
-.screen-background .form-container .message-container a {
-  font-family: "Roboto", sans-serif;
-}
 .screen-background .form-container .social-media-container {
   margin: 1em 0;
 }
-.screen-background .form-container .social-media-container .fa-facebook {
+.screen-background .form-container .social-media-container .icon-facebook {
   font-size: 1.5em;
-  color: #3b5998;
-  background: white;
-  padding: 0.5em 0.1em;
+  color: white;
+  background: #3b5998;
+  padding: 0.4em 0.1em;
   border-radius: 1.5em;
   width: 2em;
   text-align: center;
   cursor: pointer;
   border: 1.2px solid #3b5998;
 }
-.screen-background .form-container .social-media-container .fa-facebook:hover {
-  background: #3b5998;
-  color: white;
+.screen-background .form-container .social-media-container .icon-facebook:hover {
+  transform: scale(1.05);
 }
-.screen-background .form-container .social-media-container .fa-google {
+.screen-background .form-container .social-media-container .icon-facebook:hover {
+  cursor: pointer;
+}
+.screen-background .form-container .social-media-container .icon-google {
   font-size: 1.5em;
-  color: #db4a39;
-  background: white;
-  padding: 0.5em 0.1em;
+  color: white;
+  background: #db4a39;
+  padding: 0.4em 0.1em;
   border-radius: 1.5em;
   width: 2em;
   text-align: center;
   cursor: pointer;
   border: 1.2px solid #db4a39;
 }
-.screen-background .form-container .social-media-container .fa-google:hover {
-  background: #db4a39;
-  color: white;
+.screen-background .form-container .social-media-container .icon-google:hover {
+  transform: scale(1.05);
+}
+.screen-background .form-container .social-media-container .icon-google:hover {
+  cursor: pointer;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .screen-background {
     display: flex;
     flex-direction: row;
@@ -1035,14 +1115,13 @@ section.content .create-post-container .btn-container .post-btn:hover {
     justify-content: center;
   }
   .screen-background .logo-container {
+    width: 50%;
     height: auto;
   }
   .screen-background .logo-container .app-name {
-    width: 100%;
     display: block;
     text-align: center;
     font-size: 2.5em;
-    font-family: "Courgette", cursive;
     color: #fff;
     margin: 0.5em;
     font-weight: 600;
@@ -1052,24 +1131,48 @@ section.content .create-post-container .btn-container .post-btn:hover {
     height: 100%;
     width: 50%;
   }
-  .screen-background .form-container .form-title {
-    width: 100%;
+
+  .message-title {
     display: block;
     text-align: center;
-    font-size: 1.5em;
-    font-family: "Roboto", sans-serif;
-    color: #333;
+    font-size: 2em;
+    color: #30495c;
     margin: 0.5em;
+  }
+}
+@media (min-width: 1024px) {
+  .screen-background {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .screen-background .logo-container {
+    width: 65%;
+    height: auto;
+  }
+  .screen-background .logo-container .app-name {
+    display: block;
+    text-align: center;
+    font-size: 2.5em;
+    color: #fff;
+    margin: 0.5em;
+    font-weight: 600;
+  }
+  .screen-background .form-container {
+    border-radius: 0;
+    height: 100%;
+    width: 35%;
+  }
+  .screen-background .form-container .form-title {
     font-weight: 600;
   }
 
   .message-title {
-    width: 100%;
     display: block;
     text-align: center;
-    font-size: 1.5em;
-    font-family: "Roboto", sans-serif;
-    color: #333;
+    font-size: 2em;
+    color: #30495c;
     margin: 0.5em;
   }
 }
@@ -1077,7 +1180,7 @@ section.content .create-post-container .btn-container .post-btn:hover {
   padding: 1em 1em 1em 2.5em;
   width: 100%;
   font-size: 1em;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 2em;
   outline: none;
 }
@@ -1086,7 +1189,7 @@ section.content .create-post-container .btn-container .post-btn:hover {
   display: none;
 }
 
-.posts-container-home .post .post-comments .create-comment-container, .posts-container-home .post .post-comments .comment-created {
+.posts-container .post .post-comments .create-comment-container, .posts-container .post .post-comments .comment-created {
   display: flex;
 }
 
@@ -1103,9 +1206,17 @@ section.content .create-post-container .btn-container .post-btn:hover {
   display: block !important;
 }
 
+.show {
+  display: block !important;
+}
+
 .right {
   position: relative;
   right: 0;
+}
+
+.liked {
+  color: #f16464 !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -1143,11 +1254,15 @@ section.content .create-post-container .btn-container .post-btn:hover {
   border-radius: 5px;
   background-color: white;
   border: 1px solid rgba(153, 153, 153, 0.3);
-  width: 90%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
 }
 .modal .modal-header, .modal .modal-footer {
   padding: 0.5em;
   background: #F2F2F2;
+  width: auto;
   font-weight: bold;
   color: #080827;
 }
@@ -1160,7 +1275,7 @@ section.content .create-post-container .btn-container .post-btn:hover {
   justify-content: flex-end;
 }
 .modal-delete {
-  max-width: 400px;
+  max-width: 500px;
 }
 
 .modal-edit {
