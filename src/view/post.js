@@ -341,7 +341,7 @@ export const post = (postObj, postId) => {
         bgModal.style.display = 'flex';
         bgModal.innerHTML = '';
         if (option.id === 'delete') {
-          deletePost(option.parentNode.id);
+          deletePost(postId);
         } else if (option.id === 'edit') {
           editPostModal(postId, textMessage.textContent, privacity.id);
         }

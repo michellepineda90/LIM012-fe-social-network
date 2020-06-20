@@ -61,6 +61,9 @@ $color-btn-disabled:rgb(110, 240, 214);
 .liked{
   color: rgb(241, 100, 100) !important;
 }
+.flex{
+  display: flex !important;
+}
 
 %ordinary-btn{
   font-weight: bold;
