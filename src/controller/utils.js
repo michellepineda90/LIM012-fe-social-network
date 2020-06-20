@@ -94,3 +94,244 @@ export const signUpFormValidation = (code) => {
     setSuccessFor(inputPassword);
   }
 };
+
+export const emojis = () => {
+  const divEmo = `<div class ="emoji-dropdown">
+  <div class="emoji-icon">
+    <i class='bx bx-happy'></i>
+  </div>
+  <div class="emoji-container">
+  <div class="emoji">😀</div>
+  <div class="emoji">😃</div>
+  <div class="emoji">😄</div>
+  <div class="emoji">😁</div>
+  <div class="emoji">😆</div>
+  <div class="emoji">😅</div>
+  <div class="emoji">😂</div>
+  <div class="emoji">🤣</div>
+  <div class="emoji">😊</div>
+  <div class="emoji">😇</div>
+  <div class="emoji">🙂</div>
+  <div class="emoji">🙃</div>
+  <div class="emoji">😉</div>
+  <div class="emoji">😌</div>
+  <div class="emoji">😍</div>
+  <div class="emoji">🥰</div>
+  <div class="emoji">😘</div>
+  <div class="emoji">😗</div>
+  <div class="emoji">😙</div>
+  <div class="emoji">😚</div>
+  <div class="emoji">😋</div>
+  <div class="emoji">😛</div>
+  <div class="emoji">😝</div>
+  <div class="emoji">😜</div>
+  <div class="emoji">🤪</div>
+  <div class="emoji">🤨</div>
+  <div class="emoji">🧐</div>
+  <div class="emoji">🤓</div>
+  <div class="emoji">😎</div>
+  <div class="emoji">🤩</div>
+  <div class="emoji">🥳</div>
+  <div class="emoji">😏</div>
+  <div class="emoji">😒</div>
+  <div class="emoji">😞</div>
+  <div class="emoji">😔</div>
+  <div class="emoji">😟</div>
+  <div class="emoji">😕</div>
+  <div class="emoji">🙁</div>
+  <div class="emoji">😣</div>
+  <div class="emoji">😖</div>
+  <div class="emoji">😫</div>
+  <div class="emoji">😩</div>
+  <div class="emoji">🥺</div>
+  <div class="emoji">😢</div>
+  <div class="emoji">😭</div>
+  <div class="emoji">😤</div>
+  <div class="emoji">😠</div>
+  <div class="emoji">😡</div>
+  <div class="emoji">🤬</div>
+  <div class="emoji">🤯</div>
+  <div class="emoji">😳</div>
+  <div class="emoji">🥵</div>
+  <div class="emoji">🥶</div>
+  <div class="emoji">😱</div>
+  <div class="emoji">😨</div>
+  <div class="emoji">😰</div>
+  <div class="emoji">😥</div>
+  <div class="emoji">😓</div>
+  <div class="emoji">🤗</div>
+  <div class="emoji">🤔</div>
+  <div class="emoji">🤭</div>
+  <div class="emoji">🤫</div>
+  <div class="emoji">🤥</div>
+  <div class="emoji">😶</div>
+  <div class="emoji">😐</div>
+  <div class="emoji">😑</div>
+  <div class="emoji">😬</div>
+  <div class="emoji">🙄</div>
+  <div class="emoji">😯</div>
+  <div class="emoji">😦</div>
+  <div class="emoji">😧</div>
+  <div class="emoji">😮</div>
+  <div class="emoji">😲</div>
+  <div class="emoji">😴</div>
+  <div class="emoji">🤤</div>
+  <div class="emoji">😪</div>
+  <div class="emoji">😵</div>
+  <div class="emoji">🤐</div>
+  <div class="emoji">🥴</div>
+  <div class="emoji">🤢</div>
+  <div class="emoji">🤮</div>
+  <div class="emoji">🤧</div>
+  <div class="emoji">😷</div>
+  <div class="emoji">🤒</div>
+  <div class="emoji">🤕</div>
+  <div class="emoji">🤑</div>
+  <div class="emoji">🤠</div>
+  <div class="emoji">😈</div>
+  <div class="emoji">👿</div>
+  <div class="emoji">🤡</div>
+  <div class="emoji">💩</div>
+  <div class="emoji">👻</div>
+  <div class="emoji">💀</div>
+  <div class="emoji">🎃</div>
+  <div class="emoji">😺</div>
+  <div class="emoji">😸</div>
+  <div class="emoji">😹</div>
+  <div class="emoji">😻</div>
+  <div class="emoji">😼</div>
+  <div class="emoji">😽</div>
+  <div class="emoji">🙀</div>
+  <div class="emoji">😿</div>
+  </div>
+</div>
+</div>`;
+  return divEmo;
+};
+// export const emojis = () => {
+//   const divEmo = document.createElement('div');
+//   divEmo.classList.add('emoji-dropdown');
+//   divEmo.innerHTML = `
+//   <div class="emoji-icon">
+//     <i class='bx bx-happy'></i>
+//     <div class="colita"></div>
+//   </div>
+//   <div class="emoji-container">
+//   <div class="emoji">😀</div>
+//   <div class="emoji">😃</div>
+//   <div class="emoji">😄</div>
+//   <div class="emoji">😁</div>
+//   <div class="emoji">😆</div>
+//   <div class="emoji">😅</div>
+//   <div class="emoji">😂</div>
+//   <div class="emoji">🤣</div>
+//   <div class="emoji">😊</div>
+//   <div class="emoji">😇</div>
+//   <div class="emoji">🙂</div>
+//   <div class="emoji">🙃</div>
+//   <div class="emoji">😉</div>
+//   <div class="emoji">😌</div>
+//   <div class="emoji">😍</div>
+//   <div class="emoji">🥰</div>
+//   <div class="emoji">😘</div>
+//   <div class="emoji">😗</div>
+//   <div class="emoji">😙</div>
+//   <div class="emoji">😚</div>
+//   <div class="emoji">😋</div>
+//   <div class="emoji">😛</div>
+//   <div class="emoji">😝</div>
+//   <div class="emoji">😜</div>
+//   <div class="emoji">🤪</div>
+//   <div class="emoji">🤨</div>
+//   <div class="emoji">🧐</div>
+//   <div class="emoji">🤓</div>
+//   <div class="emoji">😎</div>
+//   <div class="emoji">🤩</div>
+//   <div class="emoji">🥳</div>
+//   <div class="emoji">😏</div>
+//   <div class="emoji">😒</div>
+//   <div class="emoji">😞</div>
+//   <div class="emoji">😔</div>
+//   <div class="emoji">😟</div>
+//   <div class="emoji">😕</div>
+//   <div class="emoji">🙁</div>
+//   <div class="emoji">😣</div>
+//   <div class="emoji">😖</div>
+//   <div class="emoji">😫</div>
+//   <div class="emoji">😩</div>
+//   <div class="emoji">🥺</div>
+//   <div class="emoji">😢</div>
+//   <div class="emoji">😭</div>
+//   <div class="emoji">😤</div>
+//   <div class="emoji">😠</div>
+//   <div class="emoji">😡</div>
+//   <div class="emoji">🤬</div>
+//   <div class="emoji">🤯</div>
+//   <div class="emoji">😳</div>
+//   <div class="emoji">🥵</div>
+//   <div class="emoji">🥶</div>
+//   <div class="emoji">😱</div>
+//   <div class="emoji">😨</div>
+//   <div class="emoji">😰</div>
+//   <div class="emoji">😥</div>
+//   <div class="emoji">😓</div>
+//   <div class="emoji">🤗</div>
+//   <div class="emoji">🤔</div>
+//   <div class="emoji">🤭</div>
+//   <div class="emoji">🤫</div>
+//   <div class="emoji">🤥</div>
+//   <div class="emoji">😶</div>
+//   <div class="emoji">😐</div>
+//   <div class="emoji">😑</div>
+//   <div class="emoji">😬</div>
+//   <div class="emoji">🙄</div>
+//   <div class="emoji">😯</div>
+//   <div class="emoji">😦</div>
+//   <div class="emoji">😧</div>
+//   <div class="emoji">😮</div>
+//   <div class="emoji">😲</div>
+//   <div class="emoji">😴</div>
+//   <div class="emoji">🤤</div>
+//   <div class="emoji">😪</div>
+//   <div class="emoji">😵</div>
+//   <div class="emoji">🤐</div>
+//   <div class="emoji">🥴</div>
+//   <div class="emoji">🤢</div>
+//   <div class="emoji">🤮</div>
+//   <div class="emoji">🤧</div>
+//   <div class="emoji">😷</div>
+//   <div class="emoji">🤒</div>
+//   <div class="emoji">🤕</div>
+//   <div class="emoji">🤑</div>
+//   <div class="emoji">🤠</div>
+//   <div class="emoji">😈</div>
+//   <div class="emoji">👿</div>
+//   <div class="emoji">🤡</div>
+//   <div class="emoji">💩</div>
+//   <div class="emoji">👻</div>
+//   <div class="emoji">💀</div>
+//   <div class="emoji">🎃</div>
+//   <div class="emoji">😺</div>
+//   <div class="emoji">😸</div>
+//   <div class="emoji">😹</div>
+//   <div class="emoji">😻</div>
+//   <div class="emoji">😼</div>
+//   <div class="emoji">😽</div>
+//   <div class="emoji">🙀</div>
+//   <div class="emoji">😿</div>
+//   </div>
+// </div>`;
+
+//   const emojiIconBtn = divEmo.querySelector('.emoji-icon');
+//   const emojisContainer = divEmo.querySelector('.emoji-container');
+//   emojiIconBtn.addEventListener('click', () => {
+//     emojisContainer.classList.toggle('flex');
+//   });
+
+//   // document.addEventListener('click', (e) => {
+//   //   if (e.target.classList.contains('emoji')) {
+//   //     textArea.textContent += e.target.textContent;
+//   //   }
+//   // });
+//   return divEmo;
+// };

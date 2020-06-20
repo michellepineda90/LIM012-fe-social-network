@@ -18,7 +18,6 @@ export default (page) => {
 
   const createPostBtn = currentView.querySelector('.post-btn');
 
-
   // btn para desplegar menu
   menuBtn.addEventListener('click', () => {
     const menu = currentView.querySelector('#menu');
@@ -44,8 +43,8 @@ export default (page) => {
 
   // evento que escucha al input para ver si hay algo que
   // publicar de ser asi, activa el boton de publicar
-  const textPost = currentView.querySelector('.text-post');
-  textPost.addEventListener('input', (e) => {
+  const textArea = currentView.querySelector('.text-post');
+  textArea.addEventListener('input', (e) => {
     if (e.target.value) {
       createPostBtn.disabled = false;
       createPostBtn.classList.add('enabled');
@@ -60,6 +59,21 @@ export default (page) => {
   const privacyBtn = createContainer.querySelector('.privacy');
   const menu = createContainer.querySelector('ul');
   const options = menu.querySelectorAll('li');
+
+
+  const emojiIconBtn = createContainer.querySelector('.emoji-icon');
+  const emojisContainer = createContainer.querySelector('.emoji-container');
+  emojiIconBtn.addEventListener('click', () => {
+    emojisContainer.classList.toggle('flex');
+  });
+
+  document.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (e.target.classList.contains('emoji')) {
+      console.log(e.target.innerText);
+      textArea.textContent += e.target.textContent;
+    }
+  });
 
   privacyBtn.addEventListener('click', () => {
     menu.classList.toggle('show');
@@ -78,8 +92,8 @@ export default (page) => {
     const images = uploadImg.files;
     const privacity = currentView.querySelector('div.privacy');
     console.log('**creando nueva publicacion ***');
-    createPost(user, textPost.value, images, privacity.id);
-    textPost.value = '';
+    createPost(user, textArea.value, images, privacity.id);
+    textArea.value = '';
     privacity.innerHTML = setStatePrivacity('public');
     privacity.id = 'public';
     photoContainer.innerHTML = '';
