@@ -278,7 +278,7 @@ export const post = (postObj, postId) => {
     const commentInput = divPost.querySelector('.input-comment');
     if (commentInput && commentInput.value) {
       createCommentObj(commentInput.value, auth.currentUser, postId);
-      commentInput.textContent = '';
+      commentInput.value = '';
     } else {
       commentInput.setCustomValidity('Debes ingresar un comentario');
       commentInput.reportValidity();
@@ -295,7 +295,6 @@ export const post = (postObj, postId) => {
   getAllCommentsBD(postId).onSnapshot((querySnapshot) => {
     commentsContainer.innerHTML = '';
     querySnapshot.forEach((comment) => {
-      console.log(comment.data());
       commentsContainer.appendChild(renderComments(comment.data(), comment.id));
     });
   });
