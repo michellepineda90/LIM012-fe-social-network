@@ -14,7 +14,7 @@
 
 %main-font-style{
   text-transform: capitalize;
-  color: rgb(19, 122, 129);
+  color: #0CA385;
   font-weight: bolder;
 }
 
@@ -85,9 +85,13 @@
               .dropdown-menu{
                 position: absolute;
               }
-              i:hover{
-                cursor: pointer;
-                transform: scale(1.5);
+              i{
+                color: rgb(102, 100, 100);
+                &:hover{
+                  color: #333;
+                  transform: scale(1.5);
+                  cursor: pointer;
+                }
               }
             }
           }
@@ -154,13 +158,27 @@
         }     
       }
       .comment-created{
+        // background: rgb(141, 146, 146);
         padding: .5em;
         @extend %flex;
         span{
-          background: $color-hover1;
+          outline: none;
+          strong{
+            text-transform: capitalize;
+            color: #0CA385
+          }
+          background: rgb(241, 245, 246);
           padding: 1em;
           border-radius: 30px;
           .name-user{ padding: 0; }
+        }
+        i{
+          color: rgb(102, 100, 100);
+          &:hover{
+            color: #333;
+            transform: scale(1.5);
+            cursor: pointer;
+          }
         }
   
       }  
@@ -203,18 +221,14 @@ section.content{
       .post-content{      
         border-top: 1px solid $color-border;
         padding: .5em;
-        background: white;
-        div {
-          display: flex;
-          img {font-size: 1.5em;}
-          .text-post{
-            overflow-y: hidden;
-            
-            font-size: smaller;
-            padding: 1em 0;
-            border: none;
-            width: 100%;
-            }
+        background: white;      
+        img {font-size: 1.5em;}
+        .text-post{
+          overflow-y: hidden;            
+          font-size: smaller;
+          padding: 1em 0;
+          border: none;
+          width: 100%;
         }
         .photo-container{
           display: flex;

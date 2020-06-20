@@ -1,3 +1,5 @@
+import { emojis } from '../controller/utils.js';
+
 export default (user, page) => {
   const mySelf = `
   <div class="my-self">
@@ -18,9 +20,10 @@ export default (user, page) => {
   <section class="create-post-container">
         <span> Crear publicación</span>
         <div class="post-content">
-          <div>
+          <div class="flex">
             <img src="${user.photoURL}" class="post-user-photo">
-            <textarea class="text-post" contenteditable="true" name="textarea"  placeholder="¿Qué estas pensando?"></textarea>          
+            <textarea class="text-post" contenteditable="true" name="textarea"  placeholder="¿Qué estas pensando?"></textarea>
+            ${emojis()}
           </div>
           <div class="photo-container">                      
           </div>

@@ -5,12 +5,11 @@
   justify-content: center;
 }
 
-@mixin text($size:1em, $color:#333, $font-family:$main-font, $text-position:center,$mode:block) {
-  width: 100%;
+@mixin text($size:1em, $color:#333, $text-position:center,$mode:block) {
+  // width: 100%;
   display: $mode;
   text-align: $text-position;
   font-size: $size;
-  font-family: $font-family;
   color: $color;
   margin: .5em;
 }
@@ -24,30 +23,32 @@
 
 @mixin set-icon($name,$color,$size:1em,$position:left, $icon-position:absolute,$padd:0) {
   #{$name} {
+    border: none;
     position: $icon-position;
     padding: $padd;
     font-size:$size ;
     color: $color;
     #{$position}:0;
   }
-
 }
 
 @mixin social-media-icon($icon,$color) {
   #{$icon} {
     font-size: 1.5em;
-    color:$color;
-    background: white;
-    padding: .5em .1em;
+    color:white;
+    background: $color;
+    padding: .4em .1em;
     border-radius: 1.5em;
     width: 2em;
     text-align: center;
     cursor: pointer;
     border: 1.2px solid $color;
+    &:hover{
+      transform: scale(1.05);
+    }
   }
   #{$icon}:hover {
-    background: $color;
-    color: white;
+    cursor: pointer;
   }
 }
 

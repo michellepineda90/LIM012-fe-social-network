@@ -30,12 +30,16 @@ export default () => {
     <button id="sign-un-btn" class="form-btn">Registrar</button>
   </form>
   <span class="msg-err">error aqui</span>
-  <span class="text-option"> O bien ingresa con...</span>
+  <span class="text-deco"> O bien ingresa con...</span>
   <div class="social-media-container">
-    <i id="btn-google"class="fa fa-google" aria-hidden="true"></i>
-    <i id="btn-facebook"class="fa fa-facebook" aria-hidden="true"></i>          
+  <button class ="icon-google">
+  <i id="btn-google"class="fa fa-google" aria-hidden="true"></i>
+  </button>
+  <button class ="icon-facebook">
+  <i id="btn-facebook"class="fa fa-facebook" aria-hidden="true"></i>          
+  </button>
   </div>
-  <span>¿No tienes una cuenta aún? <a href="#/login">Iniciar Sesión</a></span>`;
+  <span class="text-deco">¿No tienes una cuenta aún? <a href="#/login">Iniciar Sesión</a></span>`;
 
   return divElemt;
 };

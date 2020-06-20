@@ -2,7 +2,7 @@
   padding: 1em 1em 1em 2.5em;
   width: 100%;
   font-size: 1em;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 2em;
   outline: none;
 }
@@ -41,6 +41,10 @@
   color: #f16464 !important;
 }
 
+.flex {
+  display: flex !important;
+}
+
 .modal .modal-footer button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
@@ -74,7 +78,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 main {
@@ -116,7 +120,7 @@ input, button, textarea {
   padding: 1em 1em 1em 2.5em;
   width: 100%;
   font-size: 1em;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 2em;
   outline: none;
 }
@@ -153,6 +157,10 @@ input, button, textarea {
 
 .liked {
   color: #f16464 !important;
+}
+
+.flex {
+  display: flex !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -198,7 +206,7 @@ input, button, textarea {
   padding: 1em 1em 1em 2.5em;
   width: 100%;
   font-size: 1em;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 2em;
   outline: none;
 }
@@ -235,6 +243,10 @@ input, button, textarea {
 
 .liked {
   color: #f16464 !important;
+}
+
+.flex {
+  display: flex !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -281,6 +293,7 @@ header nav .nav-bar {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 header nav .nav-bar .menu-icon {
+  border: none;
   position: absolute;
   padding: 0.2em;
   font-size: 2em;
@@ -366,7 +379,7 @@ header nav ul li {
   padding: 1em 1em 1em 2.5em;
   width: 100%;
   font-size: 1em;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 2em;
   outline: none;
 }
@@ -403,6 +416,10 @@ header nav ul li {
 
 .liked {
   color: #f16464 !important;
+}
+
+.flex {
+  display: flex !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -449,7 +466,7 @@ header nav ul li {
 
 .posts-container .post .post-header div.name-date-post span {
   text-transform: capitalize;
-  color: #137a81;
+  color: #0CA385;
   font-weight: bolder;
 }
 
@@ -524,9 +541,13 @@ header nav ul li {
 .posts-container .post .post-header div.name-date-post div .dropdown .dropdown-menu {
   position: absolute;
 }
+.posts-container .post .post-header div.name-date-post div .dropdown i {
+  color: #666464;
+}
 .posts-container .post .post-header div.name-date-post div .dropdown i:hover {
-  cursor: pointer;
+  color: #333;
   transform: scale(1.5);
+  cursor: pointer;
 }
 .posts-container .post .post-body {
   display: flex;
@@ -592,12 +613,25 @@ header nav ul li {
   padding: 0.5em;
 }
 .posts-container .post .post-comments .comment-created span {
-  background: #e1f1ed;
+  outline: none;
+  background: #f1f5f6;
   padding: 1em;
   border-radius: 30px;
 }
+.posts-container .post .post-comments .comment-created span strong {
+  text-transform: capitalize;
+  color: #0CA385;
+}
 .posts-container .post .post-comments .comment-created span .name-user {
   padding: 0;
+}
+.posts-container .post .post-comments .comment-created i {
+  color: #666464;
+}
+.posts-container .post .post-comments .comment-created i:hover {
+  color: #333;
+  transform: scale(1.5);
+  cursor: pointer;
 }
 
 section.content {
@@ -643,13 +677,10 @@ section.content .create-post-container .post-content {
   padding: 0.5em;
   background: white;
 }
-section.content .create-post-container .post-content div {
-  display: flex;
-}
-section.content .create-post-container .post-content div img {
+section.content .create-post-container .post-content img {
   font-size: 1.5em;
 }
-section.content .create-post-container .post-content div .text-post {
+section.content .create-post-container .post-content .text-post {
   overflow-y: hidden;
   font-size: smaller;
   padding: 1em 0;
@@ -835,7 +866,7 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   padding: 1em 1em 1em 2.5em;
   width: 100%;
   font-size: 1em;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 2em;
   outline: none;
 }
@@ -872,6 +903,10 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 
 .liked {
   color: #f16464 !important;
+}
+
+.flex {
+  display: flex !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -905,7 +940,7 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 }
 
 .screen-background {
-  background-image: url("../../img/wall1.jpg");
+  background-image: url("../../../img/back1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -926,11 +961,9 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   height: 80%;
 }
 .screen-background .logo-container .app-name {
-  width: 100%;
   display: block;
   text-align: center;
   font-size: 1.5em;
-  font-family: "Courgette", cursive;
   color: #fff;
   margin: 0.5em;
   font-weight: 600;
@@ -942,33 +975,44 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   justify-content: center;
   width: 80%;
   padding: 1em;
-  background: rgba(247, 243, 243, 0.46);
+  height: max-content;
+  background: #faf8f8;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
   border-radius: 1em;
 }
 .screen-background .form-container .form-title {
-  width: 100%;
+  width: 80%;
+  max-width: 400px;
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+  color: #30495c;
+  margin: 0.5em;
+  font-weight: 600;
+}
+.screen-background .form-container .wellcome-msg {
   display: block;
   text-align: center;
   font-size: 1em;
-  font-family: "Roboto", sans-serif;
-  color: #333;
+  color: #30495c;
   margin: 0.5em;
+  width: 70%;
 }
 .screen-background .form-container form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 90%;
+  width: 80%;
 }
 .screen-background .form-container form .form-control {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   position: relative;
   margin-bottom: 0.8em;
 }
 .screen-background .form-container form .form-control .icon-input {
+  border: none;
   position: absolute;
   padding: 1.2em;
   font-size: 1em;
@@ -976,6 +1020,7 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   left: 0;
 }
 .screen-background .form-container form .form-control .icon-psw {
+  border: none;
   position: absolute;
   padding: 1.2em;
   font-size: 1em;
@@ -983,46 +1028,45 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   right: 0;
 }
 .screen-background .form-container form .form-control input {
-  border: 1.5px solid rgba(153, 153, 153, 0.3);
+  background: #e8f0ef;
   box-sizing: border-box;
+  border: none;
 }
 .screen-background .form-container form .form-control input:hover {
-  border: 1.5px solid #a8e7f7;
+  border: 1.5px solid #55dba8;
 }
 .screen-background .form-container form .form-control small {
-  width: 100%;
   display: none;
   text-align: start;
   font-size: 0.8em;
-  font-family: "Roboto", sans-serif;
   color: red;
   margin: 0.5em;
   padding-left: 1em;
 }
 .screen-background .form-container .msg-err {
-  width: 100%;
   display: none;
   text-align: center;
   font-size: 0.9em;
-  font-family: "Roboto", sans-serif;
   color: red;
   margin: 0.5em;
   font-weight: 500;
 }
 .screen-background .form-container button {
+  font-weight: bolder;
   color: #FEFEFE;
   border: 1px none;
   cursor: pointer;
   background: #0CA385;
   margin-bottom: 0.8em;
 }
+.screen-background .form-container button:hover {
+  transform: scale(1.01);
+}
 .screen-background .form-container .text-deco {
-  width: 100%;
   display: block;
   text-align: center;
   font-size: 1em;
-  font-family: "Roboto", sans-serif;
-  color: #333;
+  color: #30495c;
   margin: 0.5em;
 }
 .screen-background .form-container .message-container {
@@ -1033,56 +1077,55 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   padding: 1.5em;
 }
 .screen-background .form-container .message-container .message-title {
-  width: 100%;
   display: block;
   text-align: center;
-  font-size: 1em;
-  font-family: "Roboto", sans-serif;
-  color: #333;
+  font-size: 1.5em;
+  color: #30495c;
   margin: 0.5em;
 }
 .screen-background .form-container .message-container .btn-send-email {
   width: auto;
   padding: 1em;
 }
-.screen-background .form-container .message-container a {
-  font-family: "Roboto", sans-serif;
-}
 .screen-background .form-container .social-media-container {
   margin: 1em 0;
 }
-.screen-background .form-container .social-media-container .fa-facebook {
+.screen-background .form-container .social-media-container .icon-facebook {
   font-size: 1.5em;
-  color: #3b5998;
-  background: white;
-  padding: 0.5em 0.1em;
+  color: white;
+  background: #3b5998;
+  padding: 0.4em 0.1em;
   border-radius: 1.5em;
   width: 2em;
   text-align: center;
   cursor: pointer;
   border: 1.2px solid #3b5998;
 }
-.screen-background .form-container .social-media-container .fa-facebook:hover {
-  background: #3b5998;
-  color: white;
+.screen-background .form-container .social-media-container .icon-facebook:hover {
+  transform: scale(1.05);
 }
-.screen-background .form-container .social-media-container .fa-google {
+.screen-background .form-container .social-media-container .icon-facebook:hover {
+  cursor: pointer;
+}
+.screen-background .form-container .social-media-container .icon-google {
   font-size: 1.5em;
-  color: #db4a39;
-  background: white;
-  padding: 0.5em 0.1em;
+  color: white;
+  background: #db4a39;
+  padding: 0.4em 0.1em;
   border-radius: 1.5em;
   width: 2em;
   text-align: center;
   cursor: pointer;
   border: 1.2px solid #db4a39;
 }
-.screen-background .form-container .social-media-container .fa-google:hover {
-  background: #db4a39;
-  color: white;
+.screen-background .form-container .social-media-container .icon-google:hover {
+  transform: scale(1.05);
+}
+.screen-background .form-container .social-media-container .icon-google:hover {
+  cursor: pointer;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .screen-background {
     display: flex;
     flex-direction: row;
@@ -1090,14 +1133,13 @@ section.content .create-post-container .btn-container .post-btn:enabled {
     justify-content: center;
   }
   .screen-background .logo-container {
+    width: 50%;
     height: auto;
   }
   .screen-background .logo-container .app-name {
-    width: 100%;
     display: block;
     text-align: center;
     font-size: 2.5em;
-    font-family: "Courgette", cursive;
     color: #fff;
     margin: 0.5em;
     font-weight: 600;
@@ -1107,24 +1149,48 @@ section.content .create-post-container .btn-container .post-btn:enabled {
     height: 100%;
     width: 50%;
   }
-  .screen-background .form-container .form-title {
-    width: 100%;
+
+  .message-title {
     display: block;
     text-align: center;
-    font-size: 1.5em;
-    font-family: "Roboto", sans-serif;
-    color: #333;
+    font-size: 2em;
+    color: #30495c;
     margin: 0.5em;
+  }
+}
+@media (min-width: 1024px) {
+  .screen-background {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .screen-background .logo-container {
+    width: 65%;
+    height: auto;
+  }
+  .screen-background .logo-container .app-name {
+    display: block;
+    text-align: center;
+    font-size: 2.5em;
+    color: #fff;
+    margin: 0.5em;
+    font-weight: 600;
+  }
+  .screen-background .form-container {
+    border-radius: 0;
+    height: 100%;
+    width: 35%;
+  }
+  .screen-background .form-container .form-title {
     font-weight: 600;
   }
 
   .message-title {
-    width: 100%;
     display: block;
     text-align: center;
-    font-size: 1.5em;
-    font-family: "Roboto", sans-serif;
-    color: #333;
+    font-size: 2em;
+    color: #30495c;
     margin: 0.5em;
   }
 }
@@ -1132,7 +1198,7 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   padding: 1em 1em 1em 2.5em;
   width: 100%;
   font-size: 1em;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 2em;
   outline: none;
 }
@@ -1169,6 +1235,10 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 
 .liked {
   color: #f16464 !important;
+}
+
+.flex {
+  display: flex !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -1259,6 +1329,129 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 .dropdown .dropdown-menu {
   z-index: 3;
   position: absolute;
+}
+
+.screen-background .form-container form .form-control input, .screen-background .form-container button {
+  padding: 1em 1em 1em 2.5em;
+  width: 100%;
+  font-size: 1em;
+  max-width: 400px;
+  border-radius: 2em;
+  outline: none;
+}
+
+.hide {
+  display: none;
+}
+
+.posts-container .post .post-comments .create-comment-container, .posts-container .post .post-comments .comment-created {
+  display: flex;
+}
+
+.name-user {
+  display: block;
+  font-weight: 700;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+.show {
+  display: block !important;
+}
+
+.right {
+  position: relative;
+  right: 0;
+}
+
+.liked {
+  color: #f16464 !important;
+}
+
+.flex {
+  display: flex !important;
+}
+
+.my-self .info-user button, .modal .modal-footer button {
+  font-weight: bold;
+  margin: 0.2em;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.modal .modal-header i:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.liked {
+  color: #ee7c7c !important;
+}
+
+.main-btn {
+  cursor: pointer;
+  background: #0CA385;
+  color: whitesmoke;
+  border: none;
+}
+
+.ordinary-btn {
+  cursor: pointer;
+  background: white;
+  color: #0CA385;
+  border: 1px solid #0CA385;
+}
+
+.emoji-dropdown {
+  position: relative;
+}
+.emoji-dropdown .emoji-icon {
+  border-radius: 20px;
+  position: relative;
+  font-size: 1.5em;
+  color: #333;
+  padding: 0.2em 0.3em 0;
+  background-color: #ecf3f1;
+  width: max-content;
+}
+.emoji-dropdown .emoji-icon:hover {
+  cursor: pointer;
+}
+.emoji-dropdown .emoji-container {
+  display: none;
+  padding: 0.5em 0 0.5em 0.5em;
+  position: absolute;
+  border-radius: 5px;
+  z-index: 1;
+  top: 2em;
+  background: white;
+  left: -270px;
+  width: 300px;
+  height: 200px;
+  overflow: auto;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  flex-wrap: wrap;
+}
+.emoji-dropdown .emoji-container::-webkit-scrollbar {
+  display: none;
+}
+.emoji-dropdown .emoji-container .emoji {
+  width: 1.5em;
+  height: 1.5em;
+  font-size: 1.5em;
+  margin: 0.1em;
+  transition: all 200ms;
+  will-change: transform;
+  cursor: pointer;
+}
+.emoji-dropdown .emoji-container .emoji:hover {
+  transform: scale(1.2);
 }
 
 /*# sourceMappingURL=style.css.map */

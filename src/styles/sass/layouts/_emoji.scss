@@ -1,0 +1,49 @@
+@import '../variables';
+
+.emoji-dropdown{
+  position: relative;
+  .emoji-icon{
+    border-radius: 20px;
+    position: relative;
+    font-size: 1.5em;
+    color: #333;
+    padding: .2em .3em 0;
+    background-color: rgb(236, 243, 241);
+    width: max-content;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  .emoji-container{
+    display: none;
+    padding: .5em 0 .5em .5em;
+    &::-webkit-scrollbar { 
+      display: none;
+    }
+    position: absolute;
+    border-radius: 5px;
+    z-index: 1;
+    top: 2em;
+    background: white;
+    left: -270px;
+    width: 300px;
+    height: 200px;
+    overflow: auto;
+    box-shadow: $color-box-shadow;
+    // display: flex;
+    flex-wrap: wrap;
+    .emoji{
+      width: 1.5em;
+      height: 1.5em;
+      font-size: 1.5em;
+      margin:.1em;
+      transition: all 200ms;
+      will-change: transform;
+      cursor: pointer;
+      &:hover{
+        transform: scale(1.2);
+      }
+    }
+  }
+
+}

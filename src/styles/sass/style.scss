@@ -3,7 +3,8 @@
 *{
   margin: 0;
   padding: 0;
-  font-family: $main-font;
+  
+  font-family: $monse-font;
 }
 
 main{
@@ -44,3 +45,4 @@ input, button, textarea{
 @import 'pages/home';
 @import 'pages/login';
 @import 'layouts/modal';
+@import 'layouts/emoji';
