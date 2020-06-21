@@ -3,7 +3,7 @@ export default () => {
   divElemt.classList.add('screen-background');
   divElemt.innerHTML = `
     <div class="logo-container">
-    <img src="../img/eco-trans-white.png" alt="" class="logo">
+    <img loading="lazy" src="../img/eco-trans-white.png" alt="" class="logo">
     <span class="app-name">eco-chat...</span>
     </div>
     <div class="form-container">
@@ -12,7 +12,7 @@ export default () => {
     <form id="sign-in-form">
     <div class="form-control">
     <i class="far fa-envelope icon-input"></i>
-    <input type="text" name="email" id="email" class="form-field user" placeholder="Correo Electrónico" autocomplete="on">
+    <input type="text" name="email" id="email" class="form-field user" placeholder="Dirección de correo" autocomplete="on">
     <small></small>
     </div>
     <div class="form-control">
@@ -22,7 +22,7 @@ export default () => {
     <input type="password" name="password" id="password" class="password" placeholder="Contraseña"autocomplete="on">
     <small></small>
     </div>
-    <button id="sign-un-btn">Iniciar Sesión</button>
+    <button id="form-btn">INICIAR SESIÓN</button>
     </form>
     <span class="msg-err">error aqui</span>
     <span class="text-deco"> O bien ingresa con...</span>
