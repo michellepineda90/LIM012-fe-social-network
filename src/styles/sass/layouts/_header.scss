@@ -25,10 +25,9 @@
 
 
 header{
+  // visibility: hidden;
   z-index: 10;
   position: fixed;
-  // top: 0;
-  // height: max-content;
   width: 100%;
   background: $primary-color;  
   nav{
@@ -49,13 +48,14 @@ header{
       .option{   
         padding:.5em;
         a{  
+          text-transform: capitalize;
           padding: .5em;
           display: flex;
           align-items: center;            
           text-decoration: none;
           color: white;
           font-weight: bolder;
-          font-family: $yantra-font;
+          // font-family: $yantra-font;
           justify-content: baseline;
           &:hover{
             border-radius: 5px;

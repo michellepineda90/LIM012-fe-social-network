@@ -22,7 +22,7 @@ $breakpoint-tablet:768px;
 $color-btn-disabled:rgb(110, 240, 214);
 
 %field-form {
-  padding: 1em 1em 1em 2.5em;
+  padding: .8em .8em 1em 2.5em;
   width: 100%;
   font-size: 1em;
   max-width: 400px;
@@ -49,9 +49,8 @@ $color-btn-disabled:rgb(110, 240, 214);
 .show{
   display: block !important;
 }
-
-.show{
-  display: block !important;
+.active {
+ visibility: visible !important;
 }
 
 .right{
@@ -59,10 +58,14 @@ $color-btn-disabled:rgb(110, 240, 214);
   right: 0;
 } 
 .liked{
-  color: rgb(241, 100, 100) !important;
+  color: rgb(235, 68, 68) !important;
 }
 .flex{
   display: flex !important;
+}
+
+.alert{
+  border: 1.2px solid rgb(243, 57, 57) !important;
 }
 
 %ordinary-btn{
@@ -77,9 +80,6 @@ $color-btn-disabled:rgb(110, 240, 214);
     cursor: pointer;
     transform: scale(1.2);
   }
-}
-.liked{
-  color: rgb(238, 124, 124) !important;
 }
 
 .main-btn{
