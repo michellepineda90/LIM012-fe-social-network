@@ -163,7 +163,10 @@
         @extend %flex;
         span{
           outline: none;
-          strong{color: #0CA385}
+          strong{
+            text-transform: capitalize;
+            color: #0CA385
+          }
           background: rgb(241, 245, 246);
           padding: 1em;
           border-radius: 30px;
@@ -218,18 +221,14 @@ section.content{
       .post-content{      
         border-top: 1px solid $color-border;
         padding: .5em;
-        background: white;
-        div {
-          display: flex;
-          img {font-size: 1.5em;}
-          .text-post{
-            overflow-y: hidden;
-            
-            font-size: smaller;
-            padding: 1em 0;
-            border: none;
-            width: 100%;
-            }
+        background: white;      
+        img {font-size: 1.5em;}
+        .text-post{
+          overflow-y: hidden;            
+          font-size: smaller;
+          padding: 1em 0;
+          border: none;
+          width: 100%;
         }
         .photo-container{
           display: flex;
@@ -361,7 +360,7 @@ section.content{
       color: teal;
     }
     i{
-      color: #0CA385;
+      color: #a3730c;
       margin: .5em;
     }
     button{

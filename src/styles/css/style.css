@@ -41,6 +41,10 @@
   color: #f16464 !important;
 }
 
+.flex {
+  display: flex !important;
+}
+
 .modal .modal-footer button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
@@ -155,6 +159,10 @@ input, button, textarea {
   color: #f16464 !important;
 }
 
+.flex {
+  display: flex !important;
+}
+
 .modal .modal-footer button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
@@ -235,6 +243,10 @@ input, button, textarea {
 
 .liked {
   color: #f16464 !important;
+}
+
+.flex {
+  display: flex !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -404,6 +416,10 @@ header nav ul li {
 
 .liked {
   color: #f16464 !important;
+}
+
+.flex {
+  display: flex !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -603,6 +619,7 @@ header nav ul li {
   border-radius: 30px;
 }
 .posts-container .post .post-comments .comment-created span strong {
+  text-transform: capitalize;
   color: #0CA385;
 }
 .posts-container .post .post-comments .comment-created span .name-user {
@@ -660,13 +677,10 @@ section.content .create-post-container .post-content {
   padding: 0.5em;
   background: white;
 }
-section.content .create-post-container .post-content div {
-  display: flex;
-}
-section.content .create-post-container .post-content div img {
+section.content .create-post-container .post-content img {
   font-size: 1.5em;
 }
-section.content .create-post-container .post-content div .text-post {
+section.content .create-post-container .post-content .text-post {
   overflow-y: hidden;
   font-size: smaller;
   padding: 1em 0;
@@ -889,6 +903,10 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 
 .liked {
   color: #f16464 !important;
+}
+
+.flex {
+  display: flex !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -1219,6 +1237,10 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   color: #f16464 !important;
 }
 
+.flex {
+  display: flex !important;
+}
+
 .modal .modal-footer button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
@@ -1307,6 +1329,129 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 .dropdown .dropdown-menu {
   z-index: 3;
   position: absolute;
+}
+
+.screen-background .form-container form .form-control input, .screen-background .form-container button {
+  padding: 1em 1em 1em 2.5em;
+  width: 100%;
+  font-size: 1em;
+  max-width: 400px;
+  border-radius: 2em;
+  outline: none;
+}
+
+.hide {
+  display: none;
+}
+
+.posts-container .post .post-comments .create-comment-container, .posts-container .post .post-comments .comment-created {
+  display: flex;
+}
+
+.name-user {
+  display: block;
+  font-weight: 700;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+.show {
+  display: block !important;
+}
+
+.right {
+  position: relative;
+  right: 0;
+}
+
+.liked {
+  color: #f16464 !important;
+}
+
+.flex {
+  display: flex !important;
+}
+
+.my-self .info-user button, .modal .modal-footer button {
+  font-weight: bold;
+  margin: 0.2em;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.modal .modal-header i:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.liked {
+  color: #ee7c7c !important;
+}
+
+.main-btn {
+  cursor: pointer;
+  background: #0CA385;
+  color: whitesmoke;
+  border: none;
+}
+
+.ordinary-btn {
+  cursor: pointer;
+  background: white;
+  color: #0CA385;
+  border: 1px solid #0CA385;
+}
+
+.emoji-dropdown {
+  position: relative;
+}
+.emoji-dropdown .emoji-icon {
+  border-radius: 20px;
+  position: relative;
+  font-size: 1.5em;
+  color: #333;
+  padding: 0.2em 0.3em 0;
+  background-color: #ecf3f1;
+  width: max-content;
+}
+.emoji-dropdown .emoji-icon:hover {
+  cursor: pointer;
+}
+.emoji-dropdown .emoji-container {
+  display: none;
+  padding: 0.5em 0 0.5em 0.5em;
+  position: absolute;
+  border-radius: 5px;
+  z-index: 1;
+  top: 2em;
+  background: white;
+  left: -270px;
+  width: 300px;
+  height: 200px;
+  overflow: auto;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  flex-wrap: wrap;
+}
+.emoji-dropdown .emoji-container::-webkit-scrollbar {
+  display: none;
+}
+.emoji-dropdown .emoji-container .emoji {
+  width: 1.5em;
+  height: 1.5em;
+  font-size: 1.5em;
+  margin: 0.1em;
+  transition: all 200ms;
+  will-change: transform;
+  cursor: pointer;
+}
+.emoji-dropdown .emoji-container .emoji:hover {
+  transform: scale(1.2);
 }
 
 /*# sourceMappingURL=style.css.map */

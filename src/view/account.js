@@ -1,3 +1,5 @@
+import { emojis } from '../controller/utils.js';
+
 export default (user, page) => {
   const mySelf = `
   <div class="my-self">
@@ -7,10 +9,10 @@ export default (user, page) => {
       <span class="name-user">${user.displayName}</span>
       <i class="fas fa-envelope"></i><span>${user.email}</span>
       <p class="info-user-p"></p>
-      ${page === 'profile' ? `<button>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-      Editar Perfil
-    </button>` : ''}
+        ${page === 'profile' ? `<button>
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        Editar Perfil
+      </button>` : ''}
     </div>
   </div>`;
 
@@ -18,9 +20,10 @@ export default (user, page) => {
   <section class="create-post-container">
         <span> Crear publicación</span>
         <div class="post-content">
-          <div>
+          <div class="flex">
             <img src="${user.photoURL}" class="post-user-photo">
-            <textarea class="text-post" contenteditable="true" name="textarea"  placeholder="¿Qué estas pensando?"></textarea>          
+            <textarea class="text-post" contenteditable="true" name="textarea"  placeholder="¿Qué estas pensando?"></textarea>
+            ${emojis()}
           </div>
           <div class="photo-container">                      
           </div>
