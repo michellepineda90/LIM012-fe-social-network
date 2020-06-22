@@ -1,6 +1,6 @@
 import { auth } from '../firebaseInit.js';
 import {
-  createlikeBD, deletePostBD, updatePostBD, getAllCommentsBD, editCommentBD,
+  createlikeBD, deletePostBD, updatePostBD, getAllCommentsBD, editCommentBD, deleteCommentBD,
 } from '../model/post.model.js';
 import { createCommentObj } from '../controller/postController.js';
 
@@ -17,7 +17,7 @@ const modalDelete = (type) => {
   divDelete.classList.add('modal', 'modal-delete');
   divDelete.innerHTML = `
   <div class="modal-header">
-  ¿Eliminar ${type === 'post'?'publicación':'comentario'}?
+  ¿Eliminar ${type === 'post' ? 'publicación' : 'comentario'}?
   </div>
   <div class="modal-body">
     ${type === 'post' ? 'Estas segur@ de querer eliminar está publicación, al eliminar ya no podra ser recuperada.'
@@ -150,14 +150,13 @@ const deletePost = (id) => {
 };
 
 const editComment = (id, textEditable) => {
+  const commentToEdit = document.getElementById('commentId');
   const name = textEditable.querySelector('strong');
   name.style.display = 'none';
   textEditable.setAttribute('contenteditable', true);
   textEditable.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
-      // aqui debes de llama a tu funcion que guardara los cambios en la bd
-      // si todo sale bien deberia ejecutarse lo sgt
       textEditable.setAttribute('contenteditable', false);
       name.style.display = 'inline';
     }
@@ -167,24 +166,25 @@ const editComment = (id, textEditable) => {
 const deleteComment = (id) => {
   const modal = modalDelete('comment');
   bgModal.appendChild(modal);
-  const deletePostBtn = modal.querySelector('button#delete');
+  const deleteCommentBtn = modal.querySelector('button#delete');
   const cancelBtn = modal.querySelector('button#cancel');
-
-  // cancela la accion de eliminar y cierra la ventan modal de eliminar
-  cancelBtn.addEventListener('click', () => {
+  deleteCommentBtn.addEventListener('click', () => {
+    deleteCommentBD(id);
     bgModal.removeChild(modal);
+    bgModal.style.display = 'none';
+  });
+  cancelBtn.addEventListener('click', () => {
     bgModal.style.display = 'none';
   });
 
   // confirma la accion de eliminar y llama a la funcion que se conecta con firebase
   // para remover el post de la BD
-  deletePostBtn.addEventListener('click', () => {
-    // aqui deberias llamar a tu funcion para eliminar el comentario en la bd
-    // deleteCommentBD(id)
-    //   .then(() => {
-    //     bgModal.style.display = 'none';
-    //   });
-    // .catch(err => console.log(err));
+  deleteCommentBtn.addEventListener('click', () => {
+    deleteCommentBD(id)
+      .then(() => {
+        bgModal.style.display = 'none';
+      })
+      .catch(err => console.log(err));
   });
 };
 
