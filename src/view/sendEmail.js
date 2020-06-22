@@ -11,11 +11,11 @@ export default () => {
   </div>
   <div class="form-container">
     <div class="message-container">
-      <h2 class="message-title">¡Gracias por registrarte!</h2>    
+      <h2 class="message-title">¡Gracias por registrarse!</h2>    
       <span class="text-deco"> Hemos enviado un correo de confirmación a <strong>${auth.currentUser.email}</strong></span>
-      <span class="text-deco">Por favor revisa tu correo y haz click en el enlace para verificar la dirección del correo.</span>
-      <button class="btn-send-email">Reenviar correo de verificación</button>
-      <span><a href="#/login"> Inicia Sesión</a></span>
+      <span class="text-deco">Por favor revisa tu correo y haz click en el enlace para validar la dirección de correo</span>
+      <button id="form-btn" class="btn-send-email">Reenviar correo de verificación</button>
+      <span class="text-deco" ><a href="#/login"> Inicia Sesión</a></span>
     </div>
   </div>
   `;

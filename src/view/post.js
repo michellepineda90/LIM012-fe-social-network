@@ -3,6 +3,7 @@ import {
   createlikeBD, deletePostBD, updatePostBD, getAllCommentsBD, editCommentBD, deleteCommentBD,
 } from '../model/post.model.js';
 import { createCommentObj } from '../controller/postController.js';
+import { emojis, emojiEvent } from '../controller/utils.js';
 
 
 // funcion que permite visualizar la opcion q elegimos en el dropdown de privacidad,
@@ -50,6 +51,7 @@ const modalEdit = (message, privacyState) => {
         </div>
       </div>
       <div class="modal-footer"> 
+        ${emojis()}
         <div class="dropdown">
           <button class="privacy ordinary-btn" id="${privacyState}">
             ${setStatePrivacity(privacyState)}
@@ -77,6 +79,7 @@ const modalEdit = (message, privacyState) => {
       });
     });
   });
+  emojiEvent(divEdit, '.edit-area');
   return divEdit;
 };
 
@@ -99,15 +102,16 @@ const bgModal = document.querySelector('.bg-modal');
 // funcionalidad para la ventana modal
 const editPostModal = (postId, message, privacy) => {
   const modal = modalEdit(message, privacy);
+  bgModal.appendChild(modal);
+  modal.classList.add('active');
+  const divEditable = modal.querySelector('.edit-area');
+  const privacyBtn = modal.querySelector('button.privacy');
   const saveBtn = modal.querySelector('button#save');
   const crossBtn = modal.querySelector('i#close');
-  bgModal.appendChild(modal);
+  divEditable.focus();
 
-  // console.log('***Editando Post***');
   // Btn para guardar los cambios de un post  en la BD
   saveBtn.addEventListener('click', () => {
-    const divEditable = modal.querySelector('.edit-area');
-    const privacyBtn = modal.querySelector('button.privacy');
     const data = {
       textContent: divEditable.textContent,
       privacity: privacyBtn.id,
@@ -115,23 +119,51 @@ const editPostModal = (postId, message, privacy) => {
     // funcion que se conecta con firebase para actualizar un post
     updatePostBD(postId, data)
       .then(() => {
-        bgModal.removeChild(modal);
-        bgModal.style.display = 'none';
+        modal.classList.remove('active');
+        bgModal.classList.remove('active');
       });
   });
   // evento para cerrar la ventana modal de editar
   crossBtn.addEventListener('click', () => {
-    bgModal.removeChild(modal);
-    bgModal.style.display = 'none';
+    modal.classList.remove('active');
+    bgModal.classList.remove('active');
   });
 };
 
 const deletePost = (id) => {
   const modal = modalDelete('post');
   bgModal.appendChild(modal);
+  modal.classList.add('active');
   const deletePostBtn = modal.querySelector('button#delete');
   const cancelBtn = modal.querySelector('button#cancel');
 
+  // cancela la accion de eliminar y cierra la ventan modal de eliminar
+  cancelBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+    bgModal.classList.remove('active');
+  });
+
+  // confirma la accion de eliminar y llama a la funcion que se conecta con firebase
+  // para remover el post de la BD
+  deletePostBtn.addEventListener('click', () => {
+    deletePostBD(id)
+      .then(() => {
+        modal.classList.remove('active');
+        bgModal.classList.remove('active');
+      });
+    // .catch(err => console.log(err));
+  });
+};
+
+const deleteComment = (id) => {
+  const modal = modalDelete('comment');
+  const cancelBtn = modal.querySelector('button#cancel');
+  const deleteCommentBtn = modal.querySelector('button#delete');
+  // bgModal.style.display = 'flex';
+  bgModal.innerHTML = '';
+  bgModal.appendChild(modal);
+  modal.classList.add('active');
+  bgModal.classList.add('active');
   // cancela la accion de eliminar y cierra la ventan modal de eliminar
   cancelBtn.addEventListener('click', () => {
     bgModal.removeChild(modal);
@@ -140,46 +172,8 @@ const deletePost = (id) => {
 
   // confirma la accion de eliminar y llama a la funcion que se conecta con firebase
   // para remover el post de la BD
-  deletePostBtn.addEventListener('click', () => {
-    deletePostBD(id)
-      .then(() => {
-        bgModal.style.display = 'none';
-      });
-    // .catch(err => console.log(err));
-  });
-};
-
-const editComment = (id, textEditable) => {
-  const commentToEdit = document.getElementById('commentId');
-  const name = textEditable.querySelector('strong');
-  name.style.display = 'none';
-  textEditable.setAttribute('contenteditable', true);
-  textEditable.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      textEditable.setAttribute('contenteditable', false);
-      name.style.display = 'inline';
-    }
-  });
-};
-
-const deleteComment = (id) => {
-  const modal = modalDelete('comment');
-  bgModal.appendChild(modal);
-  const deleteCommentBtn = modal.querySelector('button#delete');
-  const cancelBtn = modal.querySelector('button#cancel');
   deleteCommentBtn.addEventListener('click', () => {
-    deleteCommentBD(id);
-    bgModal.removeChild(modal);
-    bgModal.style.display = 'none';
-  });
-  cancelBtn.addEventListener('click', () => {
-    bgModal.style.display = 'none';
-  });
-
-  // confirma la accion de eliminar y llama a la funcion que se conecta con firebase
-  // para remover el post de la BD
-  deleteCommentBtn.addEventListener('click', () => {
+    console.log('llamando boton delete');
     deleteCommentBD(id)
       .then(() => {
         bgModal.style.display = 'none';
@@ -188,6 +182,45 @@ const deleteComment = (id) => {
   });
 };
 
+const editComment = (id, textEditable) => {
+  const name = textEditable.querySelector('strong');
+  name.style.display = 'none';
+  // textEditable.removeChild(name);
+  textEditable.setAttribute('contenteditable', true);
+  textEditable.focus();
+  textEditable.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      textEditable.setAttribute('contenteditable', false);
+      if (textEditable.textContent) {
+        editCommentBD(id, { textContent: textEditable.textContent });
+        // aqui debes de llama a tu funcion que guardara los cambios en la bd
+        // si todo sale bien deberia ejecutarse lo sgt
+        console.log('hay algo que guardar', textEditable.textContent);
+        // textEditable.prepend(name);
+      } else {
+        console.log('Se va a eliminar', textEditable.textContent);
+        deleteComment(id);
+      }
+      name.style.display = 'inline';
+    }
+  });
+};
+// const editComment = (id, textEditable) => {
+//   const commentToEdit = document.getElementById('commentId');
+//   const name = textEditable.querySelector('strong');
+//   name.style.display = 'none';
+//   textEditable.setAttribute('contenteditable', true);
+//   textEditable.addEventListener('keydown', (event) => {
+//     if (event.key === 'Enter') {
+//       event.preventDefault();
+//       textEditable.setAttribute('contenteditable', false);
+//       name.style.display = 'inline';
+//     }
+//   });
+// };
+
+
 const renderComments = (commentObj, commentId) => {
   const divComment = document.createElement('div');
   divComment.classList.add('comment-created');
@@ -195,17 +228,19 @@ const renderComments = (commentObj, commentId) => {
   divComment.id = commentId;
   divComment.innerHTML = `
   <img src="${commentObj.photoUser}" class="post-user-photo">
+  <span class="comment">
+    <strong> ${commentObj.nameUser}</strong>
     <span class="comment-text">
-      <strong> ${commentObj.nameUser}</strong>
       ${commentObj.textContent}
     </span>
-    ${dropdownDots(commentObj.userId)}
+  </span>
+  ${dropdownDots(commentObj.userId)}
     `;
 
   const dropdown = divComment.querySelector('.setting-post');
   const menu = divComment.querySelector('ul');
   dropdown.addEventListener('click', () => {
-    const textMessage = divComment.querySelector('.comment-text');
+    const textMessage = divComment.querySelector('.comment');
     // permite mostra la opcion de eliminar y editar
     menu.classList.toggle('show');
     // detecta una de opciones editar o eliminar y deacuerdo a eso
@@ -214,8 +249,6 @@ const renderComments = (commentObj, commentId) => {
     options.forEach((option) => {
       option.addEventListener('click', () => {
         if (option.id === 'delete') {
-          bgModal.style.display = 'flex';
-          bgModal.innerHTML = '';
           deleteComment(commentId);
         } else if (option.id === 'edit') {
           editComment(commentId, textMessage);
@@ -239,7 +272,7 @@ export const post = (postObj, postId) => {
   divPost.id = postId;
   divPost.innerHTML = `
     <div class="post-header border">
-      <img src="${postObj.photoUser}" class="icon-photo-user">       
+      <img loading="lazy" src="${postObj.photoUser}" class="icon-photo-user">       
       <div class="name-date-post">
         <div>
           <span class="name-user">${postObj.nameUser}</span>
@@ -265,8 +298,11 @@ export const post = (postObj, postId) => {
     <div class="post-comments ">    
       <div class="create-comment-container border">
         <img src="${auth.currentUser.photoURL}" class="post-user-photo">
-        <textarea type="text" class="input-comment" placeholder="Escribe un comentario"></textarea>
-        <i class="fas fa-paper-plane"></i>
+        <div class="text-area-comment">
+          <div class="input-comment" contenteditable data-placeholder="Escribe un comentario"></div>
+          ${emojis()}
+          </div>
+          <i class="fas fa-paper-plane"></i>
       </div>
       <div class="comments-container"></div>
       </div>`;
@@ -276,25 +312,30 @@ export const post = (postObj, postId) => {
 
   sendCommentBtn.addEventListener('click', () => {
     const commentInput = divPost.querySelector('.input-comment');
-    if (commentInput && commentInput.value) {
-      createCommentObj(commentInput.value, auth.currentUser, postId);
-      commentInput.value = '';
+    if (commentInput && commentInput.textContent) {
+      createCommentObj(commentInput.textContent, auth.currentUser, postId);
+      commentInput.textContent = '';
     } else {
-      commentInput.setCustomValidity('Debes ingresar un comentario');
-      commentInput.reportValidity();
+      // commentInput.setCustomValidity('Debes ingresar un comentario');
+      // commentInput.reportValidity();
     }
   });
 
-  // getAllCommentsBD(postId)
-  //   .then((querySnapshot) => {
-  //     querySnapshot.forEach((comment) => {
-  //       commentsContainer.appendChild(renderComments(comment.data()));
-  //     });
-  //   });
+  const commentInput = divPost.querySelector('.input-comment');
+  commentInput.addEventListener('input', (e) => {
+    if (e.target.textContent) {
+      // sendCommentBtn.disabled = false;
+      sendCommentBtn.classList.add('send-comment');
+    } else {
+      // sendCommentBtn.disabled = true;
+      sendCommentBtn.classList.remove('send-comment');
+    }
+  });
 
   getAllCommentsBD(postId).onSnapshot((querySnapshot) => {
     commentsContainer.innerHTML = '';
     querySnapshot.forEach((comment) => {
+      // console.log(comment.data());
       commentsContainer.appendChild(renderComments(comment.data(), comment.id));
     });
   });
@@ -312,12 +353,10 @@ export const post = (postObj, postId) => {
     e.preventDefault();
     const index = postObj.likes.indexOf(auth.currentUser.uid);
     if (index > -1) {
-      // console.log('liked---');
       postObj.likes.splice(index, 1);
       createlikeBD(postId, postObj.likes);
       e.target.classList.add('liked');
     } else {
-      // console.log('disliked---');
       postObj.likes.push(String(auth.currentUser.uid));
       e.target.classList.remove('liked');
       createlikeBD(postId, postObj.likes);
@@ -337,8 +376,8 @@ export const post = (postObj, postId) => {
     const options = menu.querySelectorAll('li');
     options.forEach((option) => {
       option.addEventListener('click', () => {
-        bgModal.style.display = 'flex';
         bgModal.innerHTML = '';
+        bgModal.classList.add('active');
         if (option.id === 'delete') {
           deletePost(postId);
         } else if (option.id === 'edit') {
@@ -348,6 +387,26 @@ export const post = (postObj, postId) => {
       });
     });
   });
+
+  // para desplegar y ver los emojis al dejar un comentario
+  // const emojiIconBtn = divPost.querySelector('.emoji-icon');
+  // const emojisContainer = divPost.querySelector('.emoji-container');
+  // emojiIconBtn.addEventListener('click', () => {
+  //   emojisContainer.classList.toggle('flex');
+  // });
+
+  // para añadir emojis en un comentario
+  // const emojisComment = divPost.querySelectorAll('.emoji');
+  // commentInput = divPost.querySelector('.input-comment');
+  // emojisComment.forEach((emoji) => {
+  //   emoji.addEventListener('click', (e) => {
+  //     sendCommentBtn.classList.add('send-comment');
+  //     console.log(e.target.innerText);
+  //     commentInput.textContent += e.target.textContent;
+  //   });
+  // });
+
+  emojiEvent(divPost, '.input-comment', sendCommentBtn, 'send-comment');
 
 
   return divPost;
