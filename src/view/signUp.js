@@ -3,11 +3,11 @@ export default () => {
   divElemt.classList.add('screen-background');
   divElemt.innerHTML = `
   <div class="logo-container">
-  <img src="/../../img/eco-trans-white.png" alt="" class="logo">
+  <img loading="lazy" src="/../../img/eco-trans-white.png" alt="" class="logo">
   <span class="app-name">eco-chat...</span>
 </div>
 <div class="form-container">
-  <h1 class="form-title">Registrarse</h1>
+  <h1 class="form-title">Crea tu cuenta</h1>
   <form id="sign-up-form" name="register">
     <div class="form-control">
       <i class="fa fa-user icon-input" aria-hidden="true"></i>
@@ -26,7 +26,7 @@ export default () => {
       <input type="password" name="password" id="password" placeholder="Contraseña" autocomplete="on">
       <small>Mensaje de error</small>
     </div>    
-    <button id="sign-un-btn" class="form-btn">Registrar</button>
+    <button id="form-btn" class="form-btn">CREAR CUENTA</button>
   </form>
   <span class="msg-err">error aqui</span>
   <span class="text-deco"> O bien ingresa con...</span>

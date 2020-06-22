@@ -25,7 +25,9 @@ section#container{
 .bg-modal{
   position: absolute;
   top: 0;
-  display: none;
+  // display: none;
+  display: flex;
+  visibility: hidden;
   justify-content: center;
   align-items: center;
   width: 100%;

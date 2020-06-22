@@ -3,6 +3,10 @@
 
 
 .modal{
+  // visibility: hidden;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: .3s ease all;
   box-shadow: $color-box-shadow;
   border-radius: 5px;
   background-color: white;
@@ -11,6 +15,10 @@
   display: flex;
   flex-direction: column;
   min-width: 250px;
+  &.active{
+    opacity: 1;
+    transform: scale(1);
+  }
   .modal-header,.modal-footer{
     padding: .5em;
     background: $post-color;
@@ -68,3 +76,9 @@
     position: absolute;
   }
 }
+
+
+// .modal.active{
+//   opacity: 1;
+//   transform: scale(1);
+// }

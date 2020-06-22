@@ -2,16 +2,20 @@
 
 .emoji-dropdown{
   position: relative;
+  height: max-content;
   .emoji-icon{
     border-radius: 20px;
     position: relative;
     font-size: 1.5em;
     color: #333;
     padding: .2em .3em 0;
-    background-color: rgb(236, 243, 241);
+    // background-color: rgb(236, 243, 241);
     width: max-content;
+    transition: all 200ms;
+    will-change: transform;
     &:hover{
       cursor: pointer;
+      transform: scale(1.1);
     }
   }
   .emoji-container{

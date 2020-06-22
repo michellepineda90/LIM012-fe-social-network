@@ -1,5 +1,5 @@
-.screen-background .form-container button, .screen-background .form-container form .form-control input {
-  padding: 1em 1em 1em 2.5em;
+.screen-background .form-container button#form-btn, .screen-background .form-container form .form-control input {
+  padding: 0.8em 0.8em 1em 2.5em;
   width: 100%;
   font-size: 1em;
   max-width: 400px;
@@ -11,7 +11,7 @@
   display: none;
 }
 
-.posts-container .post .post-comments .comment-created, .posts-container .post .post-comments .create-comment-container {
+.posts-container .post .post-comments .comments-container .comment-created, .posts-container .post .post-comments .create-comment-container .text-area-comment {
   display: flex;
 }
 
@@ -28,8 +28,8 @@
   display: block !important;
 }
 
-.show {
-  display: block !important;
+.active {
+  visibility: visible !important;
 }
 
 .right {
@@ -38,11 +38,15 @@
 }
 
 .liked {
-  color: #f16464 !important;
+  color: #eb4444 !important;
 }
 
 .flex {
   display: flex !important;
+}
+
+.alert {
+  border: 1.2px solid #f33939 !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -55,10 +59,6 @@
 .modal .modal-header i:hover {
   cursor: pointer;
   transform: scale(1.2);
-}
-
-.liked {
-  color: #ee7c7c !important;
 }
 
 .main-btn {
@@ -100,7 +100,8 @@ section#container::-webkit-scrollbar {
 .bg-modal {
   position: absolute;
   top: 0;
-  display: none;
+  display: flex;
+  visibility: hidden;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -116,8 +117,8 @@ input, button, textarea {
   cursor: pointer;
 }
 
-.screen-background .form-container button, .screen-background .form-container form .form-control input {
-  padding: 1em 1em 1em 2.5em;
+.screen-background .form-container button#form-btn, .screen-background .form-container form .form-control input {
+  padding: 0.8em 0.8em 1em 2.5em;
   width: 100%;
   font-size: 1em;
   max-width: 400px;
@@ -129,7 +130,7 @@ input, button, textarea {
   display: none;
 }
 
-.posts-container .post .post-comments .comment-created, .posts-container .post .post-comments .create-comment-container {
+.posts-container .post .post-comments .comments-container .comment-created, .posts-container .post .post-comments .create-comment-container .text-area-comment {
   display: flex;
 }
 
@@ -146,8 +147,8 @@ input, button, textarea {
   display: block !important;
 }
 
-.show {
-  display: block !important;
+.active {
+  visibility: visible !important;
 }
 
 .right {
@@ -156,11 +157,15 @@ input, button, textarea {
 }
 
 .liked {
-  color: #f16464 !important;
+  color: #eb4444 !important;
 }
 
 .flex {
   display: flex !important;
+}
+
+.alert {
+  border: 1.2px solid #f33939 !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -173,10 +178,6 @@ input, button, textarea {
 .modal .modal-header i:hover {
   cursor: pointer;
   transform: scale(1.2);
-}
-
-.liked {
-  color: #ee7c7c !important;
 }
 
 .main-btn {
@@ -202,8 +203,8 @@ input, button, textarea {
   min-height: 100%;
 }
 
-.screen-background .form-container button, .screen-background .form-container form .form-control input {
-  padding: 1em 1em 1em 2.5em;
+.screen-background .form-container button#form-btn, .screen-background .form-container form .form-control input {
+  padding: 0.8em 0.8em 1em 2.5em;
   width: 100%;
   font-size: 1em;
   max-width: 400px;
@@ -215,7 +216,7 @@ input, button, textarea {
   display: none;
 }
 
-.posts-container .post .post-comments .comment-created, .posts-container .post .post-comments .create-comment-container {
+.posts-container .post .post-comments .comments-container .comment-created, .posts-container .post .post-comments .create-comment-container .text-area-comment {
   display: flex;
 }
 
@@ -232,8 +233,8 @@ input, button, textarea {
   display: block !important;
 }
 
-.show {
-  display: block !important;
+.active {
+  visibility: visible !important;
 }
 
 .right {
@@ -242,11 +243,15 @@ input, button, textarea {
 }
 
 .liked {
-  color: #f16464 !important;
+  color: #eb4444 !important;
 }
 
 .flex {
   display: flex !important;
+}
+
+.alert {
+  border: 1.2px solid #f33939 !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -259,10 +264,6 @@ input, button, textarea {
 .modal .modal-header i:hover {
   cursor: pointer;
   transform: scale(1.2);
-}
-
-.liked {
-  color: #ee7c7c !important;
 }
 
 .main-btn {
@@ -315,13 +316,13 @@ header nav ul .option {
   padding: 0.5em;
 }
 header nav ul .option a {
+  text-transform: capitalize;
   padding: 0.5em;
   display: flex;
   align-items: center;
   text-decoration: none;
   color: white;
   font-weight: bolder;
-  font-family: "Yantramanav", sans-serif;
   justify-content: baseline;
 }
 header nav ul .option a:hover {
@@ -375,8 +376,8 @@ header nav ul li {
     background: none;
   }
 }
-.screen-background .form-container button, .screen-background .form-container form .form-control input {
-  padding: 1em 1em 1em 2.5em;
+.screen-background .form-container button#form-btn, .screen-background .form-container form .form-control input {
+  padding: 0.8em 0.8em 1em 2.5em;
   width: 100%;
   font-size: 1em;
   max-width: 400px;
@@ -388,7 +389,7 @@ header nav ul li {
   display: none;
 }
 
-.posts-container .post .post-comments .comment-created, .posts-container .post .post-comments .create-comment-container {
+.posts-container .post .post-comments .comments-container .comment-created, .posts-container .post .post-comments .create-comment-container .text-area-comment {
   display: flex;
 }
 
@@ -405,8 +406,8 @@ header nav ul li {
   display: block !important;
 }
 
-.show {
-  display: block !important;
+.active {
+  visibility: visible !important;
 }
 
 .right {
@@ -415,11 +416,15 @@ header nav ul li {
 }
 
 .liked {
-  color: #f16464 !important;
+  color: #eb4444 !important;
 }
 
 .flex {
   display: flex !important;
+}
+
+.alert {
+  border: 1.2px solid #f33939 !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -432,10 +437,6 @@ header nav ul li {
 .modal .modal-header i:hover {
   cursor: pointer;
   transform: scale(1.2);
-}
-
-.liked {
-  color: #ee7c7c !important;
 }
 
 .main-btn {
@@ -462,6 +463,7 @@ header nav ul li {
 
 .enabled {
   background-color: #0CA385 !important;
+  cursor: pointer;
 }
 
 .posts-container .post .post-header div.name-date-post span {
@@ -543,10 +545,12 @@ header nav ul li {
 }
 .posts-container .post .post-header div.name-date-post div .dropdown i {
   color: #666464;
+  transition: all 200ms;
+  will-change: transform;
 }
 .posts-container .post .post-header div.name-date-post div .dropdown i:hover {
   color: #333;
-  transform: scale(1.5);
+  transform: scale(1.2);
   cursor: pointer;
 }
 .posts-container .post .post-body {
@@ -595,48 +599,68 @@ header nav ul li {
 }
 .posts-container .post .post-comments .create-comment-container {
   padding: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.posts-container .post .post-comments .create-comment-container .input-comment {
-  width: 100%;
+.posts-container .post .post-comments .create-comment-container .text-area-comment {
+  position: relative;
+  border: 1.5px solid rgba(153, 153, 153, 0.3);
+  border-radius: 20px;
+  width: 70%;
+  padding: 0.3em 0 0.3em 1em;
+  max-height: 100px;
+}
+.posts-container .post .post-comments .create-comment-container .text-area-comment .input-comment {
+  outline: none;
   overflow: hidden;
-  resize: none;
-  padding: 0.5em;
-  border-radius: 5px;
-  border: 1px solid rgba(153, 153, 153, 0.3);
+  font-size: small;
+  width: 90%;
 }
-.posts-container .post .post-comments .create-comment-container i {
-  color: #0CA385;
+.posts-container .post .post-comments .create-comment-container .text-area-comment .input-comment:empty:before {
+  content: attr(data-placeholder);
+}
+.posts-container .post .post-comments .create-comment-container .fa-paper-plane {
+  color: rgba(153, 153, 153, 0.3);
   font-size: 1.5em;
   padding: 0.5em;
 }
-.posts-container .post .post-comments .comment-created {
+.posts-container .post .post-comments .create-comment-container .send-comment {
+  color: #0CA385;
+  transition: all 300ms;
+  will-change: transform;
+}
+.posts-container .post .post-comments .create-comment-container .send-comment:hover {
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+.posts-container .post .post-comments .comments-container .comment-created {
+  font-size: small;
   padding: 0.5em;
 }
-.posts-container .post .post-comments .comment-created span {
-  outline: none;
+.posts-container .post .post-comments .comments-container .comment-created span.comment {
+  max-width: 80%;
   background: #f1f5f6;
   padding: 1em;
-  border-radius: 30px;
+  border-radius: 15px;
+  outline: none;
+  word-wrap: break-word;
 }
-.posts-container .post .post-comments .comment-created span strong {
+.posts-container .post .post-comments .comments-container .comment-created span.comment strong {
   text-transform: capitalize;
   color: #0CA385;
 }
-.posts-container .post .post-comments .comment-created span .name-user {
-  padding: 0;
-}
-.posts-container .post .post-comments .comment-created i {
+.posts-container .post .post-comments .comments-container .comment-created i {
   color: #666464;
 }
-.posts-container .post .post-comments .comment-created i:hover {
+.posts-container .post .post-comments .comments-container .comment-created i:hover {
   color: #333;
   transform: scale(1.5);
   cursor: pointer;
 }
 
 section.content {
-  background: #e6f0ed;
-  padding: 60px 0.5em;
+  padding: 60px 0.5em 0;
   width: 98%;
   height: max-content;
 }
@@ -680,12 +704,16 @@ section.content .create-post-container .post-content {
 section.content .create-post-container .post-content img {
   font-size: 1.5em;
 }
-section.content .create-post-container .post-content .text-post {
+section.content .create-post-container .post-content .text-area {
+  outline: none;
   overflow-y: hidden;
+  padding: 0.5em;
   font-size: smaller;
-  padding: 1em 0;
-  border: none;
-  width: 100%;
+  width: 80%;
+  height: 70px;
+}
+section.content .create-post-container .post-content .text-area:empty:before {
+  content: attr(data-placeholder);
 }
 section.content .create-post-container .post-content .photo-container {
   display: flex;
@@ -725,9 +753,6 @@ section.content .create-post-container .btn-container .post-btn {
   font-weight: bold;
   background: rgba(12, 163, 133, 0.514);
   color: white;
-}
-section.content .create-post-container .btn-container .post-btn:enabled {
-  cursor: pointer;
 }
 
 .div-img {
@@ -845,7 +870,7 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   section.content section.profile-section {
     position: sticky;
     position: -webkit-sticky;
-    top: 0.6em;
+    top: 60px;
     width: 50%;
     height: 100%;
     padding: 0.5em;
@@ -862,8 +887,8 @@ section.content .create-post-container .btn-container .post-btn:enabled {
     width: 60%;
   }
 }
-.screen-background .form-container button, .screen-background .form-container form .form-control input {
-  padding: 1em 1em 1em 2.5em;
+.screen-background .form-container button#form-btn, .screen-background .form-container form .form-control input {
+  padding: 0.8em 0.8em 1em 2.5em;
   width: 100%;
   font-size: 1em;
   max-width: 400px;
@@ -875,7 +900,7 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   display: none;
 }
 
-.posts-container .post .post-comments .create-comment-container, .posts-container .post .post-comments .comment-created {
+.posts-container .post .post-comments .create-comment-container .text-area-comment, .posts-container .post .post-comments .comments-container .comment-created {
   display: flex;
 }
 
@@ -892,8 +917,8 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   display: block !important;
 }
 
-.show {
-  display: block !important;
+.active {
+  visibility: visible !important;
 }
 
 .right {
@@ -902,11 +927,15 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 }
 
 .liked {
-  color: #f16464 !important;
+  color: #eb4444 !important;
 }
 
 .flex {
   display: flex !important;
+}
+
+.alert {
+  border: 1.2px solid #f33939 !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -919,10 +948,6 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 .modal .modal-header i:hover {
   cursor: pointer;
   transform: scale(1.2);
-}
-
-.liked {
-  color: #ee7c7c !important;
 }
 
 .main-btn {
@@ -974,9 +999,9 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   align-items: center;
   justify-content: center;
   width: 80%;
-  padding: 1em;
+  padding: 0.5em 1em;
   height: max-content;
-  background: #faf8f8;
+  background: rgba(0, 0, 0, 0.568);
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
   border-radius: 1em;
 }
@@ -985,8 +1010,8 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   max-width: 400px;
   display: block;
   text-align: center;
-  font-size: 1.5em;
-  color: #30495c;
+  font-size: 1.2em;
+  color: white;
   margin: 0.5em;
   font-weight: 600;
 }
@@ -994,9 +1019,9 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   display: block;
   text-align: center;
   font-size: 1em;
-  color: #30495c;
+  color: white;
   margin: 0.5em;
-  width: 70%;
+  width: 90%;
 }
 .screen-background .form-container form {
   display: flex;
@@ -1014,44 +1039,48 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 .screen-background .form-container form .form-control .icon-input {
   border: none;
   position: absolute;
-  padding: 1.2em;
+  padding: 1em;
   font-size: 1em;
-  color: #333;
+  color: #a19c9c;
   left: 0;
 }
 .screen-background .form-container form .form-control .icon-psw {
   border: none;
   position: absolute;
-  padding: 1.2em;
+  padding: 1em;
   font-size: 1em;
   color: #0CA385;
   right: 0;
 }
+.screen-background .form-container form .form-control .icon-psw:hover {
+  color: #e8f0ef;
+}
 .screen-background .form-container form .form-control input {
-  background: #e8f0ef;
+  background: #333333;
+  color: #e8f0ef;
   box-sizing: border-box;
   border: none;
 }
 .screen-background .form-container form .form-control input:hover {
-  border: 1.5px solid #55dba8;
+  border: 1.5px solid #bbc0be;
 }
 .screen-background .form-container form .form-control small {
   display: none;
   text-align: start;
   font-size: 0.8em;
-  color: red;
+  color: white;
   margin: 0.5em;
   padding-left: 1em;
 }
 .screen-background .form-container .msg-err {
   display: none;
   text-align: center;
-  font-size: 0.9em;
-  color: red;
+  font-size: 12px;
+  color: white;
   margin: 0.5em;
   font-weight: 500;
 }
-.screen-background .form-container button {
+.screen-background .form-container button#form-btn {
   font-weight: bolder;
   color: #FEFEFE;
   border: 1px none;
@@ -1059,15 +1088,21 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   background: #0CA385;
   margin-bottom: 0.8em;
 }
-.screen-background .form-container button:hover {
+.screen-background .form-container button#form-btn:hover {
+  background: #e8f0ef;
+  color: #333;
   transform: scale(1.01);
 }
 .screen-background .form-container .text-deco {
   display: block;
   text-align: center;
-  font-size: 1em;
-  color: #30495c;
+  font-size: 0.9em;
+  color: #948d8d;
   margin: 0.5em;
+}
+.screen-background .form-container .text-deco a {
+  color: #e8f0ef;
+  font-weight: 500;
 }
 .screen-background .form-container .message-container {
   display: flex;
@@ -1080,7 +1115,7 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   display: block;
   text-align: center;
   font-size: 1.5em;
-  color: #30495c;
+  color: white;
   margin: 0.5em;
 }
 .screen-background .form-container .message-container .btn-send-email {
@@ -1088,7 +1123,7 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   padding: 1em;
 }
 .screen-background .form-container .social-media-container {
-  margin: 1em 0;
+  margin: 0.5em 0;
 }
 .screen-background .form-container .social-media-container .icon-facebook {
   font-size: 1.5em;
@@ -1154,7 +1189,7 @@ section.content .create-post-container .btn-container .post-btn:enabled {
     display: block;
     text-align: center;
     font-size: 2em;
-    color: #30495c;
+    color: white;
     margin: 0.5em;
   }
 }
@@ -1190,12 +1225,12 @@ section.content .create-post-container .btn-container .post-btn:enabled {
     display: block;
     text-align: center;
     font-size: 2em;
-    color: #30495c;
+    color: white;
     margin: 0.5em;
   }
 }
-.screen-background .form-container form .form-control input, .screen-background .form-container button {
-  padding: 1em 1em 1em 2.5em;
+.screen-background .form-container form .form-control input, .screen-background .form-container button#form-btn {
+  padding: 0.8em 0.8em 1em 2.5em;
   width: 100%;
   font-size: 1em;
   max-width: 400px;
@@ -1207,7 +1242,7 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   display: none;
 }
 
-.posts-container .post .post-comments .create-comment-container, .posts-container .post .post-comments .comment-created {
+.posts-container .post .post-comments .create-comment-container .text-area-comment, .posts-container .post .post-comments .comments-container .comment-created {
   display: flex;
 }
 
@@ -1224,8 +1259,8 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   display: block !important;
 }
 
-.show {
-  display: block !important;
+.active {
+  visibility: visible !important;
 }
 
 .right {
@@ -1234,11 +1269,15 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 }
 
 .liked {
-  color: #f16464 !important;
+  color: #eb4444 !important;
 }
 
 .flex {
   display: flex !important;
+}
+
+.alert {
+  border: 1.2px solid #f33939 !important;
 }
 
 .modal .modal-footer button, .my-self .info-user button {
@@ -1251,10 +1290,6 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 .modal .modal-header i:hover {
   cursor: pointer;
   transform: scale(1.2);
-}
-
-.liked {
-  color: #ee7c7c !important;
 }
 
 .main-btn {
@@ -1272,6 +1307,9 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 }
 
 .modal {
+  opacity: 0;
+  transform: scale(0.7);
+  transition: 0.3s ease all;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   background-color: white;
@@ -1280,6 +1318,10 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   display: flex;
   flex-direction: column;
   min-width: 250px;
+}
+.modal.active {
+  opacity: 1;
+  transform: scale(1);
 }
 .modal .modal-header, .modal .modal-footer {
   padding: 0.5em;
@@ -1331,8 +1373,8 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   position: absolute;
 }
 
-.screen-background .form-container form .form-control input, .screen-background .form-container button {
-  padding: 1em 1em 1em 2.5em;
+.screen-background .form-container form .form-control input, .screen-background .form-container button#form-btn {
+  padding: 0.8em 0.8em 1em 2.5em;
   width: 100%;
   font-size: 1em;
   max-width: 400px;
@@ -1344,7 +1386,7 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   display: none;
 }
 
-.posts-container .post .post-comments .create-comment-container, .posts-container .post .post-comments .comment-created {
+.posts-container .post .post-comments .create-comment-container .text-area-comment, .posts-container .post .post-comments .comments-container .comment-created {
   display: flex;
 }
 
@@ -1361,8 +1403,8 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   display: block !important;
 }
 
-.show {
-  display: block !important;
+.active {
+  visibility: visible !important;
 }
 
 .right {
@@ -1371,11 +1413,15 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 }
 
 .liked {
-  color: #f16464 !important;
+  color: #eb4444 !important;
 }
 
 .flex {
   display: flex !important;
+}
+
+.alert {
+  border: 1.2px solid #f33939 !important;
 }
 
 .my-self .info-user button, .modal .modal-footer button {
@@ -1388,10 +1434,6 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 .modal .modal-header i:hover {
   cursor: pointer;
   transform: scale(1.2);
-}
-
-.liked {
-  color: #ee7c7c !important;
 }
 
 .main-btn {
@@ -1410,6 +1452,7 @@ section.content .create-post-container .btn-container .post-btn:enabled {
 
 .emoji-dropdown {
   position: relative;
+  height: max-content;
 }
 .emoji-dropdown .emoji-icon {
   border-radius: 20px;
@@ -1417,11 +1460,13 @@ section.content .create-post-container .btn-container .post-btn:enabled {
   font-size: 1.5em;
   color: #333;
   padding: 0.2em 0.3em 0;
-  background-color: #ecf3f1;
   width: max-content;
+  transition: all 200ms;
+  will-change: transform;
 }
 .emoji-dropdown .emoji-icon:hover {
   cursor: pointer;
+  transform: scale(1.1);
 }
 .emoji-dropdown .emoji-container {
   display: none;

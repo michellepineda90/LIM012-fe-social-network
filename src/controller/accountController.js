@@ -3,17 +3,22 @@ import { signOut, getCurrentUser } from '../model/user.model.js';
 import { post, setStatePrivacity } from '../view/post.js';
 import { getAllPostsBD } from '../model/post.model.js';
 import { createPost } from './postController.js';
+import { emojiEvent } from './utils.js';
 
 export default (page) => {
   // llama a la BD para mostrar todos los post registrados
   const user = getCurrentUser();
+
+  if (user === undefined) {
+    window.location.hash = '#/login';
+  }
 
   const currentView = views.accountView(user, page);
   const menuBtn = currentView.querySelector('.menu-icon');
 
   const uploadImgBtn = currentView.querySelector('#upload-img-btn');
   const uploadImg = currentView.querySelector('#upload-img');
-  const container = currentView.querySelector('.photo-container');
+  const imageContainer = currentView.querySelector('.photo-container');
   const divPostsContainer = currentView.querySelector('.posts-container');
 
   const createPostBtn = currentView.querySelector('.post-btn');
@@ -29,27 +34,42 @@ export default (page) => {
   uploadImgBtn.addEventListener('click', () => {
     uploadImg.click();
   });
-
   uploadImg.addEventListener('change', (event) => {
     const img = document.createElement('div');
     img.classList.add('div-img');
     const path = URL.createObjectURL(event.target.files[0]);
     img.innerHTML = `<i class='bx bx-x'></i><img class="img-post" src="${path}">`;
-    container.append(img);
+    imageContainer.append(img);
+    if (event.target.files[0]) {
+      createPostBtn.disabled = false;
+      createPostBtn.classList.add('enabled');
+    } else {
+      createPostBtn.disabled = true;
+      createPostBtn.classList.remove('enabled');
+    }
+
+    const cross = imageContainer.querySelectorAll('.bx-x');
+    cross.forEach((x) => {
+      x.addEventListener('click', (e) => {
+        const image = e.target.parentNode;
+        imageContainer.removeChild(image);
+      });
+    });
   });
+
 
   const btnSalir = currentView.querySelector('#btn-salir');
   btnSalir.addEventListener('click', signOut);
 
   // evento que escucha al input para ver si hay algo que
   // publicar de ser asi, activa el boton de publicar
-  const textArea = currentView.querySelector('.text-post');
+  const textArea = currentView.querySelector('#text-area-post');
   textArea.addEventListener('input', (e) => {
-    if (e.target.value) {
-      createPostBtn.disabled = false;
+    if (e.target.textContent) {
+      // createPostBtn.disabled = false;
       createPostBtn.classList.add('enabled');
     } else {
-      createPostBtn.disabled = true;
+      // createPostBtn.disabled = true;
       createPostBtn.classList.remove('enabled');
     }
   });
@@ -60,20 +80,21 @@ export default (page) => {
   const menu = createContainer.querySelector('ul');
   const options = menu.querySelectorAll('li');
 
+  emojiEvent(createContainer, '#text-area-post', createPostBtn, 'enabled');
+  // const emojiIconBtn = createContainer.querySelector('.emoji-icon');
+  // const emojisContainer = createContainer.querySelector('.emoji-container');
+  // emojiIconBtn.addEventListener('click', () => {
+  //   emojisContainer.classList.toggle('flex');
+  // });
 
-  const emojiIconBtn = createContainer.querySelector('.emoji-icon');
-  const emojisContainer = createContainer.querySelector('.emoji-container');
-  emojiIconBtn.addEventListener('click', () => {
-    emojisContainer.classList.toggle('flex');
-  });
-
-  document.addEventListener('click', (e) => {
-    // e.preventDefault();
-    if (e.target.classList.contains('emoji')) {
-      console.log(e.target.innerText);
-      textArea.textContent += e.target.textContent;
-    }
-  });
+  // const emojis = createContainer.querySelectorAll('.emoji');
+  // emojis.forEach((emoji) => {
+  //   emoji.addEventListener('click', (e) => {
+  //     createPostBtn.disabled = false;
+  //     createPostBtn.classList.add('enabled');
+  //     textArea.textContent += e.target.textContent;
+  //   });
+  // });
 
   privacyBtn.addEventListener('click', () => {
     menu.classList.toggle('show');
@@ -91,21 +112,22 @@ export default (page) => {
     const photoContainer = currentView.querySelector('.photo-container');
     const images = uploadImg.files;
     const privacity = currentView.querySelector('div.privacy');
-    console.log('**creando nueva publicacion ***');
-    createPost(user, textArea.value, images, privacity.id);
-    textArea.value = '';
-    privacity.innerHTML = setStatePrivacity('public');
-    privacity.id = 'public';
-    photoContainer.innerHTML = '';
-    uploadImg.value = '';
-    createPostBtn.disabled = true;
-    createPostBtn.classList.remove('enabled');
+    if (textArea.textContent || images.length > 0) {
+      createPost(user, textArea.textContent, images, privacity.id);
+      textArea.textContent = '';
+      privacity.innerHTML = setStatePrivacity('public');
+      privacity.id = 'public';
+      photoContainer.innerHTML = '';
+      uploadImg.value = '';
+      // createPostBtn.disabled = true;
+      createPostBtn.classList.remove('enabled');
+    }
   });
 
   getAllPostsBD(page).onSnapshot((querySnapshot) => {
     divPostsContainer.innerHTML = '';
     querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data().textContent}`);
+      // console.log(`${doc.id} => ${doc.data().textContent}`);
       divPostsContainer.appendChild(post(doc.data(), doc.id));
     });
   });
