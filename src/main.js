@@ -8,7 +8,7 @@ const init = () => {
 window.addEventListener('load', init);
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    window.location.hash = '/home';
+    window.location.hash = user.emailVerified ? '/home' : '/email';
   } else {
     window.location.hash = '/login';
     if (window.unsubscribe) window.unsubscribe();

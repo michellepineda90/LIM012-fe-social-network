@@ -17,8 +17,6 @@ export const createUser = user => auth.createUserWithEmailAndPassword(user.email
   .then(() => auth.currentUser.updateProfile({
     displayName: user.name,
     photoURL: profileDefault,
-  }).then(() => {
-    registerUserBD(auth.currentUser.uid, { coverPhoto: '', aboutMe: '' });
   }));
 
 
