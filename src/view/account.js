@@ -3,8 +3,12 @@ import { emojis } from '../controller/utils.js';
 export default (user, page) => {
   const mySelf = `
   <div class="my-self">
-    <img loading="lazy" src="../img/wall1.jpg" class="user-photo-cover">
-    <img loading="lazy" src=${user.photoURL} class="photo-user">
+    <div class="photos-user">
+      <input type="file" accept="image/*" id="upload-img-profile" hidden="hidden">
+      <i class='bx bxs-camera camera-icon'></i>
+      <img loading="lazy" src="" class="user-photo-cover">
+      <img loading="lazy" src=${user.photoURL} class="photo-user">
+    </div>
     <div class="info-user">
       <span class="name-user">${user.displayName}</span>
       <i class="fas fa-envelope"></i><span>karengvcs@gmail.com</span>

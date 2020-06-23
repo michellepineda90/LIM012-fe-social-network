@@ -157,7 +157,7 @@ const deletePost = (id) => {
 const deleteComment = (id) => {
   const modal = modalDelete('comment');
   const cancelBtn = modal.querySelector('button#cancel');
-  const deletePostBtn = modal.querySelector('button#delete');
+  const deleteCommentBtn = modal.querySelector('button#delete');
   bgModal.style.display = 'flex';
   bgModal.innerHTML = '';
   bgModal.appendChild(modal);
@@ -170,7 +170,7 @@ const deleteComment = (id) => {
 
   // confirma la accion de eliminar y llama a la funcion que se conecta con firebase
   // para remover el post de la BD
-  deletePostBtn.addEventListener('click', () => {
+  deleteCommentBtn.addEventListener('click', () => {
     // aqui deberias llamar a tu funcion para eliminar el comentario en la bd
     // deleteCommentBD(id)
     //   .then(() => {
