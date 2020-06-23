@@ -13,7 +13,7 @@ export default (page) => {
   // llama a la BD para mostrar todos los post registrados
   const user = getCurrentUser();
 
-  if (user === undefined) {
+  if (!user) {
     window.location.hash = '#/login';
   }
 

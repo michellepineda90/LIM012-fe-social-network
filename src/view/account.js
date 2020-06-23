@@ -27,7 +27,7 @@ export default (user, page) => {
           <div class="flex">
             <img loading="lazy" src="${user.photoURL}" class="post-user-photo" >
             <div class="text-area" id="text-area-post" contenteditable data-placeholder="¿Qué estas pensando?"></div>
-            ${emojis()}
+            ${emojis('right')}
           </div>
           <div class="photo-container">                      
           </div>
