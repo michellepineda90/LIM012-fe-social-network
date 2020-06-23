@@ -4,6 +4,7 @@ import { post, setStatePrivacity } from '../view/post.js';
 import { getAllPostsBD } from '../model/post.model.js';
 import { createPost } from './postController.js';
 import { emojiEvent } from './utils.js';
+import { editProfile } from '../view/profile.js';
 
 export default (page) => {
   // llama a la BD para mostrar todos los post registrados
@@ -123,6 +124,18 @@ export default (page) => {
       createPostBtn.classList.remove('enabled');
     }
   });
+
+  if (page === 'profile') {
+    const btnEditProfile = currentView.querySelector('#edit-profile');
+    btnEditProfile.addEventListener('click', () => {
+      const bgModal = document.querySelector('.bg-modal');
+      const modal = editProfile();
+      bgModal.innerHTML = '';
+      bgModal.append(modal);
+      modal.classList.add('active');
+      bgModal.classList.add('active');
+    });
+  }
 
   getAllPostsBD(page).onSnapshot((querySnapshot) => {
     divPostsContainer.innerHTML = '';

@@ -9,7 +9,7 @@ export default (user, page) => {
       <span class="name-user">${user.displayName}</span>
       <i class="fas fa-envelope"></i><span>${user.email}</span>
       <p class="info-user-p"></p>
-        ${page === 'profile' ? `<button>
+        ${page === 'profile' ? `<button id="edit-profile">
         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
         Editar Perfil
       </button>` : ''}
