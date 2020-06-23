@@ -1,6 +1,7 @@
+/* eslint-disable no-console */
 import { auth } from '../firebaseInit.js';
 import {
-  createlikeBD, deletePostBD, updatePostBD, getAllCommentsBD, editCommentBD,
+  createlikeBD, deletePostBD, updatePostBD, getAllCommentsBD, editCommentBD, deleteCommentBD,
 } from '../model/post.model.js';
 import { createCommentObj } from '../controller/postController.js';
 import { emojis, emojiEvent } from '../controller/utils.js';
@@ -151,6 +152,7 @@ const deletePost = (id) => {
         modal.classList.remove('active');
         bgModal.classList.remove('active');
       });
+    // .catch(err => console.log(err));
   });
 };
 
@@ -158,10 +160,11 @@ const deleteComment = (id) => {
   const modal = modalDelete('comment');
   const cancelBtn = modal.querySelector('button#cancel');
   const deleteCommentBtn = modal.querySelector('button#delete');
-  bgModal.style.display = 'flex';
+  // bgModal.style.display = 'flex';
   bgModal.innerHTML = '';
   bgModal.appendChild(modal);
-
+  modal.classList.add('active');
+  bgModal.classList.add('active');
   // cancela la accion de eliminar y cierra la ventan modal de eliminar
   cancelBtn.addEventListener('click', () => {
     bgModal.removeChild(modal);
@@ -171,12 +174,12 @@ const deleteComment = (id) => {
   // confirma la accion de eliminar y llama a la funcion que se conecta con firebase
   // para remover el post de la BD
   deleteCommentBtn.addEventListener('click', () => {
-    // aqui deberias llamar a tu funcion para eliminar el comentario en la bd
-    // deleteCommentBD(id)
-    //   .then(() => {
-    //     bgModal.style.display = 'none';
-    //   });
-    // .catch(err => console.log(err));
+    console.log('llamando boton delete');
+    deleteCommentBD(id)
+      .then(() => {
+        bgModal.style.display = 'none';
+      })
+      .catch(err => console.log(err));
   });
 };
 
@@ -191,6 +194,7 @@ const editComment = (id, textEditable) => {
       event.preventDefault();
       textEditable.setAttribute('contenteditable', false);
       if (textEditable.textContent) {
+        editCommentBD(id, { textContent: textEditable.textContent });
         // aqui debes de llama a tu funcion que guardara los cambios en la bd
         // si todo sale bien deberia ejecutarse lo sgt
         console.log('hay algo que guardar', textEditable.textContent);
@@ -203,6 +207,19 @@ const editComment = (id, textEditable) => {
     }
   });
 };
+// const editComment = (id, textEditable) => {
+//   const commentToEdit = document.getElementById('commentId');
+//   const name = textEditable.querySelector('strong');
+//   name.style.display = 'none';
+//   textEditable.setAttribute('contenteditable', true);
+//   textEditable.addEventListener('keydown', (event) => {
+//     if (event.key === 'Enter') {
+//       event.preventDefault();
+//       textEditable.setAttribute('contenteditable', false);
+//       name.style.display = 'inline';
+//     }
+//   });
+// };
 
 
 const renderComments = (commentObj, commentId) => {

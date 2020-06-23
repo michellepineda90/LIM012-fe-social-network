@@ -155,7 +155,7 @@
           position: relative;
           border: 1.5px solid $color-border;
           border-radius: 20px;
-          width: 70%;
+          width: calc(100% - 80px);
           @extend %flex;
           padding: .3em 0 .3em 1em;
           max-height: 100px;
@@ -172,7 +172,7 @@
         .fa-paper-plane{
           color: $color-border;
           font-size: 1.5em;
-          padding: .5em;
+          padding: .5em .1em;
         } 
         .send-comment{
           color: $primary-color;
@@ -190,19 +190,21 @@
           font-size: small;
           padding: .5em;
           @extend %flex;
-          span.comment{
-            max-width: 80%;
+          .comment{
+            max-width: calc(100% - 45px);
             background: rgb(241, 245, 246);
             padding: 1em;
             border-radius: 0 20px 20px 20px;
-            outline: none;
             word-wrap: break-word;
             strong{
               text-transform: capitalize;
               color: #0CA385
             }
+            .comment-text{
+              outline: none;
+            }
           }
-          i{
+          i.setting-post{
             color: rgb(102, 100, 100);
             &:hover{
               color: #333;
@@ -210,13 +212,23 @@
               cursor: pointer;
             }
           }
-    
+          .bx-x, .bx-check{
+            font-size: 1.5em;
+            border-radius: 30px;
+            height: max-content;
+            font-weight: 600;
+            color: rgb(167, 161, 161);
+            transform: scale(.9);
+            &:hover{
+              transform: scale(1);
+              // background: rgba(12, 163, 133, 0.486);
+              cursor: pointer;
+            }
+          }
         }  
-
       }
     }
   }
-  
 }
 
 
@@ -366,10 +378,8 @@ section.content{
   display: flex;
   flex-wrap: wrap;
   height: max-content;
-  // position: relative;
   box-shadow: $color-box-shadow;
   .photos-user{
-    // background: yellow;
     position: relative;
     width: 100%;
     height: max-content;
@@ -407,7 +417,6 @@ section.content{
     padding: 1em;
     width: 100%;
     height: 100px;
-    // position: relative;
     text-align: center;          
     .name-user{
       font-size: 1.5em;
@@ -442,7 +451,6 @@ $desktop-width: 1024px;
 
 @media (min-width: $tablet-width ) {
   section.content{
-    // width: 70%;
     display: flex;
     justify-content: center;    
     section.profile-section{

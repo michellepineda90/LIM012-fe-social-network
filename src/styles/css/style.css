@@ -49,7 +49,7 @@
   border: 1.2px solid #f33939 !important;
 }
 
-.modal .modal-footer button, .my-self .info-user button {
+.modal .modal-footer .family-btn button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
   border-radius: 5px;
@@ -168,7 +168,7 @@ input, button, textarea {
   border: 1.2px solid #f33939 !important;
 }
 
-.modal .modal-footer button, .my-self .info-user button {
+.modal .modal-footer .family-btn button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
   border-radius: 5px;
@@ -254,7 +254,7 @@ input, button, textarea {
   border: 1.2px solid #f33939 !important;
 }
 
-.modal .modal-footer button, .my-self .info-user button {
+.modal .modal-footer .family-btn button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
   border-radius: 5px;
@@ -427,7 +427,7 @@ header nav ul li {
   border: 1.2px solid #f33939 !important;
 }
 
-.modal .modal-footer button, .my-self .info-user button {
+.modal .modal-footer .family-btn button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
   border-radius: 5px;
@@ -606,7 +606,7 @@ header nav ul li {
   position: relative;
   border: 1.5px solid rgba(153, 153, 153, 0.3);
   border-radius: 20px;
-  width: 70%;
+  width: calc(100% - 80px);
   padding: 0.3em 0 0.3em 1em;
   max-height: 100px;
 }
@@ -622,7 +622,7 @@ header nav ul li {
 .posts-container .post .post-comments .create-comment-container .fa-paper-plane {
   color: rgba(153, 153, 153, 0.3);
   font-size: 1.5em;
-  padding: 0.5em;
+  padding: 0.5em 0.1em;
 }
 .posts-container .post .post-comments .create-comment-container .send-comment {
   color: #0CA385;
@@ -637,24 +637,38 @@ header nav ul li {
   font-size: small;
   padding: 0.5em;
 }
-.posts-container .post .post-comments .comments-container .comment-created span.comment {
-  max-width: 80%;
+.posts-container .post .post-comments .comments-container .comment-created .comment {
+  max-width: calc(100% - 45px);
   background: #f1f5f6;
   padding: 1em;
   border-radius: 0 20px 20px 20px;
-  outline: none;
   word-wrap: break-word;
 }
-.posts-container .post .post-comments .comments-container .comment-created span.comment strong {
+.posts-container .post .post-comments .comments-container .comment-created .comment strong {
   text-transform: capitalize;
   color: #0CA385;
 }
-.posts-container .post .post-comments .comments-container .comment-created i {
+.posts-container .post .post-comments .comments-container .comment-created .comment .comment-text {
+  outline: none;
+}
+.posts-container .post .post-comments .comments-container .comment-created i.setting-post {
   color: #666464;
 }
-.posts-container .post .post-comments .comments-container .comment-created i:hover {
+.posts-container .post .post-comments .comments-container .comment-created i.setting-post:hover {
   color: #333;
   transform: scale(1.5);
+  cursor: pointer;
+}
+.posts-container .post .post-comments .comments-container .comment-created .bx-x, .posts-container .post .post-comments .comments-container .comment-created .bx-check {
+  font-size: 1.5em;
+  border-radius: 30px;
+  height: max-content;
+  font-weight: 600;
+  color: #a7a1a1;
+  transform: scale(0.9);
+}
+.posts-container .post .post-comments .comments-container .comment-created .bx-x:hover, .posts-container .post .post-comments .comments-container .comment-created .bx-check:hover {
+  transform: scale(1);
   cursor: pointer;
 }
 
@@ -958,7 +972,7 @@ section.content .create-post-container .btn-container .post-btn {
   border: 1.2px solid #f33939 !important;
 }
 
-.modal .modal-footer button, .my-self .info-user button {
+.modal .modal-footer .family-btn button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
   border-radius: 5px;
@@ -985,7 +999,7 @@ section.content .create-post-container .btn-container .post-btn {
 }
 
 .screen-background {
-  background-image: url("../../../img/back1.jpg");
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/red-social-32aa8.appspot.com/o/eco-chat%2Fback1.jpg?alt=media&token=fe7ad64c-0e68-4628-852e-a14228d86534");
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -1300,7 +1314,7 @@ section.content .create-post-container .btn-container .post-btn {
   border: 1.2px solid #f33939 !important;
 }
 
-.modal .modal-footer button, .my-self .info-user button {
+.modal .modal-footer .family-btn button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
   border-radius: 5px;
@@ -1356,7 +1370,11 @@ section.content .create-post-container .btn-container .post-btn {
 }
 .modal .modal-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+.modal .modal-footer .family-btn {
+  display: flex;
+  flex-direction: row;
 }
 .modal-delete {
   max-width: 500px;
@@ -1444,7 +1462,7 @@ section.content .create-post-container .btn-container .post-btn {
   border: 1.2px solid #f33939 !important;
 }
 
-.my-self .info-user button, .modal .modal-footer button {
+.my-self .info-user button, .modal .modal-footer .family-btn button {
   font-weight: bold;
   margin: 0.2em;
   border-radius: 5px;
@@ -1496,7 +1514,6 @@ section.content .create-post-container .btn-container .post-btn {
   z-index: 1;
   top: 2em;
   background: white;
-  left: -270px;
   width: 300px;
   height: 200px;
   overflow: auto;
@@ -1510,7 +1527,6 @@ section.content .create-post-container .btn-container .post-btn {
   width: 1.5em;
   height: 1.5em;
   font-size: 1.5em;
-  margin: 0.1em;
   transition: all 200ms;
   will-change: transform;
   cursor: pointer;
