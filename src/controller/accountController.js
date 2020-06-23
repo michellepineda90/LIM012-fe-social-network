@@ -1,10 +1,12 @@
 // import { auth } from 'firebase-admin';
 import { views } from '../view/index.js';
-import { signOut, getCurrentUser, updateImgCoverUser, getInfoUserBD } from '../model/user.model.js';
+import {
+  signOut, getCurrentUser, updateImgCoverUser, getInfoUserBD,
+} from '../model/user.model.js';
 import { post, setStatePrivacity } from '../view/post.js';
 import { getAllPostsBD } from '../model/post.model.js';
 import { createPost } from './postController.js';
-import { emojiEvent } from './utils.js';
+import { emojiEvent, coverDefault } from './utils.js';
 import { uploadImage } from '../model/storage-post.js';
 
 export default (page) => {
@@ -35,7 +37,7 @@ export default (page) => {
   getInfoUserBD(user.uid)
     .then((doc) => {
       const coverPhoto = currentView.querySelector('.user-photo-cover');
-      coverPhoto.src = (doc.data()) ? doc.data().coverPhoto : '../img/wall1.jpg';
+      coverPhoto.src = (doc.data().coverPhoto !== '') ? doc.data().coverPhoto : coverDefault;
     });
 
   // boton para cargar imagenes para publicar
@@ -135,7 +137,7 @@ export default (page) => {
   });
 
 
-  getAllPostsBD(page).onSnapshot((querySnapshot) => {
+  window.unsubscribe = getAllPostsBD(page).onSnapshot((querySnapshot) => {
     divPostsContainer.innerHTML = '';
     querySnapshot.forEach((doc) => {
       // console.log(`${doc.id} => ${doc.data().textContent}`);
