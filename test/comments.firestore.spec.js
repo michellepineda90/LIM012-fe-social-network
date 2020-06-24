@@ -30,12 +30,23 @@ describe('addCommentBD', () => {
       }));
 });
 
+describe('editCommentBD', () => {
+  it('Should edit a comment in Firestore DB collection',
+    () => editCommentBD('abc1', { textContent: 'hola y ya' })
+      .then(() => getCommentsForTest())
+      .then((data) => {
+        const result = data.find(comment => comment.id === 'abc1');
+        console.log(result);
+        expect(result).toMatchObject({ textContent: 'hola y ya' });
+      }));
+});
+
 describe('deleteCommentBD', () => {
-  it('Should add a comment in Firestore DB collection, and check it has been correctly linked to a given post',
+  it('Should delete a comment from Firestore DB collection',
     () => deleteCommentBD('abc1')
       .then(() => getCommentsForTest())
       .then((data) => {
-        const result = data.find(comment => comment.id === ' abc1');
+        const result = data.find(comment => comment.id === 'abc1');
         expect(result).toBe(undefined);
       }));
 });
