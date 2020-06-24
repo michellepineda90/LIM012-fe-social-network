@@ -52,7 +52,8 @@ export const createlikeBD = (postId, likes) => db.collection('posts').doc(postId
 
 export const removeLike = id => db.collection('likes').doc(id).delete();
 
-// export const checkLike = (userId, postId) => db.collection('likes').where('postId', '==', postId).where('userId', '==', userId)
+// export const checkLike = (userId, postId) => db.collection('likes').
+// where('postId', '==', postId).where('userId', '==', userId)
 //   .get()
 //   .then((querySnapshot) => {
 //     querySnapshot.forEach((doc) => {

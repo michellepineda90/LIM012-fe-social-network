@@ -72,6 +72,7 @@ main {
 
 section#container {
   display: flex;
+  background-color: #e6f0ed;
   width: 100%;
   height: 100%;
   overflow-y: auto; }
@@ -87,7 +88,7 @@ section#container {
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); }
+  background-color: rgba(0, 0, 0, 0.575); }
 
 input, button, textarea {
   outline: none; }
@@ -158,7 +159,6 @@ input, button, textarea {
   border: 1px solid #0CA385; }
 
 .screen {
-  background-color: #e6f0ed;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -482,13 +482,12 @@ header {
       .posts-container .post .post-comments .create-comment-container {
         padding: .5em;
         display: flex;
-        justify-content: space-between;
-        align-items: center; }
+        justify-content: space-between; }
         .posts-container .post .post-comments .create-comment-container .text-area-comment {
           position: relative;
           border: 1.5px solid rgba(153, 153, 153, 0.3);
           border-radius: 20px;
-          width: 70%;
+          width: calc(100% - 80px);
           padding: .3em 0 .3em 1em;
           max-height: 100px; }
           .posts-container .post .post-comments .create-comment-container .text-area-comment .input-comment {
@@ -501,7 +500,7 @@ header {
         .posts-container .post .post-comments .create-comment-container .fa-paper-plane {
           color: rgba(153, 153, 153, 0.3);
           font-size: 1.5em;
-          padding: .5em; }
+          padding: .5em .1em; }
         .posts-container .post .post-comments .create-comment-container .send-comment {
           color: #0CA385;
           transition: all 300ms;
@@ -512,21 +511,32 @@ header {
       .posts-container .post .post-comments .comments-container .comment-created {
         font-size: small;
         padding: .5em; }
-        .posts-container .post .post-comments .comments-container .comment-created span.comment {
-          max-width: 80%;
+        .posts-container .post .post-comments .comments-container .comment-created .comment {
+          max-width: calc(100% - 45px);
           background: #f1f5f6;
           padding: 1em;
-          border-radius: 15px;
-          outline: none;
+          border-radius: 0 20px 20px 20px;
           word-wrap: break-word; }
-          .posts-container .post .post-comments .comments-container .comment-created span.comment strong {
+          .posts-container .post .post-comments .comments-container .comment-created .comment strong {
             text-transform: capitalize;
             color: #0CA385; }
-        .posts-container .post .post-comments .comments-container .comment-created i {
+          .posts-container .post .post-comments .comments-container .comment-created .comment .comment-text {
+            outline: none; }
+        .posts-container .post .post-comments .comments-container .comment-created i.setting-post {
           color: #666464; }
-          .posts-container .post .post-comments .comments-container .comment-created i:hover {
+          .posts-container .post .post-comments .comments-container .comment-created i.setting-post:hover {
             color: #333;
             transform: scale(1.5);
+            cursor: pointer; }
+        .posts-container .post .post-comments .comments-container .comment-created .bx-x, .posts-container .post .post-comments .comments-container .comment-created .bx-check {
+          font-size: 1.5em;
+          border-radius: 30px;
+          height: max-content;
+          font-weight: 600;
+          color: #a7a1a1;
+          transform: scale(0.9); }
+          .posts-container .post .post-comments .comments-container .comment-created .bx-x:hover, .posts-container .post .post-comments .comments-container .comment-created .bx-check:hover {
+            transform: scale(1);
             cursor: pointer; }
 
 section.content {
@@ -658,30 +668,51 @@ section.content {
   display: flex;
   flex-wrap: wrap;
   height: max-content;
-  position: relative;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); }
-  .my-self .user-photo-cover {
+  .my-self .photos-user {
+    position: relative;
     width: 100%;
-    height: 200px; }
-  .my-self .photo-user {
-    width: 100px;
-    height: 100px;
-    border-radius: 80px;
-    position: absolute;
-    top: 52px;
-    border: 3px solid white; }
+    height: max-content;
+    margin-bottom: 50px; }
+    .my-self .photos-user:hover i {
+      opacity: 1; }
+    .my-self .photos-user .camera-icon {
+      margin: .5em;
+      color: white;
+      padding: .5em;
+      border-radius: 30px;
+      position: absolute;
+      background: rgba(51, 51, 51, 0.747);
+      opacity: 0;
+      transition: .3s ease all; }
+      .my-self .photos-user .camera-icon:hover {
+        cursor: pointer; }
+    .my-self .photos-user .user-photo-cover {
+      width: 100%;
+      height: 200px; }
+    .my-self .photos-user #photo-user-container {
+      position: absolute;
+      top: 150px;
+      left: calc(50% - (100px/2)); }
+      .my-self .photos-user #photo-user-container .photo-user {
+        width: 100px;
+        height: 100px;
+        border-radius: 80px;
+        border: 3px solid white; }
+      .my-self .photos-user #photo-user-container #update-profile {
+        left: calc(40% - (32px/2));
+        bottom: 0; }
   .my-self .info-user {
     padding: 1em;
     width: 100%;
     height: 100px;
-    position: relative;
     text-align: center; }
     .my-self .info-user .name-user {
       font-size: 1.5em;
       text-transform: capitalize;
       color: teal; }
     .my-self .info-user i {
-      color: #a3730c;
+      color: #0CA385;
       margin: .5em; }
     .my-self .info-user button {
       cursor: pointer;
