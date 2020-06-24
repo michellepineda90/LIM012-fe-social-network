@@ -39,16 +39,16 @@ export const signOut = () => {
   firebase.auth().signOut()
     .then(() => {
       window.location.hash = '#/login';
-    })
-    .catch((err) => {
-      console.log(err);
     });
+  // .catch((err) => {
+  //   console.log(err);
+  // });
 };
 
 
 export const updateImgCoverUser = (url, id) => {
   console.log(url, id);
-  db.collection('users').doc(id).update({ coverPhoto: url })
-    .then(() => console.log('cover photo updated!!'))
-    .catch(err => console.log('Error to update cover photo!!', err));
+  db.collection('users').doc(id).update({ coverPhoto: url });
+  // .then(() => console.log('cover photo updated!!'))
+  // .catch(err => console.log('Error to update cover photo!!', err));
 };

@@ -19,15 +19,15 @@ export const getAllPostsBD = (route) => {
   return result;
 };
 
-export const deletePostBD = id => db.collection('posts').doc(id).delete()
-  .then(() => console.log('Post eliminado!!'))
-  .catch(() => console.log('Error al eliminar post!!'));
+export const deletePostBD = id => db.collection('posts').doc(id).delete();
+// .then(() => console.log('Post eliminado!!'))
+// .catch(() => console.log('Error al eliminar post!!'));
 
 export const getPostBD = id => db.collection('posts').doc(id).get();
 
-export const updatePostBD = (id, data) => db.collection('posts').doc(id).update(data)
-  .then(() => console.log('Los cambios se guardaron exitosamente'))
-  .catch(err => console.log('No se pudo guardar los cambios', err));
+export const updatePostBD = (id, data) => db.collection('posts').doc(id).update(data);
+// .then(() => console.log('Los cambios se guardaron exitosamente'))
+// .catch(err => console.log('No se pudo guardar los cambios', err));
 
 
 // COMMENTS
@@ -36,29 +36,24 @@ export const addCommentBD = commentObj => db.collection('comments').add(commentO
 
 export const getAllCommentsBD = postId => db.collection('comments').where('postId', '==', postId).orderBy('date', 'desc');
 
-export const getCommentsForTest = () => db.collection('comments').get().then(snapshot => objToArray(snapshot.data));
 
 export const editCommentBD = (id, data) => db.collection('comments').doc(id).update(data);
 
-export const deleteCommentBD = id => db.collection('comments').doc(id).delete()
-  .then(() => console.log('Comment eliminado'))
-  .catch(() => console.log('Error'));
-// export const createlikeBD = likeObj => db.collection('likes')
-//   .add(likeObj)
-//   .then(() => console.log('Funcionando LIKE!!!'))
-//   .catch(err => console.log('ERROR LIKE', err));
+export const deleteCommentBD = id => db.collection('comments').doc(id).delete();
+// .then(() => console.log('Comment eliminado'))
+// .catch(() => console.log('Error'));
+
 
 export const createlikeBD = (postId, likes) => db.collection('posts').doc(postId)
-  .update({ likes })
-  .then(() => console.log('Funcionando LIKE!!!'))
-  .catch(err => console.log('ERROR LIKE', err));
+  .update({ likes });
+  // .then(() => console.log('Funcionando LIKE!!!'))
+  // .catch(err => console.log('ERROR LIKE', err));
 
 export const removeLike = id => db.collection('likes').doc(id).delete();
 
-// export const checkLike = (userId, postId) => db.collection('likes').where('postId', '==', postId).where('userId', '==', userId)
-//   .get()
-//   .then((querySnapshot) => {
-//     querySnapshot.forEach((doc) => {
-//       result = doc.data();
-//     });
-//   });
+// function to test
+
+export const getCommentsForTest = () => db.collection('comments').get().then(snapshot => objToArray(snapshot.data));
+
+export const getDocsForTest = collection => db.collection(collection)
+  .get().then(snapshot => objToArray(snapshot.data));
