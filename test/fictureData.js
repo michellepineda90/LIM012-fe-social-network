@@ -57,21 +57,6 @@ export const fixtureData = {
           postId: 'post_1',
           userId: 'user_1',
         },
-        comment_2: {
-          textContent: 'hola :)',
-          postId: 'post_1',
-          userId: 'user_2',
-        },
-        comment_3: {
-          textContent: 'hoy es jueves',
-          postId: 'post_2',
-          userId: 'user_1',
-        },
-        comment_4: {
-          textContent: 'Hello wordl!',
-          postId: 'post_2',
-          userId: 'user_2',
-        },
       },
     },
   },

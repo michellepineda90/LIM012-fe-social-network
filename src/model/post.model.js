@@ -3,9 +3,7 @@ import { auth, db } from '../firebaseInit.js';
 import { objToArray } from '../utils/array.js';
 
 export const createPostBD = postObj => db.collection('posts')
-  .add(postObj)
-  .then(() => console.log('se creo post con exito'))
-  .catch(err => console.log('hubo error al crear post', err));
+  .add(postObj);
 
 // export const getAllPostsBD = (route) => db.collection('posts').orderBy('date');
 export const getAllPostsBD = (route) => {

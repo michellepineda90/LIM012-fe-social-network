@@ -13,15 +13,34 @@ global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled
 
 describe('addCommentBD', () => {
   it('Should add a comment in Firestore DB collection, and check it has been correctly linked to a given post',
-    () => addCommentBD({ textContent: 'holiholiholi', postId: 'a1b2c3' })
+    () => addCommentBD({ textContent: 'holiholiholi', postId: 'post_1' })
       .then(() => getCommentsForTest())
       .then((data) => {
-        console.log(data);
         const result = data.find(comment => comment.textContent === 'holiholiholi');
-        expect(result).toMatchObject({ textContent: 'holiholiholi', postId: 'a1b2c3' });
+        expect(result).toMatchObject({ textContent: 'holiholiholi', postId: 'post_1' });
       }));
 });
 
+describe('editCommentBD', () => {
+  it('Should edit a comment in Firestore DB collection',
+    () => editCommentBD('comment_1', { textContent: 'hola y ya' })
+      .then(() => getCommentsForTest())
+      .then((data) => {
+        console.log(data);
+        const result = data.find(comment => comment.id === 'comment_1');
+        expect(result.textContent).toBe('hola y ya');
+      }));
+});
+
+describe('deleteCommentBD', () => {
+  it('Should delete a comment from Firestore DB collection',
+    () => deleteCommentBD('comment_1')
+      .then(() => getCommentsForTest())
+      .then((data) => {
+        const result = data.find(comment => comment.id === 'comment_1');
+        expect(result).toBeUndefined();
+      }));
+});
 
 // POSTS
 describe('addPostBD', () => {
