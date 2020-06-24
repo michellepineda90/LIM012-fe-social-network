@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { auth, db } from '../firebaseInit.js';
+import { objToArray } from '../utils/array.js';
 
 export const createPostBD = postObj => db.collection('posts')
   .add(postObj)
@@ -34,6 +35,8 @@ export const updatePostBD = (id, data) => db.collection('posts').doc(id).update(
 export const addCommentBD = commentObj => db.collection('comments').add(commentObj);
 
 export const getAllCommentsBD = postId => db.collection('comments').where('postId', '==', postId).orderBy('date', 'desc');
+
+export const getCommentsForTest = () => db.collection('comments').get().then(snapshot => objToArray(snapshot.data));
 
 export const editCommentBD = (id, data) => db.collection('comments').doc(id).update(data);
 
