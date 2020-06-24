@@ -40,9 +40,8 @@ export const getCommentsForTest = () => db.collection('comments').get().then(sna
 
 export const editCommentBD = (id, data) => db.collection('comments').doc(id).update(data);
 
-export const deleteCommentBD = id => db.collection('comments').doc(id).delete()
-  .then(() => console.log('Comment eliminado'))
-  .catch(() => console.log('Error'));
+export const deleteCommentBD = id => db.collection('comments').doc(id).delete();
+
 // export const createlikeBD = likeObj => db.collection('likes')
 //   .add(likeObj)
 //   .then(() => console.log('Funcionando LIKE!!!'))

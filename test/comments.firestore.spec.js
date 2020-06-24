@@ -25,8 +25,17 @@ describe('addCommentBD', () => {
     () => addCommentBD({ textContent: 'holiholiholi', postId: 'a1b2c3' })
       .then(() => getCommentsForTest())
       .then((data) => {
-        console.log(data);
         const result = data.find(comment => comment.textContent === 'holiholiholi');
         expect(result).toMatchObject({ textContent: 'holiholiholi', postId: 'a1b2c3' });
+      }));
+});
+
+describe('deleteCommentBD', () => {
+  it('Should add a comment in Firestore DB collection, and check it has been correctly linked to a given post',
+    () => deleteCommentBD('abc1')
+      .then(() => getCommentsForTest())
+      .then((data) => {
+        const result = data.find(comment => comment.id === ' abc1');
+        expect(result).toBe(undefined);
       }));
 });
