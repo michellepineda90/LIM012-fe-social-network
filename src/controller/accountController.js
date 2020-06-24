@@ -1,10 +1,13 @@
+// import { auth } from 'firebase-admin';
 import { views } from '../view/index.js';
-import { signOut, getCurrentUser } from '../model/user.model.js';
+import {
+  signOut, getCurrentUser, updateImgCoverUser, getInfoUserBD,
+} from '../model/user.model.js';
 import { post, setStatePrivacity } from '../view/post.js';
 import { getAllPostsBD } from '../model/post.model.js';
 import { createPost } from './postController.js';
-import { emojiEvent } from './utils.js';
-import { editProfile } from '../view/profile.js';
+import { emojiEvent, coverDefault } from './utils.js';
+import { uploadImage } from '../model/storage-post.js';
 
 export default (page) => {
   // llama a la BD para mostrar todos los post registrados
@@ -30,6 +33,12 @@ export default (page) => {
     const state = menu.style.display;
     menu.style.display = (state === 'block') ? 'none' : 'block';
   });
+
+  getInfoUserBD(user.uid)
+    .then((doc) => {
+      const coverPhoto = currentView.querySelector('.user-photo-cover');
+      coverPhoto.src = (doc.data().coverPhoto !== '') ? doc.data().coverPhoto : coverDefault;
+    });
 
   // boton para cargar imagenes para publicar
   uploadImgBtn.addEventListener('click', () => {
@@ -67,10 +76,8 @@ export default (page) => {
   const textArea = currentView.querySelector('#text-area-post');
   textArea.addEventListener('input', (e) => {
     if (e.target.textContent) {
-      // createPostBtn.disabled = false;
       createPostBtn.classList.add('enabled');
     } else {
-      // createPostBtn.disabled = true;
       createPostBtn.classList.remove('enabled');
     }
   });
@@ -82,20 +89,7 @@ export default (page) => {
   const options = menu.querySelectorAll('li');
 
   emojiEvent(createContainer, '#text-area-post', createPostBtn, 'enabled');
-  // const emojiIconBtn = createContainer.querySelector('.emoji-icon');
-  // const emojisContainer = createContainer.querySelector('.emoji-container');
-  // emojiIconBtn.addEventListener('click', () => {
-  //   emojisContainer.classList.toggle('flex');
-  // });
 
-  // const emojis = createContainer.querySelectorAll('.emoji');
-  // emojis.forEach((emoji) => {
-  //   emoji.addEventListener('click', (e) => {
-  //     createPostBtn.disabled = false;
-  //     createPostBtn.classList.add('enabled');
-  //     textArea.textContent += e.target.textContent;
-  //   });
-  // });
 
   privacyBtn.addEventListener('click', () => {
     menu.classList.toggle('show');
@@ -120,24 +114,30 @@ export default (page) => {
       privacity.id = 'public';
       photoContainer.innerHTML = '';
       uploadImg.value = '';
-      // createPostBtn.disabled = true;
       createPostBtn.classList.remove('enabled');
     }
   });
 
-  if (page === 'profile') {
-    const btnEditProfile = currentView.querySelector('#edit-profile');
-    btnEditProfile.addEventListener('click', () => {
-      const bgModal = document.querySelector('.bg-modal');
-      const modal = editProfile();
-      bgModal.innerHTML = '';
-      bgModal.append(modal);
-      modal.classList.add('active');
-      bgModal.classList.add('active');
-    });
-  }
+  const uploadImgProfile = currentView.querySelector('#upload-img-profile');
 
-  getAllPostsBD(page).onSnapshot((querySnapshot) => {
+  const updatePhotoCover = currentView.querySelector('.camera-icon');
+  updatePhotoCover.addEventListener('click', () => {
+    uploadImgProfile.click();
+  });
+  uploadImgProfile.addEventListener('click', (event) => {
+    event.target.addEventListener('change', (e) => {
+      uploadImage(e.target.files[0])
+        .then((url) => {
+          console.log('Se esta actualizando foto de portada');
+          updateImgCoverUser(url, user.uid);
+          const coverImg = currentView.querySelector('.user-photo-cover');
+          coverImg.setAttribute('src', url);
+        });
+    });
+  });
+
+
+  window.unsubscribe = getAllPostsBD(page).onSnapshot((querySnapshot) => {
     divPostsContainer.innerHTML = '';
     querySnapshot.forEach((doc) => {
       // console.log(`${doc.id} => ${doc.data().textContent}`);

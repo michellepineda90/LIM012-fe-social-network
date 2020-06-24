@@ -3,7 +3,6 @@ import signUpView from './signUp.js';
 import accountView from './account.js';
 // import postView from './post.js';
 import sendEmailView from './sendEmail.js';
-// import profileView from './profile.js';
 
 const views = {
   signUpView,
