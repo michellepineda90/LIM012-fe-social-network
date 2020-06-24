@@ -14,10 +14,7 @@ describe('Function signInUser()', () => {
       expect(user.isAnonymous).toBe(false);
     }));
 });
-// curren user is:  {
-//   isAnonymous: false,
-//   providerData: [ GoogleAuthProvider { providerId: 'google.com' } ]
-// }
+
 describe('Function createUser()', () => {
   it('Debería enviar una mensaje de verificación al usuario que se ha registrado', () => {
     createUser('lucy@gmail.com', '123456')

@@ -1,8 +1,9 @@
-import { createUser, sendConfirmationEmail } from '../model/user.model.js';
+import { createUser, sendConfirmationEmail, registerUserBD} from '../model/user.model.js';
 
 import { signUpFormValidation, hidePwd, showPwd } from './utils.js';
 
 import { views } from '../view/index.js';
+import { auth } from '../firebaseInit.js';
 
 const eventSignUp = (event) => {
   event.preventDefault();
@@ -13,9 +14,9 @@ const eventSignUp = (event) => {
   };
   createUser(user)
     .then(() => {
+      // console.log(res);
+      registerUserBD(auth.currentUser.uid, { coverPhoto: '', aboutMe: '' });
       sendConfirmationEmail();
-      // const userObj = { name: user.name, email: user.email, photoURL: '' };
-      // return registerUserBD(res.user.uid, userObj);
       window.location.hash = '#/email';
       event.target.reset();
     })

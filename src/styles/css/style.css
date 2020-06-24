@@ -49,7 +49,7 @@
   border: 1.2px solid #f33939 !important;
 }
 
-.modal .modal-footer button, .my-self .info-user button {
+.modal .modal-footer .family-btn button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
   border-radius: 5px;
@@ -89,6 +89,7 @@ main {
 
 section#container {
   display: flex;
+  background-color: #e6f0ed;
   width: 100%;
   height: 100%;
   overflow-y: auto;
@@ -106,7 +107,7 @@ section#container::-webkit-scrollbar {
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.575);
 }
 
 input, button, textarea {
@@ -168,7 +169,7 @@ input, button, textarea {
   border: 1.2px solid #f33939 !important;
 }
 
-.modal .modal-footer button, .my-self .info-user button {
+.modal .modal-footer .family-btn button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
   border-radius: 5px;
@@ -195,7 +196,6 @@ input, button, textarea {
 }
 
 .screen {
-  background-color: #e6f0ed;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -254,7 +254,7 @@ input, button, textarea {
   border: 1.2px solid #f33939 !important;
 }
 
-.modal .modal-footer button, .my-self .info-user button {
+.modal .modal-footer .family-btn button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
   border-radius: 5px;
@@ -427,7 +427,7 @@ header nav ul li {
   border: 1.2px solid #f33939 !important;
 }
 
-.modal .modal-footer button, .my-self .info-user button {
+.modal .modal-footer .family-btn button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
   border-radius: 5px;
@@ -601,13 +601,12 @@ header nav ul li {
   padding: 0.5em;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 .posts-container .post .post-comments .create-comment-container .text-area-comment {
   position: relative;
   border: 1.5px solid rgba(153, 153, 153, 0.3);
   border-radius: 20px;
-  width: 70%;
+  width: calc(100% - 80px);
   padding: 0.3em 0 0.3em 1em;
   max-height: 100px;
 }
@@ -623,7 +622,7 @@ header nav ul li {
 .posts-container .post .post-comments .create-comment-container .fa-paper-plane {
   color: rgba(153, 153, 153, 0.3);
   font-size: 1.5em;
-  padding: 0.5em;
+  padding: 0.5em 0.1em;
 }
 .posts-container .post .post-comments .create-comment-container .send-comment {
   color: #0CA385;
@@ -638,24 +637,38 @@ header nav ul li {
   font-size: small;
   padding: 0.5em;
 }
-.posts-container .post .post-comments .comments-container .comment-created span.comment {
-  max-width: 80%;
+.posts-container .post .post-comments .comments-container .comment-created .comment {
+  max-width: calc(100% - 45px);
   background: #f1f5f6;
   padding: 1em;
-  border-radius: 15px;
-  outline: none;
+  border-radius: 0 20px 20px 20px;
   word-wrap: break-word;
 }
-.posts-container .post .post-comments .comments-container .comment-created span.comment strong {
+.posts-container .post .post-comments .comments-container .comment-created .comment strong {
   text-transform: capitalize;
   color: #0CA385;
 }
-.posts-container .post .post-comments .comments-container .comment-created i {
+.posts-container .post .post-comments .comments-container .comment-created .comment .comment-text {
+  outline: none;
+}
+.posts-container .post .post-comments .comments-container .comment-created i.setting-post {
   color: #666464;
 }
-.posts-container .post .post-comments .comments-container .comment-created i:hover {
+.posts-container .post .post-comments .comments-container .comment-created i.setting-post:hover {
   color: #333;
   transform: scale(1.5);
+  cursor: pointer;
+}
+.posts-container .post .post-comments .comments-container .comment-created .bx-x, .posts-container .post .post-comments .comments-container .comment-created .bx-check {
+  font-size: 1.5em;
+  border-radius: 30px;
+  height: max-content;
+  font-weight: 600;
+  color: #a7a1a1;
+  transform: scale(0.9);
+}
+.posts-container .post .post-comments .comments-container .comment-created .bx-x:hover, .posts-container .post .post-comments .comments-container .comment-created .bx-check:hover {
+  transform: scale(1);
   cursor: pointer;
 }
 
@@ -816,26 +829,47 @@ section.content .create-post-container .btn-container .post-btn {
   display: flex;
   flex-wrap: wrap;
   height: max-content;
-  position: relative;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
 }
-.my-self .user-photo-cover {
+.my-self .photos-user {
+  position: relative;
+  width: 100%;
+  height: max-content;
+  margin-bottom: 50px;
+}
+.my-self .photos-user:hover i {
+  opacity: 1;
+}
+.my-self .photos-user .camera-icon {
+  margin: 0.5em;
+  color: white;
+  padding: 0.5em;
+  border-radius: 30px;
+  position: absolute;
+  background: rgba(51, 51, 51, 0.747);
+  opacity: 0;
+  transition: 0.3s ease all;
+}
+.my-self .photos-user .camera-icon:hover {
+  cursor: pointer;
+}
+.my-self .photos-user .user-photo-cover {
   width: 100%;
   height: 200px;
 }
-.my-self .photo-user {
+.my-self .photos-user .photo-user {
   width: 100px;
   height: 100px;
   border-radius: 80px;
   position: absolute;
-  top: 52px;
+  top: 150px;
+  left: calc(50% - (100px/2));
   border: 3px solid white;
 }
 .my-self .info-user {
   padding: 1em;
   width: 100%;
   height: 100px;
-  position: relative;
   text-align: center;
 }
 .my-self .info-user .name-user {
@@ -938,7 +972,7 @@ section.content .create-post-container .btn-container .post-btn {
   border: 1.2px solid #f33939 !important;
 }
 
-.modal .modal-footer button, .my-self .info-user button {
+.modal .modal-footer .family-btn button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
   border-radius: 5px;
@@ -965,7 +999,7 @@ section.content .create-post-container .btn-container .post-btn {
 }
 
 .screen-background {
-  background-image: url("../../../img/back1.jpg");
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/red-social-32aa8.appspot.com/o/eco-chat%2Fback1.jpg?alt=media&token=fe7ad64c-0e68-4628-852e-a14228d86534");
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -1280,7 +1314,7 @@ section.content .create-post-container .btn-container .post-btn {
   border: 1.2px solid #f33939 !important;
 }
 
-.modal .modal-footer button, .my-self .info-user button {
+.modal .modal-footer .family-btn button, .my-self .info-user button {
   font-weight: bold;
   margin: 0.2em;
   border-radius: 5px;
@@ -1336,7 +1370,11 @@ section.content .create-post-container .btn-container .post-btn {
 }
 .modal .modal-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+.modal .modal-footer .family-btn {
+  display: flex;
+  flex-direction: row;
 }
 .modal-delete {
   max-width: 500px;
@@ -1424,7 +1462,7 @@ section.content .create-post-container .btn-container .post-btn {
   border: 1.2px solid #f33939 !important;
 }
 
-.my-self .info-user button, .modal .modal-footer button {
+.my-self .info-user button, .modal .modal-footer .family-btn button {
   font-weight: bold;
   margin: 0.2em;
   border-radius: 5px;
@@ -1476,7 +1514,6 @@ section.content .create-post-container .btn-container .post-btn {
   z-index: 1;
   top: 2em;
   background: white;
-  left: -270px;
   width: 300px;
   height: 200px;
   overflow: auto;
@@ -1490,7 +1527,6 @@ section.content .create-post-container .btn-container .post-btn {
   width: 1.5em;
   height: 1.5em;
   font-size: 1.5em;
-  margin: 0.1em;
   transition: all 200ms;
   will-change: transform;
   cursor: pointer;

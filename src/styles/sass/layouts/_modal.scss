@@ -32,10 +32,14 @@
   }
   .modal-footer{  
     display: flex;
-    justify-content: flex-end;
-    button{
-      @extend %ordinary-btn;
-    }      
+    justify-content: space-between;
+    .family-btn{
+      display: flex;
+      flex-direction: row;
+      button{
+        @extend %ordinary-btn;
+      }      
+    }
   }
 }
 .modal-delete{

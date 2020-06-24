@@ -3,7 +3,7 @@ export default () => {
   divElemt.classList.add('screen-background');
   divElemt.innerHTML = `
     <div class="logo-container">
-    <img loading="lazy" src="../img/eco-trans-white.png" alt="" class="logo">
+    <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/red-social-32aa8.appspot.com/o/eco-chat%2Feco-trans-white.png?alt=media&token=dbb3087a-d53a-49ca-8c76-fb8894a6d891" alt="" class="logo">
     <span class="app-name">eco-chat...</span>
     </div>
     <div class="form-container">
