@@ -15,6 +15,7 @@ export default (page) => {
 
   if (!user) {
     window.location.hash = '#/login';
+    return views.signInView();
   }
 
   const currentView = views.accountView(user, page);
