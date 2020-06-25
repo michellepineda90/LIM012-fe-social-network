@@ -35,7 +35,6 @@ const modalDelete = (type) => {
 // template de la ventana modal para editar un post existente
 // los datos que se le pasan son los del post que se quieren editar
 const modalEdit = (message, privacyState) => {
-  // console.log(`Este Post es => ${privacyState}`);
   const divEdit = document.createElement('div');
   divEdit.classList.add('modal', 'modal-edit');
   divEdit.innerHTML = `

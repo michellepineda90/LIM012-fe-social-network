@@ -5,7 +5,6 @@ import { objToArray } from '../utils/array.js';
 export const createPostBD = postObj => db.collection('posts')
   .add(postObj);
 
-// export const getAllPostsBD = (route) => db.collection('posts').orderBy('date');
 export const getAllPostsBD = (route) => {
   const collectionRef = db.collection('posts');
   let result;

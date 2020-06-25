@@ -34,13 +34,6 @@ export default (page) => {
     const state = menu.style.display;
     menu.style.display = (state === 'block') ? 'none' : 'block';
   });
-
-  getInfoUserBD(user.uid)
-    .then((doc) => {
-      const coverPhoto = currentView.querySelector('.user-photo-cover');
-      coverPhoto.src = (doc.data().coverPhoto !== '') ? doc.data().coverPhoto : coverDefault;
-    });
-
   // boton para cargar imagenes para publicar
   uploadImgBtn.addEventListener('click', () => {
     uploadImg.click();
