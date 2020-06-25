@@ -1,8 +1,7 @@
-/* eslint-disable no-param-reassign */
 // import { auth } from 'firebase-admin';
 import { views } from '../view/index.js';
 import {
-  signOut, getCurrentUser, updateImgCoverUser, getInfoUserBD,
+  signOut, updateImgCoverUser, getInfoUserBD,
 } from '../model/user.model.js';
 import { post, setStatePrivacity } from '../view/post.js';
 import { getAllPostsBD } from '../model/post.model.js';
@@ -10,10 +9,6 @@ import { createPost } from './postController.js';
 import { emojiEvent } from '../utils/utils.js';
 import { uploadImage } from '../model/storage-post.js';
 import { auth } from '../firebaseInit.js';
-<<<<<<< HEAD
-=======
-// import { editProfile } from '../view/profile.js';
->>>>>>> a66857d7e68b88416ff36828728262752ec83845
 
 export default (page) => {
   // llama a la BD para mostrar todos los post registrados
@@ -46,18 +41,7 @@ export default (page) => {
     const state = menu.style.display;
     menu.style.display = (state === 'block') ? 'none' : 'block';
   });
-<<<<<<< HEAD
-  
-=======
 
-  getInfoUserBD(user.uid)
-    .then((doc) => {
-      const coverPhoto = currentView.querySelector('.user-photo-cover');
-      coverPhoto.src = (doc.data().coverPhoto !== '') ? doc.data().coverPhoto : coverDefault;
-      console.log(doc.data());
-    });
-
->>>>>>> a66857d7e68b88416ff36828728262752ec83845
   // boton para cargar imagenes para publicar
   uploadImgBtn.addEventListener('click', () => {
     uploadImg.click();
@@ -140,11 +124,9 @@ export default (page) => {
     const btnEditProfile = currentView.querySelector('.edit-profile');
     btnEditProfile.addEventListener('click', (event) => {
       const nameUser = currentView.querySelector('#name-user');
-      // const emailUser = currentView.querySelector('#email-user');
 
       if (event.target.id === 'edit') {
         nameUser.setAttribute('contenteditable', true);
-        // emailUser.setAttribute('contenteditable', true);
         nameUser.focus();
         event.target.textContent = 'Guardar';
         event.target.id = 'save';
