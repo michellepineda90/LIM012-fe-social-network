@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import { auth, db } from '../firebaseInit.js';
-// import { objToArray } from '../utils/array.js';
 
 export const createPostBD = postObj => db.collection('posts')
   .add(postObj);
@@ -25,17 +24,6 @@ export const getDocs = (callback, collection) => db.collection(collection)
     callback(data);
   });
 
-// export const getDocs = (collection) => {
-//   return db.collection(collection)
-//     .onSnapshot((querySnapshot) => {
-//       const data = [];
-//       querySnapshot.forEach((doc) => {
-//         data.push({ id: doc.id, ...doc.data() });
-//       });
-//       return data;
-//     });
-// };
-
 
 export const deletePostBD = id => db.collection('posts').doc(id).delete();
 
@@ -54,11 +42,9 @@ export const editCommentBD = (id, data) => db.collection('comments').doc(id).upd
 
 export const deleteCommentBD = id => db.collection('comments').doc(id).delete();
 
+// LIKES
+
 export const createlikeBD = (postId, likes) => db.collection('posts').doc(postId)
   .update({ likes });
 
 export const removeLike = id => db.collection('likes').doc(id).delete();
-
-// function to test
-
-// export const getCommentsForTest = () => db.collection('comments').get().then(snapshot => objToArray(snapshot.data));

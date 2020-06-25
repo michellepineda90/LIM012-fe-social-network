@@ -33,7 +33,27 @@
   <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-storage.js"></script>
+  <!-- <script async type="text/javascript" src="https://userlike-cdn-widgets.s3-eu-west-1.amazonaws.com/4626c47839452b78ab65e0360fa62161511aa2aa662ed8d3524bac0373a74430.js"></script> -->
+<!-- GetButton.io widget -->
+<script type="text/javascript">
+  (() => {
+      const options = {
+          facebook: "102742328161120", // Facebook page ID
+          whatsapp: "+51927081754", // WhatsApp number
+          call_to_action: "Bienvenido a Ecochat, contáctanos Ahora!", // Call to action
+          button_color: "#A8CE50", // Color of button
+          position: "left", // Position may be 'right' or 'left'
+          order: "facebook,whatsapp", // Order of buttons
+      };
+      const proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+      const s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+      s.onload =  () => { WhWidgetSendButton.init(host, proto, options); };
+      const x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+  })();
+</script>
+<!-- /GetButton.io widget -->
   <script type="module" src="firebaseInit.js"></script>
   <script type="module" src="main.js"></script>
 </body>
 </html>
+ 
