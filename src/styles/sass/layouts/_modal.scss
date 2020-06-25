@@ -32,14 +32,10 @@
   }
   .modal-footer{  
     display: flex;
-    justify-content: space-between;
-    .family-btn{
-      display: flex;
-      flex-direction: row;
-      button{
-        @extend %ordinary-btn;
-      }      
-    }
+    justify-content: flex-end;
+    button{
+      @extend %ordinary-btn;
+    }      
   }
 }
 .modal-delete{
@@ -48,6 +44,50 @@
 .modal-edit{
   max-width: 600px;
 }
+.modal-content{
+  height: max-content;
+  max-width: 500px;
+  align-items: center;
+  padding: 2em;
+  align-content: space-around;
+  .close{
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        background: $primary-color;
+        height:40px;
+        width:40px;
+        border-radius: 50%;
+        cursor: pointer;
+  
+  }
+  .photo-user-p{
+    max-width: 90px;
+    height: 90px;
+    border-radius: 80px;
+    position: relative;
+    top: 5px;
+    border: 3px solid white;
+  }
+  #upload-img{
+    width: 50%;
+    padding: 8px;
+    border: 1px solid gray;
+  }
+  .btn-guardar{
+    width: 20%;
+    background: $primary-color;
+    padding: 10px 15px;
+    color: #282e2e;
+    text-transform: uppercase;
+    font-size: 15px;
+    border-radius: 5px;
+    &:hover{
+      color:$color-hover;
+    }
+  } 
+}
+
 // moda de confirmacion para eliminar
 //modal para editar publicacion
 .modal{

@@ -303,7 +303,6 @@ export const post = (postObj, postId) => {
         <i class='bx ${postObj.privacity === 'public' ? 'bx-world' : 'bxs-lock-alt'} privacy-icon' id="${postObj.privacity}"></i>
       </div>   
     </div>
-
     <div class="post-body border"> 
       <p class="text-post-value"> ${postObj.textContent}</p>
       ${(postObj.imageContent ? `<img src="${postObj.imageContent}"></img>` : '')}      
