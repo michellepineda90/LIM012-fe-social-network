@@ -3,7 +3,7 @@ import MockFirebase from 'mock-cloud-firestore';
 import { fixtureData } from './fictureData.js';
 
 import {
-  addCommentBD, getCommentsForTest, editCommentBD, deleteCommentBD,
+  addCommentBD, editCommentBD, deleteCommentBD,
   createPostBD, updatePostBD, deletePostBD, getDocsForTest,
 } from '../src/model/post.model.js';
 
@@ -14,9 +14,10 @@ global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled
 describe('addCommentBD', () => {
   it('Should add a comment in Firestore DB collection, and check it has been correctly linked to a given post',
     () => addCommentBD({ textContent: 'holiholiholi', postId: 'post_1' })
-      .then(() => getCommentsForTest())
+      .then(() => getDocsForTest('comments'))
       .then((data) => {
         const result = data.find(comment => comment.textContent === 'holiholiholi');
+        console.log(result);
         expect(result).toMatchObject({ textContent: 'holiholiholi', postId: 'post_1' });
       }));
 });
@@ -24,7 +25,10 @@ describe('addCommentBD', () => {
 describe('editCommentBD', () => {
   it('Should edit a comment in Firestore DB collection',
     () => editCommentBD('comment_1', { textContent: 'hola y ya' })
-      .then(() => getCommentsForTest())
+      .then((data) => {
+        console.log(data);
+        getDocsForTest();
+      })
       .then((data) => {
         console.log(data);
         const result = data.find(comment => comment.id === 'comment_1');
@@ -35,7 +39,7 @@ describe('editCommentBD', () => {
 describe('deleteCommentBD', () => {
   it('Should delete a comment from Firestore DB collection',
     () => deleteCommentBD('comment_1')
-      .then(() => getCommentsForTest())
+      .then(() => getDocsForTest('comments'))
       .then((data) => {
         const result = data.find(comment => comment.id === 'comment_1');
         expect(result).toBeUndefined();

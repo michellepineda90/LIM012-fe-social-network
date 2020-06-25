@@ -30,7 +30,8 @@ export const updatePostBD = (id, data) => db.collection('posts').doc(id).update(
 
 // COMMENTS
 
-export const addCommentBD = commentObj => db.collection('comments').add(commentObj);
+export const addCommentBD = commentObj => db.collection('comments').add(commentObj)
+  .then((data) => { console.log(data); });
 
 export const getAllCommentsBD = postId => db.collection('comments').where('postId', '==', postId).orderBy('date', 'desc');
 
