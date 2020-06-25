@@ -1,4 +1,4 @@
-import { emojis } from '../controller/utils.js';
+import { emojis } from '../utils/utils.js';
 
 export default (user, page) => {
   const mySelf = `
