@@ -14,12 +14,10 @@ export default (user, page) => {
     </div>
     <div class="info-user">
       <span class="name-user" id="name-user">${user.displayName}</span>
-      <i class="fas fa-envelope"></i><span id="email-user">${user.email}</span>
+      <span id="email-user" class="${page === 'home' ? 'hidden' : ''}"><i class="fas fa-envelope"></i>${user.email}</span>
       <p class="info-user-p"></p>
-      ${page === 'profile' ? `<button class="edit-profile" id="edit">
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-      Editar Perfil
-    </button>` : ''}
+      <button class="btn-n ordinary-btn hidden"id="cancel">Cancelar</button>
+      <button class="btn-n ordinary-btn edit-profile ${page === 'home' ? 'hidden' : ''}"id="edit"><i class="far fa-edit"></i>Editar Perfil</button>
     </div>
   </div>`;
 

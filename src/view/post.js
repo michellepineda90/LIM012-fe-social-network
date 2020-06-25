@@ -24,8 +24,8 @@ const modalDelete = (type) => {
     : '¿Segur@ que quieres eliminar este comentario?'}
     </div>
     <div class="modal-footer">
-      <button id="cancel" class="ordinary-btn">Cancelar</button>
-      <button id="delete" class="main-btn">Eliminar</button>
+      <button id="cancel" class="btn-n ordinary-btn">Cancelar</button>
+      <button id="delete" class="btn-n main-btn">Eliminar</button>
     </div>`;
   return divDelete;
 };
@@ -47,9 +47,9 @@ const modalEdit = (message, privacyState) => {
       </div>
       <div class="modal-footer"> 
         ${emojis('left')}
-        <div class="family-btn">
+        <div class="family-btn flex">
         <div class="dropdown">
-          <button class="privacy ordinary-btn" id="${privacyState}">
+          <button class="privacy btn-n ordinary-btn" id="${privacyState}">
             ${setStatePrivacity(privacyState)}
           </button>        
           <ul class="dropdown-menu right hidden">
@@ -57,7 +57,7 @@ const modalEdit = (message, privacyState) => {
             <li id="private"><i class='bx bxs-lock-alt' ></i>Privado</li>
           </ul>
         </div> 
-        <button id="save" class="main-btn">Guardar</button>
+        <button id="save" class="btn-n main-btn">Guardar</button>
         </div>
       </div>`;
 

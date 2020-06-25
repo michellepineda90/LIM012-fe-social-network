@@ -237,15 +237,6 @@ section.content{
   width: 98%;
   height: max-content;
   section { margin: .5em 0;}
-  .my-self{
-    @include flex-center(row);
-    padding: .5em;
-    img.user-photo{
-      @include square-size(3em);
-      border-radius: 50px;
-      margin-right: .5em;
-    }  
-  }
    .create-post-container{
       font-family:$jaldi-font;
       color: rgb(80, 78, 78);
@@ -411,7 +402,6 @@ section.content{
       .photo-user{
         @include square-size(100px);
         border-radius: 80px;
-        // position: absolute;
         border: 3px solid white;
       }  
       #update-profile{
@@ -424,26 +414,19 @@ section.content{
   .info-user{
     padding: 1em;
     width: 100%;
-    height: 100px;
+    height: max-content;
     text-align: center;          
     .name-user{
       font-size: 1.5em;
       text-transform: capitalize;
       color: teal;
     }
-    i{
+    .fa-envelope{
       color: #0CA385;
       margin: .5em;
     }
-    button{
-      @extend %ordinary-btn;
-      cursor: pointer;
-      background-color: white;
-      border: 1px solid #0CA385;
-      color: #0CA385;
-      &:hover{
-        transform: scale(1.01);
-      }
+    .fa-save,.fa-edit{
+      font-size: 1em;
     }
   }
 }

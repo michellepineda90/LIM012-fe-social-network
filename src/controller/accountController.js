@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 // import { auth } from 'firebase-admin';
 import { views } from '../view/index.js';
 import {
@@ -23,6 +24,7 @@ export default (page) => {
   getInfoUserBD(user.uid)
     .then((doc) => {
       const coverPhoto = currentView.querySelector('.user-photo-cover');
+      console.log(doc.id, doc.data().coverPhoto);
       coverPhoto.src = doc.data().coverPhoto;
     });
 
@@ -122,21 +124,37 @@ export default (page) => {
 
   if (page === 'profile') {
     const btnEditProfile = currentView.querySelector('.edit-profile');
+    const btnCancel = currentView.querySelector('#cancel');
     btnEditProfile.addEventListener('click', (event) => {
       const nameUser = currentView.querySelector('#name-user');
+      const name = nameUser.textContent;
 
       if (event.target.id === 'edit') {
         nameUser.setAttribute('contenteditable', true);
         nameUser.focus();
-        event.target.textContent = 'Guardar';
+        event.target.innerHTML = '<i class="far fa-save"></i> Guardar';
         event.target.id = 'save';
+        btnCancel.classList.remove('hidden');
+        event.target.classList.remove('ordinary-btn');
+        event.target.classList.add('main-btn');
+        btnCancel.addEventListener('click', () => {
+          btnCancel.classList.add('hidden');
+          event.target.classList.add('ordinary-btn');
+          event.target.classList.remove('main-btn');
+          nameUser.setAttribute('contenteditable', false);
+          event.target.innerHTML = '<i class="far fa-edit"></i>Editar Perfil';
+          event.target.id = 'edit';
+          nameUser.textContent = name;
+        });
       } else if (event.target.id === 'save') {
+        btnCancel.classList.add('hidden');
+        event.target.classList.add('ordinary-btn');
+        event.target.classList.remove('main-btn');
+        nameUser.setAttribute('contenteditable', false);
+        event.target.innerHTML = '<i class="far fa-edit"></i>Editar Perfil';
         auth.currentUser.updateProfile({
           displayName: nameUser.textContent,
         });
-        nameUser.setAttribute('contenteditable', false);
-        // emailUser.setAttribute('contenteditable', false);
-        event.target.textContent = 'Editar';
         event.target.id = 'edit';
       }
     });
