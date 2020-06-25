@@ -3,11 +3,10 @@ import { auth, db } from '../firebaseInit.js';
 import { objToArray } from '../utils/array.js';
 import { profileDefault } from '../controller/utils.js';
 
+
 export const getInfoUserBD = id => db.collection('users').doc(id).get();
 
 export const getCurrentUser = () => auth.currentUser;
-
-export const updateProfileUser = data => auth.currentUser.updateProfile(data);
 
 export const signInUser = user => auth.signInWithEmailAndPassword(user.email, user.password);
 

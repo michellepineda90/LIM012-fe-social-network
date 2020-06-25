@@ -55,3 +55,11 @@ export const getCommentsForTest = () => db.collection('comments').get().then(sna
 
 export const getDocsForTest = collection => db.collection(collection)
   .get().then(snapshot => objToArray(snapshot.data));
+// export const checkLike = (userId, postId) => db.collection('likes').
+// where('postId', '==', postId).where('userId', '==', userId)
+//   .get()
+//   .then((querySnapshot) => {
+//     querySnapshot.forEach((doc) => {
+//       result = doc.data();
+//     });
+//   });

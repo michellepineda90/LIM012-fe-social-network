@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 // import { auth } from 'firebase-admin';
 import { views } from '../view/index.js';
 import {
@@ -8,6 +9,8 @@ import { getAllPostsBD } from '../model/post.model.js';
 import { createPost } from './postController.js';
 import { emojiEvent, coverDefault } from './utils.js';
 import { uploadImage } from '../model/storage-post.js';
+import { auth } from '../firebaseInit.js';
+// import { editProfile } from '../view/profile.js';
 
 export default (page) => {
   // llama a la BD para mostrar todos los post registrados
@@ -39,6 +42,7 @@ export default (page) => {
     .then((doc) => {
       const coverPhoto = currentView.querySelector('.user-photo-cover');
       coverPhoto.src = (doc.data().coverPhoto !== '') ? doc.data().coverPhoto : coverDefault;
+      console.log(doc.data());
     });
 
   // boton para cargar imagenes para publicar
@@ -119,22 +123,61 @@ export default (page) => {
     }
   });
 
-  const uploadImgProfile = currentView.querySelector('#upload-img-profile');
+  if (page === 'profile') {
+    const btnEditProfile = currentView.querySelector('.edit-profile');
+    btnEditProfile.addEventListener('click', (event) => {
+      const nameUser = currentView.querySelector('#name-user');
+      // const emailUser = currentView.querySelector('#email-user');
 
-  const updatePhotoCover = currentView.querySelector('.camera-icon');
-  updatePhotoCover.addEventListener('click', () => {
-    uploadImgProfile.click();
-  });
+      if (event.target.id === 'edit') {
+        nameUser.setAttribute('contenteditable', true);
+        // emailUser.setAttribute('contenteditable', true);
+        nameUser.focus();
+        event.target.textContent = 'Guardar';
+        event.target.id = 'save';
+      } else if (event.target.id === 'save') {
+        auth.currentUser.updateProfile({
+          displayName: nameUser.textContent,
+        });
+        nameUser.setAttribute('contenteditable', false);
+        // emailUser.setAttribute('contenteditable', false);
+        event.target.textContent = 'Editar';
+        event.target.id = 'edit';
+      }
+    });
+  }
+
+  const uploadImgProfile = currentView.querySelector('.upload-img-profile');
+
+  const updatePhotoCover = currentView.querySelector('#update-cover');
+  const updatePhotoProfile = currentView.querySelector('#update-profile');
+
   uploadImgProfile.addEventListener('click', (event) => {
     event.target.addEventListener('change', (e) => {
       uploadImage(e.target.files[0])
         .then((url) => {
           console.log('Se esta actualizando foto de portada');
-          updateImgCoverUser(url, user.uid);
-          const coverImg = currentView.querySelector('.user-photo-cover');
-          coverImg.setAttribute('src', url);
+          if (event.target.id === 'cover') {
+            updateImgCoverUser(url, user.uid);
+            const coverImg = currentView.querySelector('.user-photo-cover');
+            coverImg.setAttribute('src', url);
+          } else if (event.target.id === 'profile') {
+            auth.currentUser.updateProfile({ photoURL: url });
+            const photoUser = currentView.querySelector('.photo-user');
+            photoUser.setAttribute('src', url);
+          }
         });
     });
+  });
+
+  updatePhotoProfile.addEventListener('click', () => {
+    uploadImgProfile.id = 'profile';
+    uploadImgProfile.click();
+  });
+
+  updatePhotoCover.addEventListener('click', () => {
+    uploadImgProfile.id = 'cover';
+    uploadImgProfile.click();
   });
 
 

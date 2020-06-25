@@ -4,16 +4,19 @@ export default (user, page) => {
   const mySelf = `
   <div class="my-self">
     <div class="photos-user">
-      <input type="file" accept="image/*" id="upload-img-profile" hidden="hidden">
-      <i class='bx bxs-camera camera-icon'></i>
+      <input type="file" accept="image/*" class="upload-img-profile" id="cover" hidden="hidden">
+      <i class='bx bxs-camera camera-icon' id="update-cover"></i>
       <img loading="lazy" src="" class="user-photo-cover">
-      <img loading="lazy" src=${user.photoURL} class="photo-user">
+      <div id="photo-user-container">
+        <img loading="lazy" src=${user.photoURL} class="photo-user">
+        <i class='bx bxs-camera camera-icon' id="update-profile"></i>
+      </div>
     </div>
     <div class="info-user">
-      <span class="name-user">${user.displayName}</span>
-      <i class="fas fa-envelope"></i><span>${user.email}</span>
+      <span class="name-user" id="name-user">${user.displayName}</span>
+      <i class="fas fa-envelope"></i><span id="email-user">${user.email}</span>
       <p class="info-user-p"></p>
-      ${page === 'profile' ? `<button>
+      ${page === 'profile' ? `<button class="edit-profile" id="edit">
       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
       Editar Perfil
     </button>` : ''}

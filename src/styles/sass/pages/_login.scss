@@ -6,7 +6,7 @@
 
 
 .screen-background{
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/red-social-32aa8.appspot.com/o/eco-chat%2Fback1.jpg?alt=media&token=fe7ad64c-0e68-4628-852e-a14228d86534');
+  background-image: url('../../../img/back1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   @include flex-center();
@@ -34,6 +34,7 @@
     padding: .5em 1em;
     height: max-content;
     background: rgba(0, 0, 0, 0.568);
+    // background: rgb(250, 248, 248);;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
     border-radius: 1em;
     .form-title { 
