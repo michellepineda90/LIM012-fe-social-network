@@ -1,11 +1,10 @@
 /* eslint-disable no-console */
 import { auth, db } from '../firebaseInit.js';
-import { objToArray } from '../utils/array.js';
-import { profileDefault } from '../controller/utils.js';
+
+const coverDefault = 'https://firebasestorage.googleapis.com/v0/b/red-social-32aa8.appspot.com/o/eco-chat%2Fportada-default.jpg?alt=media&token=f49f27dd-c7c0-46c2-b5df-8fea641cbc9f';
+const profileDefault = 'https://firebasestorage.googleapis.com/v0/b/red-social-32aa8.appspot.com/o/eco-chat%2Fuser-photo-profile.png?alt=media&token=064cb92b-ebbe-4de0-baa4-15d68c1f0e9d';
 
 export const getInfoUserBD = id => db.collection('users').doc(id).get();
-
-export const getCurrentUser = () => auth.currentUser;
 
 export const updateProfileUser = data => auth.currentUser.updateProfile(data);
 
@@ -17,6 +16,8 @@ export const createUser = user => auth.createUserWithEmailAndPassword(user.email
   .then(() => auth.currentUser.updateProfile({
     displayName: user.name,
     photoURL: profileDefault,
+  }).then(() => {
+    registerUserBD(auth.currentUser.uid, { coverPhoto: coverDefault, aboutMe: '' });
   }));
 
 
@@ -40,15 +41,10 @@ export const signOut = () => {
     .then(() => {
       window.location.hash = '#/login';
     });
-  // .catch((err) => {
-  //   console.log(err);
-  // });
 };
 
 
 export const updateImgCoverUser = (url, id) => {
   console.log(url, id);
   db.collection('users').doc(id).update({ coverPhoto: url });
-  // .then(() => console.log('cover photo updated!!'))
-  // .catch(err => console.log('Error to update cover photo!!', err));
 };

@@ -12,7 +12,7 @@ import {
 import {
   signInFormValidation,
   sendMessage, hidePwd, showPwd,
-} from './utils.js';
+} from '../utils/utils.js';
 
 import { auth } from '../firebaseInit.js';
 

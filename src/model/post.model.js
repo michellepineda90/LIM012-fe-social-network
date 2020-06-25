@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { auth, db } from '../firebaseInit.js';
-import { objToArray } from '../utils/array.js';
+// import { objToArray } from '../utils/array.js';
 
 export const createPostBD = postObj => db.collection('posts')
   .add(postObj);
@@ -16,16 +16,32 @@ export const getAllPostsBD = (route) => {
   return result;
 };
 
+export const getDocs = (callback, collection) => db.collection(collection)
+  .onSnapshot((querySnapshot) => {
+    const data = [];
+    querySnapshot.forEach((doc) => {
+      data.push({ id: doc.id, ...doc.data() });
+    });
+    callback(data);
+  });
+
+// export const getDocs = (collection) => {
+//   return db.collection(collection)
+//     .onSnapshot((querySnapshot) => {
+//       const data = [];
+//       querySnapshot.forEach((doc) => {
+//         data.push({ id: doc.id, ...doc.data() });
+//       });
+//       return data;
+//     });
+// };
+
+
 export const deletePostBD = id => db.collection('posts').doc(id).delete();
-// .then(() => console.log('Post eliminado!!'))
-// .catch(() => console.log('Error al eliminar post!!'));
 
 export const getPostBD = id => db.collection('posts').doc(id).get();
 
 export const updatePostBD = (id, data) => db.collection('posts').doc(id).update(data);
-// .then(() => console.log('Los cambios se guardaron exitosamente'))
-// .catch(err => console.log('No se pudo guardar los cambios', err));
-
 
 // COMMENTS
 
@@ -37,20 +53,12 @@ export const getAllCommentsBD = postId => db.collection('comments').where('postI
 export const editCommentBD = (id, data) => db.collection('comments').doc(id).update(data);
 
 export const deleteCommentBD = id => db.collection('comments').doc(id).delete();
-// .then(() => console.log('Comment eliminado'))
-// .catch(() => console.log('Error'));
-
 
 export const createlikeBD = (postId, likes) => db.collection('posts').doc(postId)
   .update({ likes });
-  // .then(() => console.log('Funcionando LIKE!!!'))
-  // .catch(err => console.log('ERROR LIKE', err));
 
 export const removeLike = id => db.collection('likes').doc(id).delete();
 
 // function to test
 
-export const getCommentsForTest = () => db.collection('comments').get().then(snapshot => objToArray(snapshot.data));
-
-export const getDocsForTest = collection => db.collection(collection)
-  .get().then(snapshot => objToArray(snapshot.data));
+// export const getCommentsForTest = () => db.collection('comments').get().then(snapshot => objToArray(snapshot.data));

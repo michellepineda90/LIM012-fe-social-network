@@ -6,19 +6,26 @@ import {
 import { post, setStatePrivacity } from '../view/post.js';
 import { getAllPostsBD } from '../model/post.model.js';
 import { createPost } from './postController.js';
-import { emojiEvent, coverDefault } from './utils.js';
+import { emojiEvent } from '../utils/utils.js';
 import { uploadImage } from '../model/storage-post.js';
+import { auth } from '../firebaseInit.js';
 
 export default (page) => {
   // llama a la BD para mostrar todos los post registrados
-  const user = getCurrentUser();
+  const user = auth.currentUser;
 
   if (!user) {
     window.location.hash = '#/login';
     return views.signInView();
   }
-
   const currentView = views.accountView(user, page);
+
+  getInfoUserBD(user.uid)
+    .then((doc) => {
+      const coverPhoto = currentView.querySelector('.user-photo-cover');
+      coverPhoto.src = doc.data().coverPhoto;
+    });
+
   const menuBtn = currentView.querySelector('.menu-icon');
 
   const uploadImgBtn = currentView.querySelector('#upload-img-btn');
@@ -34,6 +41,7 @@ export default (page) => {
     const state = menu.style.display;
     menu.style.display = (state === 'block') ? 'none' : 'block';
   });
+  
   // boton para cargar imagenes para publicar
   uploadImgBtn.addEventListener('click', () => {
     uploadImg.click();

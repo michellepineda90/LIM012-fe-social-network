@@ -1,6 +1,6 @@
 import { createUser, sendConfirmationEmail, registerUserBD} from '../model/user.model.js';
 
-import { signUpFormValidation, hidePwd, showPwd } from './utils.js';
+import { signUpFormValidation, hidePwd, showPwd } from '../utils/utils.js';
 
 import { views } from '../view/index.js';
 import { auth } from '../firebaseInit.js';
