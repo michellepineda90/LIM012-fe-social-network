@@ -57,6 +57,10 @@ $color-btn-disabled:rgb(110, 240, 214);
   position: relative;
   right: 0;
 } 
+.left{
+  position: relative;
+  left: 0 !important;
+} 
 .liked{
   color: rgb(235, 68, 68) !important;
 }
@@ -68,11 +72,27 @@ $color-btn-disabled:rgb(110, 240, 214);
   border: 1.2px solid rgb(243, 57, 57) !important;
 }
 
-%ordinary-btn{
+.ordinary-btn{
+  // font-weight: bold;
+  // margin: .2em;
+  color: $primary-color;
+  background: whitesmoke;
+ 
+}
+.main-btn{
+  background: $primary-color;
+  color: whitesmoke;
+}
+.btn-n{
   font-weight: bold;
   margin: .2em;
-  border-radius: 5px;
+  border: none;
   padding: .5em;
+  border-radius: 5px;
+  font-weight: bold;
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 %grow{
@@ -82,12 +102,6 @@ $color-btn-disabled:rgb(110, 240, 214);
   }
 }
 
-.main-btn{
-  cursor: pointer;
-  background: $primary-color;
-  color: whitesmoke;
-  border: none;
-}
 
 .ordinary-btn{
   cursor: pointer;

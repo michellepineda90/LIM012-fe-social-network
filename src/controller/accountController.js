@@ -2,26 +2,32 @@
 // import { auth } from 'firebase-admin';
 import { views } from '../view/index.js';
 import {
-  signOut, getCurrentUser, updateImgCoverUser, getInfoUserBD,
+  signOut, updateImgCoverUser, getInfoUserBD,
 } from '../model/user.model.js';
 import { post, setStatePrivacity } from '../view/post.js';
 import { getAllPostsBD } from '../model/post.model.js';
 import { createPost } from './postController.js';
-import { emojiEvent, coverDefault } from './utils.js';
+import { emojiEvent } from '../utils/utils.js';
 import { uploadImage } from '../model/storage-post.js';
 import { auth } from '../firebaseInit.js';
-// import { editProfile } from '../view/profile.js';
 
 export default (page) => {
   // llama a la BD para mostrar todos los post registrados
-  const user = getCurrentUser();
+  const user = auth.currentUser;
 
   if (!user) {
     window.location.hash = '#/login';
     return views.signInView();
   }
-
   const currentView = views.accountView(user, page);
+
+  getInfoUserBD(user.uid)
+    .then((doc) => {
+      const coverPhoto = currentView.querySelector('.user-photo-cover');
+      console.log(doc.id, doc.data().coverPhoto);
+      coverPhoto.src = doc.data().coverPhoto;
+    });
+
   const menuBtn = currentView.querySelector('.menu-icon');
 
   const uploadImgBtn = currentView.querySelector('#upload-img-btn');
@@ -37,13 +43,6 @@ export default (page) => {
     const state = menu.style.display;
     menu.style.display = (state === 'block') ? 'none' : 'block';
   });
-
-  getInfoUserBD(user.uid)
-    .then((doc) => {
-      const coverPhoto = currentView.querySelector('.user-photo-cover');
-      coverPhoto.src = (doc.data().coverPhoto !== '') ? doc.data().coverPhoto : coverDefault;
-      console.log(doc.data());
-    });
 
   // boton para cargar imagenes para publicar
   uploadImgBtn.addEventListener('click', () => {
@@ -125,23 +124,37 @@ export default (page) => {
 
   if (page === 'profile') {
     const btnEditProfile = currentView.querySelector('.edit-profile');
+    const btnCancel = currentView.querySelector('#cancel');
     btnEditProfile.addEventListener('click', (event) => {
       const nameUser = currentView.querySelector('#name-user');
-      // const emailUser = currentView.querySelector('#email-user');
+      const name = nameUser.textContent;
 
       if (event.target.id === 'edit') {
         nameUser.setAttribute('contenteditable', true);
-        // emailUser.setAttribute('contenteditable', true);
         nameUser.focus();
-        event.target.textContent = 'Guardar';
+        event.target.innerHTML = '<i class="far fa-save"></i> Guardar';
         event.target.id = 'save';
+        btnCancel.classList.remove('hidden');
+        event.target.classList.remove('ordinary-btn');
+        event.target.classList.add('main-btn');
+        btnCancel.addEventListener('click', () => {
+          btnCancel.classList.add('hidden');
+          event.target.classList.add('ordinary-btn');
+          event.target.classList.remove('main-btn');
+          nameUser.setAttribute('contenteditable', false);
+          event.target.innerHTML = '<i class="far fa-edit"></i>Editar Perfil';
+          event.target.id = 'edit';
+          nameUser.textContent = name;
+        });
       } else if (event.target.id === 'save') {
+        btnCancel.classList.add('hidden');
+        event.target.classList.add('ordinary-btn');
+        event.target.classList.remove('main-btn');
+        nameUser.setAttribute('contenteditable', false);
+        event.target.innerHTML = '<i class="far fa-edit"></i>Editar Perfil';
         auth.currentUser.updateProfile({
           displayName: nameUser.textContent,
         });
-        nameUser.setAttribute('contenteditable', false);
-        // emailUser.setAttribute('contenteditable', false);
-        event.target.textContent = 'Editar';
         event.target.id = 'edit';
       }
     });

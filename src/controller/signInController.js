@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-// import { signInView } from '../view/signIn.js';
 import { views } from '../view/index.js';
 
 import {
@@ -7,12 +6,13 @@ import {
   signInWithGoogle,
   signInWithFacebook,
   registerUserBD,
+  coverDefault,
 } from '../model/user.model.js';
 
 import {
   signInFormValidation,
   sendMessage, hidePwd, showPwd,
-} from './utils.js';
+} from '../utils/utils.js';
 
 import { auth } from '../firebaseInit.js';
 
@@ -42,7 +42,7 @@ const eventGoogle = (event) => {
   event.preventDefault();
   signInWithGoogle()
     .then((res) => {
-      registerUserBD(res.user.uid, { coverPhoto: '', aboutMe: '' });
+      registerUserBD(res.user.uid, { coverPhoto: coverDefault, aboutMe: '' });
       window.location.hash = '#/home';
     })
     .catch();
@@ -52,7 +52,7 @@ const eventFacebook = (event) => {
   event.preventDefault();
   signInWithFacebook()
     .then((res) => {
-      registerUserBD(res.user.uid, { coverPhoto: '', aboutMe: '' });
+      registerUserBD(res.user.uid, { coverPhoto: coverDefault, aboutMe: '' });
       window.location.hash = '#/home';
     })
     .catch();

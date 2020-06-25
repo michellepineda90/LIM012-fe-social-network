@@ -227,6 +227,3 @@ export const emojiEvent = (container, nameClassInput, btn, nameClassBtn) => {
     });
   });
 };
-
-export const coverDefault = 'https://firebasestorage.googleapis.com/v0/b/red-social-32aa8.appspot.com/o/eco-chat%2Fportada-default.jpg?alt=media&token=f49f27dd-c7c0-46c2-b5df-8fea641cbc9f';
-export const profileDefault = 'https://firebasestorage.googleapis.com/v0/b/red-social-32aa8.appspot.com/o/eco-chat%2Fuser-photo-profile.png?alt=media&token=064cb92b-ebbe-4de0-baa4-15d68c1f0e9d';

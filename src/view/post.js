@@ -4,8 +4,7 @@ import {
   createlikeBD, deletePostBD, updatePostBD, getAllCommentsBD, editCommentBD, deleteCommentBD,
 } from '../model/post.model.js';
 import { createCommentObj } from '../controller/postController.js';
-import { emojis, emojiEvent } from '../controller/utils.js';
-
+import { emojis, emojiEvent } from '../utils/utils.js';
 
 // funcion que permite visualizar la opcion q elegimos en el dropdown de privacidad,
 // este funcionn se usa en el dropdown para crear un post como tbm en la ventana modal al editar
@@ -17,32 +16,27 @@ export const setStatePrivacity = type => `<i class="bx ${type === 'public' ? 'bx
 const modalDelete = (type) => {
   const divDelete = document.createElement('div');
   divDelete.classList.add('modal', 'modal-delete');
-  divDelete.innerHTML = `
-  <div class="modal-header">
-  ¿Eliminar ${type === 'post' ? 'publicación' : 'comentario'}?
-  </div>
-  <div class="modal-body">
-    ${type === 'post' ? 'Estas segur@ de querer eliminar está publicación, al eliminar ya no podra ser recuperada.'
+  divDelete.innerHTML = `<div class="modal-header">
+    ¿Eliminar ${type === 'post' ? 'publicación' : 'comentario'}?
+    </div>
+    <div class="modal-body">
+      ${type === 'post' ? 'Estas segur@ de querer eliminar está publicación, al eliminar ya no podra ser recuperada.'
     : '¿Segur@ que quieres eliminar este comentario?'}
-  </div>
-  <div class="modal-footer">
-    <button id="cancel" class="ordinary-btn">Cancelar</button>
-    <button id="delete" class="main-btn">Eliminar</button>
-  </div>`;
+    </div>
+    <div class="modal-footer">
+      <button id="cancel" class="btn-n ordinary-btn">Cancelar</button>
+      <button id="delete" class="btn-n main-btn">Eliminar</button>
+    </div>`;
   return divDelete;
 };
 
 // template de la ventana modal para editar un post existente
 // los datos que se le pasan son los del post que se quieren editar
 const modalEdit = (message, privacyState) => {
-  // console.log(`Este Post es => ${privacyState}`);
   const divEdit = document.createElement('div');
   divEdit.classList.add('modal', 'modal-edit');
   divEdit.innerHTML = `
-      <div class="modal-header">
-        Editar publicación
-        <i class='bx bx-x pointer' id="close"></i>
-      </div>
+      <div class="modal-header">Editar publicación <i class='bx bx-x pointer' id="close"></i></div>
       <div class="modal-body">
         <img src="${auth.currentUser.photoURL}" class="post-user-photo">
         <div contenteditable class="edit-area"> 
@@ -53,9 +47,9 @@ const modalEdit = (message, privacyState) => {
       </div>
       <div class="modal-footer"> 
         ${emojis('left')}
-        <div class="family-btn">
+        <div class="family-btn flex">
         <div class="dropdown">
-          <button class="privacy ordinary-btn" id="${privacyState}">
+          <button class="privacy btn-n ordinary-btn" id="${privacyState}">
             ${setStatePrivacity(privacyState)}
           </button>        
           <ul class="dropdown-menu right hidden">
@@ -63,7 +57,7 @@ const modalEdit = (message, privacyState) => {
             <li id="private"><i class='bx bxs-lock-alt' ></i>Privado</li>
           </ul>
         </div> 
-        <button id="save" class="main-btn">Guardar</button>
+        <button id="save" class="btn-n main-btn">Guardar</button>
         </div>
       </div>`;
 
