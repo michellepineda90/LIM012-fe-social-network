@@ -167,11 +167,9 @@ export default (page) => {
 
   uploadImgProfile.addEventListener('click', (event) => {
     event.target.addEventListener('change', (e) => {
-      console.log(e.target.files[0]);
       uploadImage(e.target.files[0])
         .then((url) => {
           console.log('Se esta actualizando foto de portada');
-          console.log(url);
           if (event.target.id === 'cover') {
             updateImgCoverUser(url, user.uid);
             const coverImg = currentView.querySelector('.user-photo-cover');
